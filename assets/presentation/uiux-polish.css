@@ -1,0 +1,116 @@
+/* The UI page examines one interface; the UX page follows the entire task. */
+.ui-design-board{display:grid;grid-template-columns:340px minmax(0,1fr);gap:56px;align-items:center;padding-top:4px}
+.ui-design-guide .uiux-name h2{font-size:66px;color:var(--accent-ink)}
+.ui-design-guide .uiux-name .small-text{font-size:14px;margin-top:8px}
+.slide p.ui-design-definition{font-size:22px;line-height:1.55;margin:19px 0 20px;max-width:330px}
+.slide .ui-design-points{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+.slide .ui-design-points li{display:flex;align-items:center;gap:12px;font-size:16px;line-height:1.45;margin:0;padding:0}
+.ui-point{display:inline-grid;place-items:center;flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent-ink);color:var(--paper);font-size:12px;line-height:1;font-weight:700}
+.ui-specimen-caption{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:12px}
+.ui-specimen-caption>span:last-child{font-size:10px;letter-spacing:.08em}
+.ui-specimen-window{border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:0 18px 40px #1118270a;overflow:hidden}
+.ui-specimen-top{display:flex;align-items:center;gap:9px;padding:15px 20px;border-bottom:1px solid var(--line);font-size:12px}
+.ui-app-mark{display:grid;place-items:center;background:var(--ink);color:var(--paper);font-size:13px;width:24px;height:24px;border-radius:7px}
+.ui-window-dots{margin-left:auto;color:var(--muted);font-size:20px;letter-spacing:3px}
+.ui-specimen-body{display:grid;grid-template-columns:139px minmax(0,1fr);min-height:289px}
+.ui-specimen-nav{position:relative;padding:44px 12px 18px;border-right:1px solid var(--line);background:var(--hover);font-size:12px;display:flex;flex-direction:column;gap:10px}
+.ui-specimen-nav>.ui-point{position:absolute;top:13px;left:22px}
+.ui-specimen-nav>div{padding:10px 12px;border-radius:6px;color:var(--muted)}
+.ui-specimen-nav>div.active{color:var(--accent-ink);background:var(--soft);font-weight:700}
+.ui-specimen-main{padding:22px 26px 23px;min-width:0}
+.ui-specimen-heading{position:relative;padding-right:34px}
+.ui-specimen-heading>.ui-point{position:absolute;right:0;top:0}
+.slide .ui-specimen-heading h3{font-size:27px;letter-spacing:-.04em;font-weight:750}
+.slide .ui-specimen-heading p{font-size:12px;color:var(--muted);margin-top:5px}
+.ui-specimen-summary{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--accent-ink);margin:17px 0 15px}
+.ui-specimen-summary>span:first-child{background:var(--soft);padding:6px 9px;border-radius:5px;font-weight:650}
+.ui-specimen-student{display:flex;align-items:center;gap:10px;border:1px solid var(--line);padding:12px;border-radius:8px}
+.ui-avatar{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--hover);font-size:13px;color:var(--muted)}
+.ui-specimen-student strong{display:block;font-size:13px}
+.ui-specimen-student small{display:block;font-size:10px;color:var(--muted);margin-top:4px}
+.ui-attendance-state{font-size:11px;color:var(--green);margin-left:auto}
+.ui-spacing-guide{display:flex;gap:8px;align-items:center;height:34px;padding-left:8px}
+.ui-spacing-guide .ui-point{width:19px;height:19px;font-size:10px;background:var(--paper);color:var(--accent-ink);border:1px solid var(--accent-ink)}
+.ui-spacing-guide>span:last-child{flex:1;height:11px;border:1px dashed var(--accent-ink);border-left:0;opacity:.35}
+.ui-specimen-action{display:flex;align-items:center;gap:12px}
+.ui-save-visual{display:block;flex:1;text-align:center;background:var(--accent-ink);color:var(--paper);padding:11px 16px;border-radius:7px;font-size:14px;font-weight:700}
+.slide p.ui-specimen-question{font-size:14px;color:var(--muted);text-align:center;margin-top:16px}
+.ux-journey-board{display:flex;flex-direction:column;gap:15px;padding-top:2px}
+.ux-journey-intro{display:grid;grid-template-columns:188px 1fr;gap:32px;align-items:center;padding-bottom:3px}
+.ux-journey-intro .uiux-name{display:flex;align-items:center;gap:14px}
+.ux-journey-intro .uiux-name h2{font-size:52px;color:var(--accent-ink)}
+.ux-journey-intro .uiux-name .small-text{font-size:11px;line-height:1.5;margin:0;max-width:80px}
+.slide p.ux-definition{font-size:23px;line-height:1.4;font-weight:600}
+.slide p.ux-goal{font-size:14px;line-height:1.4;color:var(--muted);margin-top:6px}
+.ux-friction{display:flex;gap:24px;align-items:center;padding:14px 20px;background:var(--hover);border:1px solid var(--line);border-radius:8px;font-size:14px;color:var(--muted)}
+.ux-friction>strong{font-size:13px;white-space:nowrap;font-weight:600;padding-right:22px;border-right:1px solid var(--line)}
+.ux-friction>div{display:flex;justify-content:space-between;gap:19px;align-items:center;flex:1}
+.ux-friction .uncertain{color:#9b6046;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:5px}
+.ux-arrow{font-size:15px;color:var(--muted);opacity:.5}
+.ux-flow-heading{font-size:13px;color:var(--accent-ink);margin-top:3px}
+.ux-journey-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.ux-journey-step{position:relative;border:1px solid var(--line);border-top:3px solid var(--accent-ink);border-radius:0 0 9px 9px;padding:17px 21px 19px;background:var(--paper);min-width:0}
+.ux-journey-step:not(:last-child):after{content:'→';position:absolute;right:-23px;top:47%;font-size:19px;color:var(--accent-ink)}
+.ux-step-top{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:12px}
+.ux-step-number{font-size:14px;font-weight:700;color:var(--accent-ink)}
+.ux-step-top>span:last-child{font-size:10px;color:var(--muted)}
+.slide .ux-journey-step h3{font-size:25px;font-weight:700;line-height:1.35;letter-spacing:-.035em}
+.slide .ux-journey-step p{font-size:13px;line-height:1.6;color:var(--muted);margin-top:9px;min-height:42px}
+.ux-step-preview{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--hover);font-size:12px;margin-top:14px}
+.slide .ux-step-preview .icon{width:15px;height:15px;color:var(--accent-ink)}
+.ux-journey-step:last-child .ux-step-preview{color:var(--green);border-color:color-mix(in srgb,var(--green) 22%,transparent);background:color-mix(in srgb,var(--green) 6%,var(--paper))}
+.ux-preview-caret{width:1px;height:15px;background:var(--accent-ink);margin-left:2px}
+.ux-outcomes{display:flex;gap:22px;justify-content:center;color:var(--muted);font-size:12px;padding-top:1px}
+.ux-outcomes>span+span{border-left:1px solid var(--line);padding-left:22px}
+.slide[data-type=uiux] .edit-takeaway{font-size:17px;padding-top:10px;white-space:pre-line}
+
+/* A complete inverse-color slide, with the closing statement centered. */
+.slide>.emphasis{z-index:20}
+.slide>.emphasis.is-pending,.slide[data-type=deploymentComparison]>.emphasis.is-pending{right:38px;bottom:65px}
+.slide>.emphasis.is-shown{position:absolute;inset:0;width:auto;height:auto;max-width:none;display:grid;place-items:center;padding:90px 100px;background:var(--ink);color:var(--paper);isolation:isolate}
+.slide>.emphasis.is-shown .emphasis-copy{width:100%;max-width:1060px;text-align:center;margin:0}
+.slide>.emphasis.is-shown .quote{max-width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font-size:58px;line-height:1.45;font-weight:650;letter-spacing:-.045em;text-align:center;white-space:pre-line;text-wrap:balance}
+.slide>.emphasis .emphasis-reset{right:36px;bottom:33px;width:44px;height:44px;min-height:44px;padding:11px;background:transparent;color:inherit;border:1px solid currentColor;opacity:.55}
+.slide>.emphasis .emphasis-reset:hover,.slide>.emphasis .emphasis-reset:focus-visible{background:var(--paper);color:var(--ink);opacity:1}
+.slide:has(>.emphasis.is-shown)>.slide-content,.slide:has(>.emphasis.is-shown)>.slide-head{pointer-events:none}
+.reading #slideFrame .slide .ui-design-board{display:flex;flex-direction:column;align-items:stretch;gap:28px}
+.reading #slideFrame .slide .ui-design-guide .uiux-name h2{font-size:54px}
+.reading #slideFrame .slide .ui-design-definition{font-size:21px;max-width:none}
+.reading #slideFrame .slide .ui-design-points{gap:12px}
+.reading #slideFrame .slide .ui-design-points li{font-size:16px}
+.reading #slideFrame .slide .ui-specimen-body{grid-template-columns:88px minmax(0,1fr)}
+.reading #slideFrame .slide .ui-specimen-nav{padding:45px 7px 15px;font-size:10px}
+.reading #slideFrame .slide .ui-specimen-nav>div{padding:9px 7px}
+.reading #slideFrame .slide .ui-specimen-main{padding:18px 12px}
+.reading #slideFrame .slide .ui-specimen-heading h3{font-size:23px}
+.reading #slideFrame .slide .ui-specimen-heading p{font-size:10px}
+.reading #slideFrame .slide .ui-specimen-student{padding:9px 7px;gap:6px;flex-wrap:wrap}
+.reading #slideFrame .slide .ui-avatar{display:none}
+.reading #slideFrame .slide .ui-specimen-question{font-size:13px}
+.reading #slideFrame .slide .ux-journey-intro{grid-template-columns:1fr;gap:20px}
+.reading #slideFrame .slide .ux-journey-intro .uiux-name .small-text{font-size:12px;line-height:1.5;max-width:none;width:110px;flex:none;word-break:normal;overflow-wrap:normal}
+.reading #slideFrame .slide .ux-definition{font-size:22px}
+.reading #slideFrame .slide .ux-friction{align-items:stretch;flex-direction:column;gap:13px;padding:16px}
+.reading #slideFrame .slide .ux-friction>strong{padding:0;border:0}
+.reading #slideFrame .slide .ux-friction>div{flex-wrap:wrap;justify-content:flex-start;gap:10px;font-size:13px}
+.reading #slideFrame .slide .ux-journey-track{grid-template-columns:1fr;gap:28px}
+.reading #slideFrame .slide .ux-journey-step:not(:last-child):after{content:'↓';right:50%;top:auto;bottom:-27px;font-size:18px}
+.reading #slideFrame .slide .ux-journey-step h3{font-size:25px}
+.reading #slideFrame .slide .ux-journey-step p{font-size:15px;min-height:0}
+.reading #slideFrame .slide .ux-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:12px}
+.reading #slideFrame .slide .ux-outcomes>span{padding:0;border:0;text-align:center}
+.reading #slideFrame .slide>.emphasis.is-pending{position:relative;inset:auto;margin:20px 0 0;align-self:flex-end;width:48px;height:48px}
+.reading #slideFrame .slide:has(>.emphasis.is-shown){min-height:max(360px,calc(100dvh - 125px))}
+.reading #slideFrame .slide:has(>.emphasis.is-shown)>:not(.emphasis){display:none}
+.reading #slideFrame .slide>.emphasis.is-shown{position:absolute;inset:0;min-height:0;padding:65px 25px}
+.reading #slideFrame .slide>.emphasis.is-shown .quote{font-size:clamp(28px,7vw,42px);line-height:1.5}
+.reading #slideFrame .slide>.emphasis .emphasis-reset{right:20px;bottom:20px}
+.print-page .slide .ui-design-definition{font-size:22px}
+.print-page .slide .ui-specimen-heading h3{font-size:27px}
+.print-page .slide .ui-specimen-heading p{font-size:12px}
+.print-page .slide .ui-specimen-question{font-size:14px}
+.print-page .slide .ux-definition{font-size:23px}
+.print-page .slide .ux-goal{font-size:14px}
+.print-page .slide .ux-journey-step h3{font-size:25px}
+.print-page .slide .ux-journey-step p{font-size:13px}
+.print-page .slide[data-type=uiux] .print-takeaway{white-space:pre-line;font-size:17px;line-height:1.4;padding-top:10px}
