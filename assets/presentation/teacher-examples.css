@@ -1,0 +1,39 @@
+.teacher-comparison{display:flex;flex-direction:column;gap:12px}
+.teacher-comparison .example-case-heading{margin-bottom:10px}
+.slide .teacher-comparison .example-case-heading h3{font-size:21px;line-height:1.35}
+.teacher-comparison .case-bad .example-case-heading{color:var(--muted)}
+.teacher-comparison .case-good .example-case-heading{color:var(--accent-ink)}
+.teacher-comparison .example-note{margin-top:10px}
+.lesson-app{height:216px;border:1px solid var(--line);border-radius:10px;padding:18px 20px;background:var(--paper);display:flex;flex-direction:column;min-width:0}
+.lesson-app-heading{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lesson-app-heading strong{font-size:17px;font-weight:650}
+.lesson-app-heading>span{font-size:10px;color:var(--muted)}
+.lesson-record{margin:15px 0;flex:1;min-height:0}
+.lesson-record>strong{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:7px}
+.slide .lesson-record>p{font-size:15px;line-height:1.45;color:var(--ink)}
+.lesson-actions{display:flex;align-items:center;gap:9px}
+.slide .lesson-action{display:inline-flex;align-items:center;justify-content:center;min-height:36px;min-width:83px;padding:7px 13px;border:1px solid var(--line);border-radius:6px;background:var(--hover);color:var(--ink);font-size:13px;line-height:1.4;white-space:nowrap}
+.slide .priority-clear .lesson-action.save,.slide .lesson-action.primary{background:var(--accent-ink);border-color:var(--accent-ink);color:var(--paper);font-weight:650}
+.slide .priority-clear .lesson-action.secondary{background:var(--paper);color:var(--muted)}
+.slide .priority-clear .lesson-action.remove{background:var(--paper);color:#b44848;border-color:transparent}
+[data-theme=dark] .slide .priority-clear .lesson-action.remove{color:#f0a2a2}
+.slide .lesson-action:disabled{opacity:.65;cursor:wait}
+.lesson-feedback{display:flex;gap:6px;align-items:center;height:24px;min-height:24px;margin-top:8px;color:var(--muted);font-size:12px;line-height:1.4}
+.lesson-feedback.feedback-success{color:var(--green)}
+.lesson-feedback svg{width:14px;height:14px;flex:none}
+.teacher-prompt{display:flex;align-items:baseline;gap:18px;padding-top:11px;border-top:1px solid var(--line)}
+.prompt-caption{color:var(--accent-ink);font-size:12px;flex:none;font-weight:650}
+.slide .teacher-prompt>p{font-size:17px;line-height:1.5;letter-spacing:-.02em}
+.reading #slideFrame .slide .teacher-comparison{gap:20px}
+.reading #slideFrame .slide .teacher-comparison .example-pair{gap:24px}
+.reading #slideFrame .slide .lesson-app{height:238px;padding:16px 14px}
+.reading #slideFrame .slide .lesson-app-heading{flex-wrap:wrap;gap:6px}
+.reading #slideFrame .slide .lesson-app-heading strong{font-size:16px}
+.reading #slideFrame .slide .lesson-record>p{font-size:14px}
+.reading #slideFrame .slide .lesson-actions{gap:6px}
+.reading #slideFrame .slide .lesson-action{font-size:12px;min-width:0;min-height:38px;padding:8px 12px}
+.reading #slideFrame .slide .teacher-prompt{flex-direction:column;gap:8px}
+.reading #slideFrame .slide .teacher-prompt>p{font-size:16px}
+.print-page .slide .teacher-comparison .example-case-heading h3{font-size:21px}
+.print-page .slide .teacher-prompt>p{font-size:17px}
+.print-page .slide .lesson-record>p{font-size:15px}

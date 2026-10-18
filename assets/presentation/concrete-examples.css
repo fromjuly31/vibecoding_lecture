@@ -49,53 +49,9 @@
 .lookup-result{font-size:11px;color:var(--muted);padding:10px 18px;border-top:1px solid var(--line);min-height:35px;flex:none}
 .case-good .lookup-result{color:var(--accent-ink)}
 .slide p.lookup-empty{font-size:14px;color:var(--muted);padding:18px 0}
-.schoolwork-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:46px;align-items:center}
-.homework-app{height:364px;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:17px 20px;display:flex;flex-direction:column}
-.homework-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.homework-top strong{font-size:24px;letter-spacing:-.03em}
-.homework-top>span{font-size:12px;color:var(--muted)}
-.homework-assignment{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:10px;color:var(--muted)}
-.homework-count{font-size:11px}
-.homework-count b{font-size:15px;color:var(--accent-ink);margin-left:4px}
-.homework-filter{display:flex;gap:7px;align-items:center;font-size:12px;color:var(--accent-ink);margin-top:13px;align-self:flex-start}
-.slide .homework-filter input,.slide .homework-row input{width:15px;height:15px;min-width:15px;min-height:15px;padding:0;margin:0;accent-color:var(--accent-ink)}
-.homework-list{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;margin-top:8px}
-.homework-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:12px;min-height:38px;border-bottom:1px solid var(--line);font-size:14px;padding:8px 5px}
-.homework-row strong{font-weight:600;font-size:14px}
-.homework-num{color:var(--muted);font-size:11px}
-.homework-state{padding:5px 8px;border-radius:5px;font-size:11px;color:var(--muted);background:var(--hover)}
-.homework-state.missing{background:#fff0db;color:#925312;font-weight:650}
-.homework-actions{margin-top:12px;flex:none}
-.slide .homework-actions button{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 16px;width:100%;min-height:42px;font-size:15px;background:var(--accent-ink);border:1px solid var(--accent-ink);color:var(--paper);border-radius:7px}
-.homework-actions button>span:last-child:not(:first-child){font-size:12px;opacity:.8}
-.homework-result{font-size:12px;min-height:23px;line-height:1.4;margin-top:8px;color:var(--green)}
-.slide p.homework-footnote{font-size:10px;line-height:1.4;color:var(--muted);margin-top:3px}
-.homework-legacy{border-radius:0;background:var(--hover);padding:14px 20px;color:var(--muted)}
-.homework-legacy .homework-top{justify-content:center;gap:10px}
-.homework-legacy .homework-top strong{font-size:14px;font-weight:450;letter-spacing:0}
-.homework-legacy .homework-top>span{font-size:11px}
-.homework-legacy .homework-assignment{font-size:11px;margin-top:8px}
-.homework-legacy-head,.homework-legacy .homework-row{display:grid;grid-template-columns:40px 1fr 60px 35px;gap:8px}
-.homework-legacy-head{font-size:10px;border-bottom:1px solid var(--line);padding:8px 5px 5px;margin-top:5px}
-.homework-legacy .homework-list{margin-top:0}
-.homework-legacy .homework-row{min-height:23px;padding:4px 5px;font-size:11px}
-.homework-legacy .homework-row strong{font-size:11px;font-weight:400}
-.homework-legacy .homework-state{padding:0;background:none;font-size:11px;color:inherit;font-weight:400}
-.homework-legacy .homework-actions{margin-top:8px;text-align:right}
-.slide .homework-legacy .homework-actions button{width:auto;margin-left:auto;border-radius:0;min-height:27px;padding:4px 18px;background:var(--line);border-color:var(--line);color:var(--ink);font-size:11px}
-.homework-legacy .homework-result{min-height:17px;font-size:10px;margin-top:4px;color:var(--muted)}
-.homework-legacy p.homework-footnote{font-size:9px}
-.schoolwork-points{display:grid;gap:23px}
-.schoolwork-points>div{display:flex;align-items:flex-start;gap:15px}
-.schoolwork-points>div>span{font-size:11px;color:var(--accent-ink);padding-top:6px}
-.slide .schoolwork-points p{font-size:21px;line-height:1.5;letter-spacing:-.025em}
 .slide[data-type=beforeAfter] .edit-takeaway{font-size:17px;padding-top:10px;line-height:1.45}
 .slide:is([data-type=uiux],[data-type=beforeAfter],[data-type=summary]):has(.edit-takeaway) .content-inner{gap:16px}
 .slide:has(.edit-takeaway) .lookup-app{height:264px}
-.slide:has(.edit-takeaway) .homework-app{height:334px;padding-block:14px}
-.slide:has(.edit-takeaway) .homework-actions{margin-top:8px}
-.slide:has(.edit-takeaway) .homework-filter{margin-top:10px}
-.slide:has(.edit-takeaway) .homework-result{min-height:18px}
 
 /* Emphasis comes from a restrained accent palette, not another heading. */
 .slide>.emphasis.is-shown{--idea-bg:#10213b;--idea-fg:#eff6ff;--idea-accent:#6ce5cd;--idea-glow:#1e66833d;background:radial-gradient(ellipse at 82% 95%,var(--idea-glow),transparent 60%),var(--idea-bg);color:var(--idea-fg)}
@@ -121,27 +77,13 @@
 .reading #slideFrame .slide .lookup-row{grid-template-columns:24px 1fr auto;gap:5px;font-size:12px}
 .reading #slideFrame .slide .lookup-row>span:last-child{font-size:9px}
 .reading #slideFrame .slide .lookup-list{padding-inline:10px}
-.reading #slideFrame .slide .schoolwork-layout{grid-template-columns:1fr;gap:25px}
-.reading #slideFrame .slide .homework-app{padding:16px 12px;height:385px}
-.reading #slideFrame .slide .homework-top{gap:6px;flex-wrap:wrap}
-.reading #slideFrame .slide .homework-top strong{font-size:22px}
-.reading #slideFrame .slide .homework-legacy .homework-top strong{font-size:13px}
-.reading #slideFrame .slide .homework-legacy-head,.reading #slideFrame .slide .homework-legacy .homework-row{grid-template-columns:25px 1fr 38px 25px;gap:5px}
-.reading #slideFrame .slide .homework-actions button{font-size:13px;padding:10px 8px;gap:6px}
-.reading #slideFrame .slide .homework-result{font-size:10px;min-height:32px}
-.reading #slideFrame .slide p.homework-footnote{font-size:10px;line-height:1.4}
-.reading #slideFrame .slide .schoolwork-points{gap:14px}
-.reading #slideFrame .slide .schoolwork-points p{font-size:18px}
 .reading #slideFrame .slide>.emphasis.is-shown .quote{font-size:clamp(27px,7vw,42px)}
 .print-page .slide p.example-task{font-size:20px}
 .print-page .slide .example-case-heading h3{font-size:23px}
 .print-page .slide p.example-note{font-size:14px}
-.print-page .slide p.homework-footnote{font-size:10px}
-.print-page .slide .schoolwork-points p{font-size:21px}
 .print-page .slide .lookup-row{font-size:13px}
 .print-page .slide .lookup-search{font-size:16px}
 .print-page .slide .lookup-app{height:280px}
-.print-page .slide .homework-actions button{opacity:1}
 .print-page .slide:is([data-type=uiux],[data-type=beforeAfter]) .print-takeaway{font-size:17px;white-space:normal;line-height:1.4;padding-top:10px}
 .print-page .slide:is([data-type=uiux],[data-type=beforeAfter]) .content-inner{gap:16px}
 .chapter-summary{grid-template-columns:460px 1fr;gap:60px}

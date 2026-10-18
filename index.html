@@ -490,53 +490,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 .lookup-result{font-size:11px;color:var(--muted);padding:10px 18px;border-top:1px solid var(--line);min-height:35px;flex:none}
 .case-good .lookup-result{color:var(--accent-ink)}
 .slide p.lookup-empty{font-size:14px;color:var(--muted);padding:18px 0}
-.schoolwork-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:46px;align-items:center}
-.homework-app{height:364px;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:17px 20px;display:flex;flex-direction:column}
-.homework-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.homework-top strong{font-size:24px;letter-spacing:-.03em}
-.homework-top>span{font-size:12px;color:var(--muted)}
-.homework-assignment{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:10px;color:var(--muted)}
-.homework-count{font-size:11px}
-.homework-count b{font-size:15px;color:var(--accent-ink);margin-left:4px}
-.homework-filter{display:flex;gap:7px;align-items:center;font-size:12px;color:var(--accent-ink);margin-top:13px;align-self:flex-start}
-.slide .homework-filter input,.slide .homework-row input{width:15px;height:15px;min-width:15px;min-height:15px;padding:0;margin:0;accent-color:var(--accent-ink)}
-.homework-list{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;margin-top:8px}
-.homework-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:12px;min-height:38px;border-bottom:1px solid var(--line);font-size:14px;padding:8px 5px}
-.homework-row strong{font-weight:600;font-size:14px}
-.homework-num{color:var(--muted);font-size:11px}
-.homework-state{padding:5px 8px;border-radius:5px;font-size:11px;color:var(--muted);background:var(--hover)}
-.homework-state.missing{background:#fff0db;color:#925312;font-weight:650}
-.homework-actions{margin-top:12px;flex:none}
-.slide .homework-actions button{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 16px;width:100%;min-height:42px;font-size:15px;background:var(--accent-ink);border:1px solid var(--accent-ink);color:var(--paper);border-radius:7px}
-.homework-actions button>span:last-child:not(:first-child){font-size:12px;opacity:.8}
-.homework-result{font-size:12px;min-height:23px;line-height:1.4;margin-top:8px;color:var(--green)}
-.slide p.homework-footnote{font-size:10px;line-height:1.4;color:var(--muted);margin-top:3px}
-.homework-legacy{border-radius:0;background:var(--hover);padding:14px 20px;color:var(--muted)}
-.homework-legacy .homework-top{justify-content:center;gap:10px}
-.homework-legacy .homework-top strong{font-size:14px;font-weight:450;letter-spacing:0}
-.homework-legacy .homework-top>span{font-size:11px}
-.homework-legacy .homework-assignment{font-size:11px;margin-top:8px}
-.homework-legacy-head,.homework-legacy .homework-row{display:grid;grid-template-columns:40px 1fr 60px 35px;gap:8px}
-.homework-legacy-head{font-size:10px;border-bottom:1px solid var(--line);padding:8px 5px 5px;margin-top:5px}
-.homework-legacy .homework-list{margin-top:0}
-.homework-legacy .homework-row{min-height:23px;padding:4px 5px;font-size:11px}
-.homework-legacy .homework-row strong{font-size:11px;font-weight:400}
-.homework-legacy .homework-state{padding:0;background:none;font-size:11px;color:inherit;font-weight:400}
-.homework-legacy .homework-actions{margin-top:8px;text-align:right}
-.slide .homework-legacy .homework-actions button{width:auto;margin-left:auto;border-radius:0;min-height:27px;padding:4px 18px;background:var(--line);border-color:var(--line);color:var(--ink);font-size:11px}
-.homework-legacy .homework-result{min-height:17px;font-size:10px;margin-top:4px;color:var(--muted)}
-.homework-legacy p.homework-footnote{font-size:9px}
-.schoolwork-points{display:grid;gap:23px}
-.schoolwork-points>div{display:flex;align-items:flex-start;gap:15px}
-.schoolwork-points>div>span{font-size:11px;color:var(--accent-ink);padding-top:6px}
-.slide .schoolwork-points p{font-size:21px;line-height:1.5;letter-spacing:-.025em}
 .slide[data-type=beforeAfter] .edit-takeaway{font-size:17px;padding-top:10px;line-height:1.45}
 .slide:is([data-type=uiux],[data-type=beforeAfter],[data-type=summary]):has(.edit-takeaway) .content-inner{gap:16px}
 .slide:has(.edit-takeaway) .lookup-app{height:264px}
-.slide:has(.edit-takeaway) .homework-app{height:334px;padding-block:14px}
-.slide:has(.edit-takeaway) .homework-actions{margin-top:8px}
-.slide:has(.edit-takeaway) .homework-filter{margin-top:10px}
-.slide:has(.edit-takeaway) .homework-result{min-height:18px}
 
 /* Emphasis comes from a restrained accent palette, not another heading. */
 .slide>.emphasis.is-shown{--idea-bg:#10213b;--idea-fg:#eff6ff;--idea-accent:#6ce5cd;--idea-glow:#1e66833d;background:radial-gradient(ellipse at 82% 95%,var(--idea-glow),transparent 60%),var(--idea-bg);color:var(--idea-fg)}
@@ -562,27 +518,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 .reading #slideFrame .slide .lookup-row{grid-template-columns:24px 1fr auto;gap:5px;font-size:12px}
 .reading #slideFrame .slide .lookup-row>span:last-child{font-size:9px}
 .reading #slideFrame .slide .lookup-list{padding-inline:10px}
-.reading #slideFrame .slide .schoolwork-layout{grid-template-columns:1fr;gap:25px}
-.reading #slideFrame .slide .homework-app{padding:16px 12px;height:385px}
-.reading #slideFrame .slide .homework-top{gap:6px;flex-wrap:wrap}
-.reading #slideFrame .slide .homework-top strong{font-size:22px}
-.reading #slideFrame .slide .homework-legacy .homework-top strong{font-size:13px}
-.reading #slideFrame .slide .homework-legacy-head,.reading #slideFrame .slide .homework-legacy .homework-row{grid-template-columns:25px 1fr 38px 25px;gap:5px}
-.reading #slideFrame .slide .homework-actions button{font-size:13px;padding:10px 8px;gap:6px}
-.reading #slideFrame .slide .homework-result{font-size:10px;min-height:32px}
-.reading #slideFrame .slide p.homework-footnote{font-size:10px;line-height:1.4}
-.reading #slideFrame .slide .schoolwork-points{gap:14px}
-.reading #slideFrame .slide .schoolwork-points p{font-size:18px}
 .reading #slideFrame .slide>.emphasis.is-shown .quote{font-size:clamp(27px,7vw,42px)}
 .print-page .slide p.example-task{font-size:20px}
 .print-page .slide .example-case-heading h3{font-size:23px}
 .print-page .slide p.example-note{font-size:14px}
-.print-page .slide p.homework-footnote{font-size:10px}
-.print-page .slide .schoolwork-points p{font-size:21px}
 .print-page .slide .lookup-row{font-size:13px}
 .print-page .slide .lookup-search{font-size:16px}
 .print-page .slide .lookup-app{height:280px}
-.print-page .slide .homework-actions button{opacity:1}
 .print-page .slide:is([data-type=uiux],[data-type=beforeAfter]) .print-takeaway{font-size:17px;white-space:normal;line-height:1.4;padding-top:10px}
 .print-page .slide:is([data-type=uiux],[data-type=beforeAfter]) .content-inner{gap:16px}
 .chapter-summary{grid-template-columns:460px 1fr;gap:60px}
@@ -595,6 +537,46 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 .reading #slideFrame .slide .chapter-summary .summary-definition .statement{font-size:27px}
 .print-page .slide .chapter-summary .summary-terms>div>strong{font-size:22px}
 .print-page .slide .chapter-summary .summary-terms>div>p{font-size:19px;white-space:pre-line}
+
+.teacher-comparison{display:flex;flex-direction:column;gap:12px}
+.teacher-comparison .example-case-heading{margin-bottom:10px}
+.slide .teacher-comparison .example-case-heading h3{font-size:21px;line-height:1.35}
+.teacher-comparison .case-bad .example-case-heading{color:var(--muted)}
+.teacher-comparison .case-good .example-case-heading{color:var(--accent-ink)}
+.teacher-comparison .example-note{margin-top:10px}
+.lesson-app{height:216px;border:1px solid var(--line);border-radius:10px;padding:18px 20px;background:var(--paper);display:flex;flex-direction:column;min-width:0}
+.lesson-app-heading{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lesson-app-heading strong{font-size:17px;font-weight:650}
+.lesson-app-heading>span{font-size:10px;color:var(--muted)}
+.lesson-record{margin:15px 0;flex:1;min-height:0}
+.lesson-record>strong{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:7px}
+.slide .lesson-record>p{font-size:15px;line-height:1.45;color:var(--ink)}
+.lesson-actions{display:flex;align-items:center;gap:9px}
+.slide .lesson-action{display:inline-flex;align-items:center;justify-content:center;min-height:36px;min-width:83px;padding:7px 13px;border:1px solid var(--line);border-radius:6px;background:var(--hover);color:var(--ink);font-size:13px;line-height:1.4;white-space:nowrap}
+.slide .priority-clear .lesson-action.save,.slide .lesson-action.primary{background:var(--accent-ink);border-color:var(--accent-ink);color:var(--paper);font-weight:650}
+.slide .priority-clear .lesson-action.secondary{background:var(--paper);color:var(--muted)}
+.slide .priority-clear .lesson-action.remove{background:var(--paper);color:#b44848;border-color:transparent}
+[data-theme=dark] .slide .priority-clear .lesson-action.remove{color:#f0a2a2}
+.slide .lesson-action:disabled{opacity:.65;cursor:wait}
+.lesson-feedback{display:flex;gap:6px;align-items:center;height:24px;min-height:24px;margin-top:8px;color:var(--muted);font-size:12px;line-height:1.4}
+.lesson-feedback.feedback-success{color:var(--green)}
+.lesson-feedback svg{width:14px;height:14px;flex:none}
+.teacher-prompt{display:flex;align-items:baseline;gap:18px;padding-top:11px;border-top:1px solid var(--line)}
+.prompt-caption{color:var(--accent-ink);font-size:12px;flex:none;font-weight:650}
+.slide .teacher-prompt>p{font-size:17px;line-height:1.5;letter-spacing:-.02em}
+.reading #slideFrame .slide .teacher-comparison{gap:20px}
+.reading #slideFrame .slide .teacher-comparison .example-pair{gap:24px}
+.reading #slideFrame .slide .lesson-app{height:238px;padding:16px 14px}
+.reading #slideFrame .slide .lesson-app-heading{flex-wrap:wrap;gap:6px}
+.reading #slideFrame .slide .lesson-app-heading strong{font-size:16px}
+.reading #slideFrame .slide .lesson-record>p{font-size:14px}
+.reading #slideFrame .slide .lesson-actions{gap:6px}
+.reading #slideFrame .slide .lesson-action{font-size:12px;min-width:0;min-height:38px;padding:8px 12px}
+.reading #slideFrame .slide .teacher-prompt{flex-direction:column;gap:8px}
+.reading #slideFrame .slide .teacher-prompt>p{font-size:16px}
+.print-page .slide .teacher-comparison .example-case-heading h3{font-size:21px}
+.print-page .slide .teacher-prompt>p{font-size:17px}
+.print-page .slide .lesson-record>p{font-size:15px}
 
 </style>
 </head>
@@ -806,7 +788,7 @@ function animateKeyIdea(box){
 // Version 7: teach UI/UX through visible, usable classroom examples.
 const V6_DEFAULT=copy(DEFAULT);
 function concretePresentation(previous){
- if(previous.version===7)return deduplicateIdeas(previous);
+ if(previous.version>=7)return deduplicateIdeas(previous);
  const deck=copy(previous);
  const replacements={
   1300:{title:'UI. 화면이 어떻게 보이는가',takeaway:'',notes:'두 화면에는 같은 출결 정보가 있습니다. 글자 크기, 색상, 정렬과 여백만 비교합니다. UI에는 버튼 같은 조작 요소도 포함되지만, 이 장에서는 화면의 시각적 설계를 중심으로 설명합니다.',example:{task:'같은 출결 정보, 다른 화면',beforeLabel:'구분하기 어려운 화면',afterLabel:'한눈에 읽히는 화면',appTitle:'오늘의 출결',className:'1학년 1반 · 30명',totalLabel:'전체',presentLabel:'출석',lateLabel:'지각',absentLabel:'결석',beforeNote:'비슷한 글자 크기 · 빽빽한 배치 · 구분 없는 색상',afterNote:'중요한 정보는 크게 · 상태는 색상으로 · 여백은 충분히'}},
@@ -868,10 +850,6 @@ const LESSON_STUDENTS=(()=>{
  list.splice(137,0,...list.splice(list.indexOf('김서연'),1));
  return list.map((name,n)=>({name,id:n+1,className:'1학년 '+(Math.floor(n/30)+1)+'반',number:n%30+1}));
 })();
-const HOMEWORK_STUDENTS=[
- {name:'강민준',done:true},{name:'김민지',done:false},{name:'김하늘',done:true},{name:'박지우',done:false},
- {name:'서지민',done:true},{name:'이도윤',done:true},{name:'최서윤',done:false},{name:'한예린',done:true}
-];
 function studentRows(students,printing=false){
  return students.map(s=>'<'+(printing?'div':'button type="button"')+' class="lookup-row" data-student-id="'+s.id+'"'+(printing?'':' aria-pressed="false"')+'><span class="lookup-number">'+String(s.id).padStart(3,'0')+'</span><strong>'+escapeHTML(s.name)+'</strong><span>'+escapeHTML(s.className)+' · '+s.number+'번</span></'+(printing?'div':'button')+'>').join('');
 }
@@ -888,20 +866,6 @@ function renderConcreteUIUXPage(i,printing){
   (good?'<label class="lookup-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg>'+(printing?'<span>'+escapeHTML(query)+'</span>':'<input type="search" data-lookup-search aria-label="'+escapeHTML(d.example.searchLabel)+'" placeholder="'+escapeHTML(d.example.searchPlaceholder)+'" value="'+escapeHTML(query)+'" autocomplete="off">')+'</label>':'')+
   '<div class="lookup-list" data-lookup-list="'+(good?'search':'all')+'" tabindex="0" role="group" aria-label="'+(good?'검색 가능한 학생 명단':'전체 학생 명단')+'">'+studentRows((good?found:LESSON_STUDENTS).slice(0,printing?5:180),printing)+'</div><div class="lookup-result" data-lookup-result="'+(good?'search':'all')+'" role="status">'+(good?'검색 결과 '+found.length+'명':'전체 180명')+'</div></div>';
  return '<div class="concrete-example ux-search-compare">'+t('task','p','example-task')+'<div class="example-pair">'+[false,true].map(good=>'<section class="example-case '+(good?'case-good':'case-bad')+'"><div class="example-case-heading"><span class="case-index">'+(good?'02':'01')+'</span>'+t(good?'afterLabel':'beforeLabel','h3')+'</div>'+screen(good)+t(good?'afterNote':'beforeNote','p','example-note')+'</section>').join('')+'</div></div>'+quote(i,printing);
-}
-function homeworkRows(good,onlyMissing,printing,selected=[]){
- return HOMEWORK_STUDENTS.map((student,n)=>({...student,n})).filter(s=>!onlyMissing||!s.done).map(s=>'<div class="homework-row"><span class="homework-num">'+String(s.n+1).padStart(2,'0')+'</span><strong>'+s.name+'</strong><span class="homework-state '+(s.done?'done':'missing')+'">'+(good?(s.done?'제출 완료':'미제출'):(s.done?'1':'0'))+'</span>'+(good?'':printing?'<span class="legacy-check">□</span>':'<input type="checkbox" data-homework-person="'+s.n+'" aria-label="'+s.name+' 선택"'+(selected.includes(s.n)?' checked':'')+'>')+'</div>').join('');
-}
-function renderSchoolworkPage(i,printing){
- const d=currentAt(i),good=d.layout==='after',st=state(i),t=(path,tag='span',cls='')=>S(i,'example.'+path,tag,cls,printing);
- const selected=st.homeworkSelected||[],onlyMissing=printing?true:st.onlyMissing!==false;
- const app='<div class="homework-app '+(good?'homework-clear':'homework-legacy')+'"><div class="homework-top">'+t('appTitle','strong')+t('className','span')+'</div>'+
-  '<div class="homework-assignment">'+t('assignment','span')+(good?'<span class="homework-count">미제출 <b>3</b> / 8명</span>':'')+'</div>'+
-  (good?'<label class="homework-filter">'+(printing?'✓':'<input type="checkbox" data-homework-filter'+(onlyMissing?' checked':'')+'>')+t('filterLabel')+'</label>':'<div class="homework-legacy-head"><span>NO</span><span>NAME</span><span>STATE</span><span>SEL</span></div>')+
-  '<div class="homework-list" data-homework-list>'+homeworkRows(good,good&&onlyMissing,printing,selected)+'</div>'+
-  '<div class="homework-actions"><button type="button" data-homework-send'+(printing?' disabled':'')+'>'+t('actionLabel')+(good?'<span>3명</span>':'')+'</button></div>'+
-  '<div class="homework-result" data-homework-result role="status">'+(st.homeworkSent?escapeHTML(good?'김민지 · 박지우 · 최서윤 — 안내 완료 (예시)':d.example.resultLabel):'')+'</div>'+t('note','p','homework-footnote')+'</div>';
- return '<div class="concrete-example schoolwork-example">'+t('task','p','example-task')+'<div class="schoolwork-layout">'+app+'<div class="schoolwork-points">'+d.example.points.map((_,n)=>'<div><span>'+String(n+1).padStart(2,'0')+'</span>'+t('points.'+n,'p')+'</div>').join('')+'</div></div></div>'+quote(i,printing);
 }
 function mountConcreteExamples(slide){
  const d=currentSlide(),st=state(current),search=slide.querySelector('[data-lookup-search]');
@@ -923,15 +887,50 @@ function mountConcreteExamples(slide){
    slide.querySelector('[data-lookup-result="'+list.dataset.lookupList+'"]').textContent=student.name+' · '+student.className+' · '+student.number+'번';
   });
  }
- const filter=slide.querySelector('[data-homework-filter]');
- filter?.addEventListener('change',()=>{st.onlyMissing=filter.checked;slide.querySelector('[data-homework-list]').innerHTML=homeworkRows(true,filter.checked,false)});
- slide.querySelectorAll('[data-homework-person]').forEach(box=>box.addEventListener('change',()=>{st.homeworkSelected=[...slide.querySelectorAll('[data-homework-person]:checked')].map(el=>Number(el.dataset.homeworkPerson))}));
- slide.querySelector('[data-homework-send]')?.addEventListener('click',()=>{
-  const result=slide.querySelector('[data-homework-result]');
-  if(d.layout==='before'&&!st.homeworkSelected?.length){result.textContent='대상을 선택하세요.';return;}
-  st.homeworkSent=true;
-  result.textContent=d.layout==='after'?'김민지 · 박지우 · 최서윤 — 안내 완료 (예시)':d.example.resultLabel;
-  result.classList.add('sent');
+ mountTeacherExamples(slide);
+}
+
+// Version 8: separate general concepts from concise, reusable design examples.
+const V7_DEFAULT=copy(DEFAULT);
+function teacherPresentation(previous){
+ if(previous.version>=8)return previous;
+ const deck=copy(previous),byId=id=>deck.slides.find(s=>s.id===id),oldById=id=>V7_DEFAULT.slides.find(s=>s.id===id);
+ const replace=(slide,old,key,value)=>{if(slide[key]===old[key])slide[key]=value;};
+ const ux=byId(1301),oldUX=oldById(1301);
+ replace(ux,oldUX,'title','UX. 얼마나 쉽고 편리하게 쓰는가');
+ replace(ux.example,oldUX.example,'task','사용자 경험 · 앱을 쓰면서 느끼는 편리함과 만족감');
+ replace(ux.example,oldUX.example,'appTitle','학생 명단 · 김서연 찾기');
+ replace(ux,oldUX,'notes','UX는 사용자가 앱을 이용하며 겪는 전반적인 경험입니다. 이 장에서는 편리함을 중심으로 설명합니다. 같은 학생 명단에서 이름을 하나씩 확인하는 경우와 검색으로 바로 찾는 경우를 비교하세요. 검색은 UX를 설명하는 사례이며, UX 자체의 정의가 아닙니다.');
+ const common={beforeLabel:'개선 전',afterLabel:'개선 후',appTitle:'학생 상담 기록',appHint:'예시 화면',student:'김서연',record:'진로 관심 분야와 다음 상담 계획',save:'저장',reset:'초기화',remove:'삭제',promptLabel:'AI에게 요청'};
+ const ui=byId(1400),oldUI=oldById(1400);
+ replace(ui,oldUI,'title','UI 개선 전·후');
+ replace(ui,oldUI,'notes','대표적인 UI 개선은 중요한 동작이 한눈에 보이게 만드는 것입니다. 같은 상담 기록, 같은 세 버튼에서 색상과 강조 정도만 비교합니다. 저장은 주요 동작, 초기화와 삭제는 보조 동작으로 구분합니다. 아래 한 문장을 AI에게 요청하는 예시로 읽어 주세요.');
+ ui.lesson={...common,focus:'중요한 버튼이 한눈에 보이게',beforeNote:'모든 버튼이 같은 색과 크기',afterNote:'주요 동작은 강조색으로 구분',prompt:'저장 버튼을 강조하고, 초기화와 삭제는 보조 동작으로 구분해 줘.'};
+ const feedback=byId(1401),oldFeedback=oldById(1401);
+ replace(feedback,oldFeedback,'title','UX 개선 전·후');
+ replace(feedback,oldFeedback,'notes','대표적인 UX 개선은 사용자의 동작에 즉시 피드백을 주는 것입니다. 같은 상담 기록 화면에서 저장 버튼을 누른 뒤의 상태를 비교합니다. 왼쪽은 저장 여부가 보이지 않고, 오른쪽은 저장 중·완료를 알려 줍니다. 오른쪽 버튼을 누르면 예시 상태가 다시 재생되며 저장 중 중복 클릭을 막습니다. 실제 상담 정보를 저장하는 기능은 아닙니다. UI와 UX는 서로 영향을 주며, 여기서는 사용자가 결과를 확인하는 경험에 초점을 맞춥니다.');
+ feedback.lesson={...common,focus:'내 동작의 결과를 바로 알 수 있게',beforeNote:'저장 여부를 알 수 없음',afterNote:'저장 중·완료 상태를 즉시 확인',prompt:'저장 중에는 중복 클릭을 막고, 끝나면 저장 완료를 알려 줘.',saving:'저장 중…',saved:'저장되었습니다.'};
+ deck.version=8;
+ return deck;
+}
+Object.assign(DEFAULT,teacherPresentation(V7_DEFAULT));
+
+function renderTeacherComparison(i,printing){
+ const d=currentAt(i),feedback=d.layout==='after',t=(path,tag='span',cls='')=>S(i,'lesson.'+path,tag,cls,printing);
+ const action=(path,cls,good)=>feedback&&!printing?'<button type="button" class="lesson-action '+cls+'" data-feedback-save="'+(good?'after':'before')+'" aria-label="'+escapeHTML((good?d.lesson.afterLabel:d.lesson.beforeLabel)+' 상담 기록 저장')+'">'+t(path)+'</button>':t(path,'span','lesson-action '+cls);
+ const screen=good=>'<div class="lesson-app '+(!feedback&&good?'priority-clear':'')+'"><div class="lesson-app-heading">'+t('appTitle','strong')+t('appHint','span')+'</div><div class="lesson-record">'+t('student','strong')+t('record','p')+'</div><div class="lesson-actions">'+action('save',feedback?'primary':'save',good)+(feedback?'':action('reset','secondary',good)+action('remove','remove',good))+'</div>'+(feedback?'<div class="lesson-feedback '+(good?'feedback-success':'')+'"'+(printing?'':' role="status" aria-live="polite"')+' data-feedback-status="'+(good?'after':'before')+'">'+(good?icon('check')+t('saved'):'')+'</div>':'')+'</div>';
+ return '<div class="teacher-comparison">'+t('focus','p','example-task')+'<div class="example-pair">'+[false,true].map(good=>'<section class="example-case '+(good?'case-good':'case-bad')+'"><div class="example-case-heading">'+t(good?'afterLabel':'beforeLabel','h3')+'</div>'+screen(good)+t(good?'afterNote':'beforeNote','p','example-note')+'</section>').join('')+'</div><div class="teacher-prompt">'+t('promptLabel','span','prompt-caption')+t('prompt','p')+'</div></div>'+quote(i,printing);
+}
+function mountTeacherExamples(slide){
+ const save=slide.querySelector('[data-feedback-save="after"]');if(!save)return;
+ const i=current,lesson=currentSlide().lesson,result=slide.querySelector('[data-feedback-status="after"]');
+ save.addEventListener('click',()=>{
+  if(save.disabled)return;
+  save.disabled=true;result.classList.remove('feedback-success');result.setAttribute('aria-busy','true');result.textContent=lesson.saving;
+  setTimeout(()=>{
+   if(!slide.isConnected)return;
+   save.disabled=false;result.classList.add('feedback-success');result.removeAttribute('aria-busy');result.innerHTML=icon('check')+S(i,'lesson.saved');
+  },650);
  });
 }
 
@@ -956,8 +955,8 @@ const glyphs={spark:'M12 3l2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3L12
 function icon(name){return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="'+(glyphs[name]||glyphs.spark)+'"/></svg>';}
 $$('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));
 function validData(input){
- if(!input||![1,2,3,4,5,6,7].includes(input.version))throw Error('지원하지 않는 강의 파일 형식입니다.');
- const template=input.version===1?LEGACY_DEFAULT:input.version===2?V2_DEFAULT:input.version===3?V3_DEFAULT:input.version===4?V4_DEFAULT:input.version===5?V5_DEFAULT:input.version===6?V6_DEFAULT:DEFAULT;
+ if(!input||![1,2,3,4,5,6,7,8].includes(input.version))throw Error('지원하지 않는 강의 파일 형식입니다.');
+ const template=input.version===1?LEGACY_DEFAULT:input.version===2?V2_DEFAULT:input.version===3?V3_DEFAULT:input.version===4?V4_DEFAULT:input.version===5?V5_DEFAULT:input.version===6?V6_DEFAULT:input.version===7?V7_DEFAULT:DEFAULT;
  function shape(value,template,path){
   if(typeof template==='string'){if(value===undefined&&path==='강의.slides.0.presenter')return template;if(typeof value!=='string'||value.length>12000)throw Error('문구 형식 또는 길이를 확인해 주세요: '+path);return value;}
   if(typeof template==='number'){if(value!==template)throw Error('슬라이드 구조가 올바르지 않습니다.');return value;}
@@ -972,8 +971,8 @@ function validData(input){
  if(result.meta.title==="비범쌤의 바이브코딩 입문")result.meta.title=DEFAULT.meta.title;
  if(result.labels.guide==="정답 판정이 아닌, 입문자를 위한 추천 가이드입니다.")result.labels.guide=DEFAULT.labels.guide;
  for(const slide of result.slides)if(slide.type==='cover'&&slide.kicker==="교사를 위한 바이브코딩 입문")slide.kicker=DEFAULT.slides[0].kicker;
- if(input.version>=4){result.layouts=validateLayouts(input.layouts,result);return refreshPracticeCopy(concretePresentation(polishPresentation(input.version===4?apiShowcaseData(result):result)));}
-  return refreshPracticeCopy(concretePresentation(polishPresentation(apiShowcaseData(deploymentData(input.version===3?result:editorialData(input.version===1?presentationData(result):result))))));
+ if(input.version>=4){result.layouts=validateLayouts(input.layouts,result);return refreshPracticeCopy(teacherPresentation(concretePresentation(polishPresentation(input.version===4?apiShowcaseData(result):result))));}
+  return refreshPracticeCopy(teacherPresentation(concretePresentation(polishPresentation(apiShowcaseData(deploymentData(input.version===3?result:editorialData(input.version===1?presentationData(result):result)))))));
 }
 function validateLayouts(layouts,deck){
  const clean={};if(layouts==null)return clean;
@@ -1173,7 +1172,7 @@ function renderPromptPage(i,printing){const d=currentAt(i),specific=d.layout==='
 
 function renderBackendPage(i,printing){const st=state(i),p='items.0.';return '<div class="backend-editorial"><div class="backend-story"><span class="editorial-label">'+S(i,p+'short','span','',printing)+'</span>'+S(i,p+'description','p','large-body',printing)+S(i,p+'analogy','p','backend-analogy',printing)+'</div><div class="backend-evidence">'+(printing?['benefits','limits','usecases'].map(k=>'<div>'+L(k,'h3','',true)+list(i,p+k,true)+'</div>').join(''):'<div class="tabs">'+['benefits','limits','usecases'].map(k=>button(L(k),'category',k,st.category===k)).join('')+'</div><div class="detail-enter">'+list(i,p+st.category)+'</div>')+'</div></div>'+S(i,p+'note','p','micro',printing)+quote(i,printing);}
 
-function renderBeforeAfterPage(i,printing){return renderSchoolworkPage(i,printing); }
+function renderBeforeAfterPage(i,printing){return renderTeacherComparison(i,printing);}
 // Animation follows each slide's teaching structure. Layout offsets remain untouched.
 const transitionAnimations=new Set();
 const motionEase='cubic-bezier(.16,1,.3,1)';
@@ -1283,8 +1282,8 @@ function animateSlide(transition=null){
     break;
    case'beforeAfter':
     enter('.example-task',{y:10,blur:0,delay:160});
-    enter('.homework-app',{y:18,blur:0,delay:230,duration:650});
-    enter('.schoolwork-points>div',{x:15,y:0,blur:0,delay:360,step:80});
+    enter('.teacher-comparison .example-case',{y:18,blur:0,delay:230,duration:650});
+    enter('.teacher-prompt',{x:15,y:0,blur:0,delay:360,step:80});
     slide.dataset.transition=d.layout==='after'?'experience-refinement':'experience-focus';
     enter('.uiux-name',{y:24,clip:true,blur:0,delay:160,duration:700});
     enter('.uiux-spotlight>.stack>p,.example-chips',{y:15,blur:2,delay:280,step:80});
@@ -1345,7 +1344,7 @@ function selectPractice(topic){if(!['uiux','animation'].includes(topic))return;a
 function selectCourse(next){if(!['lecture','practice'].includes(next)||next===activeCourse)return;ComboUI.closeAll();saveNow();document.body.classList.remove('sidebar-open','editor-open');$('#exportMenu').hidden=true;$('#exportBtn').setAttribute('aria-expanded','false');if(next==='practice'){returnToPresentation=presenting;if(presenting){presenting=false;document.body.classList.remove('present');renderCurrent();}}activeCourse=next;const lecture=next==='lecture';document.body.classList.toggle('practice-mode',!lecture);$('#lecturePanel').hidden=!lecture;$('#practicePanel').hidden=lecture;$('.lecture-toolbar').hidden=!lecture;$('.practice-toolbar').hidden=lecture;$$('[data-course]').forEach(tab=>{const selected=tab.dataset.course===next;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;});if(lecture){if(returnToPresentation){returnToPresentation=false;togglePresent(true);$('#slideFrame').tabIndex=-1;$('#slideFrame').focus({preventScroll:true});}else resizeStage();}else ensurePractice();syncPracticeVisibility();}
 // Canvas edits are stored by stable slide ID, independently of text content.
 let selectedLayout=null,layoutDrag=null;
-const layoutBlocks='.slide-head,.slide-foot,.content-inner>:not(.emphasis),.cover-type,.cover-sculpture,.cover-baseline,.cover-signature,.chapter-copy,.chapter-number,.contents-heading,.contents-list,.comparison-column,.intro-copy,.intro-canvas,.structure-body,.structure-examples,.process-copy,.ai-description,.ai-example,.backend-story,.backend-evidence,.api-showcase-info>div,.concrete-example,.example-case,.example-case-heading,.attendance-example,.lookup-app,.homework-app,.schoolwork-points,.uiux-name,.ui-design-guide,.ui-specimen,.ux-journey-intro,.ux-friction,.ux-journey-track,.ux-journey-step,.ux-outcomes,.example-chips,.score-app,.practice-type,.summary-terms,.summary-definition,.deployment-table-wrap';
+const layoutBlocks='.slide-head,.slide-foot,.content-inner>:not(.emphasis),.cover-type,.cover-sculpture,.cover-baseline,.cover-signature,.chapter-copy,.chapter-number,.contents-heading,.contents-list,.comparison-column,.intro-copy,.intro-canvas,.structure-body,.structure-examples,.process-copy,.ai-description,.ai-example,.backend-story,.backend-evidence,.api-showcase-info>div,.concrete-example,.example-case,.example-case-heading,.attendance-example,.lookup-app,.teacher-comparison,.lesson-app,.teacher-prompt,.uiux-name,.ui-design-guide,.ui-specimen,.ux-journey-intro,.ux-friction,.ux-journey-track,.ux-journey-step,.ux-outcomes,.example-chips,.score-app,.practice-type,.summary-terms,.summary-definition,.deployment-table-wrap';
 function prepareLayout(slide,printing=false){
  const i=Number(slide.dataset.slide),saved=data.layouts[String(data.slides[i].id)]||{},counts={};
  slide.querySelectorAll('[data-path]').forEach(el=>{

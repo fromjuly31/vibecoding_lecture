@@ -1,7 +1,7 @@
 // Version 7: teach UI/UX through visible, usable classroom examples.
 const V6_DEFAULT=copy(DEFAULT);
 function concretePresentation(previous){
- if(previous.version===7)return deduplicateIdeas(previous);
+ if(previous.version>=7)return deduplicateIdeas(previous);
  const deck=copy(previous);
  const replacements={
   1300:{title:'UI. 화면이 어떻게 보이는가',takeaway:'',notes:'두 화면에는 같은 출결 정보가 있습니다. 글자 크기, 색상, 정렬과 여백만 비교합니다. UI에는 버튼 같은 조작 요소도 포함되지만, 이 장에서는 화면의 시각적 설계를 중심으로 설명합니다.',example:{task:'같은 출결 정보, 다른 화면',beforeLabel:'구분하기 어려운 화면',afterLabel:'한눈에 읽히는 화면',appTitle:'오늘의 출결',className:'1학년 1반 · 30명',totalLabel:'전체',presentLabel:'출석',lateLabel:'지각',absentLabel:'결석',beforeNote:'비슷한 글자 크기 · 빽빽한 배치 · 구분 없는 색상',afterNote:'중요한 정보는 크게 · 상태는 색상으로 · 여백은 충분히'}},
@@ -63,10 +63,6 @@ const LESSON_STUDENTS=(()=>{
  list.splice(137,0,...list.splice(list.indexOf('김서연'),1));
  return list.map((name,n)=>({name,id:n+1,className:'1학년 '+(Math.floor(n/30)+1)+'반',number:n%30+1}));
 })();
-const HOMEWORK_STUDENTS=[
- {name:'강민준',done:true},{name:'김민지',done:false},{name:'김하늘',done:true},{name:'박지우',done:false},
- {name:'서지민',done:true},{name:'이도윤',done:true},{name:'최서윤',done:false},{name:'한예린',done:true}
-];
 function studentRows(students,printing=false){
  return students.map(s=>'<'+(printing?'div':'button type="button"')+' class="lookup-row" data-student-id="'+s.id+'"'+(printing?'':' aria-pressed="false"')+'><span class="lookup-number">'+String(s.id).padStart(3,'0')+'</span><strong>'+escapeHTML(s.name)+'</strong><span>'+escapeHTML(s.className)+' · '+s.number+'번</span></'+(printing?'div':'button')+'>').join('');
 }
@@ -83,20 +79,6 @@ function renderConcreteUIUXPage(i,printing){
   (good?'<label class="lookup-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg>'+(printing?'<span>'+escapeHTML(query)+'</span>':'<input type="search" data-lookup-search aria-label="'+escapeHTML(d.example.searchLabel)+'" placeholder="'+escapeHTML(d.example.searchPlaceholder)+'" value="'+escapeHTML(query)+'" autocomplete="off">')+'</label>':'')+
   '<div class="lookup-list" data-lookup-list="'+(good?'search':'all')+'" tabindex="0" role="group" aria-label="'+(good?'검색 가능한 학생 명단':'전체 학생 명단')+'">'+studentRows((good?found:LESSON_STUDENTS).slice(0,printing?5:180),printing)+'</div><div class="lookup-result" data-lookup-result="'+(good?'search':'all')+'" role="status">'+(good?'검색 결과 '+found.length+'명':'전체 180명')+'</div></div>';
  return '<div class="concrete-example ux-search-compare">'+t('task','p','example-task')+'<div class="example-pair">'+[false,true].map(good=>'<section class="example-case '+(good?'case-good':'case-bad')+'"><div class="example-case-heading"><span class="case-index">'+(good?'02':'01')+'</span>'+t(good?'afterLabel':'beforeLabel','h3')+'</div>'+screen(good)+t(good?'afterNote':'beforeNote','p','example-note')+'</section>').join('')+'</div></div>'+quote(i,printing);
-}
-function homeworkRows(good,onlyMissing,printing,selected=[]){
- return HOMEWORK_STUDENTS.map((student,n)=>({...student,n})).filter(s=>!onlyMissing||!s.done).map(s=>'<div class="homework-row"><span class="homework-num">'+String(s.n+1).padStart(2,'0')+'</span><strong>'+s.name+'</strong><span class="homework-state '+(s.done?'done':'missing')+'">'+(good?(s.done?'제출 완료':'미제출'):(s.done?'1':'0'))+'</span>'+(good?'':printing?'<span class="legacy-check">□</span>':'<input type="checkbox" data-homework-person="'+s.n+'" aria-label="'+s.name+' 선택"'+(selected.includes(s.n)?' checked':'')+'>')+'</div>').join('');
-}
-function renderSchoolworkPage(i,printing){
- const d=currentAt(i),good=d.layout==='after',st=state(i),t=(path,tag='span',cls='')=>S(i,'example.'+path,tag,cls,printing);
- const selected=st.homeworkSelected||[],onlyMissing=printing?true:st.onlyMissing!==false;
- const app='<div class="homework-app '+(good?'homework-clear':'homework-legacy')+'"><div class="homework-top">'+t('appTitle','strong')+t('className','span')+'</div>'+
-  '<div class="homework-assignment">'+t('assignment','span')+(good?'<span class="homework-count">미제출 <b>3</b> / 8명</span>':'')+'</div>'+
-  (good?'<label class="homework-filter">'+(printing?'✓':'<input type="checkbox" data-homework-filter'+(onlyMissing?' checked':'')+'>')+t('filterLabel')+'</label>':'<div class="homework-legacy-head"><span>NO</span><span>NAME</span><span>STATE</span><span>SEL</span></div>')+
-  '<div class="homework-list" data-homework-list>'+homeworkRows(good,good&&onlyMissing,printing,selected)+'</div>'+
-  '<div class="homework-actions"><button type="button" data-homework-send'+(printing?' disabled':'')+'>'+t('actionLabel')+(good?'<span>3명</span>':'')+'</button></div>'+
-  '<div class="homework-result" data-homework-result role="status">'+(st.homeworkSent?escapeHTML(good?'김민지 · 박지우 · 최서윤 — 안내 완료 (예시)':d.example.resultLabel):'')+'</div>'+t('note','p','homework-footnote')+'</div>';
- return '<div class="concrete-example schoolwork-example">'+t('task','p','example-task')+'<div class="schoolwork-layout">'+app+'<div class="schoolwork-points">'+d.example.points.map((_,n)=>'<div><span>'+String(n+1).padStart(2,'0')+'</span>'+t('points.'+n,'p')+'</div>').join('')+'</div></div></div>'+quote(i,printing);
 }
 function mountConcreteExamples(slide){
  const d=currentSlide(),st=state(current),search=slide.querySelector('[data-lookup-search]');
@@ -118,14 +100,5 @@ function mountConcreteExamples(slide){
    slide.querySelector('[data-lookup-result="'+list.dataset.lookupList+'"]').textContent=student.name+' · '+student.className+' · '+student.number+'번';
   });
  }
- const filter=slide.querySelector('[data-homework-filter]');
- filter?.addEventListener('change',()=>{st.onlyMissing=filter.checked;slide.querySelector('[data-homework-list]').innerHTML=homeworkRows(true,filter.checked,false)});
- slide.querySelectorAll('[data-homework-person]').forEach(box=>box.addEventListener('change',()=>{st.homeworkSelected=[...slide.querySelectorAll('[data-homework-person]:checked')].map(el=>Number(el.dataset.homeworkPerson))}));
- slide.querySelector('[data-homework-send]')?.addEventListener('click',()=>{
-  const result=slide.querySelector('[data-homework-result]');
-  if(d.layout==='before'&&!st.homeworkSelected?.length){result.textContent='대상을 선택하세요.';return;}
-  st.homeworkSent=true;
-  result.textContent=d.layout==='after'?'김민지 · 박지우 · 최서윤 — 안내 완료 (예시)':d.example.resultLabel;
-  result.classList.add('sent');
- });
+ mountTeacherExamples(slide);
 }
