@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "book-1.jpg",
+    "title": "코스모스 (특별판) - 반양장",
+    "source": "https://sciencebooks.minumsa.com/book/260/",
+    "imageUrl": "https://sciencebooks.minumsa.com/wp-content/uploads/bookcover/8371189-large.jpg"
+  },
+  {
+    "filename": "book-2.jpg",
+    "title": "면역",
+    "source": "https://sciencebooks.minumsa.com/book/1557/",
+    "imageUrl": "https://sciencebooks.minumsa.com/wp-content/uploads/bookcover/면역_표1web-500x638.jpg"
+  },
+  {
+    "filename": "book-3.jpg",
+    "title": "김상욱의 양자 공부",
+    "source": "https://sciencebooks.minumsa.com/book/1026/",
+    "imageUrl": "https://sciencebooks.minumsa.com/wp-content/uploads/bookcover/김상욱의-양자공부_표지2-500x741.jpg"
+  },
+  {
+    "filename": "book-4.jpg",
+    "title": "욕망의 진화",
+    "source": "https://sciencebooks.minumsa.com/book/279/",
+    "imageUrl": "https://sciencebooks.minumsa.com/wp-content/uploads/bookcover/8371207-large.jpg"
+  }
+]

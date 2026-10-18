@@ -1,0 +1,13 @@
+# Local browser profiles, captures, exports, and working backups
+.qa/
+
+# Dependencies and local configuration
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+
+# Operating-system files
+.DS_Store
+Thumbs.db
