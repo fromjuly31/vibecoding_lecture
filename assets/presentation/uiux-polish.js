@@ -15,7 +15,7 @@ function hasKeyIdea(i,path='takeaway'){
  return !!key&&!data.slides.slice(i+1).some(slide=>ideaIdentity(slide[path])===key);
 }
 function polishPresentation(previous){
- if(previous.version===6)return deduplicateIdeas(previous);
+ if(previous.version>=6)return deduplicateIdeas(previous);
  const deck=copy(previous);
  const updates={
   1300:{title:'UI. 무엇을 보고 누르는가',description:'화면 요소의 모양과 배치로 정보를 읽고 조작하게 합니다.',examples:['큰 제목으로 정보 위계 만들기','색상으로 상태 구분하기','명확한 버튼 모양과 이름','한눈에 읽히는 메뉴','일관된 여백과 정렬'],notes:'UI는 사용자가 만나는 화면 요소의 설계입니다. 오른쪽 출결 화면의 번호를 따라 제목, 상태 색상, 버튼, 메뉴, 여백을 짚어 주세요. 각 요소가 무엇을 읽고 어디를 누를지 알려 주는지 설명합니다. 다음 장에서는 화면 한 장을 넘어 목적을 완료하는 전체 흐름을 살펴봅니다.',scene:{label:'화면 요소를 하나씩 살펴보기',appName:'우리 반 출결',heading:'오늘의 출결',className:'1학년 1반 · 30명',summary:'출석 27명',navigation:['출결 관리','학급 알림','통계 보기'],student:'김하늘',studentMeta:'1학년 1반 · 1번',status:'출석',action:'출결 저장',question:'어디를 읽고, 무엇을 누를지 보이나요?'}},
@@ -36,26 +36,7 @@ function polishPresentation(previous){
 }
 Object.assign(DEFAULT,polishPresentation(V5_DEFAULT));
 
-function renderUIUXPage(i,printing){
- const d=currentAt(i),text=(path,tag='span',cls='')=>S(i,path,tag,cls,printing);
- const point=n=>'<span class="ui-point" aria-hidden="true">'+n+'</span>';
- const searchIcon='<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
- if(d.layout==='ui')return '<div class="ui-design-board">'+
-  '<div class="ui-design-guide"><div class="uiux-name">'+text('items.0.title','h2')+text('items.0.full','p','small-text')+'</div>'+text('items.0.description','p','ui-design-definition')+
-   '<ol class="ui-design-points">'+d.items[0].examples.map((_,n)=>'<li>'+point(n+1)+text('items.0.examples.'+n)+'</li>').join('')+'</ol></div>'+
-  '<div class="ui-specimen"><div class="ui-specimen-caption">'+text('scene.label')+'<span aria-hidden="true">01—05</span></div>'+
-   '<div class="ui-specimen-window"><div class="ui-specimen-top"><span class="ui-app-mark" aria-hidden="true">B.</span>'+text('scene.appName','strong')+'<span class="ui-window-dots" aria-hidden="true">···</span></div>'+
-    '<div class="ui-specimen-body"><div class="ui-specimen-nav">'+point(4)+d.scene.navigation.map((_,n)=>text('scene.navigation.'+n,'div',n?'':'active')).join('')+'</div>'+
-     '<div class="ui-specimen-main"><div class="ui-specimen-heading">'+point(1)+text('scene.heading','h3')+text('scene.className','p')+'</div>'+
-      '<div class="ui-specimen-summary">'+text('scene.summary')+point(2)+'</div>'+
-      '<div class="ui-specimen-student"><span class="ui-avatar" aria-hidden="true">김</span><div>'+text('scene.student','strong')+text('scene.studentMeta','small')+'</div>'+text('scene.status','span','ui-attendance-state')+'</div>'+
-      '<div class="ui-spacing-guide">'+point(5)+'<span aria-hidden="true"></span></div>'+
-      '<div class="ui-specimen-action">'+text('scene.action','span','ui-save-visual')+point(3)+'</div></div></div></div>'+text('scene.question','p','ui-specimen-question')+'</div></div>'+quote(i,printing);
- return '<div class="ux-journey-board"><div class="ux-journey-intro"><div class="uiux-name">'+text('items.0.title','h2')+text('items.0.full','p','small-text')+'</div><div>'+text('items.0.description','p','ux-definition')+text('scene.goal','p','ux-goal')+'</div></div>'+
-  '<div class="ux-friction">'+text('scene.frictionTitle','strong')+'<div>'+d.scene.frictionSteps.map((_,n)=>text('scene.frictionSteps.'+n,'span',n===4?'uncertain':'')+(n<4?'<span class="ux-arrow" aria-hidden="true">→</span>':'')).join('')+'</div></div>'+
-  '<div class="ux-flow-heading">'+text('scene.flowTitle','strong')+'</div><div class="ux-journey-track">'+d.scene.steps.map((_,n)=>'<section class="ux-journey-step"><div class="ux-step-top"><span class="ux-step-number">0'+(n+1)+'</span>'+text('scene.steps.'+n+'.benefit','span')+'</div>'+text('scene.steps.'+n+'.title','h3')+text('scene.steps.'+n+'.detail','p')+'<div class="ux-step-preview">'+(n===0?searchIcon:icon('check'))+text('scene.steps.'+n+'.sample')+(n===0?'<span class="ux-preview-caret" aria-hidden="true"></span>':'')+'</div></section>').join('')+'</div>'+
-  '<div class="ux-outcomes">'+d.items[0].examples.map((_,n)=>text('items.0.examples.'+n,'span')).join('')+'</div></div>'+quote(i,printing);
-}
+function renderUIUXPage(i,printing){return renderConcreteUIUXPage(i,printing);}
 
 function mountKeyIdea(slide){
  const box=slide.querySelector('.emphasis');if(!box)return;
@@ -74,5 +55,6 @@ function animateKeyIdea(box){
  if(reducedMotion())return;
  playMotion(box,[{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)'}],{duration:640,easing:'cubic-bezier(.22,1,.36,1)'});
  enterMotion(box.querySelector('.quote'),{y:22,blur:3,delay:220,duration:650});
+ for(const mark of box.querySelectorAll('.idea-accent'))playMotion(mark,[{color:getComputedStyle(box).color},{color:getComputedStyle(mark).color}],{delay:380,duration:500});
  enterMotion(box.querySelector('.emphasis-reset'),{y:0,blur:0,delay:550,duration:300});
 }

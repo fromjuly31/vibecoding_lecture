@@ -1,0 +1,156 @@
+/* A quiet comparison frame keeps the actual application examples in focus. */
+.concrete-example{display:flex;flex-direction:column;gap:16px}
+.slide p.example-task{font-size:20px;color:var(--muted);line-height:1.4}
+.example-pair{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.example-case{min-width:0}
+.example-case-heading{display:flex;gap:12px;align-items:center;margin-bottom:13px}
+.case-index{font-size:12px;letter-spacing:.03em;color:var(--muted)}
+.case-good .case-index{color:var(--accent-ink)}
+.slide .example-case-heading h3{font-size:23px;font-weight:650;letter-spacing:-.025em}
+.slide p.example-note{font-size:14px;line-height:1.5;margin-top:12px;color:var(--muted)}
+.case-good p.example-note{color:var(--accent-ink)}
+.attendance-example{height:286px;border:1px solid var(--line);border-radius:10px;padding:22px;background:var(--paper)}
+.attendance-title{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.attendance-title>strong{font-size:24px;letter-spacing:-.035em}
+.attendance-title>span{font-size:11px;color:var(--muted)}
+.attendance-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.attendance-stat{padding:11px 15px;background:var(--hover);border-radius:8px;font-size:12px;color:var(--muted)}
+.attendance-stat strong{display:block;font-size:29px;color:var(--ink);font-weight:700;line-height:1.2;margin-top:5px}
+.clear .stat-0{background:var(--soft);color:var(--accent-ink)}
+.clear .stat-0 strong{color:var(--accent-ink)}
+.attendance-records{margin-top:15px;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.attendance-records>div{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:5px 0}
+.attendance-status{font-size:10px;padding:4px 6px;border-radius:4px;background:var(--hover);color:var(--muted)}
+.clear .lateLabel{color:#94600a;background:#fff3d8}
+.clear .absentLabel{color:#a44343;background:#fceced}
+.attendance-example.dense{border-radius:0;background:var(--hover);padding:21px 18px;color:var(--muted)}
+.dense .attendance-title{display:block;font-size:13px;font-weight:400;border-bottom:1px solid var(--line);padding:7px 0}
+.dense .attendance-title>strong{font-size:14px;font-weight:450;display:inline-block;margin-right:8px}
+.dense .attendance-title>span{font-size:12px}
+.dense .attendance-summary{display:flex;gap:0;margin:8px 0 0;border-bottom:1px solid var(--line)}
+.dense .attendance-stat{padding:8px 6px;font-size:13px;background:none;flex:1;border-radius:0}
+.dense .attendance-stat strong{display:inline;font-size:13px;margin-left:8px;font-weight:450;color:inherit}
+.dense .attendance-records{display:flex;flex-direction:column;gap:0;margin-top:6px}
+.dense .attendance-records>div{padding:7px 5px;border-bottom:1px solid var(--line);font-size:13px}
+.dense .attendance-status{font-size:13px;padding:0;background:none;color:inherit}
+.lookup-app{height:291px;border:1px solid var(--line);border-radius:10px;background:var(--paper);display:flex;flex-direction:column;overflow:hidden}
+.lookup-app-title{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);flex:none}
+.lookup-app-title strong{font-size:15px}
+.lookup-app-title>span{font-size:11px;color:var(--muted)}
+.lookup-search{display:flex;gap:10px;align-items:center;margin:12px 15px 5px;padding:8px 11px;background:var(--soft);border:1px solid var(--accent-ink);border-radius:7px;flex:none}
+.lookup-search svg{width:17px;height:17px;fill:none;stroke:var(--accent-ink);stroke-width:1.7;flex:none}
+.slide .lookup-search input{font-size:16px;border:0;background:transparent;padding:0;min-height:24px;width:100%;border-radius:0;outline-offset:4px}
+.lookup-list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 15px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;outline-offset:-3px}
+.slide .lookup-row{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:8px;width:100%;font-size:13px;min-height:37px;padding:8px 4px;border:0;border-bottom:1px solid var(--line);border-radius:0;text-align:left;background:transparent;color:var(--ink)}
+.lookup-row strong{font-size:14px;font-weight:600}
+.lookup-row>span:last-child{font-size:11px;color:var(--muted)}
+.lookup-number{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+.slide .lookup-row:hover,.slide .lookup-row[aria-pressed=true]{background:var(--soft)}
+.lookup-result{font-size:11px;color:var(--muted);padding:10px 18px;border-top:1px solid var(--line);min-height:35px;flex:none}
+.case-good .lookup-result{color:var(--accent-ink)}
+.slide p.lookup-empty{font-size:14px;color:var(--muted);padding:18px 0}
+.schoolwork-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:46px;align-items:center}
+.homework-app{height:364px;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:17px 20px;display:flex;flex-direction:column}
+.homework-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.homework-top strong{font-size:24px;letter-spacing:-.03em}
+.homework-top>span{font-size:12px;color:var(--muted)}
+.homework-assignment{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:10px;color:var(--muted)}
+.homework-count{font-size:11px}
+.homework-count b{font-size:15px;color:var(--accent-ink);margin-left:4px}
+.homework-filter{display:flex;gap:7px;align-items:center;font-size:12px;color:var(--accent-ink);margin-top:13px;align-self:flex-start}
+.slide .homework-filter input,.slide .homework-row input{width:15px;height:15px;min-width:15px;min-height:15px;padding:0;margin:0;accent-color:var(--accent-ink)}
+.homework-list{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;margin-top:8px}
+.homework-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:12px;min-height:38px;border-bottom:1px solid var(--line);font-size:14px;padding:8px 5px}
+.homework-row strong{font-weight:600;font-size:14px}
+.homework-num{color:var(--muted);font-size:11px}
+.homework-state{padding:5px 8px;border-radius:5px;font-size:11px;color:var(--muted);background:var(--hover)}
+.homework-state.missing{background:#fff0db;color:#925312;font-weight:650}
+.homework-actions{margin-top:12px;flex:none}
+.slide .homework-actions button{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 16px;width:100%;min-height:42px;font-size:15px;background:var(--accent-ink);border:1px solid var(--accent-ink);color:var(--paper);border-radius:7px}
+.homework-actions button>span:last-child:not(:first-child){font-size:12px;opacity:.8}
+.homework-result{font-size:12px;min-height:23px;line-height:1.4;margin-top:8px;color:var(--green)}
+.slide p.homework-footnote{font-size:10px;line-height:1.4;color:var(--muted);margin-top:3px}
+.homework-legacy{border-radius:0;background:var(--hover);padding:14px 20px;color:var(--muted)}
+.homework-legacy .homework-top{justify-content:center;gap:10px}
+.homework-legacy .homework-top strong{font-size:14px;font-weight:450;letter-spacing:0}
+.homework-legacy .homework-top>span{font-size:11px}
+.homework-legacy .homework-assignment{font-size:11px;margin-top:8px}
+.homework-legacy-head,.homework-legacy .homework-row{display:grid;grid-template-columns:40px 1fr 60px 35px;gap:8px}
+.homework-legacy-head{font-size:10px;border-bottom:1px solid var(--line);padding:8px 5px 5px;margin-top:5px}
+.homework-legacy .homework-list{margin-top:0}
+.homework-legacy .homework-row{min-height:23px;padding:4px 5px;font-size:11px}
+.homework-legacy .homework-row strong{font-size:11px;font-weight:400}
+.homework-legacy .homework-state{padding:0;background:none;font-size:11px;color:inherit;font-weight:400}
+.homework-legacy .homework-actions{margin-top:8px;text-align:right}
+.slide .homework-legacy .homework-actions button{width:auto;margin-left:auto;border-radius:0;min-height:27px;padding:4px 18px;background:var(--line);border-color:var(--line);color:var(--ink);font-size:11px}
+.homework-legacy .homework-result{min-height:17px;font-size:10px;margin-top:4px;color:var(--muted)}
+.homework-legacy p.homework-footnote{font-size:9px}
+.schoolwork-points{display:grid;gap:23px}
+.schoolwork-points>div{display:flex;align-items:flex-start;gap:15px}
+.schoolwork-points>div>span{font-size:11px;color:var(--accent-ink);padding-top:6px}
+.slide .schoolwork-points p{font-size:21px;line-height:1.5;letter-spacing:-.025em}
+.slide[data-type=beforeAfter] .edit-takeaway{font-size:17px;padding-top:10px;line-height:1.45}
+.slide:is([data-type=uiux],[data-type=beforeAfter],[data-type=summary]):has(.edit-takeaway) .content-inner{gap:16px}
+.slide:has(.edit-takeaway) .lookup-app{height:264px}
+.slide:has(.edit-takeaway) .homework-app{height:334px;padding-block:14px}
+.slide:has(.edit-takeaway) .homework-actions{margin-top:8px}
+.slide:has(.edit-takeaway) .homework-filter{margin-top:10px}
+.slide:has(.edit-takeaway) .homework-result{min-height:18px}
+
+/* Emphasis comes from a restrained accent palette, not another heading. */
+.slide>.emphasis.is-shown{--idea-bg:#10213b;--idea-fg:#eff6ff;--idea-accent:#6ce5cd;--idea-glow:#1e66833d;background:radial-gradient(ellipse at 82% 95%,var(--idea-glow),transparent 60%),var(--idea-bg);color:var(--idea-fg)}
+[data-theme=dark] .slide>.emphasis.is-shown{--idea-bg:#edf3ff;--idea-fg:#23314c;--idea-accent:#294ed8;--idea-glow:#96b9ff40}
+.slide>.emphasis.is-shown .quote{font-size:60px;font-weight:650;line-height:1.48}
+.slide>.emphasis.is-shown .idea-accent{background:none;color:var(--idea-accent);font-weight:850;padding:0;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.slide>.emphasis .emphasis-reset:hover,.slide>.emphasis .emphasis-reset:focus-visible{background:var(--idea-fg);color:var(--idea-bg)}
+.reading #slideFrame .slide .example-pair{grid-template-columns:1fr;gap:32px}
+.reading #slideFrame .slide p.example-task{font-size:18px}
+.reading #slideFrame .slide .example-case-heading h3{font-size:21px}
+.reading #slideFrame .slide p.example-note{font-size:14px;line-height:1.5}
+.reading #slideFrame .slide .attendance-example{padding:17px 13px;height:286px}
+.reading #slideFrame .slide .attendance-title{align-items:flex-start;flex-direction:column;gap:4px}
+.reading #slideFrame .slide .attendance-title>strong{font-size:22px}
+.reading #slideFrame .slide .dense .attendance-title>strong{font-size:14px}
+.reading #slideFrame .slide .attendance-summary{gap:6px;margin-top:13px}
+.reading #slideFrame .slide .attendance-stat{padding:9px 8px;font-size:11px}
+.reading #slideFrame .slide .attendance-records{gap:8px}
+.reading #slideFrame .slide .attendance-records>div{font-size:12px}
+.reading #slideFrame .slide .attendance-status{font-size:10px}
+.reading #slideFrame .slide .dense .attendance-stat{font-size:12px;padding:7px 2px}
+.reading #slideFrame .slide .dense .attendance-stat strong{font-size:12px;margin-left:4px}
+.reading #slideFrame .slide .lookup-row{grid-template-columns:24px 1fr auto;gap:5px;font-size:12px}
+.reading #slideFrame .slide .lookup-row>span:last-child{font-size:9px}
+.reading #slideFrame .slide .lookup-list{padding-inline:10px}
+.reading #slideFrame .slide .schoolwork-layout{grid-template-columns:1fr;gap:25px}
+.reading #slideFrame .slide .homework-app{padding:16px 12px;height:385px}
+.reading #slideFrame .slide .homework-top{gap:6px;flex-wrap:wrap}
+.reading #slideFrame .slide .homework-top strong{font-size:22px}
+.reading #slideFrame .slide .homework-legacy .homework-top strong{font-size:13px}
+.reading #slideFrame .slide .homework-legacy-head,.reading #slideFrame .slide .homework-legacy .homework-row{grid-template-columns:25px 1fr 38px 25px;gap:5px}
+.reading #slideFrame .slide .homework-actions button{font-size:13px;padding:10px 8px;gap:6px}
+.reading #slideFrame .slide .homework-result{font-size:10px;min-height:32px}
+.reading #slideFrame .slide p.homework-footnote{font-size:10px;line-height:1.4}
+.reading #slideFrame .slide .schoolwork-points{gap:14px}
+.reading #slideFrame .slide .schoolwork-points p{font-size:18px}
+.reading #slideFrame .slide>.emphasis.is-shown .quote{font-size:clamp(27px,7vw,42px)}
+.print-page .slide p.example-task{font-size:20px}
+.print-page .slide .example-case-heading h3{font-size:23px}
+.print-page .slide p.example-note{font-size:14px}
+.print-page .slide p.homework-footnote{font-size:10px}
+.print-page .slide .schoolwork-points p{font-size:21px}
+.print-page .slide .lookup-row{font-size:13px}
+.print-page .slide .lookup-search{font-size:16px}
+.print-page .slide .lookup-app{height:280px}
+.print-page .slide .homework-actions button{opacity:1}
+.print-page .slide:is([data-type=uiux],[data-type=beforeAfter]) .print-takeaway{font-size:17px;white-space:normal;line-height:1.4;padding-top:10px}
+.print-page .slide:is([data-type=uiux],[data-type=beforeAfter]) .content-inner{gap:16px}
+.chapter-summary{grid-template-columns:460px 1fr;gap:60px}
+.slide .chapter-summary .summary-terms>button{padding:17px 0;gap:18px}
+.slide:has(.edit-takeaway) .chapter-summary .summary-terms>button{padding-block:15px}
+.chapter-summary .summary-terms>*>strong{font-size:23px}
+.chapter-summary .summary-definition .statement{font-size:40px;white-space:pre-line;line-height:1.55}
+.reading #slideFrame .slide .chapter-summary{grid-template-columns:1fr;gap:28px}
+.reading #slideFrame .slide .chapter-summary .summary-terms>*>strong{font-size:20px}
+.reading #slideFrame .slide .chapter-summary .summary-definition .statement{font-size:27px}
+.print-page .slide .chapter-summary .summary-terms>div>strong{font-size:22px}
+.print-page .slide .chapter-summary .summary-terms>div>p{font-size:19px;white-space:pre-line}

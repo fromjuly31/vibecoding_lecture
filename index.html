@@ -439,6 +439,163 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 .print-page .slide .ux-journey-step p{font-size:13px}
 .print-page .slide[data-type=uiux] .print-takeaway{white-space:pre-line;font-size:17px;line-height:1.4;padding-top:10px}
 
+/* A quiet comparison frame keeps the actual application examples in focus. */
+.concrete-example{display:flex;flex-direction:column;gap:16px}
+.slide p.example-task{font-size:20px;color:var(--muted);line-height:1.4}
+.example-pair{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.example-case{min-width:0}
+.example-case-heading{display:flex;gap:12px;align-items:center;margin-bottom:13px}
+.case-index{font-size:12px;letter-spacing:.03em;color:var(--muted)}
+.case-good .case-index{color:var(--accent-ink)}
+.slide .example-case-heading h3{font-size:23px;font-weight:650;letter-spacing:-.025em}
+.slide p.example-note{font-size:14px;line-height:1.5;margin-top:12px;color:var(--muted)}
+.case-good p.example-note{color:var(--accent-ink)}
+.attendance-example{height:286px;border:1px solid var(--line);border-radius:10px;padding:22px;background:var(--paper)}
+.attendance-title{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.attendance-title>strong{font-size:24px;letter-spacing:-.035em}
+.attendance-title>span{font-size:11px;color:var(--muted)}
+.attendance-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.attendance-stat{padding:11px 15px;background:var(--hover);border-radius:8px;font-size:12px;color:var(--muted)}
+.attendance-stat strong{display:block;font-size:29px;color:var(--ink);font-weight:700;line-height:1.2;margin-top:5px}
+.clear .stat-0{background:var(--soft);color:var(--accent-ink)}
+.clear .stat-0 strong{color:var(--accent-ink)}
+.attendance-records{margin-top:15px;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.attendance-records>div{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:5px 0}
+.attendance-status{font-size:10px;padding:4px 6px;border-radius:4px;background:var(--hover);color:var(--muted)}
+.clear .lateLabel{color:#94600a;background:#fff3d8}
+.clear .absentLabel{color:#a44343;background:#fceced}
+.attendance-example.dense{border-radius:0;background:var(--hover);padding:21px 18px;color:var(--muted)}
+.dense .attendance-title{display:block;font-size:13px;font-weight:400;border-bottom:1px solid var(--line);padding:7px 0}
+.dense .attendance-title>strong{font-size:14px;font-weight:450;display:inline-block;margin-right:8px}
+.dense .attendance-title>span{font-size:12px}
+.dense .attendance-summary{display:flex;gap:0;margin:8px 0 0;border-bottom:1px solid var(--line)}
+.dense .attendance-stat{padding:8px 6px;font-size:13px;background:none;flex:1;border-radius:0}
+.dense .attendance-stat strong{display:inline;font-size:13px;margin-left:8px;font-weight:450;color:inherit}
+.dense .attendance-records{display:flex;flex-direction:column;gap:0;margin-top:6px}
+.dense .attendance-records>div{padding:7px 5px;border-bottom:1px solid var(--line);font-size:13px}
+.dense .attendance-status{font-size:13px;padding:0;background:none;color:inherit}
+.lookup-app{height:291px;border:1px solid var(--line);border-radius:10px;background:var(--paper);display:flex;flex-direction:column;overflow:hidden}
+.lookup-app-title{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);flex:none}
+.lookup-app-title strong{font-size:15px}
+.lookup-app-title>span{font-size:11px;color:var(--muted)}
+.lookup-search{display:flex;gap:10px;align-items:center;margin:12px 15px 5px;padding:8px 11px;background:var(--soft);border:1px solid var(--accent-ink);border-radius:7px;flex:none}
+.lookup-search svg{width:17px;height:17px;fill:none;stroke:var(--accent-ink);stroke-width:1.7;flex:none}
+.slide .lookup-search input{font-size:16px;border:0;background:transparent;padding:0;min-height:24px;width:100%;border-radius:0;outline-offset:4px}
+.lookup-list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 15px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;outline-offset:-3px}
+.slide .lookup-row{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:8px;width:100%;font-size:13px;min-height:37px;padding:8px 4px;border:0;border-bottom:1px solid var(--line);border-radius:0;text-align:left;background:transparent;color:var(--ink)}
+.lookup-row strong{font-size:14px;font-weight:600}
+.lookup-row>span:last-child{font-size:11px;color:var(--muted)}
+.lookup-number{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+.slide .lookup-row:hover,.slide .lookup-row[aria-pressed=true]{background:var(--soft)}
+.lookup-result{font-size:11px;color:var(--muted);padding:10px 18px;border-top:1px solid var(--line);min-height:35px;flex:none}
+.case-good .lookup-result{color:var(--accent-ink)}
+.slide p.lookup-empty{font-size:14px;color:var(--muted);padding:18px 0}
+.schoolwork-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:46px;align-items:center}
+.homework-app{height:364px;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:17px 20px;display:flex;flex-direction:column}
+.homework-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.homework-top strong{font-size:24px;letter-spacing:-.03em}
+.homework-top>span{font-size:12px;color:var(--muted)}
+.homework-assignment{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:10px;color:var(--muted)}
+.homework-count{font-size:11px}
+.homework-count b{font-size:15px;color:var(--accent-ink);margin-left:4px}
+.homework-filter{display:flex;gap:7px;align-items:center;font-size:12px;color:var(--accent-ink);margin-top:13px;align-self:flex-start}
+.slide .homework-filter input,.slide .homework-row input{width:15px;height:15px;min-width:15px;min-height:15px;padding:0;margin:0;accent-color:var(--accent-ink)}
+.homework-list{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;margin-top:8px}
+.homework-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:12px;min-height:38px;border-bottom:1px solid var(--line);font-size:14px;padding:8px 5px}
+.homework-row strong{font-weight:600;font-size:14px}
+.homework-num{color:var(--muted);font-size:11px}
+.homework-state{padding:5px 8px;border-radius:5px;font-size:11px;color:var(--muted);background:var(--hover)}
+.homework-state.missing{background:#fff0db;color:#925312;font-weight:650}
+.homework-actions{margin-top:12px;flex:none}
+.slide .homework-actions button{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 16px;width:100%;min-height:42px;font-size:15px;background:var(--accent-ink);border:1px solid var(--accent-ink);color:var(--paper);border-radius:7px}
+.homework-actions button>span:last-child:not(:first-child){font-size:12px;opacity:.8}
+.homework-result{font-size:12px;min-height:23px;line-height:1.4;margin-top:8px;color:var(--green)}
+.slide p.homework-footnote{font-size:10px;line-height:1.4;color:var(--muted);margin-top:3px}
+.homework-legacy{border-radius:0;background:var(--hover);padding:14px 20px;color:var(--muted)}
+.homework-legacy .homework-top{justify-content:center;gap:10px}
+.homework-legacy .homework-top strong{font-size:14px;font-weight:450;letter-spacing:0}
+.homework-legacy .homework-top>span{font-size:11px}
+.homework-legacy .homework-assignment{font-size:11px;margin-top:8px}
+.homework-legacy-head,.homework-legacy .homework-row{display:grid;grid-template-columns:40px 1fr 60px 35px;gap:8px}
+.homework-legacy-head{font-size:10px;border-bottom:1px solid var(--line);padding:8px 5px 5px;margin-top:5px}
+.homework-legacy .homework-list{margin-top:0}
+.homework-legacy .homework-row{min-height:23px;padding:4px 5px;font-size:11px}
+.homework-legacy .homework-row strong{font-size:11px;font-weight:400}
+.homework-legacy .homework-state{padding:0;background:none;font-size:11px;color:inherit;font-weight:400}
+.homework-legacy .homework-actions{margin-top:8px;text-align:right}
+.slide .homework-legacy .homework-actions button{width:auto;margin-left:auto;border-radius:0;min-height:27px;padding:4px 18px;background:var(--line);border-color:var(--line);color:var(--ink);font-size:11px}
+.homework-legacy .homework-result{min-height:17px;font-size:10px;margin-top:4px;color:var(--muted)}
+.homework-legacy p.homework-footnote{font-size:9px}
+.schoolwork-points{display:grid;gap:23px}
+.schoolwork-points>div{display:flex;align-items:flex-start;gap:15px}
+.schoolwork-points>div>span{font-size:11px;color:var(--accent-ink);padding-top:6px}
+.slide .schoolwork-points p{font-size:21px;line-height:1.5;letter-spacing:-.025em}
+.slide[data-type=beforeAfter] .edit-takeaway{font-size:17px;padding-top:10px;line-height:1.45}
+.slide:is([data-type=uiux],[data-type=beforeAfter],[data-type=summary]):has(.edit-takeaway) .content-inner{gap:16px}
+.slide:has(.edit-takeaway) .lookup-app{height:264px}
+.slide:has(.edit-takeaway) .homework-app{height:334px;padding-block:14px}
+.slide:has(.edit-takeaway) .homework-actions{margin-top:8px}
+.slide:has(.edit-takeaway) .homework-filter{margin-top:10px}
+.slide:has(.edit-takeaway) .homework-result{min-height:18px}
+
+/* Emphasis comes from a restrained accent palette, not another heading. */
+.slide>.emphasis.is-shown{--idea-bg:#10213b;--idea-fg:#eff6ff;--idea-accent:#6ce5cd;--idea-glow:#1e66833d;background:radial-gradient(ellipse at 82% 95%,var(--idea-glow),transparent 60%),var(--idea-bg);color:var(--idea-fg)}
+[data-theme=dark] .slide>.emphasis.is-shown{--idea-bg:#edf3ff;--idea-fg:#23314c;--idea-accent:#294ed8;--idea-glow:#96b9ff40}
+.slide>.emphasis.is-shown .quote{font-size:60px;font-weight:650;line-height:1.48}
+.slide>.emphasis.is-shown .idea-accent{background:none;color:var(--idea-accent);font-weight:850;padding:0;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.slide>.emphasis .emphasis-reset:hover,.slide>.emphasis .emphasis-reset:focus-visible{background:var(--idea-fg);color:var(--idea-bg)}
+.reading #slideFrame .slide .example-pair{grid-template-columns:1fr;gap:32px}
+.reading #slideFrame .slide p.example-task{font-size:18px}
+.reading #slideFrame .slide .example-case-heading h3{font-size:21px}
+.reading #slideFrame .slide p.example-note{font-size:14px;line-height:1.5}
+.reading #slideFrame .slide .attendance-example{padding:17px 13px;height:286px}
+.reading #slideFrame .slide .attendance-title{align-items:flex-start;flex-direction:column;gap:4px}
+.reading #slideFrame .slide .attendance-title>strong{font-size:22px}
+.reading #slideFrame .slide .dense .attendance-title>strong{font-size:14px}
+.reading #slideFrame .slide .attendance-summary{gap:6px;margin-top:13px}
+.reading #slideFrame .slide .attendance-stat{padding:9px 8px;font-size:11px}
+.reading #slideFrame .slide .attendance-records{gap:8px}
+.reading #slideFrame .slide .attendance-records>div{font-size:12px}
+.reading #slideFrame .slide .attendance-status{font-size:10px}
+.reading #slideFrame .slide .dense .attendance-stat{font-size:12px;padding:7px 2px}
+.reading #slideFrame .slide .dense .attendance-stat strong{font-size:12px;margin-left:4px}
+.reading #slideFrame .slide .lookup-row{grid-template-columns:24px 1fr auto;gap:5px;font-size:12px}
+.reading #slideFrame .slide .lookup-row>span:last-child{font-size:9px}
+.reading #slideFrame .slide .lookup-list{padding-inline:10px}
+.reading #slideFrame .slide .schoolwork-layout{grid-template-columns:1fr;gap:25px}
+.reading #slideFrame .slide .homework-app{padding:16px 12px;height:385px}
+.reading #slideFrame .slide .homework-top{gap:6px;flex-wrap:wrap}
+.reading #slideFrame .slide .homework-top strong{font-size:22px}
+.reading #slideFrame .slide .homework-legacy .homework-top strong{font-size:13px}
+.reading #slideFrame .slide .homework-legacy-head,.reading #slideFrame .slide .homework-legacy .homework-row{grid-template-columns:25px 1fr 38px 25px;gap:5px}
+.reading #slideFrame .slide .homework-actions button{font-size:13px;padding:10px 8px;gap:6px}
+.reading #slideFrame .slide .homework-result{font-size:10px;min-height:32px}
+.reading #slideFrame .slide p.homework-footnote{font-size:10px;line-height:1.4}
+.reading #slideFrame .slide .schoolwork-points{gap:14px}
+.reading #slideFrame .slide .schoolwork-points p{font-size:18px}
+.reading #slideFrame .slide>.emphasis.is-shown .quote{font-size:clamp(27px,7vw,42px)}
+.print-page .slide p.example-task{font-size:20px}
+.print-page .slide .example-case-heading h3{font-size:23px}
+.print-page .slide p.example-note{font-size:14px}
+.print-page .slide p.homework-footnote{font-size:10px}
+.print-page .slide .schoolwork-points p{font-size:21px}
+.print-page .slide .lookup-row{font-size:13px}
+.print-page .slide .lookup-search{font-size:16px}
+.print-page .slide .lookup-app{height:280px}
+.print-page .slide .homework-actions button{opacity:1}
+.print-page .slide:is([data-type=uiux],[data-type=beforeAfter]) .print-takeaway{font-size:17px;white-space:normal;line-height:1.4;padding-top:10px}
+.print-page .slide:is([data-type=uiux],[data-type=beforeAfter]) .content-inner{gap:16px}
+.chapter-summary{grid-template-columns:460px 1fr;gap:60px}
+.slide .chapter-summary .summary-terms>button{padding:17px 0;gap:18px}
+.slide:has(.edit-takeaway) .chapter-summary .summary-terms>button{padding-block:15px}
+.chapter-summary .summary-terms>*>strong{font-size:23px}
+.chapter-summary .summary-definition .statement{font-size:40px;white-space:pre-line;line-height:1.55}
+.reading #slideFrame .slide .chapter-summary{grid-template-columns:1fr;gap:28px}
+.reading #slideFrame .slide .chapter-summary .summary-terms>*>strong{font-size:20px}
+.reading #slideFrame .slide .chapter-summary .summary-definition .statement{font-size:27px}
+.print-page .slide .chapter-summary .summary-terms>div>strong{font-size:22px}
+.print-page .slide .chapter-summary .summary-terms>div>p{font-size:19px;white-space:pre-line}
+
 </style>
 </head>
 <body>
@@ -602,7 +759,7 @@ function hasKeyIdea(i,path='takeaway'){
  return !!key&&!data.slides.slice(i+1).some(slide=>ideaIdentity(slide[path])===key);
 }
 function polishPresentation(previous){
- if(previous.version===6)return deduplicateIdeas(previous);
+ if(previous.version>=6)return deduplicateIdeas(previous);
  const deck=copy(previous);
  const updates={
   1300:{title:'UI. 무엇을 보고 누르는가',description:'화면 요소의 모양과 배치로 정보를 읽고 조작하게 합니다.',examples:['큰 제목으로 정보 위계 만들기','색상으로 상태 구분하기','명확한 버튼 모양과 이름','한눈에 읽히는 메뉴','일관된 여백과 정렬'],notes:'UI는 사용자가 만나는 화면 요소의 설계입니다. 오른쪽 출결 화면의 번호를 따라 제목, 상태 색상, 버튼, 메뉴, 여백을 짚어 주세요. 각 요소가 무엇을 읽고 어디를 누를지 알려 주는지 설명합니다. 다음 장에서는 화면 한 장을 넘어 목적을 완료하는 전체 흐름을 살펴봅니다.',scene:{label:'화면 요소를 하나씩 살펴보기',appName:'우리 반 출결',heading:'오늘의 출결',className:'1학년 1반 · 30명',summary:'출석 27명',navigation:['출결 관리','학급 알림','통계 보기'],student:'김하늘',studentMeta:'1학년 1반 · 1번',status:'출석',action:'출결 저장',question:'어디를 읽고, 무엇을 누를지 보이나요?'}},
@@ -623,26 +780,7 @@ function polishPresentation(previous){
 }
 Object.assign(DEFAULT,polishPresentation(V5_DEFAULT));
 
-function renderUIUXPage(i,printing){
- const d=currentAt(i),text=(path,tag='span',cls='')=>S(i,path,tag,cls,printing);
- const point=n=>'<span class="ui-point" aria-hidden="true">'+n+'</span>';
- const searchIcon='<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
- if(d.layout==='ui')return '<div class="ui-design-board">'+
-  '<div class="ui-design-guide"><div class="uiux-name">'+text('items.0.title','h2')+text('items.0.full','p','small-text')+'</div>'+text('items.0.description','p','ui-design-definition')+
-   '<ol class="ui-design-points">'+d.items[0].examples.map((_,n)=>'<li>'+point(n+1)+text('items.0.examples.'+n)+'</li>').join('')+'</ol></div>'+
-  '<div class="ui-specimen"><div class="ui-specimen-caption">'+text('scene.label')+'<span aria-hidden="true">01—05</span></div>'+
-   '<div class="ui-specimen-window"><div class="ui-specimen-top"><span class="ui-app-mark" aria-hidden="true">B.</span>'+text('scene.appName','strong')+'<span class="ui-window-dots" aria-hidden="true">···</span></div>'+
-    '<div class="ui-specimen-body"><div class="ui-specimen-nav">'+point(4)+d.scene.navigation.map((_,n)=>text('scene.navigation.'+n,'div',n?'':'active')).join('')+'</div>'+
-     '<div class="ui-specimen-main"><div class="ui-specimen-heading">'+point(1)+text('scene.heading','h3')+text('scene.className','p')+'</div>'+
-      '<div class="ui-specimen-summary">'+text('scene.summary')+point(2)+'</div>'+
-      '<div class="ui-specimen-student"><span class="ui-avatar" aria-hidden="true">김</span><div>'+text('scene.student','strong')+text('scene.studentMeta','small')+'</div>'+text('scene.status','span','ui-attendance-state')+'</div>'+
-      '<div class="ui-spacing-guide">'+point(5)+'<span aria-hidden="true"></span></div>'+
-      '<div class="ui-specimen-action">'+text('scene.action','span','ui-save-visual')+point(3)+'</div></div></div></div>'+text('scene.question','p','ui-specimen-question')+'</div></div>'+quote(i,printing);
- return '<div class="ux-journey-board"><div class="ux-journey-intro"><div class="uiux-name">'+text('items.0.title','h2')+text('items.0.full','p','small-text')+'</div><div>'+text('items.0.description','p','ux-definition')+text('scene.goal','p','ux-goal')+'</div></div>'+
-  '<div class="ux-friction">'+text('scene.frictionTitle','strong')+'<div>'+d.scene.frictionSteps.map((_,n)=>text('scene.frictionSteps.'+n,'span',n===4?'uncertain':'')+(n<4?'<span class="ux-arrow" aria-hidden="true">→</span>':'')).join('')+'</div></div>'+
-  '<div class="ux-flow-heading">'+text('scene.flowTitle','strong')+'</div><div class="ux-journey-track">'+d.scene.steps.map((_,n)=>'<section class="ux-journey-step"><div class="ux-step-top"><span class="ux-step-number">0'+(n+1)+'</span>'+text('scene.steps.'+n+'.benefit','span')+'</div>'+text('scene.steps.'+n+'.title','h3')+text('scene.steps.'+n+'.detail','p')+'<div class="ux-step-preview">'+(n===0?searchIcon:icon('check'))+text('scene.steps.'+n+'.sample')+(n===0?'<span class="ux-preview-caret" aria-hidden="true"></span>':'')+'</div></section>').join('')+'</div>'+
-  '<div class="ux-outcomes">'+d.items[0].examples.map((_,n)=>text('items.0.examples.'+n,'span')).join('')+'</div></div>'+quote(i,printing);
-}
+function renderUIUXPage(i,printing){return renderConcreteUIUXPage(i,printing);}
 
 function mountKeyIdea(slide){
  const box=slide.querySelector('.emphasis');if(!box)return;
@@ -661,7 +799,140 @@ function animateKeyIdea(box){
  if(reducedMotion())return;
  playMotion(box,[{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)'}],{duration:640,easing:'cubic-bezier(.22,1,.36,1)'});
  enterMotion(box.querySelector('.quote'),{y:22,blur:3,delay:220,duration:650});
+ for(const mark of box.querySelectorAll('.idea-accent'))playMotion(mark,[{color:getComputedStyle(box).color},{color:getComputedStyle(mark).color}],{delay:380,duration:500});
  enterMotion(box.querySelector('.emphasis-reset'),{y:0,blur:0,delay:550,duration:300});
+}
+
+// Version 7: teach UI/UX through visible, usable classroom examples.
+const V6_DEFAULT=copy(DEFAULT);
+function concretePresentation(previous){
+ if(previous.version===7)return deduplicateIdeas(previous);
+ const deck=copy(previous);
+ const replacements={
+  1300:{title:'UI. 화면이 어떻게 보이는가',takeaway:'',notes:'두 화면에는 같은 출결 정보가 있습니다. 글자 크기, 색상, 정렬과 여백만 비교합니다. UI에는 버튼 같은 조작 요소도 포함되지만, 이 장에서는 화면의 시각적 설계를 중심으로 설명합니다.',example:{task:'같은 출결 정보, 다른 화면',beforeLabel:'구분하기 어려운 화면',afterLabel:'한눈에 읽히는 화면',appTitle:'오늘의 출결',className:'1학년 1반 · 30명',totalLabel:'전체',presentLabel:'출석',lateLabel:'지각',absentLabel:'결석',beforeNote:'비슷한 글자 크기 · 빽빽한 배치 · 구분 없는 색상',afterNote:'중요한 정보는 크게 · 상태는 색상으로 · 여백은 충분히'}},
+  1301:{title:'UX. 원하는 학생을 쉽게 찾는가',takeaway:'UI는 보기 쉽게,\nUX는 사용하기 편하게.',notes:'같은 180명의 학생 명단입니다. 왼쪽은 목록을 내려 이름을 하나씩 찾아야 하고, 오른쪽은 검색창에 이름을 입력하면 바로 찾을 수 있습니다. 오른쪽 검색어를 지우거나 다른 이름으로 바꿔 비교해 보세요. UI는 화면의 표현, UX는 사용자가 앱을 이용하며 겪는 편리함에 초점을 맞춥니다.',example:{task:'학생 180명 중 ‘김서연’ 찾기',beforeLabel:'검색창이 없는 경우',afterLabel:'검색창이 있는 경우',appTitle:'학생 명단',target:'김서연',searchLabel:'학생 이름 검색',searchPlaceholder:'이름을 입력하세요',beforeNote:'명단을 내려 이름을 하나씩 확인',afterNote:'이름을 입력하면 바로 찾기',empty:'검색 결과가 없습니다.'}},
+  1400:{title:'개선 전. 과제 안내 보내기',takeaway:'',notes:'목표는 과제를 내지 않은 학생에게만 안내를 보내는 것입니다. 상태 0은 미제출, 1은 제출을 뜻합니다. 표에서 코드를 읽고 대상을 한 명씩 선택한 뒤 실행해야 합니다. 실제 메시지는 발송되지 않는 예시입니다.',example:{task:'미제출 학생에게만 안내 보내기',appTitle:'과제제출관리',assignment:'독서 감상문',className:'1학년 1반',filterLabel:'미제출만 보기',actionLabel:'실행',resultLabel:'처리되었습니다.',note:'상태 0: 미제출 / 1: 제출 · 예시 데이터',points:['숫자 코드를 읽어야 상태를 알 수 있음','안내할 학생을 한 명씩 선택해야 함','버튼 이름만으로 동작을 알기 어려움','누구에게 보냈는지 확인하기 어려움']}},
+  1401:{title:'개선 후. 과제 안내 보내기',takeaway:'보기 쉽고 쓰기 편한 프로그램이\n사용자의 시간과 수고를 줄입니다.',notes:'같은 과제와 같은 학생 데이터입니다. 미제출 학생만 바로 보여 주고, 글자와 색상으로 상태를 구분합니다. 버튼에 대상과 인원을 적고 한 번에 안내하도록 했습니다. 버튼을 누르면 대상과 완료 결과가 바로 보입니다. 실제 메시지는 발송되지 않는 예시입니다.',example:{task:'미제출 학생에게만 안내 보내기',appTitle:'과제 제출 현황',assignment:'독서 감상문',className:'1학년 1반',filterLabel:'미제출만 보기',actionLabel:'미제출 학생에게 안내 보내기',resultLabel:'안내 완료',note:'예시 데이터 · 실제 알림은 발송되지 않습니다.',points:['미제출 학생만 바로 표시','글자와 색상으로 상태 구분','누구에게 보내는지 버튼에 표시','한 번에 안내하고 결과 확인']}}
+ };
+ for(const slide of deck.slides){
+  const next=replacements[slide.id];if(!next)continue;
+  const old=V6_DEFAULT.slides.find(s=>s.id===slide.id);
+  for(const key of ['title','takeaway','notes'])if(slide[key]===old[key])slide[key]=next[key];
+  slide.example=copy(next.example);
+ }
+ if(deck.meta.parts[4]===V6_DEFAULT.meta.parts[4])deck.meta.parts[4]='웹앱의 배포 방식';
+ const summary=deck.slides.find(s=>s.id===16),oldSummary=V6_DEFAULT.slides.find(s=>s.id===16);
+ const descriptions=[
+  '화면·기능·데이터·API가 이어져\n하나의 웹앱이 됩니다.',
+  '만들 대상과 원하는 동작을\n구체적으로 설명하고, AI와 함께 고칩니다.',
+  '데이터의 형태와 필요한 기능에 맞춰\n백엔드를 선택합니다.',
+  '급식·날씨·영상 등 외부 서비스의 정보를\n내 앱에 연결합니다.',
+  '앱스 스크립트, GitHub Pages, Netlify 중\n앱에 맞는 배포 방식을 선택합니다.',
+  '보기 쉽고 쓰기 편하게 만들어\n사용자의 시간과 수고를 줄입니다.'
+ ];
+ const customDescriptions=new Map(summary.items.flatMap((item,n)=>item.description!==oldSummary.items[n].description?[[n<4?n:n+1,item.description]]:[]));
+ summary.items=descriptions.map((description,n)=>({title:deck.meta.parts[n],description:customDescriptions.get(n)??description}));
+ if(summary.title===oldSummary.title)summary.title='웹앱 제작의 여섯 가지 핵심';
+ if(summary.notes===oldSummary.notes)summary.notes='약 3분 · 여섯 챕터를 차례로 선택하며 웹앱 제작 과정을 정리합니다. 만들고 싶은 앱 하나를 떠올려 구조, AI 요청, 백엔드, API, 배포, UI/UX를 연결해 보세요.';
+ deck.version=7;
+ return deduplicateIdeas(deck);
+}
+Object.assign(DEFAULT,concretePresentation(V6_DEFAULT));
+
+function renderChapterSummary(i,printing){
+ const st=state(i),d=currentAt(i);
+ return '<div class="summary-editorial chapter-summary"><nav class="summary-terms" aria-label="챕터별 핵심 정리">'+d.items.map((_,n)=>{
+  const inner='<span>'+String(n+1).padStart(2,'0')+'</span>'+txt('meta.parts.'+n,'strong','',printing);
+  return printing?'<div>'+inner+S(i,'items.'+n+'.description','p','',true)+'</div>':button(inner,'select',n,st.selected===n,st.selected===n?'selected':'');
+ }).join('')+'</nav>'+(printing?'':'<div class="summary-definition"><span class="editorial-label">CHAPTER '+String(st.selected+1).padStart(2,'0')+'</span>'+S(i,'items.'+st.selected+'.description','h2','statement')+'</div>')+'</div>'+quote(i,printing);
+}
+
+const IDEA_ACCENTS={
+ 101:['아이디어','구체적인 설명'],203:['입력하고','처리하고','저장하고','연결합니다'],
+ 303:['AI와 대화하면서 개선'],700:['작은 업무 자동화'],701:['데이터와 검색 조건'],702:['실시간 경험'],
+ 5100:['데이터와 서버 기능'],1301:['보기 쉽게','사용하기 편하게'],1401:['시간과 수고를 줄입니다'],16:['해결하고 싶은 문제']
+};
+function keyIdeaMarkup(i,path){
+ const text=currentAt(i)[path],preferred=(IDEA_ACCENTS[currentAt(i).id]||[]).filter(part=>text.includes(part));
+ const fallback=text.trim().split('\n').filter(Boolean).at(-1);
+ const parts=preferred.length?preferred:[fallback];
+ const pattern=new RegExp('('+parts.map(part=>part.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','g');
+ const body=text.split(pattern).map(part=>parts.includes(part)?'<mark class="idea-accent">'+escapeHTML(part)+'</mark>':escapeHTML(part)).join('');
+ return '<div class="quote" data-path="'+escapeHTML(pathFor(i,path))+'">'+body+'</div>';
+}
+
+const LESSON_STUDENTS=(()=>{
+ const families=['김','이','박','최','정','강','조','윤','장','임'];
+ const names=['민준','서연','지우','하은','도윤','서준','민서','예린','수아','지호','하윤','수빈','도현','예준','시우','채원','지민','유진'];
+ const list=families.flatMap(family=>names.map(name=>family+name));
+ list.splice(137,0,...list.splice(list.indexOf('김서연'),1));
+ return list.map((name,n)=>({name,id:n+1,className:'1학년 '+(Math.floor(n/30)+1)+'반',number:n%30+1}));
+})();
+const HOMEWORK_STUDENTS=[
+ {name:'강민준',done:true},{name:'김민지',done:false},{name:'김하늘',done:true},{name:'박지우',done:false},
+ {name:'서지민',done:true},{name:'이도윤',done:true},{name:'최서윤',done:false},{name:'한예린',done:true}
+];
+function studentRows(students,printing=false){
+ return students.map(s=>'<'+(printing?'div':'button type="button"')+' class="lookup-row" data-student-id="'+s.id+'"'+(printing?'':' aria-pressed="false"')+'><span class="lookup-number">'+String(s.id).padStart(3,'0')+'</span><strong>'+escapeHTML(s.name)+'</strong><span>'+escapeHTML(s.className)+' · '+s.number+'번</span></'+(printing?'div':'button')+'>').join('');
+}
+function renderConcreteUIUXPage(i,printing){
+ const d=currentAt(i),t=(path,tag='span',cls='')=>S(i,'example.'+path,tag,cls,printing);
+ if(d.layout==='ui'){
+  const summary=good=>'<div class="attendance-summary">'+[['presentLabel',27],['lateLabel',2],['absentLabel',1]].map(([label,count],n)=>'<div class="attendance-stat stat-'+n+'">'+t(label)+'<strong>'+count+'</strong></div>').join('')+'</div>';
+  const students=[['김민지','presentLabel'],['김서연','lateLabel'],['박지우','presentLabel'],['이도윤','absentLabel']];
+  const screen=good=>'<div class="attendance-example '+(good?'clear':'dense')+'"><div class="attendance-title">'+t('appTitle','strong')+t('className','span')+'</div>'+summary(good)+'<div class="attendance-records">'+students.map(([name,status])=>'<div><span>'+name+'</span>'+t(status,'span','attendance-status '+status)+'</div>').join('')+'</div></div>';
+  return '<div class="concrete-example ui-visual-compare">'+t('task','p','example-task')+'<div class="example-pair">'+[false,true].map(good=>'<section class="example-case '+(good?'case-good':'case-bad')+'"><div class="example-case-heading"><span class="case-index">'+(good?'02':'01')+'</span>'+t(good?'afterLabel':'beforeLabel','h3')+'</div>'+screen(good)+t(good?'afterNote':'beforeNote','p','example-note')+'</section>').join('')+'</div></div>'+quote(i,printing);
+ }
+ const st=state(i),query=printing?d.example.target:(st.lookupQuery??d.example.target),found=LESSON_STUDENTS.filter(s=>s.name.includes(query.trim()));
+ const screen=good=>'<div class="lookup-app"><div class="lookup-app-title">'+t('appTitle','strong')+'<span>전체 '+LESSON_STUDENTS.length+'명</span></div>'+
+  (good?'<label class="lookup-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg>'+(printing?'<span>'+escapeHTML(query)+'</span>':'<input type="search" data-lookup-search aria-label="'+escapeHTML(d.example.searchLabel)+'" placeholder="'+escapeHTML(d.example.searchPlaceholder)+'" value="'+escapeHTML(query)+'" autocomplete="off">')+'</label>':'')+
+  '<div class="lookup-list" data-lookup-list="'+(good?'search':'all')+'" tabindex="0" role="group" aria-label="'+(good?'검색 가능한 학생 명단':'전체 학생 명단')+'">'+studentRows((good?found:LESSON_STUDENTS).slice(0,printing?5:180),printing)+'</div><div class="lookup-result" data-lookup-result="'+(good?'search':'all')+'" role="status">'+(good?'검색 결과 '+found.length+'명':'전체 180명')+'</div></div>';
+ return '<div class="concrete-example ux-search-compare">'+t('task','p','example-task')+'<div class="example-pair">'+[false,true].map(good=>'<section class="example-case '+(good?'case-good':'case-bad')+'"><div class="example-case-heading"><span class="case-index">'+(good?'02':'01')+'</span>'+t(good?'afterLabel':'beforeLabel','h3')+'</div>'+screen(good)+t(good?'afterNote':'beforeNote','p','example-note')+'</section>').join('')+'</div></div>'+quote(i,printing);
+}
+function homeworkRows(good,onlyMissing,printing,selected=[]){
+ return HOMEWORK_STUDENTS.map((student,n)=>({...student,n})).filter(s=>!onlyMissing||!s.done).map(s=>'<div class="homework-row"><span class="homework-num">'+String(s.n+1).padStart(2,'0')+'</span><strong>'+s.name+'</strong><span class="homework-state '+(s.done?'done':'missing')+'">'+(good?(s.done?'제출 완료':'미제출'):(s.done?'1':'0'))+'</span>'+(good?'':printing?'<span class="legacy-check">□</span>':'<input type="checkbox" data-homework-person="'+s.n+'" aria-label="'+s.name+' 선택"'+(selected.includes(s.n)?' checked':'')+'>')+'</div>').join('');
+}
+function renderSchoolworkPage(i,printing){
+ const d=currentAt(i),good=d.layout==='after',st=state(i),t=(path,tag='span',cls='')=>S(i,'example.'+path,tag,cls,printing);
+ const selected=st.homeworkSelected||[],onlyMissing=printing?true:st.onlyMissing!==false;
+ const app='<div class="homework-app '+(good?'homework-clear':'homework-legacy')+'"><div class="homework-top">'+t('appTitle','strong')+t('className','span')+'</div>'+
+  '<div class="homework-assignment">'+t('assignment','span')+(good?'<span class="homework-count">미제출 <b>3</b> / 8명</span>':'')+'</div>'+
+  (good?'<label class="homework-filter">'+(printing?'✓':'<input type="checkbox" data-homework-filter'+(onlyMissing?' checked':'')+'>')+t('filterLabel')+'</label>':'<div class="homework-legacy-head"><span>NO</span><span>NAME</span><span>STATE</span><span>SEL</span></div>')+
+  '<div class="homework-list" data-homework-list>'+homeworkRows(good,good&&onlyMissing,printing,selected)+'</div>'+
+  '<div class="homework-actions"><button type="button" data-homework-send'+(printing?' disabled':'')+'>'+t('actionLabel')+(good?'<span>3명</span>':'')+'</button></div>'+
+  '<div class="homework-result" data-homework-result role="status">'+(st.homeworkSent?escapeHTML(good?'김민지 · 박지우 · 최서윤 — 안내 완료 (예시)':d.example.resultLabel):'')+'</div>'+t('note','p','homework-footnote')+'</div>';
+ return '<div class="concrete-example schoolwork-example">'+t('task','p','example-task')+'<div class="schoolwork-layout">'+app+'<div class="schoolwork-points">'+d.example.points.map((_,n)=>'<div><span>'+String(n+1).padStart(2,'0')+'</span>'+t('points.'+n,'p')+'</div>').join('')+'</div></div></div>'+quote(i,printing);
+}
+function mountConcreteExamples(slide){
+ const d=currentSlide(),st=state(current),search=slide.querySelector('[data-lookup-search]');
+ if(search){
+  search.addEventListener('input',()=>{
+   st.lookupQuery=search.value;
+   const students=LESSON_STUDENTS.filter(s=>s.name.includes(search.value.trim()));
+   const list=slide.querySelector('[data-lookup-list="search"]');
+   list.innerHTML=students.length?studentRows(students):'<p class="lookup-empty">'+escapeHTML(d.example.empty)+'</p>';
+   list.scrollTop=0;slide.querySelector('[data-lookup-result="search"]').textContent='검색 결과 '+students.length+'명';
+  });
+ }
+ for(const list of slide.querySelectorAll('[data-lookup-list]')){
+  list.addEventListener('wheel',event=>event.stopPropagation(),{passive:true});
+  list.addEventListener('click',event=>{
+   const row=event.target.closest('[data-student-id]');if(!row)return;
+   list.querySelectorAll('[data-student-id]').forEach(el=>el.setAttribute('aria-pressed',String(el===row)));
+   const student=LESSON_STUDENTS.find(s=>s.id===Number(row.dataset.studentId));
+   slide.querySelector('[data-lookup-result="'+list.dataset.lookupList+'"]').textContent=student.name+' · '+student.className+' · '+student.number+'번';
+  });
+ }
+ const filter=slide.querySelector('[data-homework-filter]');
+ filter?.addEventListener('change',()=>{st.onlyMissing=filter.checked;slide.querySelector('[data-homework-list]').innerHTML=homeworkRows(true,filter.checked,false)});
+ slide.querySelectorAll('[data-homework-person]').forEach(box=>box.addEventListener('change',()=>{st.homeworkSelected=[...slide.querySelectorAll('[data-homework-person]:checked')].map(el=>Number(el.dataset.homeworkPerson))}));
+ slide.querySelector('[data-homework-send]')?.addEventListener('click',()=>{
+  const result=slide.querySelector('[data-homework-result]');
+  if(d.layout==='before'&&!st.homeworkSelected?.length){result.textContent='대상을 선택하세요.';return;}
+  st.homeworkSent=true;
+  result.textContent=d.layout==='after'?'김민지 · 박지우 · 최서윤 — 안내 완료 (예시)':d.example.resultLabel;
+  result.classList.add('sent');
+ });
 }
 
 /* PRESENTATION_POLISH_END */
@@ -685,8 +956,8 @@ const glyphs={spark:'M12 3l2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3L12
 function icon(name){return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="'+(glyphs[name]||glyphs.spark)+'"/></svg>';}
 $$('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));
 function validData(input){
- if(!input||![1,2,3,4,5,6].includes(input.version))throw Error('지원하지 않는 강의 파일 형식입니다.');
- const template=input.version===1?LEGACY_DEFAULT:input.version===2?V2_DEFAULT:input.version===3?V3_DEFAULT:input.version===4?V4_DEFAULT:input.version===5?V5_DEFAULT:DEFAULT;
+ if(!input||![1,2,3,4,5,6,7].includes(input.version))throw Error('지원하지 않는 강의 파일 형식입니다.');
+ const template=input.version===1?LEGACY_DEFAULT:input.version===2?V2_DEFAULT:input.version===3?V3_DEFAULT:input.version===4?V4_DEFAULT:input.version===5?V5_DEFAULT:input.version===6?V6_DEFAULT:DEFAULT;
  function shape(value,template,path){
   if(typeof template==='string'){if(value===undefined&&path==='강의.slides.0.presenter')return template;if(typeof value!=='string'||value.length>12000)throw Error('문구 형식 또는 길이를 확인해 주세요: '+path);return value;}
   if(typeof template==='number'){if(value!==template)throw Error('슬라이드 구조가 올바르지 않습니다.');return value;}
@@ -701,8 +972,8 @@ function validData(input){
  if(result.meta.title==="비범쌤의 바이브코딩 입문")result.meta.title=DEFAULT.meta.title;
  if(result.labels.guide==="정답 판정이 아닌, 입문자를 위한 추천 가이드입니다.")result.labels.guide=DEFAULT.labels.guide;
  for(const slide of result.slides)if(slide.type==='cover'&&slide.kicker==="교사를 위한 바이브코딩 입문")slide.kicker=DEFAULT.slides[0].kicker;
- if(input.version>=4){result.layouts=validateLayouts(input.layouts,result);return refreshPracticeCopy(polishPresentation(input.version===4?apiShowcaseData(result):result));}
-  return refreshPracticeCopy(polishPresentation(apiShowcaseData(deploymentData(input.version===3?result:editorialData(input.version===1?presentationData(result):result)))));
+ if(input.version>=4){result.layouts=validateLayouts(input.layouts,result);return refreshPracticeCopy(concretePresentation(polishPresentation(input.version===4?apiShowcaseData(result):result)));}
+  return refreshPracticeCopy(concretePresentation(polishPresentation(apiShowcaseData(deploymentData(input.version===3?result:editorialData(input.version===1?presentationData(result):result))))));
 }
 function validateLayouts(layouts,deck){
  const clean={};if(layouts==null)return clean;
@@ -868,7 +1139,7 @@ function renderBeforeAfter(i,printing){const st=state(i);if(printing)return '<di
 }
 function renderPractice(i,printing){return '<div class="practice-editorial"><div><span class="editorial-label">FROM LEARNING TO MAKING</span>'+S(i,'description','h2','statement',printing)+list(i,'steps',printing)+(printing?'':'<div>'+button('실습 시작하기 '+icon('arrow'),'practice-open','',null,'primary')+'</div>')+'</div><div class="practice-type"><strong>47<span>INTERACTIONS</span></strong><div><span>UI/UX</span><span>Motion</span></div></div></div>'+S(i,'note','p','micro',printing);}
 
-function renderSummary(i,printing){const st=state(i),d=currentAt(i);return '<div class="summary-editorial"><nav class="summary-terms" aria-label="핵심 개념">'+d.items.map((_,n)=>{const inner='<span>0'+(n+1)+'</span>'+S(i,'items.'+n+'.title','strong','',printing);return printing?'<div>'+inner+S(i,'items.'+n+'.description','p','',true)+'</div>':button(inner,'select',n,st.selected===n,st.selected===n?'selected':'');}).join('')+'</nav>'+(printing?'':'<div class="summary-definition"><span class="editorial-label">CONNECT THE DOTS</span>'+S(i,'items.'+st.selected+'.description','h2','statement')+'</div>')+'</div>'+quote(i,printing);}
+function renderSummary(i,printing){return renderChapterSummary(i,printing);}
 
 function slideTitle(d){return d.type==='cover'?data.meta.title:d.type==='section'?data.meta.parts[d.part]:d.title;}
 function partLabel(d){return d.type==='cover'?'WELCOME':d.type==='contents'?'CONTENTS':d.part===data.meta.parts.length-1?'WRAP UP':'PART '+String(d.part+1).padStart(2,'0');}
@@ -877,7 +1148,7 @@ function emphasis(i,path='takeaway',printing=false){
  if(printing)return S(i,path,'div','print-takeaway',true);
  const shown=!!state(i).revealed,editing=!presenting;
  if(editing)return S(i,path,'div','edit-takeaway');
- return '<div class="emphasis '+(shown?'is-shown':'is-pending')+'" data-emphasis="'+path+'"><div class="emphasis-copy"'+(shown?'':' aria-hidden="true" inert')+'>'+S(i,path,'div','quote')+'</div><button class="emphasis-trigger" data-action="reveal-message" aria-label="핵심 문구 펼치기" title="핵심 문구 펼치기 · Space" aria-expanded="'+shown+'"'+(shown?' hidden':'')+'><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button class="emphasis-reset" data-action="hide-message" aria-label="핵심 문구 접기" title="핵심 문구 접기"'+(shown?'':' hidden')+'><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button></div>';
+ return '<div class="emphasis '+(shown?'is-shown':'is-pending')+'" data-emphasis="'+path+'"><div class="emphasis-copy"'+(shown?'':' aria-hidden="true" inert')+'>'+keyIdeaMarkup(i,path)+'</div><button class="emphasis-trigger" data-action="reveal-message" aria-label="핵심 문구 펼치기" title="핵심 문구 펼치기 · Space" aria-expanded="'+shown+'"'+(shown?' hidden':'')+'><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button class="emphasis-reset" data-action="hide-message" aria-label="핵심 문구 접기" title="핵심 문구 접기"'+(shown?'':' hidden')+'><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button></div>';
 }
 
 function revealMessage(){const box=$('#slideFrame .emphasis');if(!box||state(current).revealed||!presenting)return false;finishSlideTransition();state(current).revealed=true;box.classList.replace('is-pending','is-shown');const content=box.querySelector('.emphasis-copy');content.removeAttribute('aria-hidden');content.inert=false;box.querySelector('.emphasis-trigger').hidden=true;box.querySelector('.emphasis-reset').hidden=false;setKeyIdeaBackground(box.closest('.slide'),true);if(isReading())$('#stageSpace').scrollTo({top:0,behavior:'instant'});animateKeyIdea(box);$('#slideAnnouncement').textContent=currentSlide()[box.dataset.emphasis];$('#slideFrame').focus({preventScroll:true});renderChrome();return true;}
@@ -902,7 +1173,7 @@ function renderPromptPage(i,printing){const d=currentAt(i),specific=d.layout==='
 
 function renderBackendPage(i,printing){const st=state(i),p='items.0.';return '<div class="backend-editorial"><div class="backend-story"><span class="editorial-label">'+S(i,p+'short','span','',printing)+'</span>'+S(i,p+'description','p','large-body',printing)+S(i,p+'analogy','p','backend-analogy',printing)+'</div><div class="backend-evidence">'+(printing?['benefits','limits','usecases'].map(k=>'<div>'+L(k,'h3','',true)+list(i,p+k,true)+'</div>').join(''):'<div class="tabs">'+['benefits','limits','usecases'].map(k=>button(L(k),'category',k,st.category===k)).join('')+'</div><div class="detail-enter">'+list(i,p+st.category)+'</div>')+'</div></div>'+S(i,p+'note','p','micro',printing)+quote(i,printing);}
 
-function renderBeforeAfterPage(i,printing){const good=currentAt(i).layout==='after';return '<div class="split before-after-content"><div class="stack">'+scoreApp(i,good,printing)+'</div><div class="card shaded center">'+list(i,good?'after':'before',printing)+'</div></div>'+quote(i,printing);}
+function renderBeforeAfterPage(i,printing){return renderSchoolworkPage(i,printing); }
 // Animation follows each slide's teaching structure. Layout offsets remain untouched.
 const transitionAnimations=new Set();
 const motionEase='cubic-bezier(.16,1,.3,1)';
@@ -994,6 +1265,8 @@ function animateSlide(transition=null){
     enter('.api-policy-note',{y:8,blur:0,delay:440,duration:500});
     break;
    case'uiux':
+    enter('.example-task',{y:10,blur:0,delay:160});
+    enter('.example-case',{y:18,blur:0,delay:250,step:120,duration:650});
     slide.dataset.transition=d.layout==='ui'?'interface-anatomy':'task-journey';
     enter('.uiux-name',{y:18,blur:0,delay:140,duration:600});
     if(d.layout==='ui'){
@@ -1009,6 +1282,9 @@ function animateSlide(transition=null){
     }
     break;
    case'beforeAfter':
+    enter('.example-task',{y:10,blur:0,delay:160});
+    enter('.homework-app',{y:18,blur:0,delay:230,duration:650});
+    enter('.schoolwork-points>div',{x:15,y:0,blur:0,delay:360,step:80});
     slide.dataset.transition=d.layout==='after'?'experience-refinement':'experience-focus';
     enter('.uiux-name',{y:24,clip:true,blur:0,delay:160,duration:700});
     enter('.uiux-spotlight>.stack>p,.example-chips',{y:15,blur:2,delay:280,step:80});
@@ -1050,7 +1326,7 @@ function renderSlide(i,printing=false){if(data.slides[i].type==='apiShowcase')re
 
 function renderNav(){let html='',previous=-1;data.slides.forEach((d,i)=>{if(d.type!=='cover'&&d.part!==previous){html+='<div class="group-label"><b>'+partLabel(d)+'</b><span>'+escapeHTML(data.meta.parts[d.part])+'</span></div>';previous=d.part;}html+='<button class="nav-item '+(d.type==='section'?'section-nav':d.type==='cover'?'cover-nav':'')+'" data-slide-nav="'+i+'" aria-current="'+(i===current)+'"><span class="number">'+String(i+1).padStart(2,'0')+'</span><span class="nav-title">'+(d.type==='section'?'<span class="nav-main-badge">Main</span> ':'')+escapeHTML(slideTitle(d))+'</span></button>';});$('#slideNav').innerHTML=html;}
 function renderChrome(){const total=data.slides.length;document.title=data.meta.title;$('#brandTitle').textContent=data.meta.title;$('#previewPart').textContent=partLabel(currentSlide());$('#previewCount').textContent='SLIDE '+String(current+1).padStart(2,'0');$('#bottomCount').textContent=String(current+1).padStart(2,'0')+' / '+total;$('#presentCount').textContent=(current+1)+' / '+total;$('#lectureTab small').textContent=total+'장';$('#navTotal').textContent='/ '+total;$('#exportMenu [data-command="print"]').textContent='전체 '+total+'장 PDF 출력';if(document.activeElement!==$('#notesPreview'))$('#notesPreview').textContent=currentSlide().notes;$('#notesPreview').contentEditable=String(!presenting);renderChapterMenu();['prevBtn','presentPrev','stagePrev'].forEach(id=>$('#'+id).disabled=current===0);['nextBtn','presentNext','stageNext'].forEach(id=>$('#'+id).disabled=current===total-1&&!$('#slideFrame .emphasis.is-pending'));$('#layoutTools').hidden=presenting||!selectedLayout;$('#previewHint').textContent='문구 클릭 수정 · 손잡이로 배치 · 휠로 이동 · 자동 저장';document.documentElement.dataset.theme=data.theme;$('#themeBtn').innerHTML=icon(data.theme==='dark'?'sun':'moon');$('#themeBtn').setAttribute('aria-label',data.theme==='dark'?'라이트 모드로 변경':'다크 모드로 변경');}
-function renderCurrent(restoreFocus=false){destroySlideCombos();finishSlideTransition();const active=document.activeElement,action=active?.dataset.action,value=active?.dataset.value,control=active?.dataset.control;clearLayoutSelection();$('#slideFrame').innerHTML=renderSlide(current);mountKeyIdea($('#slideFrame>.slide'));prepareLayout($('#slideFrame>.slide'));mountSlideCombos();renderChrome();resizeStage();if(restoreFocus){const candidates=$$('#slideFrame [data-action],#slideFrame [data-control]');const target=candidates.find(el=>action?el.dataset.action===action&&el.dataset.value===value:control&&el.dataset.control===control);target?.focus({preventScroll:true});}}
+function renderCurrent(restoreFocus=false){destroySlideCombos();finishSlideTransition();const active=document.activeElement,action=active?.dataset.action,value=active?.dataset.value,control=active?.dataset.control;clearLayoutSelection();$('#slideFrame').innerHTML=renderSlide(current);mountKeyIdea($('#slideFrame>.slide'));prepareLayout($('#slideFrame>.slide'));mountSlideCombos();mountConcreteExamples($('#slideFrame>.slide'));renderChrome();resizeStage();if(restoreFocus){const candidates=$$('#slideFrame [data-action],#slideFrame [data-control]');const target=candidates.find(el=>action?el.dataset.action===action&&el.dataset.value===value:control&&el.dataset.control===control);target?.focus({preventScroll:true});}}
 function renderAll(transition=null){renderNav();renderCurrent();animateSlide(transition);}
 function isReading(){return window.innerWidth<=860&&(readingOverride??(window.innerHeight>window.innerWidth));}
 function fitSlide(slide){if(!slide)return;if(!slide.closest('.print-page')){const content=slide.querySelector('.content-inner');content.style.transform='';content.style.width='100%';slide.classList.toggle('content-overflow',content.offsetHeight+8>slide.querySelector('.slide-content').clientHeight+1);return;}const holder=slide.querySelector('.slide-content'),inner=slide.querySelector('.content-inner');inner.style.transform='';inner.style.width='100%';inner.style.transformOrigin='top left';const height=holder.clientHeight,width=holder.clientWidth;if(!height||!width)return;if(inner.scrollHeight<=height&&inner.scrollWidth<=width)return;let low=.15,high=1;for(let n=0;n<10;n++){const ratio=(low+high)/2;inner.style.width=(width/ratio)+'px';if(inner.scrollHeight*ratio<=height&&inner.scrollWidth*ratio<=width+1)low=ratio;else high=ratio;}inner.style.width=(width/low)+'px';inner.style.transform='scale('+low+')';}
@@ -1069,7 +1345,7 @@ function selectPractice(topic){if(!['uiux','animation'].includes(topic))return;a
 function selectCourse(next){if(!['lecture','practice'].includes(next)||next===activeCourse)return;ComboUI.closeAll();saveNow();document.body.classList.remove('sidebar-open','editor-open');$('#exportMenu').hidden=true;$('#exportBtn').setAttribute('aria-expanded','false');if(next==='practice'){returnToPresentation=presenting;if(presenting){presenting=false;document.body.classList.remove('present');renderCurrent();}}activeCourse=next;const lecture=next==='lecture';document.body.classList.toggle('practice-mode',!lecture);$('#lecturePanel').hidden=!lecture;$('#practicePanel').hidden=lecture;$('.lecture-toolbar').hidden=!lecture;$('.practice-toolbar').hidden=lecture;$$('[data-course]').forEach(tab=>{const selected=tab.dataset.course===next;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;});if(lecture){if(returnToPresentation){returnToPresentation=false;togglePresent(true);$('#slideFrame').tabIndex=-1;$('#slideFrame').focus({preventScroll:true});}else resizeStage();}else ensurePractice();syncPracticeVisibility();}
 // Canvas edits are stored by stable slide ID, independently of text content.
 let selectedLayout=null,layoutDrag=null;
-const layoutBlocks='.slide-head,.slide-foot,.content-inner>:not(.emphasis),.cover-type,.cover-sculpture,.cover-baseline,.cover-signature,.chapter-copy,.chapter-number,.contents-heading,.contents-list,.comparison-column,.intro-copy,.intro-canvas,.structure-body,.structure-examples,.process-copy,.ai-description,.ai-example,.backend-story,.backend-evidence,.api-showcase-info>div,.uiux-name,.ui-design-guide,.ui-specimen,.ux-journey-intro,.ux-friction,.ux-journey-track,.ux-journey-step,.ux-outcomes,.example-chips,.score-app,.practice-type,.summary-terms,.summary-definition,.deployment-table-wrap';
+const layoutBlocks='.slide-head,.slide-foot,.content-inner>:not(.emphasis),.cover-type,.cover-sculpture,.cover-baseline,.cover-signature,.chapter-copy,.chapter-number,.contents-heading,.contents-list,.comparison-column,.intro-copy,.intro-canvas,.structure-body,.structure-examples,.process-copy,.ai-description,.ai-example,.backend-story,.backend-evidence,.api-showcase-info>div,.concrete-example,.example-case,.example-case-heading,.attendance-example,.lookup-app,.homework-app,.schoolwork-points,.uiux-name,.ui-design-guide,.ui-specimen,.ux-journey-intro,.ux-friction,.ux-journey-track,.ux-journey-step,.ux-outcomes,.example-chips,.score-app,.practice-type,.summary-terms,.summary-definition,.deployment-table-wrap';
 function prepareLayout(slide,printing=false){
  const i=Number(slide.dataset.slide),saved=data.layouts[String(data.slides[i].id)]||{},counts={};
  slide.querySelectorAll('[data-path]').forEach(el=>{

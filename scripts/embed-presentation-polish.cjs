@@ -6,8 +6,8 @@ function embed(start,end,source){
  assert.ok(a>=0&&b>a,'Missing presentation embedding markers');
  html=html.slice(0,a+start.length)+'\n'+source+'\n'+html.slice(b);
 }
-embed('/* PRESENTATION_POLISH_START */','/* PRESENTATION_POLISH_END */',fs.readFileSync(path.join(root,'assets/presentation/uiux-polish.js'),'utf8'));
-embed('<style id="presentation-polish">','</style>',fs.readFileSync(path.join(root,'assets/presentation/uiux-polish.css'),'utf8'));
+embed('/* PRESENTATION_POLISH_START */','/* PRESENTATION_POLISH_END */',['uiux-polish.js','concrete-examples.js'].map(file=>fs.readFileSync(path.join(root,'assets/presentation',file),'utf8')).join('\n'));
+embed('<style id="presentation-polish">','</style>',['uiux-polish.css','concrete-examples.css'].map(file=>fs.readFileSync(path.join(root,'assets/presentation',file),'utf8')).join('\n'));
 new Function(html.slice(html.lastIndexOf('<script>')+8,html.lastIndexOf('</script>')));
 fs.writeFileSync(file,html);
 console.log('Embedded presentation source in standalone index.html.');
