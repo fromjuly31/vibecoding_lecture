@@ -9,14 +9,14 @@ fs.mkdirSync('.qa',{recursive:true});
  try{
   await b.navigate(b.url+'/?visual-qa','typeof data!=="undefined"');
   await b.evaluate('localStorage.clear();data=copy(DEFAULT);states={};current=0;renderAll()');
-  assert.deepEqual(await b.evaluate('[LEGACY_DEFAULT,V2_DEFAULT,V3_DEFAULT,V4_DEFAULT,V5_DEFAULT,V6_DEFAULT,V7_DEFAULT,V8_DEFAULT,V9_DEFAULT,DEFAULT].map(d=>{const n=validData(copy(d));return[n.version,n.slides.length]})'),Array.from({length:10},()=>[10,63]));
+  assert.deepEqual(await b.evaluate('[LEGACY_DEFAULT,V2_DEFAULT,V3_DEFAULT,V4_DEFAULT,V5_DEFAULT,V6_DEFAULT,V7_DEFAULT,V8_DEFAULT,V9_DEFAULT,V10_DEFAULT,DEFAULT].map(d=>{const n=validData(copy(d));return[n.version,n.slides.length]})'),Array.from({length:11},()=>[11,63]));
   assert.equal(await b.evaluate(`(()=>{const old=copy(V9_DEFAULT);old.slides.find(s=>s.id===5100).title='Custom comparison';old.slides.find(s=>s.id===501).rows[0][1]='Custom observation';old.layouts={'5100':{'text:title:0':{x:7,y:9,width:800}}};const n=validData(old);return n.slides.find(s=>s.id===5100).title==='Custom comparison'&&n.slides.find(s=>s.id===501).rows[0][1]==='Custom observation'&&JSON.stringify(n.layouts)===JSON.stringify(old.layouts)&&JSON.stringify(validData(n))===JSON.stringify(n)})()`),true);
   assert.deepEqual(await b.evaluate('data.slides.filter(s=>s.part===3).map(s=>s.id)'),[9105,5098,5099,5100]);
   assert.deepEqual(await b.evaluate('data.slides.find(s=>s.id===5100).headers.slice(1)'),['Google Apps Script','GitHub','Netlify']);
   assert.equal(await b.evaluate(`!/앱스[ ]?스크립트|깃허브|넷리파이/.test(JSON.stringify(data.slides.filter(s=>s.part===3)))`),true);
   await b.evaluate('localStorage.setItem(storageKey,JSON.stringify(V9_DEFAULT))');
   await b.navigate(b.url+'/?visual-migration','typeof data!=="undefined"');
-  assert.equal(await b.evaluate('data.version===10&&data.slides.length===63&&!initialMessage'),true);
+  assert.equal(await b.evaluate('data.version===11&&data.slides.length===63&&!initialMessage'),true);
   console.log('PASS all saved formats migrate; inserted slides, English names, edits and layouts survive');
   await b.evaluate('togglePresent(true)');
   const ids=[200,201,202,203,300,301,302,303,500,501,502,503,504,800,801,802,803,804,805,806,807,5098,5099,5100];
