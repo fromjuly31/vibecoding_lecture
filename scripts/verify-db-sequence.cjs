@@ -13,9 +13,12 @@ fs.mkdirSync('.qa',{recursive:true});
  try{
   await b.navigate(b.url+'/?db-sequence-qa','typeof data!=="undefined"&&!!document.querySelector("#slideFrame>.slide")');
   await b.evaluate('localStorage.clear();data=copy(DEFAULT);states={};current=0;renderAll()');
-  assert.deepEqual(await b.evaluate('data.slides.slice(22,28).map(s=>s.id)'),[600,601,9003,700,701,702]);
-  assert.equal(await b.evaluate('data.slides.length'),63);
-  assert.equal(await b.evaluate(`[LEGACY_DEFAULT,V2_DEFAULT,V3_DEFAULT,V4_DEFAULT,V5_DEFAULT,V6_DEFAULT,V7_DEFAULT,V8_DEFAULT,V9_DEFAULT,V10_DEFAULT,DEFAULT].every(d=>{const n=validData(copy(d)),p=n.slides.find(s=>s.id===601);return n.slides.length===63&&p.segments[3]===DEFAULT.slides.find(s=>s.id===601).segments[3]&&JSON.stringify(validData(n))===JSON.stringify(n)})`),true);
+  assert.deepEqual(await b.evaluate('data.slides.slice(22,31).map(s=>s.id)'),[600,601,9003,7100,700,7101,701,7102,702]);
+  assert.equal(await b.evaluate('data.slides.length'),66);
+  assert.equal(await b.evaluate('data.version'),12);
+  assert.deepEqual(await b.evaluate('data.slides.flatMap((s,i)=>s.type==="databaseIntro"?[[i+1,s.sourceId,data.slides[i+1].id]]:[])'),[[26,700,700],[28,701,701],[30,702,702]]);
+  assert.equal(await b.evaluate('slideTitle(data.slides.find(s=>s.id===7100))'), 'Google Sheets · 소개');
+  assert.equal(await b.evaluate(`[LEGACY_DEFAULT,V2_DEFAULT,V3_DEFAULT,V4_DEFAULT,V5_DEFAULT,V6_DEFAULT,V7_DEFAULT,V8_DEFAULT,V9_DEFAULT,V10_DEFAULT,V11_DEFAULT,DEFAULT].every(d=>{const n=validData(copy(d)),p=n.slides.find(s=>s.id===601);return n.slides.length===66&&p.segments[3]===DEFAULT.slides.find(s=>s.id===601).segments[3]&&JSON.stringify(validData(n))===JSON.stringify(n)})`),true);
   assert.equal(await b.evaluate(`(()=>{const old=copy(V10_DEFAULT),p=old.slides.find(s=>s.id===601);p.segments[3]='My saved design';p.elements[3].description='My design label';old.slides.find(s=>s.id===700).items[0].limits[0]='My saved limitation';old.layouts={'700':{'text:items.0.description:0':{x:3,y:4}}};const next=validData(old);return next.slides.find(s=>s.id===601).segments[3]===p.segments[3]&&next.slides.find(s=>s.id===601).elements[3].description===p.elements[3].description&&next.slides.find(s=>s.id===700).items[0].limits[0]==='My saved limitation'&&JSON.stringify(next.layouts)===JSON.stringify(old.layouts)})()`),true);
   await b.evaluate('localStorage.setItem(storageKey,JSON.stringify(V10_DEFAULT))');
   await b.navigate(b.url+'/?db-saved-migration','typeof data!=="undefined"');
@@ -26,6 +29,15 @@ fs.mkdirSync('.qa',{recursive:true});
 
   await show(700);await click('#nextBtn');await check(700,'limits');await click('#prevBtn');await check(700,'benefits');
   await click('#presentBtn');
+  for(const id of [7100,7101,7102]){
+   await show(id);
+   assert.equal(await b.evaluate('document.querySelectorAll("#slideFrame h1").length'),1);
+   assert.equal(await b.evaluate('!!document.querySelector("#slideFrame .db-profile-description")&&!document.querySelector("#slideFrame .db-sequence,#slideFrame .emphasis")'),true);
+   await click('#presentNext');await check(id-6400,'benefits');
+   assert.equal(await b.evaluate('!!document.querySelector("#slideFrame .db-description,#slideFrame .db-profile-description")'),false);
+   await click('#presentPrev');assert.equal(await b.evaluate('currentSlide().id'),id);
+  }
+  console.log('PASS introductions precede each detail slide, retain shared descriptions and advance in one click');
   for(const id of [700,701,702]){
    await show(id);await check(id,'benefits');
    await click('#stageNext');await check(id,'limits');
@@ -37,8 +49,8 @@ fs.mkdirSync('.qa',{recursive:true});
    await click('#slideFrame [data-action=category][data-value=limits]');await check(id,'limits');
    await click('#presentNext');await check(id,'usecases');
    await click('#presentNext');await click('#presentNext');
-   assert.equal(await b.evaluate('currentSlide().id'),id===702?800:id+1);
-   if(id!==702)await check(id+1,'benefits');
+   assert.equal(await b.evaluate('currentSlide().id'),id===702?800:id+6401);
+   if(id!==702)assert.equal(await b.evaluate('currentSlide().type'),'databaseIntro');
    await click('#presentPrev');await check(id,'usecases');
   }
   await show(700);
@@ -60,27 +72,28 @@ fs.mkdirSync('.qa',{recursive:true});
 
   for(const theme of ['light','dark']){
    await b.evaluate(`data.theme='${theme}';renderChrome()`);
-   for(const id of [600,601,700,701,702]){
+   for(const id of [600,601,7100,700,7101,701,7102,702]){
     await show(id);const colors=[];
-    for(const step of id>=700?['benefits','limits','usecases']:[null]){
+    for(const step of [700,701,702].includes(id)?['benefits','limits','usecases']:[null]){
      if(step)await b.evaluate(`setDatabaseStep('${step}');finishSlideTransition()`);
      const bounds=await fit();assert.ok(bounds.height<=bounds.available+1&&bounds.width<=bounds.availableWidth+1,JSON.stringify({id,step,theme,...bounds}));
      if(step)colors.push(await b.evaluate('getComputedStyle(document.querySelector(".db-stage")).backgroundColor'));
-     if(id===601||id===700)await b.screenshot('.qa/db-sequence-'+theme+'-'+id+'-'+(step||'prompt')+'.png');
+     if(id===601||id===700||id>=7100)await b.screenshot('.qa/db-sequence-'+theme+'-'+id+'-'+(step||'intro')+'.png');
     }
     if(colors.length)assert.equal(new Set(colors).size,3);
    }
   }
   await b.cdp('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:false});
-  for(const id of [600,601,700,701,702]){
+  for(const id of [600,601,7100,700,7101,701,7102,702]){
    await show(id);
-   for(const step of id>=700?['benefits','limits','usecases']:[null]){
+   for(const step of [700,701,702].includes(id)?['benefits','limits','usecases']:[null]){
     if(step)await b.evaluate(`setDatabaseStep('${step}');finishSlideTransition()`);
     await b.evaluate('resizeStage()');
     assert.equal(await b.evaluate('document.documentElement.scrollWidth<=innerWidth&&document.querySelector("#slideFrame").scrollWidth<=document.querySelector("#slideFrame").clientWidth+1'),true,'Mobile '+id+' '+step);
    }
   }
   await show(700);await b.screenshot('.qa/db-sequence-mobile.png');
+  await show(7102);await b.screenshot('.qa/db-intro-mobile.png');
   console.log('PASS light/dark colors, slide fit and mobile layout');
 
   await b.cdp('Emulation.setDeviceMetricsOverride',{width:1600,height:1000,deviceScaleFactor:1,mobile:false});
@@ -89,16 +102,20 @@ fs.mkdirSync('.qa',{recursive:true});
   await b.evaluate(`(()=>{const el=document.querySelector('#slideFrame [data-path$=".limits.0"]');el.focus();el.textContent='Saved DB limitation';el.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText'}));el.blur();saveNow()})()`);
   await show(601);
   await b.evaluate(`(()=>{const el=document.querySelector('#slideFrame [data-path$=".segments.3"]');el.focus();el.textContent='Saved design prompt';el.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText'}));el.blur();saveNow()})()`);
+  await show(7100);
+  await b.evaluate(`(()=>{const el=document.querySelector('#slideFrame [data-path$=".items.0.description"]');el.focus();el.textContent='Saved database introduction';el.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText'}));el.blur();saveNow()})()`);
   await b.navigate(b.url+'/?db-edits','typeof data!=="undefined"');
   assert.equal(await b.evaluate('data.slides[23].segments[3]'), 'Saved design prompt');
-  assert.equal(await b.evaluate('data.slides[25].items[0].limits[0]'),'Saved DB limitation');
+  assert.equal(await b.evaluate('data.slides.find(s=>s.id===700).items[0].limits[0]'),'Saved DB limitation');
+  await show(7100);assert.equal(await b.evaluate('document.querySelector("#slideFrame .db-profile-description").textContent'),'Saved database introduction');
   await b.evaluate('data=copy(DEFAULT);states={};current=0;renderAll();saveNow();buildPrint()');
   await b.cdp('Emulation.setEmulatedMedia',{media:'print'});
-  assert.equal(await b.evaluate('document.querySelectorAll("#printRoot .print-page").length'),63);
-  for(const index of [22,23,25,26,27]){
+  assert.equal(await b.evaluate('document.querySelectorAll("#printRoot .print-page").length'),66);
+  for(const id of [600,601,7100,700,7101,701,7102,702]){
+   const index=await b.evaluate(`data.slides.findIndex(s=>s.id===${id})`);
    const result=await b.evaluate(`(()=>{const s=document.querySelectorAll('#printRoot .print-page')[${index}].querySelector('.slide'),h=s.querySelector('.slide-content'),c=s.querySelector('.content-inner');return {height:c.scrollHeight,available:h.clientHeight,width:c.scrollWidth,availableWidth:h.clientWidth,copy:s.querySelectorAll('[data-action=copy]').length,sections:s.querySelectorAll('.backend-evidence>div').length}})()`);
    assert.ok(result.height<=result.available+1&&result.width<=result.availableWidth+1,JSON.stringify({index,...result}));
-   assert.equal(result.copy,0);if(index>=25)assert.equal(result.sections,3);
+   assert.equal(result.copy,0);if([700,701,702].includes(id))assert.equal(result.sections,3);
   }
   assert.deepEqual(b.errors,[]);
   console.log('PASS canvas edits persist; PDF retains all three categories; no browser errors');
