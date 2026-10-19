@@ -818,7 +818,7 @@ body.reading:not(.present) .workspace{height:auto;min-height:calc(100dvh - var(-
  <section class="practice-pane" id="uiuxPanel" role="tabpanel" aria-labelledby="uiuxTab"><div class="practice-loading" id="practiceLoading" role="status">UI/UX 실습을 준비하고 있습니다.</div><iframe class="practice-frame" id="practiceFrame" title="UI·UX 용어 체험관 — 25가지 실습" allow="clipboard-write; fullscreen" sandbox="allow-scripts allow-same-origin allow-modals allow-forms allow-downloads"></iframe></section>
  <section class="practice-pane" id="animationPanel" role="tabpanel" aria-labelledby="animationTab" hidden=""><div class="practice-loading" id="animationLoading" role="status">애니메이션·인터랙션 실습을 준비하고 있습니다.</div><iframe class="practice-frame" id="animationFrame" title="애니메이션·인터랙션 체험관 — 22가지 실습" allow="clipboard-write; fullscreen" sandbox="allow-scripts allow-same-origin allow-modals allow-downloads"></iframe></section>
 </section>
-<footer class="app-footer" id="appFooter" data-design="signature" aria-label="강의 제작자">원주여고 김범준(비범쌤)</footer>
+<footer class="app-footer" id="appFooter" data-design="rule" aria-label="강의 제작자">원주여고 김범준(비범쌤)</footer>
 <div class="panel-scrim" data-command="close-panels"></div>
 <div class="presentation-controls" aria-label="발표 조작 · 오른쪽 화살표, 클릭, 스페이스로 순차 진행"><button id="presentHome" title="처음으로 (Home)">처음으로</button><div class="chapter-picker"><button id="chapterToggle" aria-expanded="false" aria-controls="chapterMenu">챕터 바로가기</button><nav id="chapterMenu" class="chapter-menu" aria-label="챕터 시작으로 이동" hidden=""></nav></div><button id="presentPrev" aria-label="이전 슬라이드" data-icon="left"></button><span class="count" id="presentCount"></span><button id="presentNext" aria-label="다음 슬라이드" data-icon="right"></button><button id="fullscreenBtn" aria-label="전체화면 전환" title="전체화면" data-icon="expand"></button><button data-command="read-mode" class="read-toggle" aria-label="읽기 보기 전환" data-icon="layout"></button><button data-command="theme" aria-label="테마 변경" data-icon="moon"></button><button data-command="practice">실습</button><button data-command="print" class="hide-phone">PDF 출력</button><button id="exitBtn">발표 종료</button></div>
 <div id="slideAnnouncement" class="sr-only" role="status" aria-live="polite"></div>
@@ -2051,7 +2051,7 @@ function renderNav(){
  });$('#slideNav').innerHTML=html;renderSlideManager();
 }
 /* APP_FOOTER_JS_START */
-function footerMarkup(design='signature'){
+function footerMarkup(design='rule'){
  const author='<span class="footer-author"><span class="footer-school">원주여고</span> <strong>김범준<span class="footer-nickname">(비범쌤)</span></strong></span>';
  if(design==='label')return '<span class="footer-label"><span class="footer-code-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 16"/></svg></span>'+author+'</span>';
  if(design==='rule')return '<span class="footer-rule-copy"><span class="footer-caption">VIBE CODING · ADVANCED</span>'+author+'</span>';
@@ -2059,7 +2059,7 @@ function footerMarkup(design='signature'){
 }
 function setupAppFooter(){
  const footer=document.getElementById('appFooter');if(!footer)return;
- const requested=new URLSearchParams(location.search).get('footer'),design=['signature','label','rule'].includes(requested)?requested:'signature';
+ const requested=new URLSearchParams(location.search).get('footer'),design=['signature','label','rule'].includes(requested)?requested:'rule';
  footer.dataset.design=design;footer.innerHTML=footerMarkup(design);
 }
 
