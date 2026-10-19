@@ -1,0 +1,56 @@
+/* Code-built cover studies. Scoped so a selected concept can be reused on the cover. */
+.code-visual{position:relative;width:550px;height:500px;color:#dce1ff;font-family:Consolas,'SFMono-Regular',monospace;isolation:isolate;--cycle:12s}
+.code-visual *{box-sizing:border-box}
+.code-visual::before{content:'';position:absolute;inset:20px -15px -15px;background:radial-gradient(ellipse at 60% 58%,#5264e52a,transparent 65%);z-index:-1}
+.code-grid{position:absolute;inset:15px 0 0;background-image:linear-gradient(#9caaff08 1px,transparent 1px),linear-gradient(90deg,#9caaff08 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse,#0008,transparent 72%);z-index:-1}
+.code-orbit{position:absolute;left:13px;top:112px;width:510px;height:290px;border:1px solid #9caaff16;border-radius:50%;transform:rotate(-28deg)}
+.code-window{position:absolute;overflow:hidden;border:1px solid #a3b0ff44;border-radius:11px;background:linear-gradient(135deg,#202534f5,#141824fa);box-shadow:0 22px 50px #0005,inset 0 1px #ffffff0a}
+.code-window-head{height:38px;display:flex;align-items:center;gap:11px;padding:0 15px;border-bottom:1px solid #9caaff1f;background:#b4c0ff06;font-size:11px;letter-spacing:.02em;color:#b0b9d8}
+.code-dots{display:flex;gap:4px;margin-right:3px}.code-dots i{width:4px;height:4px;border-radius:50%;background:#9caaff4d}.code-dots i:first-child{background:#9caaff}
+.code-file-icon{font-size:11px;color:#a5b1ff}.code-head-status{margin-left:auto;font-size:8px;letter-spacing:.1em;color:#8c9ad4}
+.code-lines{display:flex;flex-direction:column;gap:8px;padding:17px 16px;font-size:12px;line-height:1.45;white-space:pre}
+.code-line{display:flex;gap:13px;min-height:17px}.code-line-number{width:15px;flex:none;text-align:right;color:#535d78;font-size:10px;user-select:none}.code-line-content{display:block;width:max-content;max-width:100%;overflow:hidden;color:#c1c8df}.code-line-content b{font-weight:400;color:#a4afff}.code-line-content em{font-style:normal;color:#8ea5e6}.code-line-content s{color:#707d9d;text-decoration:none}.code-cursor{display:inline-block;width:6px;height:13px;vertical-align:-2px;margin-left:3px;background:#a4afff;animation:code-blink 1s steps(1) infinite}
+.code-status{position:absolute;display:flex;align-items:center;gap:8px;font-size:9px;color:#a6b1db;letter-spacing:.1em}.code-status-dot{width:5px;height:5px;border-radius:50%;background:#a3b0ff;box-shadow:0 0 12px #8293ff}.code-status-dot::after{content:'';display:block;width:100%;height:100%;border-radius:50%;border:1px solid #9caaff;animation:code-ping 2.8s ease-out infinite}
+.code-bracket{position:absolute;font-size:58px;font-weight:300;color:#9caaff22;line-height:1}
+.code-visual[data-motion=paused] *,.code-visual[data-motion=paused] *::after{animation-play-state:paused!important}
+@keyframes code-blink{50%{opacity:0}}
+@keyframes code-ping{0%{transform:scale(1);opacity:.8}80%,100%{transform:scale(3.4);opacity:0}}
+
+/* 01 — three windows arrive in sequence, keeping the previous layers visible. */
+.code-stack .stack-back{left:25px;top:27px;width:356px;height:220px;--tilt:-12deg;--enter:0s}
+.code-stack .stack-middle{left:84px;top:143px;width:367px;height:218px;--tilt:-6deg;--enter:.75s;background:linear-gradient(140deg,#252e51f8,#1a2036fc);border-color:#8a9dff66}
+.code-stack .stack-front{left:141px;top:260px;width:383px;height:212px;--tilt:0deg;--enter:1.5s;background:linear-gradient(135deg,#29366c,#18213e);border-color:#a3b0ffa1;box-shadow:0 22px 55px #0006,0 0 32px #6375ff14}
+.code-stack .code-window{transform:rotate(var(--tilt));animation:stack-arrive var(--cycle) cubic-bezier(.2,.7,.25,1) var(--enter) infinite both;transform-origin:50% 100%}
+.code-stack .code-line-content{animation:stack-write var(--cycle) steps(26,end) calc(var(--enter) + .4s + var(--line) * .16s) infinite both}
+.code-stack .code-status{right:20px;bottom:3px}.code-stack .code-bracket{right:19px;top:75px}
+@keyframes stack-arrive{0%{opacity:0;transform:translateY(34px) rotate(calc(var(--tilt) - 3deg)) scale(.96)}9%,79%{opacity:1;transform:translateY(0) rotate(var(--tilt)) scale(1)}88%,100%{opacity:0;transform:translateY(-18px) rotate(var(--tilt)) scale(.99)}}
+@keyframes stack-write{0%{clip-path:inset(0 100% 0 0)}6%,79%{clip-path:inset(0 0 0 0)}88%,100%{clip-path:inset(0 0 0 0)}}
+
+/* 02 — an editor writes a small app, then its preview assembles below. */
+.code-build .build-editor{left:34px;top:30px;width:461px;height:325px;transform:rotate(-3deg);border-color:#8e9dff69}
+.code-build .code-window-head{height:42px}.code-build .code-lines{gap:8px;font-size:13px;padding-top:20px}
+.code-build .code-line-content{animation:build-write var(--cycle) steps(30,end) calc(var(--line) * .34s) infinite both}
+.build-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:#667cff19}.build-progress::after{content:'';display:block;height:100%;background:#a3b0ff;transform-origin:left;animation:build-progress var(--cycle) ease infinite}
+.build-connector{position:absolute;left:110px;top:350px;width:115px;height:73px;border-left:1px dashed #a3b0ff5c;border-bottom:1px dashed #a3b0ff5c;border-radius:0 0 0 20px}
+.build-app{position:absolute;left:198px;top:316px;width:310px;height:167px;overflow:hidden;border-radius:12px;border:1px solid #b5c0ff8c;background:linear-gradient(135deg,#35468e,#222d53);box-shadow:0 22px 50px #0005;animation:build-preview var(--cycle) ease infinite}
+.build-app-bar{display:flex;align-items:center;justify-content:space-between;height:29px;padding:0 14px;background:#11182c40;font-size:8px;letter-spacing:.08em;color:#bcc7f9}
+.build-app-body{padding:14px 16px;font-family:var(--font-ui,system-ui,sans-serif)}.build-app-title{font-size:17px;font-weight:700;margin-bottom:13px;color:#f3f5ff}.build-app-title small{float:right;margin-top:5px;font:8px Consolas,monospace;color:#b7c4ff;font-weight:400}
+.build-app-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.build-app-card{height:65px;border-radius:6px;background:#b5c1ff17;border:1px solid #cad3ff17;padding:10px;animation:build-card var(--cycle) ease calc(var(--card) * .18s) infinite both}.build-app-card:first-child{background:#a3b0ff;color:#172454}.build-app-card span{display:block;font-size:9px;margin-top:8px}.build-app-card svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.code-build .code-status{left:42px;bottom:16px;font-size:8px}.code-build .code-bracket{right:4px;top:168px;font-size:48px}
+@keyframes build-write{0%{clip-path:inset(0 100% 0 0)}9%,73%{clip-path:inset(0)}85%,100%{clip-path:inset(0 100% 0 0)}}
+@keyframes build-progress{0%{transform:scaleX(0)}43%,80%{transform:scaleX(1)}90%,100%{transform:scaleX(0)}}
+@keyframes build-preview{0%,26%{opacity:0;transform:translateY(18px) scale(.96)}40%,82%{opacity:1;transform:translateY(0) scale(1)}93%,100%{opacity:0;transform:translateY(-8px) scale(.99)}}
+@keyframes build-card{0%,34%{opacity:0;transform:translateY(10px)}45%,82%{opacity:1;transform:translateY(0)}93%,100%{opacity:0;transform:translateY(-3px)}}
+
+/* 03 — code becomes a layered, architectural object. */
+.code-tower{perspective:1300px;perspective-origin:50% 40%}
+.tower-floor{position:absolute;left:61px;top:207px;width:397px;height:232px;transform:rotateX(55deg) rotateZ(-32deg);border:1px solid #9caaff26;border-radius:8px;background-image:linear-gradient(#9caaff0c 1px,transparent 1px),linear-gradient(90deg,#9caaff0c 1px,transparent 1px);background-size:26px 26px;box-shadow:0 0 80px #6375ff12}
+.tower-scene{position:absolute;left:102px;top:183px;width:345px;height:245px;transform:rotateX(52deg) rotateZ(-32deg);transform-style:preserve-3d}
+.tower-layer{position:absolute;inset:0;overflow:hidden;border:1px solid #95a6ff80;border-radius:9px;background:linear-gradient(135deg,#273257,#161d32);box-shadow:-5px 7px 0 #11172c,-6px 8px 0 #7d90f34d,-14px 26px 35px #0005;transform:translateZ(var(--depth));animation:tower-assemble var(--cycle) cubic-bezier(.2,.7,.25,1) var(--enter) infinite both}
+.tower-layer.layer-html{--depth:0px;--enter:0s}.tower-layer.layer-css{--depth:69px;--enter:.8s;background:linear-gradient(135deg,#3d4f96,#25315a);border-color:#a3b0ffab}.tower-layer.layer-js{--depth:138px;--enter:1.6s;background:linear-gradient(135deg,#7789ec,#4356af);border-color:#d1d7ffbd;box-shadow:-5px 7px 0 #38488b,-6px 8px 0 #b1bfff80,-14px 26px 35px #0005}
+.tower-layer .code-window-head{height:37px;background:#10162b1a;color:#c4d0ff;border-bottom-color:#c5ceff26}.tower-layer .code-head-status{color:inherit}.tower-layer .code-line-content{color:#e0e6ff}.tower-layer .code-line-content b{color:#fff}.tower-layer .code-line-content em{color:#cbd5ff}.tower-layer .code-line-number{color:#b0bfff88}.tower-layer .code-lines{font-size:12px;gap:9px;padding:20px 18px}.tower-layer .code-line-content{animation:tower-code var(--cycle) steps(24,end) calc(var(--enter) + var(--line) * .12s) infinite both}
+.tower-axis{position:absolute;left:36px;top:140px;width:1px;height:230px;background:linear-gradient(transparent,#9caaff55,transparent)}.tower-axis span{position:absolute;left:-6px;display:flex;align-items:center;gap:9px;font-size:8px;letter-spacing:.12em;color:#9eabd6}.tower-axis span::before{content:'';width:4px;height:4px;border:1px solid #9caaff;border-radius:50%;background:#101217}.tower-axis span:nth-child(1){top:20px}.tower-axis span:nth-child(2){top:100px}.tower-axis span:nth-child(3){top:180px}
+.code-tower .code-status{left:185px;bottom:4px}.code-tower .code-bracket{right:8px;top:80px}
+@keyframes tower-assemble{0%{opacity:0;transform:translateZ(calc(var(--depth) + 65px)) translateY(-12px)}11%,78%{opacity:1;transform:translateZ(var(--depth)) translateY(0)}89%,100%{opacity:0;transform:translateZ(calc(var(--depth) - 20px)) translateY(10px)}}
+@keyframes tower-code{0%{clip-path:inset(0 100% 0 0)}13%,100%{clip-path:inset(0)}}
+@media print{.code-visual *,.code-visual *::after{animation:none!important;opacity:1!important;clip-path:none!important}}
