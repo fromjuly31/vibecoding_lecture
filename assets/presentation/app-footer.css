@@ -1,0 +1,24 @@
+/* Application credit, shared by the lecture, practice and footer concept previews. */
+:root{--app-footer-height:64px}
+body:not(.present) .workspace,body:not(.present) .practice-panel{height:calc(100dvh - var(--header-height) - var(--tabbar-height) - var(--app-footer-height))}
+body.reading:not(.present) .workspace{height:auto;min-height:calc(100dvh - var(--header-height) - var(--tabbar-height) - var(--app-footer-height))}
+.app-footer{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:none;height:var(--app-footer-height);padding:12px 24px;text-align:center;color:var(--ink);font-family:var(--font-ui,system-ui,sans-serif);font-size:13px;line-height:1.5;letter-spacing:-.02em;background:var(--paper);border-top:1px solid var(--line)}
+.footer-author{display:inline-flex;align-items:baseline;justify-content:center;gap:9px;white-space:nowrap}
+.footer-school{color:var(--muted);font-size:12px;font-weight:500}
+.footer-author strong{font-size:14px;font-weight:700}.footer-nickname{color:var(--accent-ink);font-size:12px;font-weight:550;margin-left:3px}
+.app-footer[data-design=signature] .footer-school{padding-right:11px;border-right:1px solid var(--line)}
+.app-footer[data-design=label]{background:var(--canvas);border-top-color:transparent}
+.footer-label{display:inline-flex;align-items:center;gap:12px;padding:8px 17px 8px 10px;border:1px solid var(--line);border-radius:100px;background:var(--paper);box-shadow:0 3px 12px #14161b05}
+.footer-code-mark{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--paper);flex:none}
+.footer-code-mark svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.app-footer[data-design=rule]{background:var(--canvas);border-top:0;gap:24px}
+.app-footer[data-design=rule]::before,.app-footer[data-design=rule]::after{content:'';width:72px;height:1px;background:var(--line)}
+.footer-rule-copy{display:flex;flex-direction:column;align-items:center;gap:5px}
+.footer-caption{font-size:8px;font-weight:700;line-height:1.25;letter-spacing:.2em;color:var(--accent-ink)}
+.app-footer[data-design=rule] .footer-author{gap:8px}.app-footer[data-design=rule] .footer-author strong{font-size:13px}.app-footer[data-design=rule] .footer-nickname{color:var(--muted)}
+.present>.app-footer{display:none}
+@media(max-width:680px){
+ .app-footer{padding-inline:14px}.footer-author{gap:8px}.app-footer[data-design=rule]{gap:14px}.app-footer[data-design=rule]::before,.app-footer[data-design=rule]::after{width:28px}.footer-label{padding-right:14px;gap:10px}
+ body.sidebar-open:not(.present) .sidebar{bottom:var(--app-footer-height)}
+}
+@media print{.app-footer{display:none!important}}

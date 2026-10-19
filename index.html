@@ -774,6 +774,33 @@ body:not(.reading) .part-two-content .prompt-request-step{padding-block:17px}
 @media print{.idea-dialog{display:none!important}.print-takeaway{white-space:pre-wrap}.print-page .slide.part-two-content .quote-case .comparison-value{font-size:30px}.print-page .slide.part-two-content .ledger-case .comparison-value{font-size:24px}}
 
 </style>
+<style id="app-footer-style">
+/* Application credit, shared by the lecture, practice and footer concept previews. */
+:root{--app-footer-height:64px}
+body:not(.present) .workspace,body:not(.present) .practice-panel{height:calc(100dvh - var(--header-height) - var(--tabbar-height) - var(--app-footer-height))}
+body.reading:not(.present) .workspace{height:auto;min-height:calc(100dvh - var(--header-height) - var(--tabbar-height) - var(--app-footer-height))}
+.app-footer{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:none;height:var(--app-footer-height);padding:12px 24px;text-align:center;color:var(--ink);font-family:var(--font-ui,system-ui,sans-serif);font-size:13px;line-height:1.5;letter-spacing:-.02em;background:var(--paper);border-top:1px solid var(--line)}
+.footer-author{display:inline-flex;align-items:baseline;justify-content:center;gap:9px;white-space:nowrap}
+.footer-school{color:var(--muted);font-size:12px;font-weight:500}
+.footer-author strong{font-size:14px;font-weight:700}.footer-nickname{color:var(--accent-ink);font-size:12px;font-weight:550;margin-left:3px}
+.app-footer[data-design=signature] .footer-school{padding-right:11px;border-right:1px solid var(--line)}
+.app-footer[data-design=label]{background:var(--canvas);border-top-color:transparent}
+.footer-label{display:inline-flex;align-items:center;gap:12px;padding:8px 17px 8px 10px;border:1px solid var(--line);border-radius:100px;background:var(--paper);box-shadow:0 3px 12px #14161b05}
+.footer-code-mark{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:var(--ink);color:var(--paper);flex:none}
+.footer-code-mark svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.app-footer[data-design=rule]{background:var(--canvas);border-top:0;gap:24px}
+.app-footer[data-design=rule]::before,.app-footer[data-design=rule]::after{content:'';width:72px;height:1px;background:var(--line)}
+.footer-rule-copy{display:flex;flex-direction:column;align-items:center;gap:5px}
+.footer-caption{font-size:8px;font-weight:700;line-height:1.25;letter-spacing:.2em;color:var(--accent-ink)}
+.app-footer[data-design=rule] .footer-author{gap:8px}.app-footer[data-design=rule] .footer-author strong{font-size:13px}.app-footer[data-design=rule] .footer-nickname{color:var(--muted)}
+.present>.app-footer{display:none}
+@media(max-width:680px){
+ .app-footer{padding-inline:14px}.footer-author{gap:8px}.app-footer[data-design=rule]{gap:14px}.app-footer[data-design=rule]::before,.app-footer[data-design=rule]::after{width:28px}.footer-label{padding-right:14px;gap:10px}
+ body.sidebar-open:not(.present) .sidebar{bottom:var(--app-footer-height)}
+}
+@media print{.app-footer{display:none!important}}
+
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -784,13 +811,14 @@ body:not(.reading) .part-two-content .prompt-request-step{padding-block:17px}
 <nav class="course-tabs" aria-label="강의와 실습"><div class="course-tablist" role="tablist" aria-label="학습 화면 선택"><button class="course-tab" id="lectureTab" role="tab" aria-selected="true" aria-controls="lecturePanel" tabindex="0" data-course="lecture"><span data-icon="book"></span>강의 <small>16장</small></button><button class="course-tab" id="practiceTab" role="tab" aria-selected="false" aria-controls="practicePanel" tabindex="-1" data-course="practice"><span data-icon="screen"></span>실습 <small>2개 주제</small></button></div><span class="course-caption">개념을 이해하고, 직접 클릭하며 익혀 보세요.</span></nav>
 <div class="workspace" id="lecturePanel" role="tabpanel" aria-labelledby="lectureTab">
  <aside class="sidebar" aria-label="슬라이드 목록"><div class="sidebar-head"><span>강의 목차 <span class="muted" id="navTotal">/ 44</span></span><button class="icon-btn close-panel" data-command="close-panels" aria-label="목차 닫기" data-icon="close"></button></div><div class="slide-manager"><p>슬라이드 선택 후 ↑ ↓로 이전·다음<br>순서 변경: 손잡이 드래그 또는 위·아래 버튼</p><div class="slide-manager-actions"><button type="button" id="moveSlideUp" aria-label="선택한 슬라이드 위로 이동">↑ 위로</button><button type="button" id="moveSlideDown" aria-label="선택한 슬라이드 아래로 이동">↓ 아래로</button><button type="button" id="deleteSlide" class="delete-slide">삭제</button></div><details class="slide-trash" id="slideTrash"><summary>휴지통 <span id="trashCount">0</span></summary><div id="trashList" class="trash-list"></div></details></div><nav id="slideNav"></nav><div class="sidebar-bottom">TEACHER'S TOOLKIT<br>작은 아이디어가, 나만의 교육용 웹앱으로.</div></aside>
- <main class="main"><div class="preview-tools"><div class="breadcrumb"><button class="icon-btn mobile-tool" data-command="sidebar" aria-label="강의 목차 열기" data-icon="list"></button><span id="previewPart"></span><span class="muted">/</span><span id="previewCount" class="mono"></span></div><div style="display:flex;gap:8px;align-items:center"><button class="icon-btn read-toggle" data-command="read-mode" aria-label="16:9 화면과 읽기 보기 전환" data-icon="layout"></button></div></div><div class="layout-tools" id="layoutTools" hidden=""><span id="layoutHint">옮길 텍스트나 영역을 선택하세요.</span><button id="layoutParent" disabled="">상위 영역</button><button id="fontSmaller" aria-label="글자 크기 줄이기" disabled="">글자 −</button><button id="fontLarger" aria-label="글자 크기 키우기" disabled="">글자 +</button><button id="layoutReset" disabled="">선택 영역 초기화</button></div><div class="stage-wrap"><button class="stage-arrow prev" id="stagePrev" aria-label="이전 슬라이드" title="이전 슬라이드 (← · 휠 위)" data-icon="left"></button><div class="stage-space" id="stageSpace"><div class="slide-frame" id="slideFrame" tabindex="-1"></div><div class="layout-selection" id="layoutSelection" hidden=""><button id="layoutMove" class="layout-handle move-handle" aria-label="선택 영역 이동 · 방향키로 미세 조정" title="드래그 이동 · 방향키 1px · Shift 10px">✥</button><button id="layoutResize" class="layout-handle resize-handle" aria-label="선택 영역 너비 조절" title="드래그로 너비 조절">↔</button></div></div><button class="stage-arrow next" id="stageNext" aria-label="다음 슬라이드" title="다음 단계 (→ · 휠 아래)" data-icon="right"></button></div><div class="preview-bottom"><span class="help-text" id="previewHint">버튼과 카드를 클릭하며 강의를 미리 체험하세요.</span><div class="nav-pair"><button id="prevBtn" aria-label="이전 슬라이드" data-icon="left"></button><span id="bottomCount" class="mono"></span><button id="nextBtn" aria-label="다음 슬라이드" data-icon="right"></button></div></div><div class="lecture-notes"><span data-icon="note"></span><div><strong>강사용 메모 <span class="muted">· 발표 및 PDF에 표시되지 않습니다</span></strong><p id="notesPreview"></p></div></div></main>
+ <main class="main"><div class="preview-tools"><div class="breadcrumb"><button class="icon-btn mobile-tool" data-command="sidebar" aria-label="강의 목차 열기" data-icon="list"></button><span id="previewPart"></span><span class="muted">/</span><span id="previewCount" class="mono"></span></div><div style="display:flex;gap:8px;align-items:center"><button class="icon-btn read-toggle" data-command="read-mode" aria-label="16:9 화면과 읽기 보기 전환" data-icon="layout"></button></div></div><div class="layout-tools" id="layoutTools" hidden=""><span id="layoutHint">옮길 텍스트나 영역을 선택하세요.</span><button id="layoutParent" disabled="">상위 영역</button><button id="fontSmaller" aria-label="글자 크기 줄이기" disabled="">글자 −</button><button id="fontLarger" aria-label="글자 크기 키우기" disabled="">글자 +</button><button id="layoutReset" disabled="">선택 영역 초기화</button></div><div class="stage-wrap"><button class="stage-arrow prev" id="stagePrev" aria-label="이전 슬라이드" title="이전 슬라이드 (← · 휠 위)" data-icon="left"></button><div class="stage-space" id="stageSpace"><div class="slide-frame" id="slideFrame" tabindex="-1"></div><div class="layout-selection" id="layoutSelection" hidden=""><button id="layoutMove" class="layout-handle move-handle" aria-label="선택 영역 이동 · 방향키로 미세 조정" title="드래그 이동 · 방향키 1px · Shift 10px">✥</button><button id="layoutResize" class="layout-handle resize-handle" aria-label="선택 영역 너비 조절" title="드래그로 너비 조절">↔</button></div></div><button class="stage-arrow next" id="stageNext" aria-label="다음 슬라이드" title="다음 단계 (→ · 휠 아래)" data-icon="right"></button></div><div class="preview-bottom"><span class="help-text" id="previewHint">버튼과 카드를 클릭하며 강의를 미리 체험하세요.</span><div class="nav-pair"><button id="prevBtn" aria-label="이전 슬라이드" data-icon="left"></button><span id="bottomCount" class="mono"></span><button id="nextBtn" aria-label="다음 슬라이드" data-icon="right"></button></div></div></main>
 </div>
 <section class="practice-panel" id="practicePanel" role="tabpanel" aria-labelledby="practiceTab" hidden="">
  <div class="practice-topics"><div class="practice-topic-list" role="tablist" aria-label="실습 주제 선택"><button class="practice-topic" id="uiuxTab" role="tab" aria-selected="true" aria-controls="uiuxPanel" tabindex="0" data-practice="uiux">UI/UX <small>25가지</small></button><button class="practice-topic" id="animationTab" role="tab" aria-selected="false" aria-controls="animationPanel" tabindex="-1" data-practice="animation">애니메이션·인터랙션 <small>22가지</small></button></div><span class="practice-topic-hint">직접 체험하고, 프롬프트로 가져가세요.</span></div>
  <section class="practice-pane" id="uiuxPanel" role="tabpanel" aria-labelledby="uiuxTab"><div class="practice-loading" id="practiceLoading" role="status">UI/UX 실습을 준비하고 있습니다.</div><iframe class="practice-frame" id="practiceFrame" title="UI·UX 용어 체험관 — 25가지 실습" allow="clipboard-write; fullscreen" sandbox="allow-scripts allow-same-origin allow-modals allow-forms allow-downloads"></iframe></section>
  <section class="practice-pane" id="animationPanel" role="tabpanel" aria-labelledby="animationTab" hidden=""><div class="practice-loading" id="animationLoading" role="status">애니메이션·인터랙션 실습을 준비하고 있습니다.</div><iframe class="practice-frame" id="animationFrame" title="애니메이션·인터랙션 체험관 — 22가지 실습" allow="clipboard-write; fullscreen" sandbox="allow-scripts allow-same-origin allow-modals allow-downloads"></iframe></section>
 </section>
+<footer class="app-footer" id="appFooter" data-design="signature" aria-label="강의 제작자">원주여고 김범준(비범쌤)</footer>
 <div class="panel-scrim" data-command="close-panels"></div>
 <div class="presentation-controls" aria-label="발표 조작 · 오른쪽 화살표, 클릭, 스페이스로 순차 진행"><button id="presentHome" title="처음으로 (Home)">처음으로</button><div class="chapter-picker"><button id="chapterToggle" aria-expanded="false" aria-controls="chapterMenu">챕터 바로가기</button><nav id="chapterMenu" class="chapter-menu" aria-label="챕터 시작으로 이동" hidden=""></nav></div><button id="presentPrev" aria-label="이전 슬라이드" data-icon="left"></button><span class="count" id="presentCount"></span><button id="presentNext" aria-label="다음 슬라이드" data-icon="right"></button><button id="fullscreenBtn" aria-label="전체화면 전환" title="전체화면" data-icon="expand"></button><button data-command="read-mode" class="read-toggle" aria-label="읽기 보기 전환" data-icon="layout"></button><button data-command="theme" aria-label="테마 변경" data-icon="moon"></button><button data-command="practice">실습</button><button data-command="print" class="hide-phone">PDF 출력</button><button id="exitBtn">발표 종료</button></div>
 <div id="slideAnnouncement" class="sr-only" role="status" aria-live="polite"></div>
@@ -2022,7 +2050,21 @@ function renderNav(){
   html+='<div class="nav-row" data-slide-id="'+d.id+'"><button type="button" class="nav-handle" aria-label="'+escapeHTML(slideTitle(d))+' 순서 변경" title="드래그 또는 ↑ ↓ 키로 순서 변경">⠿</button><button type="button" class="nav-item '+(d.type==='section'?'section-nav':d.type==='cover'?'cover-nav':'')+'" data-slide-nav="'+i+'" aria-current="'+(i===current)+'"><span class="number">'+String(i+1).padStart(2,'0')+'</span><span class="nav-title">'+(d.type==='section'?'<span class="nav-main-badge">Main</span> ':'')+escapeHTML(slideTitle(d))+'</span></button></div>';
  });$('#slideNav').innerHTML=html;renderSlideManager();
 }
-function renderChrome(){renderSlideManager();const total=data.slides.length;document.title=data.meta.title;$('#brandTitle').textContent=data.meta.title;$('#previewPart').textContent=partLabel(currentSlide());$('#previewCount').textContent='SLIDE '+String(current+1).padStart(2,'0');$('#bottomCount').textContent=String(current+1).padStart(2,'0')+' / '+total;$('#presentCount').textContent=(current+1)+' / '+total;$('#lectureTab small').textContent=total+'장';$('#navTotal').textContent='/ '+total;$('#exportMenu [data-command="print"]').textContent='전체 '+total+'장 PDF 출력';if(document.activeElement!==$('#notesPreview'))$('#notesPreview').textContent=currentSlide().notes;$('#notesPreview').contentEditable=String(!presenting);renderChapterMenu();['prevBtn','presentPrev','stagePrev'].forEach(id=>$('#'+id).disabled=current===0);['nextBtn','presentNext','stageNext'].forEach(id=>$('#'+id).disabled=current===total-1&&!$('#slideFrame .emphasis.is-pending'));$('#layoutTools').hidden=presenting||!selectedLayout;$('#previewHint').textContent='문구 클릭 수정 · 손잡이로 배치 · 휠로 이동 · 자동 저장';document.documentElement.dataset.theme=data.theme;$('#themeBtn').innerHTML=icon(data.theme==='dark'?'sun':'moon');$('#themeBtn').setAttribute('aria-label',data.theme==='dark'?'라이트 모드로 변경':'다크 모드로 변경');}
+/* APP_FOOTER_JS_START */
+function footerMarkup(design='signature'){
+ const author='<span class="footer-author"><span class="footer-school">원주여고</span> <strong>김범준<span class="footer-nickname">(비범쌤)</span></strong></span>';
+ if(design==='label')return '<span class="footer-label"><span class="footer-code-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 16"/></svg></span>'+author+'</span>';
+ if(design==='rule')return '<span class="footer-rule-copy"><span class="footer-caption">VIBE CODING · ADVANCED</span>'+author+'</span>';
+ return author;
+}
+function setupAppFooter(){
+ const footer=document.getElementById('appFooter');if(!footer)return;
+ const requested=new URLSearchParams(location.search).get('footer'),design=['signature','label','rule'].includes(requested)?requested:'signature';
+ footer.dataset.design=design;footer.innerHTML=footerMarkup(design);
+}
+
+/* APP_FOOTER_JS_END */
+function renderChrome(){renderSlideManager();const total=data.slides.length;document.title=data.meta.title;$('#brandTitle').textContent=data.meta.title;$('#previewPart').textContent=partLabel(currentSlide());$('#previewCount').textContent='SLIDE '+String(current+1).padStart(2,'0');$('#bottomCount').textContent=String(current+1).padStart(2,'0')+' / '+total;$('#presentCount').textContent=(current+1)+' / '+total;$('#lectureTab small').textContent=total+'장';$('#navTotal').textContent='/ '+total;$('#exportMenu [data-command="print"]').textContent='전체 '+total+'장 PDF 출력';renderChapterMenu();['prevBtn','presentPrev','stagePrev'].forEach(id=>$('#'+id).disabled=current===0);['nextBtn','presentNext','stageNext'].forEach(id=>$('#'+id).disabled=current===total-1&&!$('#slideFrame .emphasis.is-pending'));$('#layoutTools').hidden=presenting||!selectedLayout;$('#previewHint').textContent='문구 클릭 수정 · 손잡이로 배치 · 휠로 이동 · 자동 저장';document.documentElement.dataset.theme=data.theme;$('#themeBtn').innerHTML=icon(data.theme==='dark'?'sun':'moon');$('#themeBtn').setAttribute('aria-label',data.theme==='dark'?'라이트 모드로 변경':'다크 모드로 변경');}
 function renderCurrent(restoreFocus=false){destroySlideCombos();finishSlideTransition();const active=document.activeElement,action=active?.dataset.action,value=active?.dataset.value,control=active?.dataset.control;clearLayoutSelection();$('#slideFrame').innerHTML=renderSlide(current);mountKeyIdea($('#slideFrame>.slide'));prepareLayout($('#slideFrame>.slide'));mountSlideCombos();mountConcreteExamples($('#slideFrame>.slide'));renderChrome();resizeStage();if(restoreFocus){const candidates=$$('#slideFrame [data-action],#slideFrame [data-control]');const target=candidates.find(el=>action?el.dataset.action===action&&el.dataset.value===value:control&&el.dataset.control===control);target?.focus({preventScroll:true});}}
 function renderAll(transition=null){renderNav();renderCurrent();animateSlide(transition);}
 function isReading(){return window.innerWidth<=860&&(readingOverride??(window.innerHeight>window.innerWidth));}
@@ -2147,7 +2189,7 @@ function resizeFont(delta){
  if(!selectedLayout?.dataset.path)return;const entry=layoutEntry(selectedLayout);entry.fontSize=Math.max(8,Math.min(180,Math.round(parseFloat(getComputedStyle(selectedLayout).fontSize))+delta));applyLayout(selectedLayout,entry);updateLayoutSelection();scheduleSave();
 }
 $('#fontSmaller').onclick=()=>resizeFont(-2);$('#fontLarger').onclick=()=>resizeFont(2);
-$('#notesPreview').addEventListener('input',event=>editValue(pathFor(current,'notes'),event.target.innerText.replace(/\r/g,''),true));
+
 
 function renderChapterMenu(){
  const menu=$('#chapterMenu'),signature=JSON.stringify([data.meta.parts,data.slides.map(s=>s.id)]);
@@ -2206,7 +2248,7 @@ $('#stageSpace').parentElement.addEventListener('wheel',event=>{
  if(activeCourse!=='lecture'||event.ctrlKey||event.metaKey||event.shiftKey||Math.abs(event.deltaX)>Math.abs(event.deltaY)||!event.deltaY)return;
  if(ComboUI.anyOpen()||!$('#chapterMenu').hidden||!$('#exportMenu').hidden)return;
  if(event.target.closest('input,textarea,select,[role="combobox"],[role="listbox"]'))return;
- if(!presenting&&document.activeElement?.closest('#slideFrame [contenteditable],#notesPreview'))return;
+ if(!presenting&&document.activeElement?.closest('#slideFrame [contenteditable]'))return;
  const now=performance.now(),delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?$('#stageSpace').clientHeight:1),direction=Math.sign(delta);
  if(now-slideWheel.last>220){slideWheel.sum=0;slideWheel.used=false;slideWheel.scrolling=false;}
  if(slideWheel.direction!==direction)slideWheel.sum=0;
@@ -2253,6 +2295,7 @@ window.addEventListener('beforeprint',()=>{if(!printReady)buildPrint();});window
 window.addEventListener('pagehide',saveNow);document.addEventListener('visibilitychange',()=>{if(document.hidden)saveNow();});window.addEventListener('beforeunload',event=>{if(dirty){saveNow();if(dirty){event.preventDefault();event.returnValue='';}}});
 setupSlideManager();
 setupIdeaEditor();
+setupAppFooter();
 renderAll();if(initialMessage)notify(initialMessage);
 
 document.fonts.ready.then(resizeStage);

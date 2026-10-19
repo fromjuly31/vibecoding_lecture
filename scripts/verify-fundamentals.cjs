@@ -53,7 +53,7 @@ process.chdir(path.resolve(__dirname,'..'));fs.mkdirSync('.qa',{recursive:true})
   assert.equal(await b.evaluate('current'),0);assert.equal(await b.evaluate('document.querySelector(".sidebar").scrollTop'),startScroll);
   await click('[data-slide-nav="72"]');await key('ArrowDown',40);assert.equal(await b.evaluate('current'),72);
   assert.equal(await b.evaluate('document.activeElement.dataset.slideNav'),'72');assert.deepEqual(await b.evaluate('data.slides.map(s=>s.id)'),originalOrder);
-  await b.evaluate(`const field=document.querySelector('#notesPreview');field.focus();const selection=getSelection(),range=document.createRange();range.selectNodeContents(field);range.collapse(false);selection.removeAllRanges();selection.addRange(range);`);
+  await b.evaluate(`const field=document.querySelector('#slideFrame [contenteditable]');field.focus();const selection=getSelection(),range=document.createRange();range.selectNodeContents(field);range.collapse(false);selection.removeAllRanges();selection.addRange(range);`);
   await key('ArrowUp',38);assert.equal(await b.evaluate('current'),72);
   console.log('PASS list click retains focus; up/down selects adjacent slides, keeps selection visible, respects boundaries and leaves slide order/text editing unchanged');
   await reset();await show(150);
