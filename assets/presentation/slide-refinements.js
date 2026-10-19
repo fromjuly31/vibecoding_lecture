@@ -21,9 +21,13 @@ function comparisonQuote(i,n,printing){
  const path='rows.0.'+(n+1),raw=currentAt(i).rows[0][n+1],text=raw.replace(/^[“"]([\s\S]*)[”"]$/,'$1');
  return '<p class="comparison-value" data-path="'+pathFor(i,path)+'"'+(!printing&&!presenting?' contenteditable="plaintext-only" spellcheck="false"':'')+'>'+escapeHTML(text)+'</p>';
 }
-function costSymbol(n){
- const paths=['M12 3v18M4 21h16M4 7h16M6 7l-4 8h8L6 7Zm12 0-4 8h8l-4-8Z','M4 4h16v5H4zM4 12h7v8H4zM14 12h6v8h-6zM7 6.5h10','m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6Z'];
- return '<span class="ledger-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="'+paths[n]+'"/></svg></span>';
+function costSymbol(n,database=false){
+ const paths=database?[
+  'M3 3h8l10 10-8 8L3 11V3ZM7 7h.01M9 12l3 3 5-5',
+  'M4 3h9v4H4zM4 10h13v4H4zM4 17h17v4H4z',
+  'M4.2 18a9 9 0 1 1 15.6 0H4.2ZM12 14l4-5M12 5v2M5 10l2 1M19 10l-2 1'
+ ]:['M12 3v18M4 21h16M4 7h16M6 7l-4 8h8L6 7Zm12 0-4 8h8l-4-8Z','M4 4h16v5H4zM4 12h7v8H4zM14 12h6v8h-6zM7 6.5h10','m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6Z'];
+ return '<span class="'+(database?'pictogram ':'')+'ledger-symbol" aria-hidden="true"><svg'+(database?' class="icon"':'')+' viewBox="0 0 24 24"><path d="'+paths[n]+'"/></svg></span>';
 }
 function setupIdeaEditor(){
  const dialog=document.createElement('dialog');dialog.id='ideaEditor';dialog.className='idea-dialog';dialog.setAttribute('aria-labelledby','ideaEditorTitle');
