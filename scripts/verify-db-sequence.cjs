@@ -13,18 +13,18 @@ fs.mkdirSync('.qa',{recursive:true});
  try{
   await b.navigate(b.url+'/?db-sequence-qa','typeof data!=="undefined"&&!!document.querySelector("#slideFrame>.slide")');
   await b.evaluate('localStorage.clear();data=copy(DEFAULT);states={};current=0;renderAll()');
-  assert.deepEqual(await b.evaluate('data.slides.slice(22,31).map(s=>s.id)'),[600,601,9003,7100,700,7101,701,7102,702]);
-  assert.equal(await b.evaluate('data.slides.length'),66);
-  assert.equal(await b.evaluate('data.version'),12);
-  assert.deepEqual(await b.evaluate('data.slides.flatMap((s,i)=>s.type==="databaseIntro"?[[i+1,s.sourceId,data.slides[i+1].id]]:[])'),[[26,700,700],[28,701,701],[30,702,702]]);
+  assert.deepEqual(await b.evaluate('data.slides.slice(29,38).map(s=>s.id)'),[600,601,9003,7100,700,7101,701,7102,702]);
+  assert.equal(await b.evaluate('data.slides.length'),73);
+  assert.equal(await b.evaluate('data.version'),13);
+  assert.deepEqual(await b.evaluate('data.slides.flatMap((s,i)=>s.type==="databaseIntro"?[[i+1,s.sourceId,data.slides[i+1].id]]:[])'),[[33,700,700],[35,701,701],[37,702,702]]);
   assert.equal(await b.evaluate('slideTitle(data.slides.find(s=>s.id===7100))'), 'Google Sheets · 소개');
-  assert.equal(await b.evaluate(`[LEGACY_DEFAULT,V2_DEFAULT,V3_DEFAULT,V4_DEFAULT,V5_DEFAULT,V6_DEFAULT,V7_DEFAULT,V8_DEFAULT,V9_DEFAULT,V10_DEFAULT,V11_DEFAULT,DEFAULT].every(d=>{const n=validData(copy(d)),p=n.slides.find(s=>s.id===601);return n.slides.length===66&&p.segments[3]===DEFAULT.slides.find(s=>s.id===601).segments[3]&&JSON.stringify(validData(n))===JSON.stringify(n)})`),true);
+  assert.equal(await b.evaluate(`[LEGACY_DEFAULT,V2_DEFAULT,V3_DEFAULT,V4_DEFAULT,V5_DEFAULT,V6_DEFAULT,V7_DEFAULT,V8_DEFAULT,V9_DEFAULT,V10_DEFAULT,V11_DEFAULT,V12_DEFAULT,DEFAULT].every(d=>{const n=validData(copy(d)),p=n.slides.find(s=>s.id===601);return n.slides.length===73&&p.segments[3]===DEFAULT.slides.find(s=>s.id===601).segments[3]&&JSON.stringify(validData(n))===JSON.stringify(n)})`),true);
   assert.equal(await b.evaluate(`(()=>{const old=copy(V10_DEFAULT),p=old.slides.find(s=>s.id===601);p.segments[3]='My saved design';p.elements[3].description='My design label';old.slides.find(s=>s.id===700).items[0].limits[0]='My saved limitation';old.layouts={'700':{'text:items.0.description:0':{x:3,y:4}}};const next=validData(old);return next.slides.find(s=>s.id===601).segments[3]===p.segments[3]&&next.slides.find(s=>s.id===601).elements[3].description===p.elements[3].description&&next.slides.find(s=>s.id===700).items[0].limits[0]==='My saved limitation'&&JSON.stringify(next.layouts)===JSON.stringify(old.layouts)})()`),true);
   await b.evaluate('localStorage.setItem(storageKey,JSON.stringify(V10_DEFAULT))');
   await b.navigate(b.url+'/?db-saved-migration','typeof data!=="undefined"');
-  assert.equal(await b.evaluate('!initialMessage&&data.slides[23].segments[3]===DEFAULT.slides[23].segments[3]'),true);
+  assert.equal(await b.evaluate('!initialMessage&&data.slides.find(s=>s.id===601).segments[3]===DEFAULT.slides.find(s=>s.id===601).segments[3]'),true);
   for(const id of [600,601]){await show(id);assert.equal(await b.evaluate('document.querySelectorAll("#slideFrame [data-action=copy]").length'),0);}
-  assert.match(await b.evaluate('data.slides[23].segments[3]'),/SUIT.*18px.*#F5F7FA.*#172033.*#355BFF.*24px/);
+  assert.match(await b.evaluate('data.slides.find(s=>s.id===601).segments[3]'),/SUIT.*18px.*#F5F7FA.*#172033.*#355BFF.*24px/);
   console.log('PASS page numbering, prompt buttons, concrete design copy, saved-deck migration and custom edits');
 
   await show(700);await click('#nextBtn');await check(700,'limits');await click('#prevBtn');await check(700,'benefits');
@@ -105,12 +105,12 @@ fs.mkdirSync('.qa',{recursive:true});
   await show(7100);
   await b.evaluate(`(()=>{const el=document.querySelector('#slideFrame [data-path$=".items.0.description"]');el.focus();el.textContent='Saved database introduction';el.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText'}));el.blur();saveNow()})()`);
   await b.navigate(b.url+'/?db-edits','typeof data!=="undefined"');
-  assert.equal(await b.evaluate('data.slides[23].segments[3]'), 'Saved design prompt');
+  assert.equal(await b.evaluate('data.slides.find(s=>s.id===601).segments[3]'), 'Saved design prompt');
   assert.equal(await b.evaluate('data.slides.find(s=>s.id===700).items[0].limits[0]'),'Saved DB limitation');
   await show(7100);assert.equal(await b.evaluate('document.querySelector("#slideFrame .db-profile-description").textContent'),'Saved database introduction');
   await b.evaluate('data=copy(DEFAULT);states={};current=0;renderAll();saveNow();buildPrint()');
   await b.cdp('Emulation.setEmulatedMedia',{media:'print'});
-  assert.equal(await b.evaluate('document.querySelectorAll("#printRoot .print-page").length'),66);
+  assert.equal(await b.evaluate('document.querySelectorAll("#printRoot .print-page").length'),73);
   for(const id of [600,601,7100,700,7101,701,7102,702]){
    const index=await b.evaluate(`data.slides.findIndex(s=>s.id===${id})`);
    const result=await b.evaluate(`(()=>{const s=document.querySelectorAll('#printRoot .print-page')[${index}].querySelector('.slide'),h=s.querySelector('.slide-content'),c=s.querySelector('.content-inner');return {height:c.scrollHeight,available:h.clientHeight,width:c.scrollWidth,availableWidth:h.clientWidth,copy:s.querySelectorAll('[data-action=copy]').length,sections:s.querySelectorAll('.backend-evidence>div').length}})()`);

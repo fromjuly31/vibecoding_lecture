@@ -8,13 +8,13 @@ fs.mkdirSync('.qa',{recursive:true});
  const fit=()=>b.evaluate(`(()=>{const s=document.querySelector('#slideFrame>.slide'),c=s.querySelector('.content-inner'),h=s.querySelector('.slide-content');return{height:c.scrollHeight,available:h.clientHeight,width:c.scrollWidth,availableWidth:h.clientWidth}})()`);
  try{
   await b.navigate(b.url+'/?ai-brands-qa','typeof data!=="undefined"');
-  await b.evaluate('localStorage.clear();data=copy(DEFAULT);states={};current=14;renderAll()');
-  assert.deepEqual(await b.evaluate('data.slides.slice(14,17).map(s=>[s.id,s.title,s.brand.company,s.brand.score])'),[[400,'ChatGPT','OpenAI','53'],[401,'Gemini','Google DeepMind','53'],[402,'Claude','Anthropic','58']]);
-  assert.equal(await b.evaluate(`(()=>{const old=copy(V10_DEFAULT);old.slides[14].title='Edited ChatGPT';old.slides[14].notes='Saved notes';old.slides[14].items[0].example='Saved example';old.layouts={'400':{'text:title:0':{x:4,y:7,width:600}}};const n=validData(old);return n.version===12&&n.slides[14].title==='Edited ChatGPT'&&n.slides[14].notes==='Saved notes'&&n.slides[14].items[0].example==='Saved example'&&JSON.stringify(n.layouts)===JSON.stringify(old.layouts)&&old.slides.every(s=>[400,401,402,601].includes(s.id)||JSON.stringify(s)===JSON.stringify(n.slides.find(x=>x.id===s.id)))&&JSON.stringify(validData(n))===JSON.stringify(n)})()`),true);
+  await b.evaluate('localStorage.clear();data=copy(DEFAULT);states={};current=data.slides.findIndex(s=>s.id===400);renderAll()');
+  assert.deepEqual(await b.evaluate('data.slides.slice(21,24).map(s=>[s.id,s.title,s.brand.company,s.brand.score])'),[[400,'ChatGPT','OpenAI','53'],[401,'Gemini','Google DeepMind','53'],[402,'Claude','Anthropic','58']]);
+  assert.equal(await b.evaluate(`(()=>{const old=copy(V10_DEFAULT);old.slides[14].title='Edited ChatGPT';old.slides[14].notes='Saved notes';old.slides[14].items[0].example='Saved example';old.layouts={'400':{'text:title:0':{x:4,y:7,width:600}}};const n=validData(old);return n.version===13&&n.slides.find(s=>s.id===400).title==='Edited ChatGPT'&&n.slides.find(s=>s.id===400).notes==='Saved notes'&&n.slides.find(s=>s.id===400).items[0].example==='Saved example'&&JSON.stringify(n.layouts)===JSON.stringify(old.layouts)&&n.slides.find(s=>s.id===702).items[0].description===DEFAULT.slides.find(s=>s.id===702).items[0].description&&old.slides.every(s=>[203,400,401,402,601,702].includes(s.id)||JSON.stringify(s)===JSON.stringify(n.slides.find(x=>x.id===s.id)))&&JSON.stringify(validData(n))===JSON.stringify(n)})()`),true);
   await b.evaluate('localStorage.setItem(storageKey,JSON.stringify(V10_DEFAULT))');
   await b.navigate(b.url+'/?ai-brands-migration','typeof data!=="undefined"');
-  assert.equal(await b.evaluate('data.version===12&&!initialMessage&&data.slides[14].brand.score==="53"'),true);
-  console.log('PASS pages 15–17, saved data migration, custom edits and unrelated slides');
+  assert.equal(await b.evaluate('data.version===13&&!initialMessage&&data.slides.find(s=>s.id===400).brand.score==="53"'),true);
+  console.log('PASS pages 22–24, saved data migration, custom edits and unrelated slides');
   await b.evaluate('togglePresent(true)');
   for(const id of [400,401,402]){
    await show(id);
@@ -38,7 +38,7 @@ fs.mkdirSync('.qa',{recursive:true});
   await b.cdp('Emulation.setDeviceMetricsOverride',{width:1600,height:1000,deviceScaleFactor:1,mobile:false});
   await b.evaluate('togglePresent(false);resizeStage()');await show(400);
   await b.evaluate(`(()=>{const e=document.querySelector('#slideFrame [data-path$=".brand.models.0.name"]');e.focus();e.textContent='Edited model';e.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText'}));e.blur();saveNow()})()`);
-  assert.equal(await b.evaluate('JSON.parse(localStorage.getItem(storageKey)).slides[14].brand.models[0].name'),'Edited model');
+  assert.equal(await b.evaluate('JSON.parse(localStorage.getItem(storageKey)).slides.find(s=>s.id===400).brand.models[0].name'),'Edited model');
   await b.evaluate('data=copy(DEFAULT);states={};renderAll();buildPrint()');
   await b.cdp('Emulation.setEmulatedMedia',{media:'print'});
   for(const id of [400,401,402]){

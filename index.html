@@ -654,6 +654,53 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 @media(max-width:860px){.reading .database-profile{grid-template-columns:1fr;gap:28px;padding:8px 0;min-height:0}.reading #slideFrame .slide .db-profile-title{font-size:40px;line-height:1.15;letter-spacing:-1.5px;margin-bottom:20px}.reading .db-profile-kicker{font-size:12px;margin-bottom:18px}.reading #slideFrame .slide .db-profile-analogy{font-size:24px;margin-bottom:16px}.reading #slideFrame .slide .db-profile-description{font-size:19px;line-height:1.8}.reading #slideFrame .slide .db-profile-note{font-size:13px}.reading .db-profile-visual{padding:18px;border-radius:15px}.reading .db-diagram-title{gap:7px;margin-bottom:18px}.reading .db-diagram-title strong{font-size:16px}.reading .db-diagram-title>span{font-size:10px}.reading .db-sheet-example{font-size:17px}.reading .db-sheet-example th,.reading .db-sheet-example td{padding:14px 9px}.reading #slideFrame .slide .db-diagram-caption{font-size:13px}.reading .db-relation-table>div{font-size:17px}.reading .db-detail-stage{grid-template-columns:1fr;min-height:0}.reading #slideFrame .slide .db-stage-guide{font-size:15px;max-width:none}.reading #slideFrame .slide .db-detail-stage .db-items li{font-size:20px;padding:17px}}
 @media(max-width:860px){.reading .db-records{grid-template-columns:1fr;gap:12px}.reading .db-record-heading{padding:12px 15px}.reading .db-record-fields{grid-template-columns:.7fr 1.3fr;align-items:center;padding:15px;gap:12px}.reading .db-record-fields dd{font-size:20px}.reading .db-record-extra dd{font-size:17px}.reading .db-record-fields .db-record-extra{min-height:0}.reading .db-record-caption strong{font-size:17px}}
 </style>
+<style id="fundamentals-style">
+/* Web fundamentals and slide management. Embedded for standalone HTML export. */
+.slide:is([data-type=vibeBenefits],[data-type=webLanguage],[data-type=buttonAnatomy],[data-type=webArchitecture],[data-type=webDataFlow]) .content-inner{gap:22px}
+.slide .fund-note{font-size:17px;line-height:1.6;color:var(--muted);border-top:1px solid var(--line);padding-top:17px}
+.fund-benefits,.button-anatomy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;min-height:310px}
+.fund-benefit,.anatomy-part{border-top:3px solid var(--accent-ink);padding:22px 8px 0 0}
+.fund-benefit .pictogram{margin-bottom:19px}.slide .fund-benefit h2{font-size:27px;margin-bottom:16px}
+.slide .fund-benefit p,.slide .anatomy-part p{font-size:23px;white-space:pre-line;line-height:1.6}
+.slide .fund-benefit .fund-example{font-size:18px;color:var(--accent-ink);margin-top:24px}
+.web-language{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center;min-height:330px}
+.language-copy>.editorial-label{color:var(--accent-ink);margin-bottom:8px}.slide .language-copy h2{font-size:26px;white-space:pre-line;line-height:1.4}
+.slide .language-analogy{font-size:17px;line-height:1.5;color:var(--muted);margin:10px 0 12px}.slide .language-example{font-size:19px;line-height:1.5;white-space:pre-line}
+.language-code{background:#171a22;color:#c2ceff;font:15px/1.5 Consolas,monospace;padding:13px 18px;border-radius:10px;margin:12px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.web-language .browser-bar{font-size:13px}.language-preview{padding:30px;min-height:274px;display:flex;flex-direction:column;align-items:stretch;gap:20px;background:var(--hover)}
+.slide .language-preview h2{font-size:27px}.language-preview input{width:100%;min-width:0;border:1px solid var(--line);border-radius:9px;padding:13px;background:var(--paper);color:var(--ink);font-size:20px}
+.slide .language-preview button,.anatomy-demo.styled{background:#f97316;color:#172033;border:1px solid #f97316;border-radius:12px;font-weight:750}
+.slide .language-preview.is-html{background:var(--paper);gap:14px;align-items:flex-start}.slide .language-preview.is-html h2{font-family:serif;font-size:26px}.language-preview.is-html input{font-size:17px;padding:4px;border:1px solid var(--muted);border-radius:0}
+.slide .language-preview.is-html button,.anatomy-demo.raw{background:var(--hover);color:var(--ink);border:1px solid var(--muted);border-radius:0;font-weight:400;font-size:18px;min-height:30px;padding:4px 12px;align-self:flex-start}
+.slide .fund-status{font-size:17px;min-height:27px;color:var(--green)}
+.anatomy-part{display:flex;flex-direction:column;gap:16px}.slide .anatomy-part h2{font-size:28px}.anatomy-part .editorial-label{margin:0;color:var(--accent-ink)}
+.anatomy-demo{margin-top:auto;align-self:flex-start;padding:12px 24px;display:inline-flex;align-items:center;gap:12px;font-size:21px}.anatomy-demo .icon{width:21px;height:21px}
+.architecture-map{display:grid;grid-template-columns:1fr 132px 1.1fr 42px 1fr;gap:12px;align-items:center;min-height:300px}
+.architecture-node{text-align:center;padding:25px 17px;border:1px solid var(--line);border-radius:16px;background:var(--hover);min-width:0}
+.architecture-node>.pictogram{width:64px;height:64px;margin-bottom:16px}.architecture-node>.pictogram .icon{width:38px;height:38px}
+.slide .architecture-node h2{font-size:28px}.slide .architecture-node p{font-size:19px;line-height:1.6;margin-top:12px}.slide .architecture-node .architecture-tech{font-size:15px;color:var(--accent-ink)}
+.architecture-server{padding:13px;border:2px dashed var(--accent-ink);border-radius:20px}.architecture-server>span{font-size:15px;color:var(--accent-ink);display:block;text-align:center;margin-bottom:12px}
+.architecture-server .architecture-node{background:var(--soft);border:0;padding:18px 10px}.slide .architecture-server>p{font-size:14px;text-align:center;margin-top:10px;color:var(--muted)}
+.architecture-connection{display:flex;flex-direction:column;gap:8px;text-align:center;color:var(--accent-ink);align-items:center}.architecture-connection>strong{font-size:23px}.architecture-connection .icon{width:38px}.architecture-connection small{font-size:14px;color:var(--muted);line-height:1.5;word-break:keep-all}.architecture-connection .response{transform:rotate(180deg);color:var(--muted)}
+.flow-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.slide .flow-step{padding:20px 16px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;border:1px solid var(--line);border-radius:12px;gap:17px;background:var(--hover);min-height:223px}
+.slide .flow-step[aria-pressed=true]{background:var(--soft);border-color:var(--accent-ink)}.flow-step>.pictogram{background:var(--paper)}.flow-step-number{font-size:12px;color:var(--muted)}.slide .flow-step strong{font-size:23px;word-break:keep-all}.slide .flow-step .flow-label{font-size:14px;color:var(--accent-ink);margin-top:auto;word-break:keep-all}
+.flow-detail{display:flex;gap:25px;align-items:center;border-left:3px solid var(--accent-ink);background:var(--hover);padding:14px 25px;min-height:94px}.flow-detail>.pictogram{background:transparent}.slide .flow-detail p{font-size:24px;white-space:pre-line}
+.slide .flow-print-description{font-size:18px;white-space:pre-line}.print-page .slide .flow-step{min-height:300px}.print-page .flow-step .flow-label{margin-top:0}
+.print-page .slide p.fund-note{font-size:17px;line-height:1.6}.print-page .slide p.language-analogy{font-size:17px;line-height:1.5}.print-page .slide p.language-example{font-size:19px;line-height:1.5}.print-page .slide p.fund-status{font-size:17px}.print-page .slide p.flow-print-description{font-size:18px;line-height:1.6}
+.slide-manager{position:sticky;top:-23px;z-index:2;background:var(--paper);padding:12px 0 10px;border-bottom:1px solid var(--line);margin-bottom:10px}.slide-manager>p{font-size:10px;line-height:1.5;color:var(--muted);margin:0 4px 9px}.slide-manager-actions{display:flex;gap:4px;flex-wrap:wrap}.slide-manager button{font-size:11px;min-height:32px;padding:5px 7px;gap:3px}.slide-manager .delete-slide{color:#bc4141}
+.nav-row{display:flex;align-items:center;position:relative;border-radius:9px}.nav-row .nav-item{min-width:0;flex:1;padding-left:3px;gap:6px}.nav-row .number{width:27px}.nav-row .nav-handle{border:0;background:transparent;padding:8px 3px;width:21px;flex:none;min-height:44px;font-size:20px;cursor:grab;color:var(--muted);touch-action:none;user-select:none}.nav-row .nav-handle:active{cursor:grabbing}.nav-row.is-dragging{opacity:.4}.nav-row.drop-before:before,.nav-row.drop-after:after{content:'';position:absolute;left:0;right:0;height:3px;border-radius:3px;background:var(--accent-ink);pointer-events:none;z-index:3}.nav-row.drop-before:before{top:-2px}.nav-row.drop-after:after{bottom:-2px}
+body.slide-reordering{user-select:none;cursor:grabbing}.slide-trash{border:1px solid var(--line);border-radius:10px;padding:10px;margin-top:12px}.slide-trash summary{cursor:pointer;font-size:12px;font-weight:650}.trash-list{display:grid;gap:8px;margin-top:12px}.trash-item{font-size:11px;line-height:1.5;display:flex;align-items:center;gap:6px;border-top:1px solid var(--line);padding-top:8px}.trash-item span{flex:1;overflow-wrap:anywhere}.trash-item button{font-size:11px;padding:6px;flex:none}.trash-empty{font-size:11px;color:var(--muted);line-height:1.7}
+.slide-manager .trash-list{max-height:220px;overflow:auto}.slide-manager .slide-trash{margin-top:9px;padding:8px}
+@media(max-width:860px){
+ .reading #slideFrame .slide .fund-benefits,.reading #slideFrame .slide .button-anatomy,.reading #slideFrame .slide .web-language{grid-template-columns:minmax(0,1fr);gap:24px;min-height:0}
+ .reading #slideFrame .slide .fund-benefit h2,.reading #slideFrame .slide .language-copy h2{font-size:24px}.reading #slideFrame .slide .fund-benefit p,.reading #slideFrame .slide .anatomy-part p{font-size:19px}.reading #slideFrame .slide .fund-note{font-size:14px}.reading #slideFrame .slide .fund-benefit .fund-example{font-size:17px;margin-top:14px}
+ .reading #slideFrame .slide .language-preview{padding:20px;min-height:240px}.reading #slideFrame .slide .language-code{font-size:13px;padding:15px}.reading #slideFrame .slide .anatomy-demo{margin-top:10px}
+ .reading #slideFrame .slide .architecture-map{grid-template-columns:minmax(0,1fr);gap:16px}.reading #slideFrame .slide .architecture-connection .icon{transform:rotate(90deg)}.reading #slideFrame .slide .architecture-connection .response{transform:rotate(-90deg)}.reading #slideFrame .slide .architecture-connection{flex-direction:row;justify-content:center;flex-wrap:wrap}.reading #slideFrame .slide .architecture-node{padding:20px}.reading #slideFrame .slide .architecture-node h2{font-size:26px}
+ .reading #slideFrame .slide .flow-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.reading #slideFrame .slide .flow-step{min-height:185px;padding:15px 12px;gap:12px}.reading #slideFrame .slide .flow-step strong{font-size:18px}.reading #slideFrame .slide .flow-label{font-size:12px}.reading #slideFrame .slide .flow-detail{gap:8px;padding:17px 12px}.reading #slideFrame .slide .flow-detail p{font-size:18px}
+}
+
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -663,7 +710,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 </header>
 <nav class="course-tabs" aria-label="강의와 실습"><div class="course-tablist" role="tablist" aria-label="학습 화면 선택"><button class="course-tab" id="lectureTab" role="tab" aria-selected="true" aria-controls="lecturePanel" tabindex="0" data-course="lecture"><span data-icon="book"></span>강의 <small>16장</small></button><button class="course-tab" id="practiceTab" role="tab" aria-selected="false" aria-controls="practicePanel" tabindex="-1" data-course="practice"><span data-icon="screen"></span>실습 <small>2개 주제</small></button></div><span class="course-caption">개념을 이해하고, 직접 클릭하며 익혀 보세요.</span></nav>
 <div class="workspace" id="lecturePanel" role="tabpanel" aria-labelledby="lectureTab">
- <aside class="sidebar" aria-label="슬라이드 목록"><div class="sidebar-head"><span>강의 목차 <span class="muted" id="navTotal">/ 44</span></span><button class="icon-btn close-panel" data-command="close-panels" aria-label="목차 닫기" data-icon="close"></button></div><nav id="slideNav"></nav><div class="sidebar-bottom">TEACHER'S TOOLKIT<br>작은 아이디어가, 나만의 교육용 웹앱으로.</div></aside>
+ <aside class="sidebar" aria-label="슬라이드 목록"><div class="sidebar-head"><span>강의 목차 <span class="muted" id="navTotal">/ 44</span></span><button class="icon-btn close-panel" data-command="close-panels" aria-label="목차 닫기" data-icon="close"></button></div><div class="slide-manager"><p>손잡이를 드래그해 순서 변경<br>손잡이에 초점을 두고 ↑ ↓ 키로도 이동</p><div class="slide-manager-actions"><button type="button" id="moveSlideUp" aria-label="선택한 슬라이드 위로 이동">↑ 위로</button><button type="button" id="moveSlideDown" aria-label="선택한 슬라이드 아래로 이동">↓ 아래로</button><button type="button" id="deleteSlide" class="delete-slide">삭제</button></div><details class="slide-trash" id="slideTrash"><summary>휴지통 <span id="trashCount">0</span></summary><div id="trashList" class="trash-list"></div></details></div><nav id="slideNav"></nav><div class="sidebar-bottom">TEACHER'S TOOLKIT<br>작은 아이디어가, 나만의 교육용 웹앱으로.</div></aside>
  <main class="main"><div class="preview-tools"><div class="breadcrumb"><button class="icon-btn mobile-tool" data-command="sidebar" aria-label="강의 목차 열기" data-icon="list"></button><span id="previewPart"></span><span class="muted">/</span><span id="previewCount" class="mono"></span></div><div style="display:flex;gap:8px;align-items:center"><button class="icon-btn read-toggle" data-command="read-mode" aria-label="16:9 화면과 읽기 보기 전환" data-icon="layout"></button></div></div><div class="layout-tools" id="layoutTools" hidden><span id="layoutHint">옮길 텍스트나 영역을 선택하세요.</span><button id="layoutParent" disabled>상위 영역</button><button id="fontSmaller" aria-label="글자 크기 줄이기" disabled>글자 −</button><button id="fontLarger" aria-label="글자 크기 키우기" disabled>글자 +</button><button id="layoutReset" disabled>선택 영역 초기화</button></div><div class="stage-wrap"><button class="stage-arrow prev" id="stagePrev" aria-label="이전 슬라이드" title="이전 슬라이드 (← · 휠 위)" data-icon="left"></button><div class="stage-space" id="stageSpace"><div class="slide-frame" id="slideFrame" tabindex="-1"></div><div class="layout-selection" id="layoutSelection" hidden><button id="layoutMove" class="layout-handle move-handle" aria-label="선택 영역 이동 · 방향키로 미세 조정" title="드래그 이동 · 방향키 1px · Shift 10px">✥</button><button id="layoutResize" class="layout-handle resize-handle" aria-label="선택 영역 너비 조절" title="드래그로 너비 조절">↔</button></div></div><button class="stage-arrow next" id="stageNext" aria-label="다음 슬라이드" title="다음 단계 (→ · 휠 아래)" data-icon="right"></button></div><div class="preview-bottom"><span class="help-text" id="previewHint">버튼과 카드를 클릭하며 강의를 미리 체험하세요.</span><div class="nav-pair"><button id="prevBtn" aria-label="이전 슬라이드" data-icon="left"></button><span id="bottomCount" class="mono"></span><button id="nextBtn" aria-label="다음 슬라이드" data-icon="right"></button></div></div><div class="lecture-notes"><span data-icon="note"></span><div><strong>강사용 메모 <span class="muted">· 발표 및 PDF에 표시되지 않습니다</span></strong><p id="notesPreview"></p></div></div></main>
 </div>
 <section class="practice-panel" id="practicePanel" role="tabpanel" aria-labelledby="practiceTab" hidden>
@@ -1100,6 +1147,27 @@ function databaseIntroPresentation(previous){
 }
 Object.assign(DEFAULT,databaseIntroPresentation(V11_DEFAULT));
 
+// Version 13 introduces the vocabulary before the existing frontend slide.
+const V12_DEFAULT=copy(DEFAULT);
+function fundamentalsPresentation(previous){
+ if(previous.version>=13)return previous;
+ const deck=copy(previous),at=deck.slides.findIndex(s=>s.id===200);
+ deck.slides.splice(at,0,
+  {id:150,type:'vibeBenefits',part:0,title:'아이디어를 직접 써 보는 도구로',subtitle:'바이브코딩은 원하는 것을 말로 설명하고, AI와 함께 만들고 고치는 방식입니다.',items:[{title:'시작의 문턱을 낮추기',description:'문법을 모두 배우기 전에도\n작은 화면부터 만들어 봅니다.',example:'“학생 활동을 기록하는 화면을 만들어 줘.”'},{title:'내 업무에 맞게 만들기',description:'우리 반에 필요한 입력과\n기능을 직접 정합니다.',example:'“학생 이름과 활동 내용을 입력하게 해 줘.”'},{title:'써 보고 빠르게 개선하기',description:'직접 눌러 보며 확인하고,\n불편한 점을 다시 요청합니다.',example:'“저장되면 완료 메시지를 보여 줘.”'}],note:'사람은 목적을 정하고 결과를 확인합니다. AI는 코드 작성과 수정을 돕습니다.',notes:'약 2분 · 앞의 코딩 방식 비교를 정리합니다. 빠른 시작, 업무 맞춤, 반복 개선이 장점입니다. 원하는 기능과 실제 결과가 일치하는지는 사람이 확인해야 합니다. 이제 AI에게 더 정확히 설명하기 위한 기본 용어를 살펴봅니다.'},
+  {id:151,type:'webLanguage',part:0,kind:'html',title:'HTML · 웹페이지의 뼈대',subtitle:'화면에 어떤 요소가 있는지 정합니다.',role:'구조',definition:'제목, 글자, 이미지, 입력창, 버튼을\n웹페이지에 배치합니다.',analogy:'교실의 벽, 책상, 칠판을 배치하는 것',example:'“학생 활동” 제목, 활동 입력창,\n“저장하기” 버튼을 만듭니다.',code:'<h2>학생 활동</h2>\n<input placeholder="활동 내용">\n<button>저장하기</button>',previewLabel:'HTML로 만든 화면',note:'HTML은 무엇이 있는지를 표현합니다.',notes:'약 2분 · HTML은 웹페이지의 구조와 내용을 표현하는 마크업 언어입니다. 코드의 제목·입력창·버튼이 오른쪽 화면의 요소와 대응함을 짚어 줍니다. 태그를 외우는 시간이 아니라 구조의 역할을 이해하는 시간입니다.'},
+  {id:152,type:'webLanguage',part:0,kind:'css',title:'CSS · 웹페이지의 꾸미기',subtitle:'같은 요소도 보기 좋고 읽기 쉽게 바꿉니다.',role:'디자인',definition:'색상, 글꼴, 크기, 간격, 배치,\n애니메이션 등을 설정합니다.',analogy:'교실의 인테리어 색상과 가구 디자인',example:'저장 버튼을 주황색으로 바꾸고,\n모서리를 둥글게 만듭니다.',code:'button {\n  background: #f97316;\n  border-radius: 12px;\n}',previewLabel:'HTML + CSS로 꾸민 화면',note:'CSS는 어떻게 보이는지를 정합니다.',notes:'약 2분 · 앞 장과 제목·입력창·버튼은 같습니다. 색, 글자, 간격과 둥근 모서리가 달라졌음을 보여 주세요. CSS로 애니메이션도 표현할 수 있습니다.'},
+  {id:153,type:'webLanguage',part:0,kind:'js',title:'JavaScript · 웹페이지의 동작',subtitle:'사용자의 행동에 화면이 반응하도록 만듭니다.',role:'동작',definition:'버튼 클릭, 입력값 계산, 화면 변경,\n데이터 요청 등을 구현합니다.',analogy:'교실의 전등 스위치, 자동문 작동 시스템',example:'저장 버튼을 누르면 입력을 확인하고\n저장 요청을 보내도록 연결합니다.',code:'button.addEventListener("click", () => {\n  saveActivity();\n});',previewLabel:'저장 버튼을 눌러 보세요',note:'아래 체험은 화면 반응 예시입니다. 실제 DB에 저장하지 않습니다.',notes:'약 2분 · HTML로 만든 버튼에 CSS로 모양을 입힌 뒤 JavaScript로 클릭 동작을 연결합니다. 입력값 확인, 계산, 서버에 데이터 요청, 화면 업데이트가 모두 동작의 예입니다. 버튼 체험은 모의 저장이며 실제 데이터 저장 흐름은 다음 그림에서 설명합니다.'},
+  {id:154,type:'buttonAnatomy',part:0,title:'저장 버튼 하나에도, 세 가지 역할',subtitle:'HTML + CSS + JavaScript가 함께 사용자가 만나는 화면을 만듭니다.',items:[{title:'HTML',role:'버튼을 만든다',description:'“저장하기”라는\n버튼 요소 생성'},{title:'CSS',role:'모양을 꾸민다',description:'주황색 배경과\n둥근 모서리 적용'},{title:'JavaScript',role:'동작을 연결한다',description:'클릭하면 입력을 확인하고\n저장 기능 실행'}],note:'이 세 기술로 만든 화면이 사용자가 보고 조작하는 프론트엔드입니다.',notes:'약 1분 · 같은 버튼이 구조 → 디자인 → 동작 순서로 완성됩니다. 버튼을 만드는 것과 데이터를 실제로 보관하는 것은 별도 역할입니다. 다음 장에서 화면 뒤의 백엔드와 DB까지 연결합니다.'},
+  {id:155,type:'webArchitecture',part:0,title:'웹앱을 한눈에 펼쳐 보면',subtitle:'학생 활동 기록 앱 · 화면, 처리, 저장이 연결되어 작동합니다.',frontend:'프론트엔드',frontendDescription:'사용자가 보고 조작하는 화면',frontendExample:'HTML · CSS · JavaScript',api:'API',apiDescription:'요청·응답을 주고받는 약속',backend:'백엔드',backendDescription:'입력 확인 · 권한 확인 · 저장 처리',database:'데이터베이스',databaseDescription:'학생 정보와 활동 기록 저장·조회',server:'서버 · 백엔드가 실행되는 환경',serverDescription:'요청을 받아 처리하고 결과를 돌려줍니다.',note:'서버는 실행 환경, 백엔드는 그곳에서 일하는 기능입니다. DB는 별도 서버나 관리형 서비스에 둘 수도 있습니다.',notes:'약 3분 · 브라우저의 프론트엔드 → API 요청 → 서버에서 실행되는 백엔드 → 데이터베이스 순서로 설명합니다. 응답은 반대 방향으로 돌아옵니다. API는 외부 서비스뿐 아니라 프론트엔드와 백엔드 사이에도 사용됩니다. 서버는 요청에 응답하는 컴퓨터나 프로그램을 뜻하며, 이 그림에서는 백엔드의 실행 환경으로 표현했습니다. 대표적인 구성 예시이며 모든 웹앱에 별도 서버나 DB가 필요한 것은 아닙니다.'},
+  {id:156,type:'webDataFlow',part:0,title:'저장하기를 누르면 무슨 일이 생길까?',subtitle:'학생이 활동을 입력한 순간부터 “저장 완료”를 볼 때까지.',steps:[{title:'화면에서 입력',description:'학생이 활동 내용을 적고\n저장하기를 누릅니다.',label:'프론트엔드'},{title:'저장 요청',description:'JavaScript가 API를 통해\n입력한 내용을 보냅니다.',label:'API → 백엔드'},{title:'확인하고 저장',description:'백엔드가 입력·권한을 확인한 뒤\nDB에 활동 기록을 저장합니다.',label:'백엔드 → DB'},{title:'결과를 화면에 표시',description:'DB의 처리 결과가 백엔드로 돌아오고,\n응답을 받은 화면이 완료를 표시합니다.',label:'DB → 백엔드 → 프론트엔드'}],note:'요청 → 처리·저장 → 응답. 화면과 데이터 저장소는 이 흐름으로 연결됩니다.',notes:'약 3분 · 한 단계씩 누르며 현재 역할을 강조해 주세요. 저장 실패 시에는 완료 대신 오류를 보여 주어야 합니다. 이 흐름을 이해하면 Google Apps Script가 처리하는 부분과 Google Sheets·Supabase·Firebase가 데이터를 보관하는 역할을 구분하기 쉬워집니다. 이어지는 프론트엔드·백엔드·데이터베이스·API 슬라이드에서 각각을 더 자세히 설명합니다.'}
+ );
+ const api=deck.slides.find(s=>s.id===203),old=V12_DEFAULT.slides.find(s=>s.id===203);
+ if(api.items[0].description===old.items[0].description)api.items[0].description='프로그램끼리 요청과 응답을 주고받는 약속';
+ deck.version=13;return deck;
+}
+Object.assign(DEFAULT,fundamentalsPresentation(V12_DEFAULT));
+DEFAULT.trash=[];
+
 function renderTeacherComparison(i,printing){
  const d=currentAt(i),feedback=d.layout==='after',t=(path,tag='span',cls='')=>S(i,'lesson.'+path,tag,cls,printing);
  const action=(path,cls,good)=>feedback&&!printing?'<button type="button" class="lesson-action '+cls+'" data-feedback-save="'+(good?'after':'before')+'" aria-label="'+escapeHTML((good?d.lesson.afterLabel:d.lesson.beforeLabel)+' 상담 기록 저장')+'">'+t(path)+'</button>':t(path,'span','lesson-action '+cls);
@@ -1152,14 +1220,36 @@ function icon(name){return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="t
 function pictogram(name,cls=''){return '<span class="pictogram '+cls+'" aria-hidden="true">'+icon(name)+'</span>';}
 $$('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));
 function validData(input){
- if(!input||![1,2,3,4,5,6,7,8,9,10,11,12].includes(input.version))throw Error('지원하지 않는 강의 파일 형식입니다.');
- const template=input.version===1?LEGACY_DEFAULT:input.version===2?V2_DEFAULT:input.version===3?V3_DEFAULT:input.version===4?V4_DEFAULT:input.version===5?V5_DEFAULT:input.version===6?V6_DEFAULT:input.version===7?V7_DEFAULT:input.version===8?V8_DEFAULT:input.version===9?V9_DEFAULT:input.version===10?V10_DEFAULT:input.version===11?V11_DEFAULT:DEFAULT;
+ if(!input||![1,2,3,4,5,6,7,8,9,10,11,12,13].includes(input.version))throw Error('지원하지 않는 강의 파일 형식입니다.');
+ const template=input.version===1?LEGACY_DEFAULT:input.version===2?V2_DEFAULT:input.version===3?V3_DEFAULT:input.version===4?V4_DEFAULT:input.version===5?V5_DEFAULT:input.version===6?V6_DEFAULT:input.version===7?V7_DEFAULT:input.version===8?V8_DEFAULT:input.version===9?V9_DEFAULT:input.version===10?V10_DEFAULT:input.version===11?V11_DEFAULT:input.version===12?V12_DEFAULT:DEFAULT;
  function shape(value,template,path){
   if(typeof template==='string'){if(value===undefined&&path==='강의.slides.0.presenter')return template;if(typeof value!=='string'||value.length>12000)throw Error('문구 형식 또는 길이를 확인해 주세요: '+path);return value;}
   if(typeof template==='number'){if(value!==template)throw Error('슬라이드 구조가 올바르지 않습니다.');return value;}
   if(Array.isArray(template)){if(!Array.isArray(value)||value.length!==template.length)throw Error('슬라이드 또는 항목 개수가 맞지 않습니다.');return template.map((t,i)=>shape(value[i],t,path+'.'+i));}
   if(!value||typeof value!=='object'||Array.isArray(value))throw Error('강의 데이터 형식이 올바르지 않습니다.');
   const out={};for(const k of Object.keys(template))out[k]=shape(value[k],template[k],path+'.'+k);return out;
+ }
+ if(input.version===13){
+  if(!Array.isArray(input.slides)||!input.slides.length||!Array.isArray(input.trash)||input.slides.length+input.trash.length!==DEFAULT.slides.length)throw Error('슬라이드와 휴지통 구성을 확인해 주세요.');
+  const {slides,trash,layouts,...metaTemplate}=DEFAULT,result=shape(input,metaTemplate,'강의'),seen=new Set();
+  function checkSlide(value){
+   const n=DEFAULT.slides.findIndex(s=>s.id===value?.id),expected=DEFAULT.slides[n];
+   if(!expected||seen.has(value.id))throw Error('알 수 없거나 중복된 슬라이드입니다.');
+   seen.add(value.id);const slide=shape(value,expected,'강의.slides.'+n);
+   if(['type','layout','illustration','kind'].some(k=>slide[k]!==expected[k]))throw Error('슬라이드 유형이 맞지 않습니다.');
+   return slide;
+  }
+  result.slides=input.slides.map(checkSlide);
+  result.layouts={};
+  result.trash=input.trash.map(entry=>{
+   if(!entry||!Number.isInteger(entry.index)||entry.index<0||entry.index>=DEFAULT.slides.length)throw Error('복구 위치가 올바르지 않습니다.');
+   for(const key of ['beforeId','afterId'])if(entry[key]!==null&&!DEFAULT.slides.some(s=>s.id===entry[key]))throw Error('복구 기준이 올바르지 않습니다.');
+   return {slide:checkSlide(entry.slide),index:entry.index,beforeId:entry.beforeId,afterId:entry.afterId};
+  });
+  if(!/^[a-zA-Z0-9_-]{1,100}$/.test(result.deckId))throw Error('올바르지 않은 강의 ID입니다.');
+  if(!['light','dark'].includes(result.theme))result.theme='light';
+  result.layouts=validateLayouts(input.layouts,{slides:[...result.slides,...result.trash.map(e=>e.slide)]});
+  return refreshLessonCopy(result);
  }
  const result=shape(input,template,'강의');
  if(!/^[a-zA-Z0-9_-]{1,100}$/.test(result.deckId))throw Error('올바르지 않은 강의 ID입니다.');
@@ -1195,7 +1285,8 @@ let storageKey='bibeom-studio:'+data.deckId;
 try{const saved=localStorage.getItem(storageKey);if(saved)data=validData(JSON.parse(saved));}catch(e){initialMessage='자동 저장 자료를 읽을 수 없습니다. HTML·JSON 내보내기로 보관해 주세요.';}
 // Refresh unchanged lesson copy while retaining saved/imported edits and the data format.
 function refreshLessonCopy(deck){
- deck=databaseIntroPresentation(deck);
+ deck=fundamentalsPresentation(databaseIntroPresentation(deck));
+ deck.trash??=[];
  const firebase=deck.slides.find(item=>item.id===702)?.items[0],oldFirebase=V11_DEFAULT.slides.find(item=>item.id===702).items[0];
  if(firebase){
   const updates={analogy:'학생마다 필요한 내용을 담는 기록 카드',description:'학생 한 명의 정보를 카드 한 장처럼 저장합니다. 어떤 카드에는 관심 분야를, 다른 카드에는 상담 메모를 담을 수 있어요.',note:'Cloud Firestore는 문서형 NoSQL DB입니다. 카드 한 장은 ‘문서’, 카드에 적는 항목은 ‘필드’, 카드 모음은 ‘컬렉션’에 해당합니다.'};
@@ -1240,7 +1331,7 @@ function conceptTrack(i,printing,process=false){
  const d=currentAt(i),symbols=process?['bulb','chat','play','repeat']:['screen','server','database','link'];
  const siblings=data.slides.map((s,n)=>({s,n})).filter(x=>x.s.type===d.type&&x.s.part===d.part);
  return '<nav class="concept-track '+(process?'process-track':'')+'" aria-label="'+(process?'웹앱 제작 흐름':'웹앱의 구성 요소')+'">'+siblings.map((x,n)=>{
-  const active=x.n===i,inner=pictogram(symbols[n])+S(x.n,'items.0.title','span','track-label',printing);
+  const active=x.n===i,inner=pictogram(symbols[x.s.sourceIndex])+S(x.n,'items.0.title','span','track-label',printing);
   return (printing?'<div class="track-node '+(active?'active':'')+'">'+inner+'</div>':button(inner,'slide-jump',x.n,active,'track-node '+(active?'active':'')))+(n<siblings.length-1?'<span class="track-arrow" aria-hidden="true">'+icon('arrow')+'</span>':'');
  }).join('')+'</nav>';
 }
@@ -1364,7 +1455,7 @@ function renderPractice(i,printing){return '<div class="practice-editorial"><div
 
 function renderSummary(i,printing){return renderChapterSummary(i,printing);}
 
-function slideTitle(d){return d.type==='cover'?data.meta.title:d.type==='section'?data.meta.parts[d.part]:d.type==='databaseIntro'?(data.slides.find(s=>s.id===d.sourceId)?.title||d.title)+' · 소개':d.type==='backend'?d.title+' · 선택 기준':d.title;}
+function slideTitle(d){return d.type==='cover'?data.meta.title:d.type==='section'?data.meta.parts[d.part]:d.type==='databaseIntro'?(data.slides.find(s=>s.id===d.sourceId)?.title||data.trash.find(e=>e.slide.id===d.sourceId)?.slide.title||d.title)+' · 소개':d.type==='backend'?d.title+' · 선택 기준':d.title;}
 function partLabel(d){return d.type==='cover'?'WELCOME':d.type==='contents'?'CONTENTS':d.part===data.meta.parts.length-1?'WRAP UP':'PART '+String(d.part+1).padStart(2,'0');}
 function emphasis(i,path='takeaway',printing=false){
  if(!hasKeyIdea(i,path))return '';
@@ -1453,9 +1544,15 @@ function databaseDiagram(kind){
  if(kind==='supabase')return '<div class="db-diagram-title">'+icon('database')+'<strong>서로 연결된 표</strong><span>관계형 DB</span></div><div class="db-relation-table"><strong>학생</strong><div><span>학생 ID</span><span>이름</span></div><div><b>101</b><span>김하늘</span></div></div><div class="db-relation-link">'+icon('link')+'학생 ID로 연결</div><div class="db-relation-table"><strong>활동</strong><div><span>학생 ID</span><span>활동명</span></div><div><b>101</b><span>과학 동아리</span></div></div>';
  return '<div class="db-diagram-title">'+icon('book')+'<strong>학생 기록 모음</strong><span>컬렉션</span></div><div class="db-records"><section class="db-record"><div class="db-record-heading">'+icon('note')+'카드 한 장 = 문서</div><dl class="db-record-fields"><div><dt>이름</dt><dd>김하늘</dd></div><div class="db-record-extra"><dt>관심 분야</dt><dd class="db-record-tags"><span>과학</span><span>그림</span></dd></div></dl></section><section class="db-record"><div class="db-record-heading">'+icon('note')+'카드 한 장 = 문서</div><dl class="db-record-fields"><div><dt>이름</dt><dd>이서준</dd></div><div class="db-record-extra db-record-memo"><dt>상담 메모</dt><dd>발표 연습 중</dd></div></dl></section></div><figcaption class="db-diagram-caption db-record-caption"><strong>카드마다 다른 항목을 담을 수 있어요</strong><span>이름 · 관심 분야 · 상담 메모 같은 항목 = 필드</span></figcaption>';
 }
+function sourceSlideText(id,path,tag,cls,printing){
+ const active=data.slides.findIndex(s=>s.id===id);
+ if(active>=0)return S(active,path,tag,cls,printing);
+ const deleted=data.trash.findIndex(e=>e.slide.id===id);
+ return txt('trash.'+deleted+'.slide.'+path,tag,cls,printing);
+}
 function renderDatabaseIntro(i,printing){
- const d=currentAt(i),source=data.slides.findIndex(s=>s.id===d.sourceId),kind=databaseProfileKey(d.sourceId),p='items.0.';
- return '<div class="database-profile db-profile-'+kind+'"><section class="db-profile-copy"><div class="db-profile-kicker">'+icon(kind==='sheets'?'grid':kind==='supabase'?'database':'bolt')+S(source,p+'short','span','',printing)+'</div>'+S(source,'title','h1','db-profile-title',printing)+S(source,p+'analogy','h2','db-profile-analogy',printing)+S(source,p+'description','p','db-profile-description',printing)+'</section><figure class="db-profile-visual" aria-label="데이터 저장 방식 예시">'+databaseDiagram(kind)+'</figure></div>'+S(source,p+'note','p','db-profile-note',printing);
+ const d=currentAt(i),source=d.sourceId,kind=databaseProfileKey(d.sourceId),p='items.0.';
+ return '<div class="database-profile db-profile-'+kind+'"><section class="db-profile-copy"><div class="db-profile-kicker">'+icon(kind==='sheets'?'grid':kind==='supabase'?'database':'bolt')+sourceSlideText(source,p+'short','span','',printing)+'</div>'+sourceSlideText(source,'title','h1','db-profile-title',printing)+sourceSlideText(source,p+'analogy','h2','db-profile-analogy',printing)+sourceSlideText(source,p+'description','p','db-profile-description',printing)+'</section><figure class="db-profile-visual" aria-label="데이터 저장 방식 예시">'+databaseDiagram(kind)+'</figure></div>'+sourceSlideText(source,p+'note','p','db-profile-note',printing);
 }
 function renderBackendPage(i,printing){
  const st=state(i),p='items.0.',category=st.category,step=DB_STEPS.indexOf(category);
@@ -1645,11 +1742,128 @@ function renderContents(i,printing){return '<div class="contents-composition"><d
 
 function siblingRail(i,printing){const d=currentAt(i),siblings=data.slides.map((s,n)=>({s,n})).filter(x=>x.s.type===d.type&&x.s.part===d.part);return '<nav class="editorial-rail" aria-label="'+escapeHTML(data.meta.parts[d.part])+'">'+siblings.map((x,n)=>{const inner='<span>'+String(n+1).padStart(2,'0')+'</span>'+S(x.n,'items.0.title','span','',printing);return printing?'<div class="'+(x.n===i?'active':'')+'">'+inner+'</div>':button(inner,'slide-jump',x.n,null,x.n===i?'active':'');}).join('')+'</nav>';}
 
-const renderers={deploymentIntro:renderDeploymentIntro,deploymentDecision:renderDeploymentDecision,deploymentComparison:renderDeploymentComparison,cover:renderCover,contents:renderContents,section:renderSection,intro:renderIntro,structure:renderStructure,process:renderProcess,ai:renderAI,comparison:renderComparisonPage,prompt:renderPromptPage,databaseIntro:renderDatabaseIntro,backend:renderBackendPage,recommend:renderRecommend,uiux:renderUIUXPage,beforeAfter:renderBeforeAfterPage,practice:renderPractice,summary:renderSummary};
+/* FUNDAMENTALS_JS_START */
+/* Included in the main script so exported HTML remains self-contained. */
+function renderVibeBenefits(i,printing){
+ return '<div class="fund-benefits">'+currentAt(i).items.map((_,n)=>'<section class="fund-benefit">'+pictogram(['bulb','target','repeat'][n])+S(i,'items.'+n+'.title','h2','',printing)+S(i,'items.'+n+'.description','p','',printing)+S(i,'items.'+n+'.example','p','fund-example',printing)+'</section>').join('')+'</div>'+S(i,'note','p','fund-note',printing);
+}
+function renderWebLanguage(i,printing){
+ const d=currentAt(i),raw=d.kind==='html',interactive=d.kind==='js'&&!printing,st=state(i);
+ const preview='<div class="language-preview '+(raw?'is-html':'')+'"><h2>학생 활동</h2><input aria-label="활동 내용 체험" placeholder="활동 내용" value="'+escapeHTML(st.activity??'과학 동아리 발표')+'"'+(interactive?' data-control="activity-demo" maxlength="120"':' readonly')+'><button type="button"'+(interactive?' data-action="activity-save"':' tabindex="-1" aria-disabled="true"')+'>저장하기</button><p class="fund-status" role="status">'+(interactive?escapeHTML(st.activityStatus||''):d.kind==='js'?'클릭 → 입력 확인 → 저장 요청':'')+'</p></div>';
+ return '<div class="web-language"><section class="language-copy">'+S(i,'role','span','editorial-label',printing)+S(i,'definition','h2','',printing)+S(i,'analogy','p','language-analogy',printing)+S(i,'example','p','language-example',printing)+S(i,'code','pre','language-code',printing)+'</section>'+demoBrowser(preview,S(i,'previewLabel','span','',printing))+'</div>'+S(i,'note','p','fund-note',printing);
+}
+function renderButtonAnatomy(i,printing){
+ return '<div class="button-anatomy">'+currentAt(i).items.map((_,n)=>'<section class="anatomy-part">'+S(i,'items.'+n+'.title','span','editorial-label',printing)+S(i,'items.'+n+'.role','h2','',printing)+S(i,'items.'+n+'.description','p','',printing)+'<span class="anatomy-demo '+(n?'styled':'raw')+'">'+(n===2?icon('bolt'):'')+'저장하기</span></section>').join('')+'</div>'+S(i,'note','p','fund-note',printing);
+}
+function renderWebArchitecture(i,printing){
+ const node=(key,symbol,extra='')=>'<section class="architecture-node">'+pictogram(symbol)+S(i,key,'h2','',printing)+S(i,key+'Description','p','',printing)+extra+'</section>';
+ return '<div class="architecture-map">'+node('frontend','screen',S(i,'frontendExample','p','architecture-tech',printing))+'<div class="architecture-connection">'+S(i,'api','strong','',printing)+icon('arrow')+'<small>요청</small>'+icon('arrow').replace('class="icon"','class="icon response"')+'<small>응답</small>'+S(i,'apiDescription','small','',printing)+'</div><div class="architecture-server">'+S(i,'server','span','',printing)+node('backend','server')+S(i,'serverDescription','p','',printing)+'</div><div class="architecture-connection">'+icon('arrow')+icon('arrow').replace('class="icon"','class="icon response"')+'</div>'+node('database','database')+'</div>'+S(i,'note','p','fund-note',printing);
+}
+function renderWebDataFlow(i,printing){
+ const d=currentAt(i),st=state(i),symbols=['edit','link','database','check'];
+ return '<div class="flow-steps">'+d.steps.map((_,n)=>{const inner='<span class="flow-step-number">STEP 0'+(n+1)+'</span>'+pictogram(symbols[n])+S(i,'steps.'+n+'.title','strong','',printing)+S(i,'steps.'+n+'.label','span','flow-label',printing)+(printing?S(i,'steps.'+n+'.description','p','flow-print-description',true):'');return printing?'<section class="flow-step">'+inner+'</section>':button(inner,'select',n,n===st.selected,'flow-step');}).join('')+'</div>'+(printing?'':'<div class="flow-detail" aria-live="polite">'+pictogram(symbols[st.selected])+S(i,'steps.'+st.selected+'.description','p')+'</div>')+S(i,'note','p','fund-note',printing);
+}
+
+function deckChanged(selectedId){
+ current=Math.max(0,data.slides.findIndex(s=>s.id===selectedId));states={};printReady=false;saveNow();renderAll();
+ $('#slideAnnouncement').textContent=(current+1)+' / '+data.slides.length+' · '+slideTitle(currentSlide());
+}
+function moveSlide(id,index){
+ const from=data.slides.findIndex(s=>s.id===id),selectedId=currentSlide().id;
+ if(from<0||!Number.isInteger(index))return;
+ const to=Math.max(0,Math.min(data.slides.length-1,index));if(from===to)return;
+ const [slide]=data.slides.splice(from,1);data.slides.splice(to,0,slide);deckChanged(selectedId);
+ notify('슬라이드를 '+(to+1)+'번으로 옮겼습니다.');
+}
+function deleteSlide(id=currentSlide().id){
+ if(data.slides.length<=1){notify('강의에는 최소 한 장의 슬라이드가 필요합니다.');return;}
+ const index=data.slides.findIndex(s=>s.id===id);if(index<0)return;
+ const selectedId=currentSlide().id,slide=data.slides[index];
+ data.trash.push({slide,index,beforeId:data.slides[index-1]?.id??null,afterId:data.slides[index+1]?.id??null});
+ data.slides.splice(index,1);deckChanged(id===selectedId?data.slides[Math.min(index,data.slides.length-1)].id:selectedId);
+ notify('슬라이드를 휴지통으로 옮겼습니다. 휴지통에서 복구할 수 있습니다.');
+}
+function restoreSlide(id){
+ const n=data.trash.findIndex(entry=>entry.slide.id===id);if(n<0)return;
+ const entry=data.trash[n],after=data.slides.findIndex(s=>s.id===entry.afterId),before=data.slides.findIndex(s=>s.id===entry.beforeId);
+ const index=after>=0?after:before>=0?before+1:Math.min(entry.index,data.slides.length);
+ data.trash.splice(n,1);data.slides.splice(index,0,entry.slide);deckChanged(entry.slide.id);
+ notify('슬라이드를 '+(index+1)+'번 위치에 복구했습니다.');
+}
+function renderSlideManager(){
+ $('#moveSlideUp').disabled=current===0;$('#moveSlideDown').disabled=current===data.slides.length-1;$('#deleteSlide').disabled=data.slides.length<=1;
+ $('#trashCount').textContent=data.trash.length;
+ $('#trashList').innerHTML=data.trash.length?data.trash.slice().reverse().map(({slide})=>'<div class="trash-item"><span>'+escapeHTML(slideTitle(slide))+'</span><button type="button" data-restore-slide="'+slide.id+'" aria-label="'+escapeHTML(slideTitle(slide))+' 복구">복구</button></div>').join(''):'<p class="trash-empty">삭제한 슬라이드가 없습니다.</p>';
+}
+let slideDrag=null,suppressNavClickUntil=0;
+function clearSlideDrop(){ $$('#slideNav .drop-before,#slideNav .drop-after').forEach(el=>el.classList.remove('drop-before','drop-after')); }
+function updateSlideDrop(){
+ if(!slideDrag?.active)return;
+ const nav=$('.sidebar'),rect=nav.getBoundingClientRect(),{x,y}=slideDrag;
+ if(x<rect.left||x>rect.right||y<rect.top||y>rect.bottom){slideDrag.target=null;clearSlideDrop();return;}
+ const hit=document.elementFromPoint(x,y)?.closest('.nav-row');clearSlideDrop();slideDrag.target=null;
+ if(!hit)return;
+ const r=hit.getBoundingClientRect(),after=y>r.top+r.height/2;
+ slideDrag.target={id:Number(hit.dataset.slideId),after};hit.classList.add(after?'drop-after':'drop-before');
+}
+function tickSlideDrag(){
+ if(!slideDrag?.active)return;
+ const nav=$('.sidebar'),r=nav.getBoundingClientRect(),{x,y}=slideDrag;
+ if(x>=r.left&&x<=r.right){if(y<r.top+110)nav.scrollTop-=12;else if(y>r.bottom-55)nav.scrollTop+=12;}
+ updateSlideDrop();slideDrag.frame=requestAnimationFrame(tickSlideDrag);
+}
+function finishSlideDrag(commit){
+ if(!slideDrag)return;
+ const drag=slideDrag;slideDrag=null;cancelAnimationFrame(drag.frame);clearSlideDrop();document.body.classList.remove('slide-reordering');
+ $$('#slideNav .is-dragging').forEach(el=>el.classList.remove('is-dragging'));
+ if(drag.handle.hasPointerCapture(drag.pointerId))drag.handle.releasePointerCapture(drag.pointerId);
+ if(drag.active)suppressNavClickUntil=performance.now()+300;
+ if(commit&&drag.active&&drag.target){
+  const from=data.slides.findIndex(s=>s.id===drag.id),target=data.slides.findIndex(s=>s.id===drag.target.id);
+  let to=target+(drag.target.after?1:0);if(from<to)to--;
+  moveSlide(drag.id,to);$('#slideNav [data-slide-id="'+drag.id+'"] .nav-handle')?.focus({preventScroll:true});
+ }
+}
+function setupSlideManager(){
+ $('#moveSlideUp').onclick=()=>moveSlide(currentSlide().id,current-1);
+ $('#moveSlideDown').onclick=()=>moveSlide(currentSlide().id,current+1);
+ $('#deleteSlide').onclick=()=>{deleteSlide();$('#deleteSlide').focus({preventScroll:true});};
+ $('#trashList').addEventListener('click',event=>{const el=event.target.closest('[data-restore-slide]');if(el){restoreSlide(Number(el.dataset.restoreSlide));$('#slideNav [aria-current=true]')?.focus({preventScroll:true});}});
+ $('#slideNav').addEventListener('keydown',event=>{
+  const handle=event.target.closest('.nav-handle');if(!handle||!['ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
+  event.preventDefault();event.stopPropagation();const id=Number(handle.closest('.nav-row').dataset.slideId),index=data.slides.findIndex(s=>s.id===id);
+  moveSlide(id,event.key==='Home'?0:event.key==='End'?data.slides.length-1:index+(event.key==='ArrowUp'?-1:1));
+  $('#slideNav [data-slide-id="'+id+'"] .nav-handle')?.focus({preventScroll:true});
+ });
+ $('#slideNav').addEventListener('pointerdown',event=>{
+  const handle=event.target.closest('.nav-handle');if(!handle||event.button!==0||slideDrag)return;
+  event.preventDefault();handle.focus({preventScroll:true});handle.setPointerCapture(event.pointerId);
+  slideDrag={id:Number(handle.closest('.nav-row').dataset.slideId),handle,pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,x:event.clientX,y:event.clientY,active:false,target:null};
+ });
+ document.addEventListener('pointermove',event=>{
+  if(!slideDrag||slideDrag.pointerId!==event.pointerId)return;
+  slideDrag.x=event.clientX;slideDrag.y=event.clientY;
+  if(!slideDrag.active&&Math.hypot(slideDrag.x-slideDrag.startX,slideDrag.y-slideDrag.startY)>5){slideDrag.active=true;slideDrag.handle.closest('.nav-row').classList.add('is-dragging');document.body.classList.add('slide-reordering');tickSlideDrag();}
+  if(slideDrag.active){event.preventDefault();updateSlideDrop();}
+ },{passive:false});
+ document.addEventListener('pointerup',event=>{if(slideDrag?.pointerId===event.pointerId)finishSlideDrag(true);});
+ document.addEventListener('pointercancel',()=>finishSlideDrag(false));
+ document.addEventListener('keydown',event=>{if(slideDrag&&event.key==='Escape'){event.preventDefault();event.stopImmediatePropagation();finishSlideDrag(false);}},true);
+ window.addEventListener('blur',()=>finishSlideDrag(false));
+}
+
+/* FUNDAMENTALS_JS_END */
+const renderers={vibeBenefits:renderVibeBenefits,webLanguage:renderWebLanguage,buttonAnatomy:renderButtonAnatomy,webArchitecture:renderWebArchitecture,webDataFlow:renderWebDataFlow,deploymentIntro:renderDeploymentIntro,deploymentDecision:renderDeploymentDecision,deploymentComparison:renderDeploymentComparison,cover:renderCover,contents:renderContents,section:renderSection,intro:renderIntro,structure:renderStructure,process:renderProcess,ai:renderAI,comparison:renderComparisonPage,prompt:renderPromptPage,databaseIntro:renderDatabaseIntro,backend:renderBackendPage,recommend:renderRecommend,uiux:renderUIUXPage,beforeAfter:renderBeforeAfterPage,practice:renderPractice,summary:renderSummary};
 function renderSlide(i,printing=false){if(data.slides[i].type==='apiShowcase')return renderApiShowcaseSlide(i,printing);const d=data.slides[i],opener=['cover','contents','section'].includes(d.type),sideTitle=usesSideTitle(d),total=data.slides.length;return '<article class="slide '+(opener?d.type+'-slide':'')+(sideTitle?' side-title-slide':'')+(d.type==='ai'?' brand-slide brand-'+aiBrandKey(d):'')+'" data-slide="'+i+'" data-type="'+d.type+'" aria-label="슬라이드 '+(i+1)+' · '+escapeHTML(slideTitle(d))+'">'+(opener?'':'<header class="slide-head"><div class="eyebrow"><span class="part-chip">'+partLabel(d)+'</span>'+txt('meta.parts.'+d.part,'span','',printing)+'</div>'+(sideTitle?'':S(i,'title','h1','',printing)+S(i,'subtitle','p','subtitle',printing))+'</header>')+'<div class="slide-content"><div class="content-inner">'+renderers[d.type](i,printing)+'</div></div><footer class="slide-foot"><span class="foot-brand">'+txt('meta.title','span','',printing)+'</span><span class="foot-page"><b>'+String(i+1).padStart(2,'0')+'</b> / '+total+'</span></footer><div class="slide-progress" style="width:'+((i+1)/total*100)+'%"></div></article>';}
 
-function renderNav(){let html='',previous=-1;data.slides.forEach((d,i)=>{if(d.type!=='cover'&&d.part!==previous){html+='<div class="group-label"><b>'+partLabel(d)+'</b><span>'+escapeHTML(data.meta.parts[d.part])+'</span></div>';previous=d.part;}html+='<button class="nav-item '+(d.type==='section'?'section-nav':d.type==='cover'?'cover-nav':'')+'" data-slide-nav="'+i+'" aria-current="'+(i===current)+'"><span class="number">'+String(i+1).padStart(2,'0')+'</span><span class="nav-title">'+(d.type==='section'?'<span class="nav-main-badge">Main</span> ':'')+escapeHTML(slideTitle(d))+'</span></button>';});$('#slideNav').innerHTML=html;}
-function renderChrome(){const total=data.slides.length;document.title=data.meta.title;$('#brandTitle').textContent=data.meta.title;$('#previewPart').textContent=partLabel(currentSlide());$('#previewCount').textContent='SLIDE '+String(current+1).padStart(2,'0');$('#bottomCount').textContent=String(current+1).padStart(2,'0')+' / '+total;$('#presentCount').textContent=(current+1)+' / '+total;$('#lectureTab small').textContent=total+'장';$('#navTotal').textContent='/ '+total;$('#exportMenu [data-command="print"]').textContent='전체 '+total+'장 PDF 출력';if(document.activeElement!==$('#notesPreview'))$('#notesPreview').textContent=currentSlide().notes;$('#notesPreview').contentEditable=String(!presenting);renderChapterMenu();['prevBtn','presentPrev','stagePrev'].forEach(id=>$('#'+id).disabled=current===0);['nextBtn','presentNext','stageNext'].forEach(id=>$('#'+id).disabled=current===total-1&&!$('#slideFrame .emphasis.is-pending'));$('#layoutTools').hidden=presenting||!selectedLayout;$('#previewHint').textContent='문구 클릭 수정 · 손잡이로 배치 · 휠로 이동 · 자동 저장';document.documentElement.dataset.theme=data.theme;$('#themeBtn').innerHTML=icon(data.theme==='dark'?'sun':'moon');$('#themeBtn').setAttribute('aria-label',data.theme==='dark'?'라이트 모드로 변경':'다크 모드로 변경');}
+function renderNav(){
+ let html='',previous=-1;
+ data.slides.forEach((d,i)=>{
+  if(d.type!=='cover'&&d.part!==previous){html+='<div class="group-label"><b>'+partLabel(d)+'</b><span>'+escapeHTML(data.meta.parts[d.part])+'</span></div>';previous=d.part;}
+  html+='<div class="nav-row" data-slide-id="'+d.id+'"><button type="button" class="nav-handle" aria-label="'+escapeHTML(slideTitle(d))+' 순서 변경" title="드래그 또는 ↑ ↓ 키로 순서 변경">⠿</button><button type="button" class="nav-item '+(d.type==='section'?'section-nav':d.type==='cover'?'cover-nav':'')+'" data-slide-nav="'+i+'" aria-current="'+(i===current)+'"><span class="number">'+String(i+1).padStart(2,'0')+'</span><span class="nav-title">'+(d.type==='section'?'<span class="nav-main-badge">Main</span> ':'')+escapeHTML(slideTitle(d))+'</span></button></div>';
+ });$('#slideNav').innerHTML=html;renderSlideManager();
+}
+function renderChrome(){renderSlideManager();const total=data.slides.length;document.title=data.meta.title;$('#brandTitle').textContent=data.meta.title;$('#previewPart').textContent=partLabel(currentSlide());$('#previewCount').textContent='SLIDE '+String(current+1).padStart(2,'0');$('#bottomCount').textContent=String(current+1).padStart(2,'0')+' / '+total;$('#presentCount').textContent=(current+1)+' / '+total;$('#lectureTab small').textContent=total+'장';$('#navTotal').textContent='/ '+total;$('#exportMenu [data-command="print"]').textContent='전체 '+total+'장 PDF 출력';if(document.activeElement!==$('#notesPreview'))$('#notesPreview').textContent=currentSlide().notes;$('#notesPreview').contentEditable=String(!presenting);renderChapterMenu();['prevBtn','presentPrev','stagePrev'].forEach(id=>$('#'+id).disabled=current===0);['nextBtn','presentNext','stageNext'].forEach(id=>$('#'+id).disabled=current===total-1&&!$('#slideFrame .emphasis.is-pending'));$('#layoutTools').hidden=presenting||!selectedLayout;$('#previewHint').textContent='문구 클릭 수정 · 손잡이로 배치 · 휠로 이동 · 자동 저장';document.documentElement.dataset.theme=data.theme;$('#themeBtn').innerHTML=icon(data.theme==='dark'?'sun':'moon');$('#themeBtn').setAttribute('aria-label',data.theme==='dark'?'라이트 모드로 변경':'다크 모드로 변경');}
 function renderCurrent(restoreFocus=false){destroySlideCombos();finishSlideTransition();const active=document.activeElement,action=active?.dataset.action,value=active?.dataset.value,control=active?.dataset.control;clearLayoutSelection();$('#slideFrame').innerHTML=renderSlide(current);mountKeyIdea($('#slideFrame>.slide'));prepareLayout($('#slideFrame>.slide'));mountSlideCombos();mountConcreteExamples($('#slideFrame>.slide'));renderChrome();resizeStage();if(restoreFocus){const candidates=$$('#slideFrame [data-action],#slideFrame [data-control]');const target=candidates.find(el=>action?el.dataset.action===action&&el.dataset.value===value:control&&el.dataset.control===control);target?.focus({preventScroll:true});}}
 function renderAll(transition=null){renderNav();renderCurrent();animateSlide(transition);}
 function isReading(){return window.innerWidth<=860&&(readingOverride??(window.innerHeight>window.innerWidth));}
@@ -1674,7 +1888,7 @@ function prepareLayout(slide,printing=false){
  const i=Number(slide.dataset.slide),saved=data.layouts[String(data.slides[i].id)]||{},counts={};
  slide.querySelectorAll('[data-path]').forEach(el=>{
   if(el.closest('.emphasis'))return;
-  const path=el.dataset.path.replace(/^slides\.\d+\./,'');
+  const path=el.dataset.path.replace(/^(?:slides\.\d+\.|trash\.\d+\.slide\.)/,'');
   const n=counts[path]||0;counts[path]=n+1;el.dataset.layoutKey='text:'+path+':'+n;
  });
  const groups={};slide.querySelectorAll(layoutBlocks).forEach(el=>{
@@ -1777,26 +1991,26 @@ $('#fontSmaller').onclick=()=>resizeFont(-2);$('#fontLarger').onclick=()=>resize
 $('#notesPreview').addEventListener('input',event=>editValue(pathFor(current,'notes'),event.target.innerText.replace(/\r/g,''),true));
 
 function renderChapterMenu(){
- const menu=$('#chapterMenu'),signature=JSON.stringify(data.meta.parts);
+ const menu=$('#chapterMenu'),signature=JSON.stringify([data.meta.parts,data.slides.map(s=>s.id)]);
  if(menu.dataset.signature!==signature){
-  menu.innerHTML=data.meta.parts.map((name,part)=>'<button type="button" data-chapter="'+part+'"><span>'+String(part+1).padStart(2,'0')+'</span>'+escapeHTML(name)+'</button>').join('');menu.dataset.signature=signature;
+  menu.innerHTML=data.meta.parts.map((name,part)=>'<button type="button" data-chapter="'+part+'"'+(data.slides.some(s=>s.part===part)?'':' disabled')+'><span>'+String(part+1).padStart(2,'0')+'</span>'+escapeHTML(name)+'</button>').join('');menu.dataset.signature=signature;
  }
  menu.querySelectorAll('[data-chapter]').forEach(el=>el.setAttribute('aria-current',String(Number(el.dataset.chapter)===currentSlide().part)));
 }
 function closeChapters(){$('#chapterMenu').hidden=true;$('#chapterToggle').setAttribute('aria-expanded','false');}
-function jumpToChapter(part){const index=data.slides.findIndex(s=>s.type==='section'&&s.part===part);if(index>=0){go(index);closeChapters();if(presenting)$('#slideFrame').focus({preventScroll:true});}}
+function jumpToChapter(part){const section=data.slides.findIndex(s=>s.type==='section'&&s.part===part),index=section>=0?section:data.slides.findIndex(s=>s.part===part);if(index<0){notify('이 파트의 슬라이드는 휴지통에 있습니다.');return;}if(index>=0){go(index);closeChapters();if(presenting)$('#slideFrame').focus({preventScroll:true});}}
 function restartDeck(){
  closeChapters();if(current===0){states={};renderAll();}else{states={};go(0);}if(presenting)$('#slideFrame').focus({preventScroll:true});wakeControls();
 }
 $('#presentHome').onclick=restartDeck;
 $('#chapterToggle').onclick=()=>{
  const open=$('#chapterMenu').hidden;$('#chapterMenu').hidden=!open;$('#chapterToggle').setAttribute('aria-expanded',String(open));wakeControls();
- if(open)($('#chapterMenu [aria-current="true"]')||$('#chapterMenu button')).focus({preventScroll:true});
+ if(open)($('#chapterMenu [aria-current="true"]:not(:disabled)')||$('#chapterMenu button:not(:disabled)'))?.focus({preventScroll:true});
 };
 $('#chapterMenu').addEventListener('click',event=>{const el=event.target.closest('[data-chapter]');if(el)jumpToChapter(Number(el.dataset.chapter));});
 $('#chapterMenu').addEventListener('keydown',event=>{
  if(!['ArrowDown','ArrowUp','Home','End'].includes(event.key))return;event.preventDefault();event.stopPropagation();
- const buttons=Array.from(event.currentTarget.querySelectorAll('button')),index=buttons.indexOf(document.activeElement);
+ const buttons=Array.from(event.currentTarget.querySelectorAll('button:not(:disabled)')),index=buttons.indexOf(document.activeElement);
  buttons[event.key==='Home'?0:event.key==='End'?buttons.length-1:(index+(event.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length].focus();
 });
 
@@ -1808,12 +2022,12 @@ function exportHTML(){saveNow();const snapshot=copy(data);snapshot.deckId='bibeo
 function buildPrint(){const root=$('#printRoot');root.innerHTML=data.slides.map((d,i)=>'<section class="print-page">'+renderSlide(i,true)+'</section>').join('');root.style.display='block';root.style.position='absolute';root.style.left='-100000px';root.style.top='0';root.querySelectorAll('.slide').forEach(slide=>{prepareLayout(slide,true);fitSlide(slide);});root.style.display='';root.style.position='';root.style.left='';root.style.top='';printReady=true;}
 async function printDeck(){saveNow();notify('인쇄 대상: PDF로 저장 · 전체 '+data.slides.length+'장 · 배경 그래픽 켜기 · 머리글/바닥글 끄기');buildPrint();await document.fonts.ready;await Promise.all([...$('#printRoot').querySelectorAll('img')].map(img=>img.decode()));window.print();}
 async function copyPrompt(){const st=state(current),d=currentSlide(),value=d.layout==='specific'?d.segments.join(' '):d.vague;try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(value);else throw Error();notify('프롬프트를 복사했습니다.');}catch(e){const t=document.createElement('textarea');t.value=value;t.style.cssText='position:fixed;top:0;left:-9999px';document.body.append(t);t.select();const ok=document.execCommand('copy');t.remove();notify(ok?'프롬프트를 복사했습니다.':'브라우저에서 복사가 제한되었습니다. 요청 문구를 선택해 복사해 주세요.');}}
-function actionHandler(action,value){const st=state(current);switch(action){case'slide-jump':go(Number(value));return;case'next-slide':advance();return;case'part-jump':jumpToChapter(Number(value));return;case'reveal-message':revealMessage();return;case'hide-message':hideMessage();return;case'select':st.selected=Number(value);break;case'category':setDatabaseStep(value,true);return;case'table-col':st.col=st.col===Number(value)?-1:Number(value);break;case'table-row':st.row=Number(value);st.rowHighlight=true;break;case'table-all':st.focus=false;st.col=-1;st.rowHighlight=false;break;case'table-focus':st.focus=true;break;case'recommend':st.recommend=Number(value);break;case'recommend-reset':st.recommend=-1;break;case'score-view':st.good=value==='good';break;case'score-save':{const n=Number(st.score);if(st.score.trim()===''||!Number.isInteger(n)||n<-100||n>100){notify('-100부터 100 사이의 정수를 입력해 주세요.');return;}st.savedScore=n;st.savedStudent=st.student||0;break;}case'practice-open':selectPractice('uiux');selectCourse('practice');return;case'copy':copyPrompt();return;case'link':openLink(value);return;case'home':restartDeck();return;default:return;}renderCurrent(true);}
+function actionHandler(action,value){const st=state(current);switch(action){case'activity-save':{const text=(st.activity??'과학 동아리 발표').trim();st.activityStatus=text?'저장 완료! (화면 체험)':'활동 내용을 입력해 주세요.';break;}case'slide-jump':go(Number(value));return;case'next-slide':advance();return;case'part-jump':jumpToChapter(Number(value));return;case'reveal-message':revealMessage();return;case'hide-message':hideMessage();return;case'select':st.selected=Number(value);break;case'category':setDatabaseStep(value,true);return;case'table-col':st.col=st.col===Number(value)?-1:Number(value);break;case'table-row':st.row=Number(value);st.rowHighlight=true;break;case'table-all':st.focus=false;st.col=-1;st.rowHighlight=false;break;case'table-focus':st.focus=true;break;case'recommend':st.recommend=Number(value);break;case'recommend-reset':st.recommend=-1;break;case'score-view':st.good=value==='good';break;case'score-save':{const n=Number(st.score);if(st.score.trim()===''||!Number.isInteger(n)||n<-100||n>100){notify('-100부터 100 사이의 정수를 입력해 주세요.');return;}st.savedScore=n;st.savedStudent=st.student||0;break;}case'practice-open':selectPractice('uiux');selectCourse('practice');return;case'copy':copyPrompt();return;case'link':openLink(value);return;case'home':restartDeck();return;default:return;}renderCurrent(true);}
 $('#slideFrame').addEventListener('click',event=>{if(event.target.closest('[contenteditable]'))return;const buttonEl=event.target.closest('[data-action]');if(buttonEl)actionHandler(buttonEl.dataset.action,buttonEl.dataset.value);else if(!event.target.closest('button,a,input,select,textarea')&&!getSelection().toString()&&!ComboUI.dismissedRecently()){if(presenting)advance();else revealMessage();}});
-$('#slideFrame').addEventListener('input',event=>{const editable=event.target.closest('[contenteditable]');if(editable){editValue(editable.dataset.path,editable.innerText.replace(/\r/g,''),true);return;}const el=event.target;if(el.dataset.control==='demo-score')state(current).score=el.value;});
+$('#slideFrame').addEventListener('input',event=>{const editable=event.target.closest('[contenteditable]');if(editable){editValue(editable.dataset.path,editable.innerText.replace(/\r/g,''),true);return;}const el=event.target;if(el.dataset.control==='activity-demo'){state(current).activity=el.value;state(current).activityStatus='';$('#slideFrame .fund-status').textContent='';}if(el.dataset.control==='demo-score')state(current).score=el.value;});
 $('#slideFrame').addEventListener('change',event=>{if(event.target.dataset.control==='demo-student')state(current).student=Number(event.target.value);if(event.target.dataset.control==='table-row'){state(current).row=Number(event.target.value);state(current).rowHighlight=true;renderCurrent(true);}});
 $('#slideFrame').addEventListener('paste',event=>{const editable=event.target.closest('[contenteditable]');if(!editable)return;event.preventDefault();const plain=event.clipboardData.getData('text/plain');document.execCommand('insertText',false,plain);});
-$('#slideNav').addEventListener('click',event=>{const nav=event.target.closest('[data-slide-nav]');if(nav){go(Number(nav.dataset.slideNav));document.body.classList.remove('sidebar-open');}});
+$('#slideNav').addEventListener('click',event=>{if(performance.now()<suppressNavClickUntil)return;const nav=event.target.closest('[data-slide-nav]');if(nav){go(Number(nav.dataset.slideNav));document.body.classList.remove('sidebar-open');}});
 
 $('.practice-topic-list').addEventListener('click',event=>{const tab=event.target.closest('[data-practice]');if(tab)selectPractice(tab.dataset.practice);});
 $('.practice-topic-list').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();event.stopPropagation();const next=event.key==='Home'?'uiux':event.key==='End'?'animation':activePractice==='uiux'?'animation':'uiux';selectPractice(next);document.getElementById(next==='uiux'?'uiuxTab':'animationTab').focus();});
@@ -1877,6 +2091,7 @@ document.addEventListener('pointermove',wakeControls,{passive:true});document.ad
 window.addEventListener('resize',resizeStage);new ResizeObserver(resizeStage).observe($('#stageSpace'));
 window.addEventListener('beforeprint',()=>{if(!printReady)buildPrint();});window.addEventListener('afterprint',()=>{printReady=false;resizeStage();});
 window.addEventListener('pagehide',saveNow);document.addEventListener('visibilitychange',()=>{if(document.hidden)saveNow();});window.addEventListener('beforeunload',event=>{if(dirty){saveNow();if(dirty){event.preventDefault();event.returnValue='';}}});
+setupSlideManager();
 renderAll();if(initialMessage)notify(initialMessage);
 
 document.fonts.ready.then(resizeStage);
