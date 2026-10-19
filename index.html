@@ -784,7 +784,7 @@ body:not(.reading) .part-two-content .prompt-request-step{padding-block:17px}
 </header>
 <nav class="course-tabs" aria-label="강의와 실습"><div class="course-tablist" role="tablist" aria-label="학습 화면 선택"><button class="course-tab" id="lectureTab" role="tab" aria-selected="true" aria-controls="lecturePanel" tabindex="0" data-course="lecture"><span data-icon="book"></span>강의 <small>16장</small></button><button class="course-tab" id="practiceTab" role="tab" aria-selected="false" aria-controls="practicePanel" tabindex="-1" data-course="practice"><span data-icon="screen"></span>실습 <small>2개 주제</small></button></div><span class="course-caption">개념을 이해하고, 직접 클릭하며 익혀 보세요.</span></nav>
 <div class="workspace" id="lecturePanel" role="tabpanel" aria-labelledby="lectureTab">
- <aside class="sidebar" aria-label="슬라이드 목록"><div class="sidebar-head"><span>강의 목차 <span class="muted" id="navTotal">/ 44</span></span><button class="icon-btn close-panel" data-command="close-panels" aria-label="목차 닫기" data-icon="close"></button></div><div class="slide-manager"><p>손잡이를 드래그해 순서 변경<br>손잡이에 초점을 두고 ↑ ↓ 키로도 이동</p><div class="slide-manager-actions"><button type="button" id="moveSlideUp" aria-label="선택한 슬라이드 위로 이동">↑ 위로</button><button type="button" id="moveSlideDown" aria-label="선택한 슬라이드 아래로 이동">↓ 아래로</button><button type="button" id="deleteSlide" class="delete-slide">삭제</button></div><details class="slide-trash" id="slideTrash"><summary>휴지통 <span id="trashCount">0</span></summary><div id="trashList" class="trash-list"></div></details></div><nav id="slideNav"></nav><div class="sidebar-bottom">TEACHER'S TOOLKIT<br>작은 아이디어가, 나만의 교육용 웹앱으로.</div></aside>
+ <aside class="sidebar" aria-label="슬라이드 목록"><div class="sidebar-head"><span>강의 목차 <span class="muted" id="navTotal">/ 44</span></span><button class="icon-btn close-panel" data-command="close-panels" aria-label="목차 닫기" data-icon="close"></button></div><div class="slide-manager"><p>슬라이드 선택 후 ↑ ↓로 이전·다음<br>순서 변경: 손잡이 드래그 또는 위·아래 버튼</p><div class="slide-manager-actions"><button type="button" id="moveSlideUp" aria-label="선택한 슬라이드 위로 이동">↑ 위로</button><button type="button" id="moveSlideDown" aria-label="선택한 슬라이드 아래로 이동">↓ 아래로</button><button type="button" id="deleteSlide" class="delete-slide">삭제</button></div><details class="slide-trash" id="slideTrash"><summary>휴지통 <span id="trashCount">0</span></summary><div id="trashList" class="trash-list"></div></details></div><nav id="slideNav"></nav><div class="sidebar-bottom">TEACHER'S TOOLKIT<br>작은 아이디어가, 나만의 교육용 웹앱으로.</div></aside>
  <main class="main"><div class="preview-tools"><div class="breadcrumb"><button class="icon-btn mobile-tool" data-command="sidebar" aria-label="강의 목차 열기" data-icon="list"></button><span id="previewPart"></span><span class="muted">/</span><span id="previewCount" class="mono"></span></div><div style="display:flex;gap:8px;align-items:center"><button class="icon-btn read-toggle" data-command="read-mode" aria-label="16:9 화면과 읽기 보기 전환" data-icon="layout"></button></div></div><div class="layout-tools" id="layoutTools" hidden><span id="layoutHint">옮길 텍스트나 영역을 선택하세요.</span><button id="layoutParent" disabled>상위 영역</button><button id="fontSmaller" aria-label="글자 크기 줄이기" disabled>글자 −</button><button id="fontLarger" aria-label="글자 크기 키우기" disabled>글자 +</button><button id="layoutReset" disabled>선택 영역 초기화</button></div><div class="stage-wrap"><button class="stage-arrow prev" id="stagePrev" aria-label="이전 슬라이드" title="이전 슬라이드 (← · 휠 위)" data-icon="left"></button><div class="stage-space" id="stageSpace"><div class="slide-frame" id="slideFrame" tabindex="-1"></div><div class="layout-selection" id="layoutSelection" hidden><button id="layoutMove" class="layout-handle move-handle" aria-label="선택 영역 이동 · 방향키로 미세 조정" title="드래그 이동 · 방향키 1px · Shift 10px">✥</button><button id="layoutResize" class="layout-handle resize-handle" aria-label="선택 영역 너비 조절" title="드래그로 너비 조절">↔</button></div></div><button class="stage-arrow next" id="stageNext" aria-label="다음 슬라이드" title="다음 단계 (→ · 휠 아래)" data-icon="right"></button></div><div class="preview-bottom"><span class="help-text" id="previewHint">버튼과 카드를 클릭하며 강의를 미리 체험하세요.</span><div class="nav-pair"><button id="prevBtn" aria-label="이전 슬라이드" data-icon="left"></button><span id="bottomCount" class="mono"></span><button id="nextBtn" aria-label="다음 슬라이드" data-icon="right"></button></div></div><div class="lecture-notes"><span data-icon="note"></span><div><strong>강사용 메모 <span class="muted">· 발표 및 PDF에 표시되지 않습니다</span></strong><p id="notesPreview"></p></div></div></main>
 </div>
 <section class="practice-panel" id="practicePanel" role="tabpanel" aria-labelledby="practiceTab" hidden>
@@ -1898,12 +1898,26 @@ function finishSlideDrag(commit){
   moveSlide(drag.id,to);$('#slideNav [data-slide-id="'+drag.id+'"] .nav-handle')?.focus({preventScroll:true});
  }
 }
+function navigateSlideList(index){
+ go(index);
+ const item=$('#slideNav [aria-current="true"]');if(!item)return;
+ item.focus({preventScroll:true});
+ const sidebar=$('.sidebar'),bounds=sidebar.getBoundingClientRect(),manager=$('.slide-manager').getBoundingClientRect(),row=item.getBoundingClientRect();
+ const top=Math.max(bounds.top,manager.bottom)+8,bottom=bounds.bottom-8;
+ if(row.top<top)sidebar.scrollTop-=top-row.top;
+ else if(row.bottom>bottom)sidebar.scrollTop+=row.bottom-bottom;
+}
 function setupSlideManager(){
  $('#moveSlideUp').onclick=()=>moveSlide(currentSlide().id,current-1);
  $('#moveSlideDown').onclick=()=>moveSlide(currentSlide().id,current+1);
  $('#deleteSlide').onclick=()=>{deleteSlide();$('#deleteSlide').focus({preventScroll:true});};
  $('#trashList').addEventListener('click',event=>{const el=event.target.closest('[data-restore-slide]');if(el){restoreSlide(Number(el.dataset.restoreSlide));$('#slideNav [aria-current=true]')?.focus({preventScroll:true});}});
  $('#slideNav').addEventListener('keydown',event=>{
+  const item=event.target.closest('[data-slide-nav]');
+  if(item&&['ArrowUp','ArrowDown'].includes(event.key)&&!event.ctrlKey&&!event.metaKey&&!event.altKey){
+   event.preventDefault();event.stopPropagation();
+   navigateSlideList(Number(item.dataset.slideNav)+(event.key==='ArrowUp'?-1:1));return;
+  }
   const handle=event.target.closest('.nav-handle');if(!handle||!['ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
   event.preventDefault();event.stopPropagation();const id=Number(handle.closest('.nav-row').dataset.slideId),index=data.slides.findIndex(s=>s.id===id);
   moveSlide(id,event.key==='Home'?0:event.key==='End'?data.slides.length-1:index+(event.key==='ArrowUp'?-1:1));
@@ -2174,7 +2188,7 @@ $('#slideFrame').addEventListener('compositionend',event=>{const editable=event.
 $('#slideFrame').addEventListener('input',event=>{if(event.isComposing)return;const editable=event.target.closest('[contenteditable]');if(editable){editValue(editable.dataset.path,editable.innerText.replace(/\r/g,''),true);return;}const el=event.target;if(el.dataset.control==='activity-demo'){state(current).activity=el.value;state(current).activityStatus='';$('#slideFrame .fund-status').textContent='';}if(el.dataset.control==='demo-score')state(current).score=el.value;});
 $('#slideFrame').addEventListener('change',event=>{if(event.target.dataset.control==='demo-student')state(current).student=Number(event.target.value);if(event.target.dataset.control==='table-row'){state(current).row=Number(event.target.value);state(current).rowHighlight=true;renderCurrent(true);}});
 $('#slideFrame').addEventListener('paste',event=>{const editable=event.target.closest('[contenteditable]');if(!editable)return;event.preventDefault();const plain=event.clipboardData.getData('text/plain');document.execCommand('insertText',false,plain);});
-$('#slideNav').addEventListener('click',event=>{if(performance.now()<suppressNavClickUntil)return;const nav=event.target.closest('[data-slide-nav]');if(nav){go(Number(nav.dataset.slideNav));document.body.classList.remove('sidebar-open');}});
+$('#slideNav').addEventListener('click',event=>{if(performance.now()<suppressNavClickUntil)return;const nav=event.target.closest('[data-slide-nav]');if(nav){navigateSlideList(Number(nav.dataset.slideNav));document.body.classList.remove('sidebar-open');}});
 
 $('.practice-topic-list').addEventListener('click',event=>{const tab=event.target.closest('[data-practice]');if(tab)selectPractice(tab.dataset.practice);});
 $('.practice-topic-list').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();event.stopPropagation();const next=event.key==='Home'?'uiux':event.key==='End'?'animation':activePractice==='uiux'?'animation':'uiux';selectPractice(next);document.getElementById(next==='uiux'?'uiuxTab':'animationTab').focus();});

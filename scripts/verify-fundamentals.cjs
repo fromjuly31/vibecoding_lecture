@@ -36,6 +36,26 @@ process.chdir(path.resolve(__dirname,'..'));fs.mkdirSync('.qa',{recursive:true})
   for(const id of newIds){await show(id);assert.equal(await b.evaluate('document.documentElement.scrollWidth<=innerWidth'),true);assert.equal(await b.evaluate(`(()=>{const s=document.querySelector('#slideFrame>.slide'),c=s.querySelector('.content-inner');return c.scrollWidth<=s.clientWidth})()`),true);}
   await b.screenshot('.qa/fund-mobile-flow.png');
   await b.cdp('Emulation.setDeviceMetricsOverride',{width:1600,height:1000,deviceScaleFactor:1,mobile:false});await b.evaluate('data.theme="light";togglePresent(false);resizeStage()');
+  await reset();
+  const originalOrder=await b.evaluate('data.slides.map(s=>s.id)');
+  const navPoint=await b.evaluate(`(()=>{const r=document.querySelector('[data-slide-nav="1"]').getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()`);
+  await b.cdp('Input.dispatchMouseEvent',{type:'mousePressed',...navPoint,button:'left',clickCount:1});
+  await b.cdp('Input.dispatchMouseEvent',{type:'mouseReleased',...navPoint,button:'left',clickCount:1});
+  assert.equal(await b.evaluate('current'),1);
+  assert.equal(await b.evaluate('document.activeElement.dataset.slideNav'),'1');
+  await key('ArrowDown',40);assert.equal(await b.evaluate('current'),2);
+  await key('ArrowUp',38);assert.equal(await b.evaluate('current'),1);
+  for(let n=0;n<30;n++)await key('ArrowDown',40);
+  assert.equal(await b.evaluate('current'),31);assert.equal(await b.evaluate('document.activeElement.dataset.slideNav'),'31');
+  assert.equal(await b.evaluate(`(()=>{const item=document.activeElement.getBoundingClientRect(),manager=document.querySelector('.slide-manager').getBoundingClientRect(),sidebar=document.querySelector('.sidebar').getBoundingClientRect();return item.top>=manager.bottom&&item.bottom<=sidebar.bottom})()`),true);
+  for(let n=0;n<31;n++)await key('ArrowUp',38);
+  const startScroll=await b.evaluate('document.querySelector(".sidebar").scrollTop');await key('ArrowUp',38);
+  assert.equal(await b.evaluate('current'),0);assert.equal(await b.evaluate('document.querySelector(".sidebar").scrollTop'),startScroll);
+  await click('[data-slide-nav="72"]');await key('ArrowDown',40);assert.equal(await b.evaluate('current'),72);
+  assert.equal(await b.evaluate('document.activeElement.dataset.slideNav'),'72');assert.deepEqual(await b.evaluate('data.slides.map(s=>s.id)'),originalOrder);
+  await b.evaluate(`const field=document.querySelector('#notesPreview');field.focus();const selection=getSelection(),range=document.createRange();range.selectNodeContents(field);range.collapse(false);selection.removeAllRanges();selection.addRange(range);`);
+  await key('ArrowUp',38);assert.equal(await b.evaluate('current'),72);
+  console.log('PASS list click retains focus; up/down selects adjacent slides, keeps selection visible, respects boundaries and leaves slide order/text editing unchanged');
   await reset();await show(150);
   const points=await b.evaluate(`(()=>{document.querySelector('.sidebar').scrollTop=250;const a=document.querySelector('[data-slide-id="151"] .nav-handle').getBoundingClientRect(),c=document.querySelector('[data-slide-id="153"]').getBoundingClientRect();return {from:{x:a.x+a.width/2,y:a.y+a.height/2},to:{x:c.x+c.width/2,y:c.bottom-5}}})()`);
   await b.cdp('Input.dispatchMouseEvent',{type:'mouseMoved',...points.from});await b.cdp('Input.dispatchMouseEvent',{type:'mousePressed',...points.from,button:'left',clickCount:1});
