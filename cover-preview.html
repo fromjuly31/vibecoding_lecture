@@ -16,7 +16,7 @@
  <header class="page-top"><a class="wordmark" href="index.html">BIBEOM CLASS</a><a class="back-link" href="index.html">강의로 돌아가기 ↗</a></header>
  <div class="page-intro"><div><h1>생각이 코드로 쌓이는 순간.</h1><p>지금의 블루 바이올렛 그대로, 첫 화면에 움직임을 더하는 세 가지 시안.</p></div><div class="palette" aria-label="기존 포인트 색상 유지"><i></i><i></i><i></i>#9CAAFF / #6375FF</div></div>
  <div class="concept-tabs" role="tablist" aria-label="표지 애니메이션 시안">
-  <button type="button" class="concept-tab" role="tab" id="tab-stack" data-concept="stack" aria-selected="true" aria-controls="conceptPanel"><span class="concept-no">01</span><span><span class="concept-name">코드 스택<span class="concept-badge">추천</span></span><span class="concept-sub">코드 창이 차곡차곡 쌓이는</span></span></button>
+  <button type="button" class="concept-tab" role="tab" id="tab-stack" data-concept="stack" aria-selected="true" aria-controls="conceptPanel"><span class="concept-no">01</span><span><span class="concept-name">코드 스택<span class="concept-badge">적용 중</span></span><span class="concept-sub">코드 창이 차곡차곡 쌓이는</span></span></button>
   <button type="button" class="concept-tab" role="tab" id="tab-build" data-concept="build" aria-selected="false" aria-controls="conceptPanel" tabindex="-1"><span class="concept-no">02</span><span><span class="concept-name">라이브 빌드</span><span class="concept-sub">코드가 작은 웹앱이 되는</span></span></button>
   <button type="button" class="concept-tab" role="tab" id="tab-tower" data-concept="tower" aria-selected="false" aria-controls="conceptPanel" tabindex="-1"><span class="concept-no">03</span><span><span class="concept-name">코드 아키텍처</span><span class="concept-sub">입체적인 레이어로 완성되는</span></span></button>
  </div>
@@ -24,8 +24,8 @@
   <div class="preview-shell">
    <div class="preview-viewport" id="previewViewport" data-zoom="false">
     <div class="preview-slide" id="previewSlide"><div class="cover-layout">
-     <div class="preview-meta"><span>BIBEOM CLASS</span><span>VIBE CODING / ADVANCED</span></div>
-     <div class="preview-main"><div class="preview-type"><div class="preview-kicker" id="previewKicker">바이브 코딩, 기초 용어부터 실습까지</div><h2 class="preview-title">바이브코딩<br><em>심화.</em></h2></div><div class="preview-art" id="previewArt"></div></div>
+     <div class="preview-meta"><span id="previewBrand"></span><span>VIBE CODING / ADVANCED</span></div>
+     <div class="preview-main" style="margin-top:12px"><div class="preview-type"><div class="preview-kicker" id="previewKicker">바이브 코딩, 기초 용어부터 실습까지</div><h2 class="preview-title">바이브코딩<br><em>심화.</em></h2></div><div class="preview-art cover-code-art" id="previewArt" style="height:100%"></div></div>
      <div class="preview-baseline"><div class="preview-signature"><small>발표자</small><span class="preview-presenter" id="previewPresenter">원주여고 김범준(비범쌤)</span></div><div class="preview-outro"><span class="preview-tagline" id="previewTagline">아이디어를 설계하고, 경험을 완성하다.</span><span class="preview-arrow" aria-hidden="true">→</span></div></div>
      <div class="preview-foot"><span>비범쌤의 바이브코딩 심화</span><span><b>01</b> / <span id="slideTotal">73</span></span></div>
     </div></div>
@@ -38,13 +38,14 @@
 </main>
 <script src="assets/presentation/cover-motion.js"></script>
 <script>
+document.getElementById('previewBrand').outerHTML=coverBrandMarkup();
 const concepts={stack:['코드 스택','HTML → CSS → JavaScript 창이 순서대로 쌓이고, 코드가 한 줄씩 채워집니다.'],build:['라이브 빌드','코드가 입력되면 아래에 작은 수업 웹앱이 만들어집니다. 생각이 결과물이 되는 흐름입니다.'],tower:['코드 아키텍처','구조·스타일·동작이 입체적인 코드 레이어로 쌓입니다. 현재 표지의 조형적인 느낌을 이어갑니다.']};
 const media=matchMedia('(prefers-reduced-motion: reduce)');let concept=concepts[new URLSearchParams(location.search).get('concept')]?new URLSearchParams(location.search).get('concept'):'stack',paused=media.matches,zoom=false,userSetMotion=false;
 const art=document.getElementById('previewArt'),viewport=document.getElementById('previewViewport'),slide=document.getElementById('previewSlide');
 function setMotionState(){art.querySelector('.code-visual').dataset.motion=paused||document.hidden?'paused':'playing';document.getElementById('pauseMotion').textContent=paused?'재생':'일시정지';document.getElementById('pauseMotion').setAttribute('aria-pressed',String(paused));document.getElementById('motionState').textContent=paused?'PAUSED':'PLAYING';}
 function mountConcept(){art.innerHTML=coverCodeVisual(concept);if(paused){art.getAnimations({subtree:true}).forEach(animation=>{animation.currentTime=6200;});}setMotionState();}
 function selectConcept(next){concept=next;document.querySelectorAll('[data-concept]').forEach(button=>{const active=button.dataset.concept===concept;button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;});document.getElementById('conceptPanel').setAttribute('aria-labelledby','tab-'+concept);const description=document.getElementById('conceptDescription');description.replaceChildren();const title=document.createElement('strong');title.textContent=concepts[concept][0]+' — ';description.append(title,concepts[concept][1]);mountConcept();const url=new URL(location.href);url.searchParams.set('concept',concept);history.replaceState(null,'',url);}
-function fitPreview(){const scale=viewport.clientWidth/(zoom?550:1280),x=zoom?696:0,y=zoom?65:0;slide.style.transform='scale('+scale+') translate('+(-x)+'px,'+(-y)+'px)';}
+function fitPreview(){const scale=viewport.clientWidth/(zoom?550:1280),x=zoom?696:0,y=zoom?107:0;slide.style.transform='scale('+scale+') translate('+(-x)+'px,'+(-y)+'px)';art.style.setProperty('--cover-code-scale',String(Math.min(art.clientWidth/550,art.clientHeight/500)));}
 document.querySelectorAll('[data-concept]').forEach(button=>{button.onclick=()=>selectConcept(button.dataset.concept);button.onkeydown=event=>{const keys=['ArrowLeft','ArrowRight','Home','End'];if(!keys.includes(event.key))return;event.preventDefault();const tabs=[...document.querySelectorAll('[data-concept]')],i=tabs.indexOf(button),next=event.key==='Home'?0:event.key==='End'?2:(i+(event.key==='ArrowRight'?1:-1)+3)%3;tabs[next].click();tabs[next].focus();};});
 document.getElementById('pauseMotion').onclick=()=>{paused=!paused;userSetMotion=true;setMotionState();};document.getElementById('restartMotion').onclick=()=>{if(!media.matches){paused=false;userSetMotion=true;}mountConcept();};document.getElementById('zoomMotion').onclick=event=>{zoom=!zoom;viewport.dataset.zoom=String(zoom);event.currentTarget.textContent=zoom?'표지 전체 보기':'오른쪽 확대';event.currentTarget.setAttribute('aria-pressed',String(zoom));fitPreview();};
 document.addEventListener('visibilitychange',setMotionState);media.addEventListener('change',event=>{if(!userSetMotion){paused=event.matches;mountConcept();}});new ResizeObserver(fitPreview).observe(viewport);selectConcept(concept);fitPreview();

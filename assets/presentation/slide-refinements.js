@@ -29,6 +29,15 @@ function costSymbol(n,database=false){
  ]:['M12 3v18M4 21h16M4 7h16M6 7l-4 8h8L6 7Zm12 0-4 8h8l-4-8Z','M4 4h16v5H4zM4 12h7v8H4zM14 12h6v8h-6zM7 6.5h10','m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6Z'];
  return '<span class="'+(database?'pictogram ':'')+'ledger-symbol" aria-hidden="true"><svg'+(database?' class="icon"':'')+' viewBox="0 0 24 24"><path d="'+paths[n]+'"/></svg></span>';
 }
+function updateStageNavigation(){
+ const host=document.querySelector('.stage-wrap'),frame=document.getElementById('slideFrame'),prev=document.getElementById('stagePrev'),next=document.getElementById('stageNext');
+ if(!host||!frame||document.body.classList.contains('reading'))return;
+ const h=host.getBoundingClientRect(),f=frame.getBoundingClientRect();if(!h.width||!f.width)return;
+ const gap=parseFloat(getComputedStyle(host).getPropertyValue('--stage-arrow-gap'))||6;
+ host.style.setProperty('--stage-prev-x',Math.max(0,f.left-h.left-prev.offsetWidth-gap)+'px');
+ host.style.setProperty('--stage-next-x',Math.min(h.width-next.offsetWidth,f.right-h.left+gap)+'px');
+ host.style.setProperty('--stage-arrow-y',(f.top-h.top+f.height/2)+'px');
+}
 function setupIdeaEditor(){
  const dialog=document.createElement('dialog');dialog.id='ideaEditor';dialog.className='idea-dialog';dialog.setAttribute('aria-labelledby','ideaEditorTitle');
  dialog.innerHTML='<div class="idea-dialog-head"><div><h2 id="ideaEditorTitle">핵심 문구 · 줄바꿈과 글자 크기</h2><p>Enter로 줄을 나누세요. 미리보기의 배치가 발표 화면에 그대로 적용됩니다.</p></div><button type="button" data-idea-cancel aria-label="핵심 문구 편집 닫기">닫기</button></div><div class="idea-editor-grid"><div class="idea-editor-fields"><label for="ideaText">전체화면에 보여 줄 문구</label><textarea id="ideaText" maxlength="180" rows="6" aria-describedby="ideaCount ideaError" spellcheck="false"></textarea><output class="idea-editor-count" id="ideaCount" for="ideaText"></output><label for="ideaFontSize">글자 크기</label><div class="idea-size-controls"><button type="button" id="ideaSmaller" aria-label="핵심 문구 글자 크기 줄이기">−</button><input id="ideaFontSize" type="number" min="28" max="80" step="2" value="60"><span>px</span><button type="button" id="ideaLarger" aria-label="핵심 문구 글자 크기 키우기">+</button><button type="button" id="ideaDefaultSize">기본값</button></div><p>28~80px · 길이에 따라 화면 안에 맞춥니다.</p><p id="ideaError" class="idea-editor-error" role="status"></p></div><div><span class="idea-preview-label">발표 화면 미리보기 · 16:9</span><div class="idea-preview-viewport"><div class="idea-canvas"><div class="idea-preview-copy"></div></div></div><p class="idea-preview-help" id="ideaPreviewHelp"></p></div></div><div class="idea-dialog-foot"><button type="button" data-idea-cancel>취소</button><button type="button" id="ideaApply" class="primary">적용</button></div>';

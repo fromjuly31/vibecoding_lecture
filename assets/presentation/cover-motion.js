@@ -20,3 +20,20 @@ function coverCodeVisual(concept='stack'){
  }
  return '<div class="code-visual code-'+concept+'" aria-hidden="true">'+inside+'</div>';
 }
+function coverBrandMarkup(){return '<span class="cover-brand"><span class="cover-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 4l-4 16"/></svg></span><span>BIBEOM CLASS</span></span>';}
+let coverMotionChoice=null;
+function syncCoverMotion(initial=false){
+ const frame=document.getElementById('slideFrame'),visual=frame?.querySelector('.cover-code-art .code-visual');if(!visual)return;
+ const paused=coverMotionChoice??matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(initial&&paused)visual.getAnimations({subtree:true}).forEach(animation=>{animation.currentTime=6200;});
+ visual.dataset.motion=paused||document.hidden?'paused':'playing';
+ const button=frame.querySelector('.cover-motion-toggle');if(!button)return;
+ button.setAttribute('aria-pressed',String(paused));button.setAttribute('aria-label',paused?'표지 애니메이션 재생':'표지 애니메이션 일시정지');button.title=button.getAttribute('aria-label');
+ button.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="'+(paused?'m5 3 8 5-8 5V3z':'M5 3v10M11 3v10')+'"/></svg>';
+}
+function resizeCoverCode(){const art=document.querySelector('#slideFrame .cover-code-art');if(art)art.style.setProperty('--cover-code-scale',String(Math.min(art.clientWidth/550,art.clientHeight/500)));}
+function setupCoverMotion(){
+ document.getElementById('slideFrame').addEventListener('click',event=>{if(!event.target.closest('.cover-motion-toggle'))return;coverMotionChoice=!(coverMotionChoice??matchMedia('(prefers-reduced-motion: reduce)').matches);syncCoverMotion();});
+ document.addEventListener('visibilitychange',()=>syncCoverMotion());
+ matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',()=>{if(coverMotionChoice===null)syncCoverMotion(true);});
+}

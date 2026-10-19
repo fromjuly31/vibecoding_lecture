@@ -54,3 +54,28 @@
 @keyframes tower-assemble{0%{opacity:0;transform:translateZ(calc(var(--depth) + 65px)) translateY(-12px)}11%,78%{opacity:1;transform:translateZ(var(--depth)) translateY(0)}89%,100%{opacity:0;transform:translateZ(calc(var(--depth) - 20px)) translateY(10px)}}
 @keyframes tower-code{0%{clip-path:inset(0 100% 0 0)}13%,100%{clip-path:inset(0)}}
 @media print{.code-visual *,.code-visual *::after{animation:none!important;opacity:1!important;clip-path:none!important}}
+
+/* The chosen visual inside the editable lecture cover. */
+.cover-sculpture.cover-code-art{right:-30px;top:0;width:550px;height:100%;opacity:1;overflow:visible}
+.cover-code-art .code-visual{position:absolute;right:0;top:0;transform:scale(var(--cover-code-scale,1));transform-origin:top right}
+.cover-meta:has(.cover-brand),.preview-meta:has(.cover-brand){align-items:center;min-height:50px;padding-bottom:15px;border-bottom:1px solid #9caaff2b}
+.cover-brand{display:inline-flex;align-items:center;gap:11px;font-size:14px;font-weight:750;letter-spacing:.1em;color:#d9dfff;line-height:1.3}
+.cover-brand-mark{display:grid;place-items:center;width:31px;height:31px;border:1px solid #9caaff55;border-radius:8px;background:#9caaff12;color:#acb8ff;flex:none}
+.cover-brand-mark svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.cover-meta:has(.cover-brand)>span:last-child,.preview-meta:has(.cover-brand)>span:last-child{font-size:10px;letter-spacing:.11em;color:#8f9bb9}
+.cover-main:has(.cover-code-art){margin-top:12px}
+.slide .cover-motion-toggle{position:absolute;right:-28px;top:5px;z-index:5;display:grid;place-items:center;width:32px;height:32px;min-height:32px;padding:7px;border:1px solid #9caaff40;border-radius:50%;color:#a3b0ff;background:#171d2c;opacity:.65}
+.slide .cover-motion-toggle:hover,.slide .cover-motion-toggle:focus-visible{opacity:1;border-color:#b4c0ff;background:#293253;transform:none}
+.cover-motion-toggle svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.transition-snapshot .code-visual *,.transition-snapshot .code-visual *::after{animation-play-state:paused!important}
+@media(max-width:860px){
+ .reading #slideFrame .cover-main:has(.cover-code-art){flex-direction:column;align-items:stretch;padding-top:30px;padding-bottom:16px;gap:28px;margin-top:0}
+ .reading #slideFrame .cover-sculpture.cover-code-art{position:relative;top:auto;right:auto;width:100%;height:auto;aspect-ratio:11/10;transform:none;opacity:1}
+ .reading #slideFrame .cover-code-art .code-visual{position:absolute;top:0;left:0;right:auto;transform-origin:top left}
+ .reading #slideFrame .cover-meta:has(.cover-brand){gap:18px;padding-bottom:12px}
+ .reading #slideFrame .cover-brand{font-size:11px;gap:8px;letter-spacing:.07em;white-space:nowrap}
+ .reading #slideFrame .cover-brand-mark{width:27px;height:27px;border-radius:7px}
+ .reading #slideFrame .cover-meta:has(.cover-brand)>span:last-child{font-size:8px;max-width:100px;text-align:right;line-height:1.6}
+ .reading #slideFrame .cover-motion-toggle{top:5px;right:0;width:44px;height:44px}
+}
+@media print{.cover-motion-toggle{display:none!important}.cover-code-art .code-visual{transform:scale(.88)!important}}
