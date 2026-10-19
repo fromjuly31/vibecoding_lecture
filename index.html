@@ -914,6 +914,51 @@ function teacherPresentation(previous){
  return deck;
 }
 Object.assign(DEFAULT,teacherPresentation(V7_DEFAULT));
+// Version 9: choose data storage first, then deploy the app and extend it with APIs.
+const V8_DEFAULT=copy(DEFAULT);
+function databasePresentation(previous){
+ if(previous.version>=9)return previous;
+ const deck=copy(previous);
+ // Update default copy one field at a time so saved edits and slide layouts survive.
+ const replaceDefaults=(target,old,updates)=>{
+  for(const [key,value]of Object.entries(updates)){
+   if(value&&typeof value==='object')replaceDefaults(target[key],old[key],value);
+   else if(target[key]===old[key])target[key]=value;
+  }
+ };
+ replaceDefaults(deck.meta.parts,V8_DEFAULT.meta.parts,{2:'목적에 맞는 DB 선택',3:'API로 기능 확장하기',4:'웹앱의 배포 방식'});
+ const updates={
+  9003:{description:'저장할 데이터의 형태와 사용 목적에 맞는 DB를 선택합니다.'},
+  700:{title:'Google Sheets',takeaway:'익숙한 구글 시트를,\n작은 앱의 데이터 저장소로 활용하세요.',items:{0:{title:'Google Sheets',short:'Google Sheets',analogy:'직접 열어 보고 고치는 익숙한 장부',description:'행과 열로 데이터를 저장하는 구글 스프레드시트. 작은 웹앱에서는 앱스 스크립트와 연결해 데이터 저장소로 활용합니다.',benefits:['익숙한 표 형태로 데이터 관리','시트에서 기록을 직접 확인·수정','기존 구글 시트 자료를 그대로 활용','앱스 스크립트로 읽기·쓰기 연결'],limits:['많은 데이터와 동시 쓰기에는 추가 설계 필요','앱스 스크립트 등 연결 방식의 사용량 제한 확인'],usecases:{0:'학급 명단·기록 관리',3:'설문 응답 저장·정리'},note:'구글 시트는 전용 DB는 아니지만 작은 앱의 저장소로 활용할 수 있습니다. 앱스 스크립트는 시트를 읽고 쓰는 연결 도구입니다.'}},notes:'구글 시트에 기록을 저장하고, 앱스 스크립트로 읽고 쓰는 구조를 설명합니다. 저장소와 연결 도구의 역할을 구분하세요.\n공식 안내: https://developers.google.com/apps-script/guides/sheets'},
+  701:{items:{0:{short:'PostgreSQL',description:'Supabase에서 제공하는 PostgreSQL DB. 표 형태의 데이터를 저장하고, 여러 표를 연결해 검색·집계합니다.',benefits:{2:'SQL로 필요한 데이터를 조회·집계'}}},notes:'Supabase의 PostgreSQL DB를 중심으로 설명합니다. 학생 표와 활동 표를 연결해 필요한 정보를 찾는 예를 들어 보세요.\n공식 안내: https://supabase.com/docs/guides/database/overview'},
+  702:{items:{0:{short:'Cloud Firestore',description:'Firebase의 Cloud Firestore는 데이터를 문서 형태로 저장하는 NoSQL DB입니다. 변경된 데이터를 여러 사용자 화면에 실시간으로 반영할 수 있습니다.',benefits:{2:'문서와 컬렉션으로 데이터 관리',3:'웹·모바일 앱에서 같은 데이터 활용'},note:'여기서는 Firebase의 Cloud Firestore를 비교합니다. 문서 구조와 조회 방식을 함께 설계하세요.'}},notes:'Firebase의 Cloud Firestore를 중심으로 설명합니다. 문서에 저장한 투표 결과가 여러 화면에 반영되는 예를 들어 보세요.\n공식 안내: https://firebase.google.com/docs/firestore'},
+  800:{rows:{0:{1:'시트를 간단한 데이터 저장소로 활용',2:'관계형 데이터 저장·검색',3:'문서형 데이터 저장·실시간 공유'}},explanations:{0:'데이터를 어디에, 어떤 형태로 저장하고 조회할지 먼저 생각하세요.'}},
+  801:{rows:{0:{1:'행·열로 구성된 스프레드시트',2:'PostgreSQL 기반의 관계형 표',3:'Cloud Firestore의 문서·컬렉션'}}},
+  805:{rows:{0:{1:'동시 쓰기·연결 도구의 제한에 주의'}}},
+  807:{rows:{0:{1:'학급 명단·출결·설문 기록'}},explanations:{0:'작은 기록 관리부터 시작하고, 데이터의 관계와 공유 방식에 맞춰 DB를 선택하세요.'}},
+  9:{title:'내 웹앱에는 어떤 DB가 맞을까?',items:{0:{tool:'Google Sheets',reasons:{1:'시트에서 기록을 직접 확인·수정',2:'간단한 데이터 저장·조회에 적합'}},1:{tool:'Supabase · PostgreSQL'},2:{tool:'Firebase · Cloud Firestore'}},notes:'만들고 싶은 앱의 데이터 형태, 검색·통계 필요 여부, 실시간 공유 방식을 함께 생각하며 저장소를 선택해 보세요.'},
+  9105:{notes:'챕터 4 · 앱스 스크립트, GitHub Pages, Netlify의 공통점과 역할 차이를 소개합니다.'},
+  16:{items:{2:{description:'데이터의 형태와 사용 목적에 맞춰\n저장하고 관리할 DB를 선택합니다.'}},notes:'약 3분 · 여섯 챕터를 차례로 선택하며 웹앱 제작 과정을 정리합니다. 만들고 싶은 앱 하나를 떠올려 구조, AI 요청, DB, 배포, API, UI/UX를 연결해 보세요.'}
+ };
+ for(const slide of deck.slides){
+  const old=V8_DEFAULT.slides.find(s=>s.id===slide.id);
+  if(updates[slide.id])replaceDefaults(slide,old,updates[slide.id]);
+  if(slide.part===2&&slide.type==='comparison')replaceDefaults(slide,old,{headers:{1:'Google Sheets'},notes:'데이터의 저장 형태와 조회·공유 방식으로 비교합니다. Firebase는 Cloud Firestore 기준이며, 구글 시트는 간단한 데이터 저장소로 활용하는 경우입니다.'});
+ }
+ const order=[0,1,2,4,3,5,6];
+ deck.meta.parts=order.map(part=>deck.meta.parts[part]);
+ for(const slide of deck.slides)if(slide.part>=0)slide.part=order.indexOf(slide.part);
+ deck.slides.sort((a,b)=>a.part-b.part);
+ const summary=deck.slides.find(s=>s.id===16),oldSummary=V8_DEFAULT.slides.find(s=>s.id===16);
+ summary.items=order.slice(0,6).map((part,n)=>{
+  const item=summary.items[part];
+  if(item.title===oldSummary.items[part].title)item.title=deck.meta.parts[n];
+  return item;
+ });
+ deck.version=9;
+ return deck;
+}
+Object.assign(DEFAULT,databasePresentation(V8_DEFAULT));
 
 function renderTeacherComparison(i,printing){
  const d=currentAt(i),feedback=d.layout==='after',t=(path,tag='span',cls='')=>S(i,'lesson.'+path,tag,cls,printing);
@@ -955,8 +1000,8 @@ const glyphs={spark:'M12 3l2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3L12
 function icon(name){return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="'+(glyphs[name]||glyphs.spark)+'"/></svg>';}
 $$('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));
 function validData(input){
- if(!input||![1,2,3,4,5,6,7,8].includes(input.version))throw Error('지원하지 않는 강의 파일 형식입니다.');
- const template=input.version===1?LEGACY_DEFAULT:input.version===2?V2_DEFAULT:input.version===3?V3_DEFAULT:input.version===4?V4_DEFAULT:input.version===5?V5_DEFAULT:input.version===6?V6_DEFAULT:input.version===7?V7_DEFAULT:DEFAULT;
+ if(!input||![1,2,3,4,5,6,7,8,9].includes(input.version))throw Error('지원하지 않는 강의 파일 형식입니다.');
+ const template=input.version===1?LEGACY_DEFAULT:input.version===2?V2_DEFAULT:input.version===3?V3_DEFAULT:input.version===4?V4_DEFAULT:input.version===5?V5_DEFAULT:input.version===6?V6_DEFAULT:input.version===7?V7_DEFAULT:input.version===8?V8_DEFAULT:DEFAULT;
  function shape(value,template,path){
   if(typeof template==='string'){if(value===undefined&&path==='강의.slides.0.presenter')return template;if(typeof value!=='string'||value.length>12000)throw Error('문구 형식 또는 길이를 확인해 주세요: '+path);return value;}
   if(typeof template==='number'){if(value!==template)throw Error('슬라이드 구조가 올바르지 않습니다.');return value;}
@@ -971,8 +1016,8 @@ function validData(input){
  if(result.meta.title==="비범쌤의 바이브코딩 입문")result.meta.title=DEFAULT.meta.title;
  if(result.labels.guide==="정답 판정이 아닌, 입문자를 위한 추천 가이드입니다.")result.labels.guide=DEFAULT.labels.guide;
  for(const slide of result.slides)if(slide.type==='cover'&&slide.kicker==="교사를 위한 바이브코딩 입문")slide.kicker=DEFAULT.slides[0].kicker;
- if(input.version>=4){result.layouts=validateLayouts(input.layouts,result);return refreshPracticeCopy(teacherPresentation(concretePresentation(polishPresentation(input.version===4?apiShowcaseData(result):result))));}
-  return refreshPracticeCopy(teacherPresentation(concretePresentation(polishPresentation(apiShowcaseData(deploymentData(input.version===3?result:editorialData(input.version===1?presentationData(result):result)))))));
+ if(input.version>=4){result.layouts=validateLayouts(input.layouts,result);return refreshPracticeCopy(databasePresentation(teacherPresentation(concretePresentation(polishPresentation(input.version===4?apiShowcaseData(result):result)))));}
+  return refreshPracticeCopy(databasePresentation(teacherPresentation(concretePresentation(polishPresentation(apiShowcaseData(deploymentData(input.version===3?result:editorialData(input.version===1?presentationData(result):result))))))));
 }
 function validateLayouts(layouts,deck){
  const clean={};if(layouts==null)return clean;

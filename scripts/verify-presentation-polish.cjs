@@ -13,23 +13,42 @@ fs.mkdirSync('.qa',{recursive:true});
   await b.navigate(b.url+'/?qa','typeof data!=="undefined"');
   await b.evaluate('localStorage.clear()');
   await b.navigate(b.url+'/?qa-clean','typeof data!=="undefined"');
-  assert.equal(await b.evaluate('data.version'),8);
+  assert.equal(await b.evaluate('data.version'),9);
   assert.equal(await b.evaluate('data.slides.length'),61);
-  assert.deepEqual(await b.evaluate('data.slides.flatMap((s,i)=>s.takeaway?[i+1]:[])'),[5,9,13,26,27,28,53,56,58,61]);
-  assert.deepEqual(await b.evaluate('[LEGACY_DEFAULT,V2_DEFAULT,V3_DEFAULT,V4_DEFAULT,V5_DEFAULT,V6_DEFAULT,V7_DEFAULT,DEFAULT].map(d=>{const v=validData(copy(d));return [v.version,v.slides.length]})'),Array.from({length:8},()=>[8,61]));
+  assert.deepEqual(await b.evaluate('data.slides.flatMap((s,i)=>s.takeaway?[i+1]:[])'),[5,9,13,26,27,28,39,56,58,61]);
+  assert.deepEqual(await b.evaluate('[LEGACY_DEFAULT,V2_DEFAULT,V3_DEFAULT,V4_DEFAULT,V5_DEFAULT,V6_DEFAULT,V7_DEFAULT,V8_DEFAULT,DEFAULT].map(d=>{const v=validData(copy(d));return [v.version,v.slides.length]})'),Array.from({length:9},()=>[9,61]));
   assert.equal(await b.evaluate(`(()=>{const old=copy(V5_DEFAULT);old.meta.title='Saved title';old.slides[54].title='Saved UI title';old.slides[54].items[0].description='Saved definition';old.slides[54].notes='Saved notes';old.slides[54].takeaway='A distinct user idea';old.layouts={'1300':{'text:title:0':{x:7,y:9,width:650}}};const next=validData(old);return next.meta.title===old.meta.title&&next.slides[54].title===old.slides[54].title&&next.slides[54].items[0].description===old.slides[54].items[0].description&&next.slides[54].notes===old.slides[54].notes&&next.slides[54].takeaway===old.slides[54].takeaway&&JSON.stringify(next.layouts)===JSON.stringify(old.layouts)})()`),true);
-  assert.equal(await b.evaluate(`(()=>{const old=copy(V6_DEFAULT),next=validData(old);return old.slides.every((s,i)=>[1300,1301,1400,1401,16].includes(s.id)||JSON.stringify(s)===JSON.stringify(next.slides[i]))})()`),true);
+  assert.equal(await b.evaluate(`(()=>{const old=copy(V6_DEFAULT),next=validData(old);return old.slides.every(s=>s.part===2||[1300,1301,1400,1401,16,9105].includes(s.id)||JSON.stringify({...s,part:s.part===3?4:s.part===4?3:s.part})===JSON.stringify(next.slides.find(x=>x.id===s.id)))})()`),true);
   assert.equal(await b.evaluate(`(()=>{const old=copy(V6_DEFAULT);old.meta.parts[0]='Saved chapter';old.slides[60].items[4].description='Saved summary';const next=validData(old);return next.meta.parts[0]==='Saved chapter'&&next.slides[60].items[5].description==='Saved summary'&&next.slides[60].items.length===6})()`),true);
-  assert.equal(await b.evaluate(`(()=>{const old=copy(V7_DEFAULT);old.slides[55].title='Custom UX title';old.slides[55].example.beforeNote='Custom search note';old.slides[57].takeaway='Custom final idea';const next=validData(old);return next.slides[55].title==='Custom UX title'&&next.slides[55].example.beforeNote==='Custom search note'&&next.slides[57].takeaway==='Custom final idea'&&old.slides.every((s,n)=>[1301,1400,1401].includes(s.id)||JSON.stringify(s)===JSON.stringify(next.slides[n]))})()`),true);
-  pass('61 slides preserved; versions 1–8 migrate; custom text/layouts retained; other slides unchanged');
+  assert.equal(await b.evaluate(`(()=>{const old=copy(V7_DEFAULT);old.slides[55].title='Custom UX title';old.slides[55].example.beforeNote='Custom search note';old.slides[57].takeaway='Custom final idea';const next=validData(old);return next.slides[55].title==='Custom UX title'&&next.slides[55].example.beforeNote==='Custom search note'&&next.slides[57].takeaway==='Custom final idea'&&old.slides.every(s=>s.part===2||[1301,1400,1401,16,9105].includes(s.id)||JSON.stringify({...s,part:s.part===3?4:s.part===4?3:s.part})===JSON.stringify(next.slides.find(x=>x.id===s.id)))})()`),true);
+  pass('61 slides preserved; versions 1–9 migrate; custom text/layouts retained; unrelated slides unchanged');
+  assert.deepEqual(await b.evaluate('data.meta.parts.slice(2,5)'),['목적에 맞는 DB 선택','웹앱의 배포 방식','API로 기능 확장하기']);
+  assert.deepEqual(await b.evaluate('data.slides.filter(s=>s.type===\'section\').map(s=>s.part)'),[0,1,2,3,4,5,6]);
+  assert.equal(await b.evaluate(`data.slides.every((s,i)=>!i||s.part>=data.slides[i-1].part)&&data.slides.filter(s=>s.type==='apiShowcase').every(s=>s.part===4)&&data.slides.find(s=>s.id===5100).part===3`),true);
+  assert.equal(await b.evaluate(`!JSON.stringify(data.slides.filter(s=>s.part===2)).includes('백엔드')&&data.slides.find(s=>s.id===700).title==='Google Sheets'&&data.slides.find(s=>s.id===16).items.every((item,n)=>item.title===data.meta.parts[n])`),true);
+  assert.equal(await b.evaluate(`(()=>{const old=copy(V8_DEFAULT);old.meta.parts[3]='Custom API chapter';old.slides.find(s=>s.id===700).items[0].description='Custom storage description';old.slides.find(s=>s.id===16).items[3].description='Custom API summary';old.slides.find(s=>s.id===9105).notes='Custom deployment notes';old.layouts={'6200':{'text:title:0':{x:14,width:600}}};const next=validData(old);return next.meta.parts[4]==='Custom API chapter'&&next.slides.find(s=>s.id===700).items[0].description==='Custom storage description'&&next.slides.find(s=>s.id===16).items[4].description==='Custom API summary'&&next.slides.find(s=>s.id===9105).notes==='Custom deployment notes'&&JSON.stringify(next.layouts)===JSON.stringify(old.layouts)&&JSON.stringify(validData(next))===JSON.stringify(next)})()`),true);
+  await b.evaluate('localStorage.setItem(storageKey,JSON.stringify(V8_DEFAULT))');
+  await b.navigate(b.url+'/?qa-migration','typeof data!=="undefined"');
+  assert.equal(await b.evaluate('data.version===9&&!initialMessage&&data.meta.parts[3]===\'웹앱의 배포 방식\''),true);
+  for(const [part,id]of [[2,9003],[3,9105],[4,9004]]){
+   await b.evaluate(`go(1);finishSlideTransition();document.querySelector('#slideFrame [data-action="part-jump"][data-value="${part}"]').click();finishSlideTransition()`);
+   assert.equal(await b.evaluate('currentSlide().id'),id);
+  }
+  pass('DB copy, chapter order, contents links and saved-deck upgrades match; API edits and layouts follow their slides');
   await b.evaluate('togglePresent(true)');
   for(let page=1;page<=61;page++){
    await show(page);
    assert.equal(await b.evaluate('!!document.querySelector("#slideFrame>.slide")'),true);
-   const expected=[5,9,13,26,27,28,53,56,58,61].includes(page);
+   const expected=[5,9,13,26,27,28,39,56,58,61].includes(page);
    assert.equal(await b.evaluate('!!document.querySelector("#slideFrame .emphasis-trigger")'),expected,'Key idea page '+page);
   }
   pass('All slides render; plus buttons appear only on the final occurrence of each idea');
+  for(const id of [9010,9003,700,701,702,800,801,802,803,804,805,806,807,9,9105,5100]){
+   await b.evaluate(`go(data.slides.findIndex(s=>s.id===${id}));finishSlideTransition()`);
+   const bounds=await fit();assert.ok(bounds.height<=bounds.available+1,'Slide '+id+' '+JSON.stringify(bounds));assert.ok(bounds.width<=bounds.availableWidth+1);
+   if([9010,700,5100].includes(id))await b.screenshot('.qa/reordered-slide-'+id+'.png');
+  }
+  pass('Updated roadmap, DB slides and deployment slides fit the presentation');
   for(const page of [55,56,57,58,61]){
    await show(page);const bounds=await fit();assert.equal(bounds.overflow,false,JSON.stringify(bounds));assert.ok(bounds.width<=bounds.availableWidth+1);
    assert.equal(await b.evaluate('!!document.querySelector("#slideFrame .score-app")'),false);
@@ -67,12 +86,12 @@ fs.mkdirSync('.qa',{recursive:true});
   assert.equal(await b.evaluate('current'),57);assert.equal(await b.evaluate('state(current).revealed'),false);
   assert.equal(await b.evaluate('document.querySelector("#slideFrame").textContent.includes("과제")'),false);
   pass('UI compares action emphasis on identical screens; UX demonstrates saving feedback and prevents duplicate clicks');
-  await show(52);assert.equal(await b.evaluate('document.querySelector("#slideFrame .chapter-title").textContent'),'웹앱의 배포 방식');
+  await show(38);assert.equal(await b.evaluate('document.querySelector("#slideFrame .chapter-title").textContent'),'웹앱의 배포 방식');
   await show(61);
   assert.deepEqual(await b.evaluate('[...document.querySelectorAll("#slideFrame .summary-terms strong")].map(el=>el.textContent)'),await b.evaluate('data.meta.parts.slice(0,6)'));
   for(let n=0;n<6;n++){await b.evaluate(`document.querySelectorAll('#slideFrame .summary-terms button')[${n}].click()`);assert.equal(await b.evaluate('document.querySelector("#slideFrame .summary-definition h2").textContent'),await b.evaluate(`data.slides[60].items[${n}].description`));}
   assert.equal(await b.evaluate(`(()=>{const old=data.meta.parts[4];data.meta.parts[4]='Updated chapter';renderCurrent();const ok=document.querySelectorAll('#slideFrame .summary-terms strong')[4].textContent==='Updated chapter';data.meta.parts[4]=old;return ok})()`),true);
-  pass('Chapter 5 is renamed; final summary covers all six chapters and follows shared chapter titles');
+  pass('Chapter 4 covers deployment; final summary covers all six chapters and follows shared chapter titles');
   await show(55);await key('ArrowRight',39);
   assert.equal(await b.evaluate('current'),55);
   await key('ArrowRight',39);assert.equal(await b.evaluate('current'),55);
@@ -82,7 +101,7 @@ fs.mkdirSync('.qa',{recursive:true});
   await key('ArrowRight',39);assert.equal(await b.evaluate('current'),56);
   assert.equal(await b.evaluate('state(current).revealed'),false);
   pass('Right arrow skips removed duplicates, reveals the final idea, then advances');
-  for(const page of [5,9,13,26,27,28,53,56,58,61]){
+  for(const page of [5,9,13,26,27,28,39,56,58,61]){
    await show(page);await b.evaluate('revealMessage();finishSlideTransition()');
    panel=await overlay();assert.ok(panel.full&&panel.center&&panel.fits&&panel.inert,'page '+page+' '+JSON.stringify(panel));
    await b.evaluate('hideMessage()');
@@ -143,7 +162,7 @@ fs.mkdirSync('.qa',{recursive:true});
   const exportParts=[];for(let start=0;start<meta.length;start+=100000)exportParts.push(await b.evaluate(`window.__qaDownload.html.slice(${start},${start+100000})`));
   fs.writeFileSync('.qa/polished-export.html',exportParts.join(''));
   await b.navigate(b.url+'/.qa/polished-export.html','typeof data!=="undefined"');
-  assert.equal(await b.evaluate('data.version'),8);assert.equal(await b.evaluate('data.slides[60].items.length'),6);
+  assert.equal(await b.evaluate('data.version'),9);assert.equal(await b.evaluate('data.slides[60].items.length'),6);
   await b.evaluate('go(57);togglePresent(true);finishSlideTransition()');
   assert.equal(await b.evaluate('document.querySelectorAll("#slideFrame .lesson-app").length'),2);
   await b.evaluate('go(55);togglePresent(true);revealMessage();finishSlideTransition()');panel=await overlay();assert.ok(panel.full&&panel.center&&panel.fits);
