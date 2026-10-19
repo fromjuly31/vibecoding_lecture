@@ -25,7 +25,7 @@ fs.mkdirSync('.qa',{recursive:true});
    await show(id);const r=await audit();bounds.push(r);
    assert.ok(r.height<=r.available+1&&r.width<=r.availableWidth+1,JSON.stringify(r));
    assert.equal(r.h1,1,'One title per slide '+id);
-   assert.equal(await b.evaluate('!!document.querySelector("#slideFrame .pictogram svg")'),true);
+   assert.equal(await b.evaluate('!!document.querySelector("#slideFrame .pictogram svg,#slideFrame .comparison-brand img")'),true);
    if([200,300,500,501,801,804,5098,5099,5100].includes(id))await b.screenshot('.qa/visual-'+id+'.png');
   }
   assert.equal(await b.evaluate('new Set(data.slides.filter(s=>s.type===\'comparison\').map(comparisonStyle)).size'),6);
