@@ -46,6 +46,9 @@
 .panel-sequence-dots i{width:14px;height:3px;background:var(--line);border-radius:2px}
 .panel-sequence-dots .active{background:var(--accent-ink)}
 .api-showcase-slide .panel-sequence-status{bottom:55px}
+.slide.panel-motion-probe{visibility:hidden!important;pointer-events:none!important}
+.panel-motion-snapshot>.slide{background:transparent!important}
+.panel-motion-snapshot :is(.slide-head,.slide-foot,.slide-progress,.panel-sequence-status){visibility:hidden!important}
 @media(max-width:860px){
  .reading #slideFrame .slide.panel-sequence-focus .content-inner{height:auto;min-height:340px;gap:0}
  .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-group{grid-template-columns:minmax(0,1fr)!important;gap:0;min-height:0}

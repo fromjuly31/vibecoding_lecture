@@ -76,6 +76,45 @@ const expected=[150,154,155,500,502,801,806,...Array.from({length:13},(_,n)=>620
   await b.cdp('Emulation.setEmulatedMedia',{features:[]});
   console.log('PASS centered layouts without clipping in both themes, with animation and reduced motion');
 
+  for(const id of expected){
+   const movement=await b.evaluate(`(()=>{
+    go(0);finishSlideTransition();go(data.slides.findIndex(d=>d.id===${id}));
+    for(const a of transitionAnimations)a.pause();
+    const panel=panelSequence().panels[0],animation=panel.getAnimations()[0],timing=animation.effect.getTiming();
+    const bounds=()=>{const r=panel.getBoundingClientRect();return {center:r.x+r.width/2,width:r.width}};
+    animation.currentTime=timing.delay;const start=bounds();
+    animation.currentTime=timing.delay+timing.duration*.35;const middle=bounds();
+    finishSlideTransition();const end=bounds();
+    setPanelSequenceStep(2);finishSlideTransition();setPanelSequenceStep(3);
+    for(const a of transitionAnimations){a.pause();a.currentTime=0}
+    const centers=()=>panelSequence().panels.map(p=>{const r=p.getBoundingClientRect();return r.x+r.width/2});
+    const gathered=centers();finishSlideTransition();const spread=centers();
+    return {start,middle,end,gathered,spread};
+   })()`);
+   assert.ok(movement.start.center<movement.end.center-100,'Left column must travel to the center: '+id);
+   assert.ok(movement.middle.center>movement.start.center&&movement.middle.center<movement.end.center+25,'Visible gathering movement: '+id);
+   assert.ok(movement.start.width<movement.end.width*.8,'Gathering must enlarge the panel: '+id);
+   assert.ok(Math.max(...movement.gathered)-Math.min(...movement.gathered)<2,'Overview must begin at a common center: '+id);
+   assert.ok(movement.spread[1]-movement.spread[0]>100&&movement.spread[2]-movement.spread[1]>100,'Overview must spread into three columns: '+id);
+  }
+  await show(150);
+  const right=await b.evaluate(`(()=>{
+   setPanelSequenceStep(2);for(const a of transitionAnimations)a.pause();
+   const p=panelSequence().panels[2],a=p.getAnimations()[0];a.currentTime=0;
+   const before=p.getBoundingClientRect();finishSlideTransition();const after=p.getBoundingClientRect();
+   return {start:before.x+before.width/2,end:after.x+after.width/2};
+  })()`);
+  assert.ok(right.start>right.end+100,'Third panel must move inward from the right');
+  await b.evaluate('setPanelSequenceStep(1);setPanelSequenceStep(3);retreat();retreat();finishSlideTransition()');await check(150,1);
+  assert.equal(await b.evaluate('document.querySelectorAll(".panel-motion-probe,.panel-motion-snapshot").length'),0);
+  await b.evaluate('setPanelSequenceStep(2)');
+  assert.equal(await b.evaluate('!!document.querySelector(".panel-motion-snapshot[aria-hidden=true][inert]")'),true);
+  await b.evaluate('Promise.all([...transitionAnimations].map(a=>a.finished.catch(()=>{})))');
+  await check(150,2);assert.equal(await b.evaluate('document.querySelectorAll(".panel-motion-snapshot").length'),0);
+  await b.evaluate('setPanelSequenceStep(1);go(current+1);finishSlideTransition()');
+  assert.equal(await b.evaluate('document.querySelectorAll(".panel-motion-probe,.panel-motion-snapshot").length'),0);
+  console.log('PASS actual column-to-center travel, enlargement, centered spread, rapid reversal and natural/interrupted motion cleanup on all 20 layouts');
+
   await b.cdp('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:false});
   await b.evaluate('readingOverride=null;go(0);resizeStage()');
   for(const id of expected){
