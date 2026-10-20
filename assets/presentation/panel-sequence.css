@@ -1,0 +1,64 @@
+/* Applied only to the live presentation; the overview uses the existing layout. */
+.slide .panel-sequence-hidden{display:none!important}
+.slide.panel-sequence-focus .content-inner{height:calc(100% - 8px);justify-content:center;gap:0}
+.slide.panel-sequence-focus .panel-sequence-path{width:100%;min-height:0}
+.slide.panel-sequence-focus .panel-sequence-group{
+ display:grid!important;grid-template-columns:minmax(0,740px)!important;
+ justify-content:center;align-items:center;gap:0;min-height:0;padding-top:0;
+}
+.slide.panel-sequence-focus .panel-sequence-active{width:100%;min-width:0;min-height:0;box-sizing:border-box}
+.slide.panel-sequence-focus .fund-benefit,
+.slide.panel-sequence-focus .anatomy-part{padding:26px 32px 12px}
+.slide.panel-sequence-focus .panel-sequence-active h2,
+.slide.panel-sequence-focus .panel-sequence-active h3{font-size:38px;line-height:1.35}
+.slide.panel-sequence-focus .panel-sequence-active p{font-size:29px;line-height:1.65}
+.slide.panel-sequence-focus .fund-benefit h2{margin-bottom:18px}
+.slide.panel-sequence-focus .fund-benefit .fund-example{font-size:21px;margin-top:24px}
+.slide.panel-sequence-focus .anatomy-part{gap:18px}
+.slide.panel-sequence-focus .anatomy-part .editorial-label{font-size:19px}
+.slide.panel-sequence-focus .anatomy-demo{margin-top:12px}
+.slide.panel-sequence-focus .quote-case,
+.slide.panel-sequence-focus .ledger-case,
+.slide.panel-sequence-focus .model-case{padding:30px 38px;min-height:0}
+.slide.panel-sequence-focus .compare-identity{justify-content:center}
+.slide.panel-sequence-focus .quote-body{min-height:0}
+.slide.panel-sequence-focus .ledger-case .comparison-value,
+.slide.panel-sequence-focus .model-case .comparison-value{text-align:center}
+.slide.panel-sequence-focus .ledger-symbol{margin-inline:auto}
+.slide.panel-sequence-focus .data-model{max-width:520px;margin-inline:auto}
+.slide.panel-sequence-focus .architecture-node{padding:25px 35px}
+.slide.panel-sequence-focus .architecture-server{max-width:620px;justify-self:center}
+.slide.panel-sequence-focus .architecture-server>span{font-size:18px}
+.slide.panel-sequence-focus .architecture-server>p,
+.slide.panel-sequence-focus .architecture-node .architecture-tech{font-size:19px}
+.slide.panel-sequence-focus .api-showcase-info>div{border-top:3px solid var(--accent-ink);padding:30px 32px}
+.slide.panel-sequence-focus .api-info-label{font-size:20px;line-height:1.5;margin-bottom:22px;color:var(--accent-ink)}
+.slide.panel-sequence-focus .api-info-value,
+.slide.panel-sequence-focus .api-official-link{font-size:34px;line-height:1.55}
+.slide.panel-sequence-focus .api-official-link .icon{width:24px;height:24px}
+.slide.panel-sequence-focus .ux-journey-step:after{display:none}
+.panel-sequence-status{
+ position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+ display:flex;align-items:center;gap:12px;color:var(--muted);font-size:11px;line-height:18px;
+ pointer-events:none;white-space:nowrap;
+}
+.panel-sequence-dots{display:flex;gap:5px}
+.panel-sequence-dots i{width:14px;height:3px;background:var(--line);border-radius:2px}
+.panel-sequence-dots .active{background:var(--accent-ink)}
+.api-showcase-slide .panel-sequence-status{bottom:55px}
+@media(max-width:860px){
+ .reading #slideFrame .slide.panel-sequence-focus .content-inner{height:auto;min-height:340px;gap:0}
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-group{grid-template-columns:minmax(0,1fr)!important;gap:0;min-height:0}
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-active{padding:24px 16px}
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-active h2,
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-active h3{font-size:28px}
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-active p,
+ .reading #slideFrame .slide.panel-sequence-focus .api-official-link{font-size:22px}
+ .reading #slideFrame .slide.panel-sequence-focus .fund-example,
+ .reading #slideFrame .slide.panel-sequence-focus .architecture-tech,
+ .reading #slideFrame .slide.panel-sequence-focus .architecture-server>p{font-size:17px}
+ .reading #slideFrame .slide.panel-sequence-focus .api-info-label{font-size:17px}
+ .reading #slideFrame .slide.panel-sequence-focus .architecture-server{padding:12px}
+ .reading #slideFrame .slide .panel-sequence-status{position:static;transform:none;justify-content:center;order:2;margin-top:12px}
+}
+@media print{.panel-sequence-status{display:none!important}}

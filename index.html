@@ -904,6 +904,73 @@ body.reading:not(.present) .workspace{height:auto;min-height:calc(100dvh - var(-
 @media print{.cover-motion-toggle{display:none!important}.cover-code-art .code-visual{transform:scale(.88)!important}}
 
 </style>
+<style id="panel-sequence-style">
+/* Applied only to the live presentation; the overview uses the existing layout. */
+.slide .panel-sequence-hidden{display:none!important}
+.slide.panel-sequence-focus .content-inner{height:calc(100% - 8px);justify-content:center;gap:0}
+.slide.panel-sequence-focus .panel-sequence-path{width:100%;min-height:0}
+.slide.panel-sequence-focus .panel-sequence-group{
+ display:grid!important;grid-template-columns:minmax(0,740px)!important;
+ justify-content:center;align-items:center;gap:0;min-height:0;padding-top:0;
+}
+.slide.panel-sequence-focus .panel-sequence-active{width:100%;min-width:0;min-height:0;box-sizing:border-box}
+.slide.panel-sequence-focus .fund-benefit,
+.slide.panel-sequence-focus .anatomy-part{padding:26px 32px 12px}
+.slide.panel-sequence-focus .panel-sequence-active h2,
+.slide.panel-sequence-focus .panel-sequence-active h3{font-size:38px;line-height:1.35}
+.slide.panel-sequence-focus .panel-sequence-active p{font-size:29px;line-height:1.65}
+.slide.panel-sequence-focus .fund-benefit h2{margin-bottom:18px}
+.slide.panel-sequence-focus .fund-benefit .fund-example{font-size:21px;margin-top:24px}
+.slide.panel-sequence-focus .anatomy-part{gap:18px}
+.slide.panel-sequence-focus .anatomy-part .editorial-label{font-size:19px}
+.slide.panel-sequence-focus .anatomy-demo{margin-top:12px}
+.slide.panel-sequence-focus .quote-case,
+.slide.panel-sequence-focus .ledger-case,
+.slide.panel-sequence-focus .model-case{padding:30px 38px;min-height:0}
+.slide.panel-sequence-focus .compare-identity{justify-content:center}
+.slide.panel-sequence-focus .quote-body{min-height:0}
+.slide.panel-sequence-focus .ledger-case .comparison-value,
+.slide.panel-sequence-focus .model-case .comparison-value{text-align:center}
+.slide.panel-sequence-focus .ledger-symbol{margin-inline:auto}
+.slide.panel-sequence-focus .data-model{max-width:520px;margin-inline:auto}
+.slide.panel-sequence-focus .architecture-node{padding:25px 35px}
+.slide.panel-sequence-focus .architecture-server{max-width:620px;justify-self:center}
+.slide.panel-sequence-focus .architecture-server>span{font-size:18px}
+.slide.panel-sequence-focus .architecture-server>p,
+.slide.panel-sequence-focus .architecture-node .architecture-tech{font-size:19px}
+.slide.panel-sequence-focus .api-showcase-info>div{border-top:3px solid var(--accent-ink);padding:30px 32px}
+.slide.panel-sequence-focus .api-info-label{font-size:20px;line-height:1.5;margin-bottom:22px;color:var(--accent-ink)}
+.slide.panel-sequence-focus .api-info-value,
+.slide.panel-sequence-focus .api-official-link{font-size:34px;line-height:1.55}
+.slide.panel-sequence-focus .api-official-link .icon{width:24px;height:24px}
+.slide.panel-sequence-focus .ux-journey-step:after{display:none}
+.panel-sequence-status{
+ position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+ display:flex;align-items:center;gap:12px;color:var(--muted);font-size:11px;line-height:18px;
+ pointer-events:none;white-space:nowrap;
+}
+.panel-sequence-dots{display:flex;gap:5px}
+.panel-sequence-dots i{width:14px;height:3px;background:var(--line);border-radius:2px}
+.panel-sequence-dots .active{background:var(--accent-ink)}
+.api-showcase-slide .panel-sequence-status{bottom:55px}
+@media(max-width:860px){
+ .reading #slideFrame .slide.panel-sequence-focus .content-inner{height:auto;min-height:340px;gap:0}
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-group{grid-template-columns:minmax(0,1fr)!important;gap:0;min-height:0}
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-active{padding:24px 16px}
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-active h2,
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-active h3{font-size:28px}
+ .reading #slideFrame .slide.panel-sequence-focus .panel-sequence-active p,
+ .reading #slideFrame .slide.panel-sequence-focus .api-official-link{font-size:22px}
+ .reading #slideFrame .slide.panel-sequence-focus .fund-example,
+ .reading #slideFrame .slide.panel-sequence-focus .architecture-tech,
+ .reading #slideFrame .slide.panel-sequence-focus .architecture-server>p{font-size:17px}
+ .reading #slideFrame .slide.panel-sequence-focus .api-info-label{font-size:17px}
+ .reading #slideFrame .slide.panel-sequence-focus .architecture-server{padding:12px}
+ .reading #slideFrame .slide .panel-sequence-status{position:static;transform:none;justify-content:center;order:2;margin-top:12px}
+}
+@media print{.panel-sequence-status{display:none!important}}
+
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -1517,7 +1584,7 @@ refreshLessonCopy(data);
 let current=0,presenting=false,readingOverride=null,saveTimer,toastTimer,controlTimer,dirty=false,printReady=false;
 let activeCourse='lecture',activePractice='uiux',practiceLoaded={uiux:false,animation:false},returnToPresentation=false;
 let states={};
-const state=i=>states[i]||(states[i]={selected:(data.slides[i].type==='intro'||data.slides[i].layout==='specific'?1:0),revealed:false,category:'benefits',row:0,col:-1,focus:false,recommend:-1,score:'1',savedScore:null,good:true});
+const state=i=>states[i]||(states[i]={selected:(data.slides[i].type==='intro'||data.slides[i].layout==='specific'?1:0),revealed:false,panelStep:0,category:'benefits',row:0,col:-1,focus:false,recommend:-1,score:'1',savedScore:null,good:true});
 const currentSlide=()=>data.slides[current];
 const pathFor=(i,p)=>'slides.'+i+'.'+p;
 function txt(path,tag='span',cls='',printing=false){const editable=!printing&&!presenting;return '<'+tag+(cls?' class="'+cls+'"':'')+' data-path="'+escapeHTML(path)+'"'+(editable?' contenteditable="plaintext-only" spellcheck="false"':'')+'>'+escapeHTML(get(data,path))+'</'+tag+'>';}
@@ -1670,7 +1737,7 @@ function emphasis(i,path='takeaway',printing=false){
  return '<div class="emphasis '+(shown?'is-shown':'is-pending')+'" data-emphasis="'+path+'"><div class="emphasis-copy"'+(shown?'':' aria-hidden="true" inert')+'>'+keyIdeaMarkup(i,path)+'</div><button class="emphasis-trigger" data-action="reveal-message" aria-label="핵심 문구 펼치기" title="핵심 문구 펼치기 · Space" aria-expanded="'+shown+'"'+(shown?' hidden':'')+'><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button class="emphasis-reset" data-action="hide-message" aria-label="핵심 문구 접기" title="핵심 문구 접기"'+(shown?'':' hidden')+'><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button></div>';
 }
 
-function revealMessage(){const box=$('#slideFrame .emphasis');if(!box||state(current).revealed||!presenting)return false;finishSlideTransition();state(current).revealed=true;box.classList.replace('is-pending','is-shown');const content=box.querySelector('.emphasis-copy');content.removeAttribute('aria-hidden');content.inert=false;box.querySelector('.emphasis-trigger').hidden=true;box.querySelector('.emphasis-reset').hidden=false;setKeyIdeaBackground(box.closest('.slide'),true);fitPresentedIdea(box.closest('.slide'));if(isReading())$('#stageSpace').scrollTo({top:0,behavior:'instant'});animateKeyIdea(box);$('#slideAnnouncement').textContent=currentSlide()[box.dataset.emphasis];$('#slideFrame').focus({preventScroll:true});renderChrome();return true;}
+function revealMessage(){if(hasPanelStep(1))return false;const box=$('#slideFrame .emphasis');if(!box||state(current).revealed||!presenting)return false;finishSlideTransition();state(current).revealed=true;box.classList.replace('is-pending','is-shown');const content=box.querySelector('.emphasis-copy');content.removeAttribute('aria-hidden');content.inert=false;box.querySelector('.emphasis-trigger').hidden=true;box.querySelector('.emphasis-reset').hidden=false;setKeyIdeaBackground(box.closest('.slide'),true);fitPresentedIdea(box.closest('.slide'));if(isReading())$('#stageSpace').scrollTo({top:0,behavior:'instant'});animateKeyIdea(box);$('#slideAnnouncement').textContent=currentSlide()[box.dataset.emphasis];$('#slideFrame').focus({preventScroll:true});renderChrome();return true;}
 
 function hideMessage(){state(current).revealed=false;renderCurrent();$('#slideFrame .emphasis-trigger')?.focus({preventScroll:true});}
 const DB_STEPS=['benefits','limits','usecases'];
@@ -1684,15 +1751,20 @@ function setDatabaseStep(category,restoreFocus=false){
  if(presenting&&!restoreFocus)$('#slideFrame').focus({preventScroll:true});wakeControls();return true;
 }
 function advance(){
+ if(hasPanelStep(1)){setPanelSequenceStep(panelSequenceStep()+1);return;}
  if(isDatabaseSlide()&&!state(current).revealed){const step=DB_STEPS.indexOf(state(current).category);if(step<DB_STEPS.length-1){setDatabaseStep(DB_STEPS[step+1]);return;}}
  if(!revealMessage())go(current+1);renderChrome();wakeControls();
 }
 function retreat(){
+ if(presenting&&panelSequence()){
+  if(state(current).revealed){hideMessage();$('#slideFrame').focus({preventScroll:true});wakeControls();return;}
+  if(hasPanelStep(-1)){setPanelSequenceStep(panelSequenceStep()-1);return;}
+ }
  if(isDatabaseSlide()){
   if(state(current).revealed){hideMessage();if(presenting)$('#slideFrame').focus({preventScroll:true});wakeControls();return;}
   const step=DB_STEPS.indexOf(state(current).category);if(step>0){setDatabaseStep(DB_STEPS[step-1]);return;}
  }
- go(current-1,'usecases');
+ go(current-1,'usecases',3);
 }
 /* COVER_MOTION_JS_START */
 /* Decorative code illustrations, no external assets or animation libraries. */
@@ -2195,6 +2267,74 @@ function setupIdeaEditor(){
 }
 
 /* SLIDE_REFINEMENTS_JS_END */
+/* PANEL_SEQUENCE_JS_START */
+/* Three-part layouts: one centered idea at a time, then the original overview.
+   These are content groups, not nested three-column controls or example UI. */
+const PANEL_SEQUENCE_GROUPS=[
+ '.fund-benefits',
+ '.button-anatomy',
+ '.architecture-map',
+ '.design-quotes .comparison-items',
+ '.design-ledger .comparison-items',
+ '.design-models .comparison-items',
+ '.api-showcase-info',
+ '.ux-journey-track'
+];
+function panelSequence(slide=$('#slideFrame>.slide')){
+ if(!slide)return null;
+ const group=slide.querySelector(PANEL_SEQUENCE_GROUPS.join(','));
+ if(!group)return null;
+ const panels=Array.from(group.children).filter(el=>!el.classList.contains('architecture-connection'));
+ return panels.length===3?{slide,group,panels}:null;
+}
+function panelSequenceStep(i=current){return Math.max(0,Math.min(3,state(i).panelStep||0));}
+function hasPanelStep(direction){
+ return presenting&&!!panelSequence()&&(direction>0?panelSequenceStep()<3:panelSequenceStep()>0);
+}
+function mountPanelSequence(slide){
+ if(!presenting)return;
+ const sequence=panelSequence(slide);if(!sequence)return;
+ const {group,panels}=sequence,step=panelSequenceStep(Number(slide.dataset.slide));
+ slide.classList.add('panel-sequence-slide',step===3?'panel-sequence-overview':'panel-sequence-focus');
+ slide.dataset.panelStep=String(step);
+ group.classList.add('panel-sequence-group');
+ const hide=el=>{el.classList.add('panel-sequence-hidden');el.setAttribute('aria-hidden','true');el.inert=true;};
+ if(step<3){
+  // Keep the original nodes: links, text, diagrams and saved typography survive.
+  for(const child of group.children)if(child!==panels[step])hide(child);
+  panels[step].classList.add('panel-sequence-active');
+  const content=slide.querySelector('.content-inner');
+  for(let node=group;node!==content;node=node.parentElement){
+   for(const sibling of node.parentElement.children)if(sibling!==node)hide(sibling);
+   node.classList.add('panel-sequence-path');
+   // Saved canvas positions are useful in the overview, but a focus must be centered.
+   node.style.removeProperty('translate');
+   node.style.removeProperty('width');
+   node.style.removeProperty('max-width');
+  }
+  panels[step].style.removeProperty('translate');
+  panels[step].style.removeProperty('width');
+  panels[step].style.removeProperty('max-width');
+  const idea=slide.querySelector('.emphasis');if(idea)hide(idea);
+ }
+ const status=document.createElement('div');status.className='panel-sequence-status';status.setAttribute('aria-hidden','true');
+ status.innerHTML='<span class="panel-sequence-dots">'+[0,1,2,3].map(n=>'<i'+(n===step?' class="active"':'')+'></i>').join('')+'</span><span>'+(step===3?'전체 보기':String(step+1).padStart(2,'0')+' / 03')+'</span>';
+ slide.append(status);
+}
+function setPanelSequenceStep(step){
+ if(!presenting||!panelSequence()||!Number.isInteger(step)||step<0||step>3)return false;
+ if(panelSequenceStep()===step)return false;
+ state(current).panelStep=step;state(current).revealed=false;
+ renderCurrent();
+ const {panels}=panelSequence();
+ if(step===3)panels.forEach((el,n)=>enterMotion(el,{y:14,scale:.98,blur:0,delay:n*65,duration:420}));
+ else enterMotion(panels[step],{y:18,scale:.98,blur:0,duration:420});
+ const heading=step<3?panels[step].querySelector('h2,h3,.api-info-label,.editorial-label')?.textContent:'';
+ $('#slideAnnouncement').textContent=slideTitle(currentSlide())+' · '+(step===3?'세 항목 전체 보기':(step+1)+' / 3 · '+(heading||''));
+ $('#stageSpace').scrollTop=0;$('#slideFrame').focus({preventScroll:true});wakeControls();return true;
+}
+
+/* PANEL_SEQUENCE_JS_END */
 const renderers={vibeBenefits:renderVibeBenefits,webLanguage:renderWebLanguage,buttonAnatomy:renderButtonAnatomy,webArchitecture:renderWebArchitecture,webDataFlow:renderWebDataFlow,deploymentIntro:renderDeploymentIntro,deploymentDecision:renderDeploymentDecision,deploymentComparison:renderDeploymentComparison,cover:renderCover,contents:renderContents,section:renderSection,intro:renderIntro,structure:renderStructure,process:renderProcess,ai:renderAI,comparison:renderComparisonPage,prompt:renderPromptPage,databaseIntro:renderDatabaseIntro,backend:renderBackendPage,recommend:renderRecommend,uiux:renderUIUXPage,beforeAfter:renderBeforeAfterPage,practice:renderPractice,summary:renderSummary};
 function renderSlide(i,printing=false){if(data.slides[i].type==='apiShowcase')return renderApiShowcaseSlide(i,printing);const d=data.slides[i],opener=['cover','contents','section'].includes(d.type),sideTitle=usesSideTitle(d),total=data.slides.length;return '<article class="slide '+(opener?d.type+'-slide':'')+(sideTitle?' side-title-slide':'')+(d.part===1&&['ai','comparison','prompt'].includes(d.type)?' part-two-content':'')+(d.type==='ai'?' brand-slide brand-'+aiBrandKey(d):'')+'" data-slide="'+i+'" data-type="'+d.type+'" aria-label="슬라이드 '+(i+1)+' · '+escapeHTML(slideTitle(d))+'">'+(opener?'':'<header class="slide-head"><div class="eyebrow"><span class="part-chip">'+partLabel(d)+'</span>'+txt('meta.parts.'+d.part,'span','',printing)+'</div>'+(sideTitle?'':S(i,'title','h1','',printing)+S(i,'subtitle','p','subtitle',printing))+'</header>')+'<div class="slide-content"><div class="content-inner">'+renderers[d.type](i,printing)+'</div></div><footer class="slide-foot"><span class="foot-brand">'+txt('meta.title','span','',printing)+'</span><span class="foot-page"><b>'+String(i+1).padStart(2,'0')+'</b> / '+total+'</span></footer><div class="slide-progress" style="width:'+((i+1)/total*100)+'%"></div></article>';}
 
@@ -2219,8 +2359,8 @@ function setupAppFooter(){
 }
 
 /* APP_FOOTER_JS_END */
-function renderChrome(){renderSlideManager();const total=data.slides.length;document.title=data.meta.title;$('#brandTitle').textContent=data.meta.title;$('#previewPart').textContent=partLabel(currentSlide());$('#previewCount').textContent='SLIDE '+String(current+1).padStart(2,'0');$('#bottomCount').textContent=String(current+1).padStart(2,'0')+' / '+total;$('#presentCount').textContent=(current+1)+' / '+total;$('#lectureTab small').textContent=total+'장';$('#navTotal').textContent='/ '+total;$('#exportMenu [data-command="print"]').textContent='전체 '+total+'장 PDF 출력';renderChapterMenu();['prevBtn','presentPrev','stagePrev'].forEach(id=>$('#'+id).disabled=current===0);['nextBtn','presentNext','stageNext'].forEach(id=>$('#'+id).disabled=current===total-1&&!$('#slideFrame .emphasis.is-pending'));$('#layoutTools').hidden=presenting||!selectedLayout;document.documentElement.dataset.theme=data.theme;$('#themeBtn').innerHTML=icon(data.theme==='dark'?'sun':'moon');$('#themeBtn').setAttribute('aria-label',data.theme==='dark'?'라이트 모드로 변경':'다크 모드로 변경');}
-function renderCurrent(restoreFocus=false){destroySlideCombos();finishSlideTransition();const active=document.activeElement,action=active?.dataset.action,value=active?.dataset.value,control=active?.dataset.control;clearLayoutSelection();$('#slideFrame').innerHTML=renderSlide(current);mountKeyIdea($('#slideFrame>.slide'));prepareLayout($('#slideFrame>.slide'));mountSlideCombos();mountConcreteExamples($('#slideFrame>.slide'));syncCoverMotion(true);renderChrome();resizeStage();if(restoreFocus){const candidates=$$('#slideFrame [data-action],#slideFrame [data-control]');const target=candidates.find(el=>action?el.dataset.action===action&&el.dataset.value===value:control&&el.dataset.control===control);target?.focus({preventScroll:true});}}
+function renderChrome(){renderSlideManager();const total=data.slides.length;document.title=data.meta.title;$('#brandTitle').textContent=data.meta.title;$('#previewPart').textContent=partLabel(currentSlide());$('#previewCount').textContent='SLIDE '+String(current+1).padStart(2,'0');$('#bottomCount').textContent=String(current+1).padStart(2,'0')+' / '+total;$('#presentCount').textContent=(current+1)+' / '+total;$('#lectureTab small').textContent=total+'장';$('#navTotal').textContent='/ '+total;$('#exportMenu [data-command="print"]').textContent='전체 '+total+'장 PDF 출력';renderChapterMenu();['prevBtn','presentPrev','stagePrev'].forEach(id=>$('#'+id).disabled=current===0&&!hasPanelStep(-1));['nextBtn','presentNext','stageNext'].forEach(id=>$('#'+id).disabled=current===total-1&&!hasPanelStep(1)&&!$('#slideFrame .emphasis.is-pending'));$('#layoutTools').hidden=presenting||!selectedLayout;document.documentElement.dataset.theme=data.theme;$('#themeBtn').innerHTML=icon(data.theme==='dark'?'sun':'moon');$('#themeBtn').setAttribute('aria-label',data.theme==='dark'?'라이트 모드로 변경':'다크 모드로 변경');}
+function renderCurrent(restoreFocus=false){destroySlideCombos();finishSlideTransition();const active=document.activeElement,action=active?.dataset.action,value=active?.dataset.value,control=active?.dataset.control;clearLayoutSelection();$('#slideFrame').innerHTML=renderSlide(current);mountKeyIdea($('#slideFrame>.slide'));prepareLayout($('#slideFrame>.slide'));mountPanelSequence($('#slideFrame>.slide'));mountSlideCombos();mountConcreteExamples($('#slideFrame>.slide'));syncCoverMotion(true);renderChrome();resizeStage();if(restoreFocus){const candidates=$$('#slideFrame [data-action],#slideFrame [data-control]');const target=candidates.find(el=>action?el.dataset.action===action&&el.dataset.value===value:control&&el.dataset.control===control);target?.focus({preventScroll:true});}}
 function renderAll(transition=null){renderNav();renderCurrent();animateSlide(transition);}
 function isReading(){return window.innerWidth<=860&&(readingOverride??(window.innerHeight>window.innerWidth));}
 function fitSlide(slide){if(!slide)return;if(!slide.closest('.print-page')){const content=slide.querySelector('.content-inner');content.style.transform='';content.style.width='100%';slide.classList.toggle('content-overflow',content.offsetHeight+8>slide.querySelector('.slide-content').clientHeight+1);return;}const holder=slide.querySelector('.slide-content'),inner=slide.querySelector('.content-inner');inner.style.transform='';inner.style.width='100%';inner.style.transformOrigin='top left';const height=holder.clientHeight,width=holder.clientWidth;if(!height||!width)return;if(inner.scrollHeight<=height&&inner.scrollWidth<=width)return;let low=.15,high=1;for(let n=0;n<10;n++){const ratio=(low+high)/2;inner.style.width=(width/ratio)+'px';if(inner.scrollHeight*ratio<=height&&inner.scrollWidth*ratio<=width+1)low=ratio;else high=ratio;}inner.style.width=(width/low)+'px';inner.style.transform='scale('+low+')';}
@@ -2229,8 +2369,8 @@ function notify(message){clearTimeout(toastTimer);$('#toast').textContent=messag
 function saveNow(){clearTimeout(saveTimer);try{localStorage.setItem(storageKey,JSON.stringify(data));dirty=false;$('#saveStatus').textContent='저장됨';$('#saveStatus').style.color='';}catch(e){dirty=true;$('#saveStatus').textContent='저장 불가 · 내보내기 필요';$('#saveStatus').style.color='#c13f3f';}}
 function scheduleSave(){dirty=true;printReady=false;$('#saveStatus').textContent='저장 중';clearTimeout(saveTimer);saveTimer=setTimeout(saveNow,180);}
 function editValue(path,value,fromCanvas=false){if(typeof get(data,path)!=='string')return;if(path.endsWith('.takeaway')){const message=ideaValidation(value);if(message){notify(message);if(fromCanvas){const active=document.activeElement;if(active?.dataset.path===path){active.textContent=get(data,path);const selection=getSelection(),range=document.createRange();range.selectNodeContents(active);range.collapse(false);selection.removeAllRanges();selection.addRange(range);}}return;}}if(value.length>12000){notify('한 문구는 12,000자 이내로 입력해 주세요.');return;}set(data,path,value);scheduleSave();renderChrome();if(path.endsWith('.title')||path.startsWith('meta.'))renderNav();if(fromCanvas){$$('#slideFrame [data-path]').filter(el=>el.dataset.path===path&&el!==document.activeElement).forEach(el=>el.textContent=value);requestAnimationFrame(resizeStage);}else renderCurrent();}
-function go(index,category="benefits"){closeChapters();clearLayoutSelection();const next=Math.max(0,Math.min(data.slides.length-1,index));if(next===current)return;const transition={outgoing:captureSlideTransition(),direction:next>current?1:-1};saveNow();current=next;state(current).revealed=false;if(isDatabaseSlide())state(current).category=DB_STEPS.includes(category)?category:"benefits";renderAll(transition);$('#stageSpace').scrollTop=0;const selected=$('#slideNav [aria-current="true"]');if(selected){const nav=$('.sidebar'),r=nav.getBoundingClientRect(),v=selected.getBoundingClientRect();if(v.top<r.top||v.bottom>r.bottom)nav.scrollTop+=v.top-r.top-55;}$('#slideAnnouncement').textContent=(current+1)+' / '+data.slides.length+' · '+slideTitle(currentSlide());if(presenting)$('#slideFrame').focus({preventScroll:true});wakeControls();}
-function togglePresent(on){clearLayoutSelection();closeChapters();saveNow();presenting=on;document.body.classList.toggle('present',on);document.body.classList.remove('sidebar-open','editor-open');if(on){state(current).revealed=false;if(isDatabaseSlide())state(current).category="benefits";}if(!on&&document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});renderCurrent();animateSlide();wakeControls();if(on)$('#slideFrame').focus({preventScroll:true});else $('#presentBtn').focus({preventScroll:true});}
+function go(index,category="benefits",panelStep=0){closeChapters();clearLayoutSelection();const next=Math.max(0,Math.min(data.slides.length-1,index));if(next===current)return;const transition={outgoing:captureSlideTransition(),direction:next>current?1:-1};saveNow();current=next;state(current).revealed=false;state(current).panelStep=panelStep;if(isDatabaseSlide())state(current).category=DB_STEPS.includes(category)?category:"benefits";renderAll(transition);$('#stageSpace').scrollTop=0;const selected=$('#slideNav [aria-current="true"]');if(selected){const nav=$('.sidebar'),r=nav.getBoundingClientRect(),v=selected.getBoundingClientRect();if(v.top<r.top||v.bottom>r.bottom)nav.scrollTop+=v.top-r.top-55;}$('#slideAnnouncement').textContent=(current+1)+' / '+data.slides.length+' · '+slideTitle(currentSlide());if(presenting)$('#slideFrame').focus({preventScroll:true});wakeControls();}
+function togglePresent(on){clearLayoutSelection();closeChapters();saveNow();presenting=on;document.body.classList.toggle('present',on);document.body.classList.remove('sidebar-open','editor-open');if(on){state(current).revealed=false;state(current).panelStep=0;if(isDatabaseSlide())state(current).category="benefits";}if(!on&&document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});renderCurrent();animateSlide();wakeControls();if(on)$('#slideFrame').focus({preventScroll:true});else $('#presentBtn').focus({preventScroll:true});}
 function wakeControls(){document.body.classList.remove('controls-hidden');clearTimeout(controlTimer);if(presenting)controlTimer=setTimeout(()=>document.body.classList.add('controls-hidden'),3000);}
 function toggleTheme(){data.theme=data.theme==='dark'?'light':'dark';renderChrome();scheduleSave();}
 function syncPracticeVisibility(){if(practiceLoaded.animation)$('#animationFrame').contentWindow.postMessage({type:'bibeom-practice-visibility',active:activeCourse==='practice'&&activePractice==='animation'},'*');}
