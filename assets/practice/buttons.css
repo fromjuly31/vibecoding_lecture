@@ -1,0 +1,4 @@
+.practice-fullscreen-button, .focus-exit { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 8px 12px; border: 1px solid #dfe4ec; border-radius: 8px; background: #f7f8fa; color: #344155; font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.4; white-space: nowrap; cursor: pointer; }
+.practice-fullscreen-button svg, .focus-exit svg { flex-shrink: 0; }
+.practice-fullscreen-button:hover:not(:disabled), .focus-exit:hover:not(:disabled) { background: #fff2e8; border-color: #efb48d; color: #9a4719; }
+.practice-fullscreen-button:focus-visible, .focus-exit:focus-visible { outline: 3px solid #f5b282; outline-offset: 3px; }

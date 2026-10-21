@@ -1,0 +1,197 @@
+/* Space goes to the activity; long demos remain scrollable instead of being clipped. */
+.focus-only { display: none !important; }
+.app-header .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.app-header .brand-logo { background: #ef6c2c; width: 39px; height: 39px; display: grid; place-items: center; color: white; border-radius: 12px; flex-shrink: 0; }
+.app-header .brand-name { font-size: 17px; font-weight: 800; letter-spacing: -.7px; }
+.app-header .brand-sub { margin-top: 4px; font-size: 11px; color: #8b919c; letter-spacing: .4px; }
+.app-header .header-right { display: flex; align-items: center; gap: 20px; font-size: 11px; color: #8b919c; }
+.app-header .count-badge { background: #f5f6f8; padding: 8px 12px; border-radius: 7px; font-size: 11px; font-weight: 400; line-height: normal; color: #58606e; white-space: nowrap; }
+body[data-practice-kind="animation"] .app-header { height: 76px; padding-inline: 30px; }
+.practice-help-dialog { width: min(780px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 20px; border: 1px solid #e3e6eb; border-radius: 16px; color: #252b35; background: #f5f6f8; overflow: auto; }
+.practice-help-dialog::backdrop { background: #17203388; }
+.practice-help-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.practice-help-heading button { padding: 9px 14px; }
+.practice-help-dialog .detail-column, .practice-help-dialog .help-grid { display: grid; grid-template-columns: 1fr; margin: 0; }
+.demo-dialog { max-height: calc(100dvh - 24px); overflow: auto; }
+.highlight-reading { max-width: 760px; margin: auto; padding: clamp(24px, 4vw, 48px); }
+.highlight-hint { font-size: 13px; color: #6b7280; }
+.highlight-reading .highlight-target { font-size: clamp(20px, 3vw, 32px); line-height: 1.8; margin: 20px 0; }
+.highlight-target mark { position: relative; display: inline-block; isolation: isolate; background: none !important; color: inherit; padding: 0 3px; }
+.highlight-target mark::before { content: ''; position: absolute; inset: 48% -2px 9%; background: #ffd369; border-radius: 2px; z-index: -1; transform: scaleX(0); transform-origin: left; transition: transform var(--duration, .8s) ease-out; }
+.highlight-target mark:last-child::before { transition-delay: calc(var(--duration, .8s) * .65); }
+.highlight-target.marked mark::before { transform: scaleX(1); }
+.reduce .highlight-target mark::before { transition: none; }
+.highlight-scroll-space { padding-top: 65px; height: 240px; color: #89919b; font-size: 11px; }
+.lazy-intro { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+.lazy-intro h3 { font-size: clamp(21px, 3vw, 30px); line-height: 1.5; margin: 0 0 18px; letter-spacing: -.04em; }
+.lazy-intro p { font-size: 12px; color: #6b7280; margin: 14px 0 0; }
+.lazy-flow { display: flex; gap: 8px; align-items: center; font-size: 11px; }
+.lazy-flow span { padding: 7px 10px; border: 1px solid #e3e6eb; background: white; border-radius: 7px; }
+.lazy-flow b { color: #c34d10; }
+.lazy-down { margin-top: 16px; color: #c34d10; }
+.lazy-scroll .lazy-list { max-width: 650px; padding: 24px; }
+.lazy-scroll .lazy-photo { height: clamp(180px, 40dvh, 320px); }
+.lazy-placeholder { display: grid; place-items: center; gap: 10px; width: 100%; padding: 20px; }
+.lazy-placeholder b { font-size: 40px; color: #b6bfcb; font-weight: 500; }
+.lazy-scroll .lazy-photo img { opacity: 0; transition: opacity .45s ease-out; }
+.lazy-card[data-load="loaded"] img { opacity: 1; }
+.lazy-card[data-load="loaded"] .lazy-placeholder { visibility: hidden; }
+.lazy-card[data-load="loading"] .load-state { color: #bd5a20; }
+.lazy-card[data-load="loaded"] .load-state { color: #397950; font-weight: 700; }
+.lazy-loading-bar { width: 160px; height: 4px; border-radius: 3px; background: #d7dfe7; overflow: hidden; visibility: hidden; }
+.lazy-loading-bar::after { content: ''; display: block; height: 100%; background: #d77538; transform: scaleX(0); transform-origin: left; }
+.lazy-card[data-load="loading"] .lazy-loading-bar { visibility: visible; }
+.lazy-card[data-load="loading"] .lazy-loading-bar::after { animation: lazy-request .9s linear forwards; }
+@keyframes lazy-request { to { transform: scaleX(1); } }
+@media (max-height: 600px) { .lazy-intro { padding: 16px; }.lazy-intro h3 { font-size: 21px; margin-bottom: 10px; }.lazy-intro .tag { margin-bottom: 9px; }.lazy-down { margin-top: 8px; } }
+body.practice-focus { overflow: hidden; }
+.practice-focus .focus-only { display: flex !important; }
+.practice-focus .app-header, .practice-focus .page-heading,
+.practice-focus .main > .eyebrow, .practice-focus .title-row,
+.practice-focus .main > .intro, .practice-focus .sidebar-note,
+.practice-focus .sidebar-tip, .practice-focus .footer-tip,
+.practice-focus .demo-footer, .practice-focus .browser-top,
+.practice-focus .lesson-nav, .practice-focus .paging,
+.practice-focus .instruction, .practice-focus .main > .mobile-nav { display: none !important; }
+.practice-focus .app-layout, .practice-focus .layout { height: 100dvh; min-height: 0; grid-template-columns: 214px minmax(0, 1fr); }
+.practice-focus .sidebar { height: 100dvh; top: 0; padding: 0 10px 14px; overscroll-behavior: contain; }
+.focus-tools { position: sticky; top: 0; z-index: 5; flex-direction: column; gap: 7px; padding: 12px 2px; background: white; border-bottom: 1px solid #e3e6eb; margin-bottom: 12px; }
+.focus-topic-label { display: grid; gap: 5px; font-size: 10px; color: #69717e; }
+.focus-tools button { min-height: 32px; font-size: 11px; padding: 7px; background: white; }
+.practice-topic-picker { position: relative; }
+.focus-tools .practice-topic-trigger { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; margin-top: 5px; padding: 10px 11px; border: 1px solid #dfe4ec; border-radius: 9px; background: #f7f8fa; color: #344155; font-size: 12px; font-weight: 500; line-height: normal; text-align: left; }
+.practice-topic-trigger[aria-expanded="true"] { border-color: #ed8c52; box-shadow: 0 0 0 3px #f9731615; }
+.practice-topic-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.practice-topic-menu { position: absolute; top: calc(100% + 7px); left: 0; right: 0; padding: 5px; border: 1px solid #e3e6eb; border-radius: 12px; background: #fff; box-shadow: 0 10px 28px #17203321; z-index: 50; }
+.practice-topic-menu[hidden] { display: none; }
+.focus-tools .practice-topic-menu button { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; padding: 10px; border: 1px solid transparent; border-radius: 8px; text-align: left; font-size: 12px; font-weight: 400; color: #344155; }
+.practice-topic-menu small { display: block; margin-top: 4px; font-size: 10px; color: #89929e; }
+.practice-topic-menu i { font-style: normal; visibility: hidden; }
+.practice-topic-menu [aria-selected="true"] i { visibility: visible; }
+.focus-tools .practice-topic-menu button[aria-selected="true"] { background: #fff2e8; color: #b84c16; }
+.focus-tools .practice-topic-menu button:hover, .focus-tools .practice-topic-menu button:focus-visible { background: #fff6ee; border-color: #f2c7a9; outline: none; }
+.activity-action-row { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 10px; }
+.responsive-device-actions { display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 8px; }
+.practice-focus .activity-reset { min-height: 32px; padding: 6px 9px; white-space: nowrap; flex-shrink: 0; }
+.practice-focus .demo-toolbar > div:first-child { margin-right: auto; }
+.practice-focus .sidebar-top, .practice-focus .sidebar-heading { padding: 7px 10px 10px; }
+.practice-focus .workspace, .practice-focus .main { width: 100%; max-width: none; margin: 0; height: 100dvh; min-height: 0; padding: 12px; overflow: hidden; }
+.practice-focus .content-grid { display: block; height: 100%; min-height: 0; }
+.practice-focus .experience, .practice-focus .experience > .panel { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.practice-focus .experience-head { padding: 10px 16px; min-height: 64px; gap: 10px; flex-shrink: 0; }
+.practice-focus .experience-head h2 { display: none; }
+.focus-lesson-title { flex: 1; min-width: 0; flex-direction: column; gap: 3px; }
+.focus-lesson-title h1 { margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.25; font-weight: 800; letter-spacing: -.04em; word-break: keep-all; overflow-wrap: anywhere; }
+.focus-lesson-title p { margin: 0; font-size: 11px; line-height: 1.3; color: #7c8796; }
+.focus-exit { align-items: center; justify-content: center; min-height: 34px; padding: 8px 12px; border: 1px solid #e2e5eb; border-radius: 8px; background: #f5f6f8; color: #344155; font-size: 12px; white-space: nowrap; cursor: pointer; }
+.focus-exit:hover { background: #e9edf2; }
+.focus-help-button { padding: 7px 10px; min-height: 32px; font-size: 11px; background: #fff8f2; border: 1px solid #f0d8c7; border-radius: 8px; color: #934516; white-space: nowrap; }
+.practice-focus .demo-wrap { display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: auto; padding: 12px; overscroll-behavior: contain; }
+.practice-focus .demo-browser { display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: visible; container: practice-sheet / inline-size; }
+.practice-focus #demo { display: flex; flex-direction: column; flex: 1; min-height: min-content; padding: 12px; }
+.practice-focus #demo > * { flex-shrink: 0; }
+.practice-focus .demo-toolbar { margin-bottom: 14px; }
+.practice-focus [data-lesson="responsive"] .demo-toolbar .demo-sub { display: none; }
+.responsive-controls { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+.responsive-controls .responsive-range-row { grid-row: 2; grid-column: 1 / -1; margin: 0; }
+.practice-focus .responsive-controls { grid-template-columns: minmax(200px, 220px) minmax(0, 1fr) auto; gap: 14px; padding: 8px 12px; margin-bottom: 8px; flex-shrink: 0; }
+.practice-focus .responsive-controls .responsive-range-row { grid-row: auto; grid-column: auto; }
+.practice-focus [data-lesson="responsive"] .demo-wrap,
+.practice-focus [data-lesson="responsive"] .demo-browser,
+.practice-focus [data-lesson="responsive"] #demo { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.practice-focus [data-lesson="responsive"] .demo-browser { overflow: hidden; }
+.practice-focus [data-lesson="responsive"] #responsive-space { position: relative; flex: 1; min-height: 160px; }
+.practice-focus [data-lesson="responsive"] #responsive-holder { position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
+.responsive-holder.adjustable { border: 0; box-shadow: 0 0 0 1px #e4e7ec; }
+.practice-focus [data-lesson="responsive"] #responsive-measure { flex-shrink: 0; margin: 8px 0 0; }
+.practice-focus .responsive-range-row { margin: 0; }
+.practice-focus .responsive-breakpoints { margin-bottom: 8px; flex-shrink: 0; }
+.practice-focus .responsive-breakpoints span { padding: 7px; }
+.practice-focus .result-note { margin-top: 12px; }
+.practice-focus .main { display: flex; flex-direction: column; }
+.practice-focus .demo-card { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.practice-focus .demo-top { min-height: 64px; padding: 10px 16px; gap: 10px; flex-shrink: 0; }
+.practice-focus .demo-top .live-label, .practice-focus .demo-top small { display: none; }
+.practice-focus .demo-top .focus-help-button { margin-left: auto; }
+.practice-focus .stage { flex: 1; height: auto; min-height: 180px; }
+.practice-focus .controls { padding: 10px 14px; gap: 10px 24px; flex-shrink: 0; }
+.practice-focus .demo-bottom { min-height: 58px; padding: 9px 12px; flex-shrink: 0; }
+.practice-focus .focus-mobile-tools { display: none !important; }
+@media (min-width: 1000px) {
+  .practice-focus .content-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(248px, 21vw, 320px); gap: 14px; align-items: stretch; }
+  .practice-focus .main { display: grid; grid-template-columns: minmax(0, 1fr) clamp(248px, 21vw, 320px); grid-template-rows: minmax(0, 1fr); gap: 14px; }
+  .practice-focus .demo-card { grid-column: 1; grid-row: 1; min-width: 0; container: animation-sheet / inline-size; }
+  .practice-focus .detail-column, .practice-focus .help-grid { display: grid; grid-template-columns: minmax(0, 1fr); grid-auto-rows: max-content; align-content: start; gap: 14px; height: 100%; min-height: 0; margin: 0; padding: 1px 4px 4px 1px; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+  .practice-focus .help-grid { grid-column: 2; grid-row: 1; }
+  .practice-focus .detail-card, .practice-focus .help-card { padding: 18px; }
+  .practice-focus .tech-card { grid-column: auto; }
+  .practice-focus .help-card h2 { flex-wrap: wrap; }
+  .practice-focus .focus-help-button { display: none !important; }
+}
+@media (max-height: 760px) and (min-width: 701px) {
+  .app-header, body[data-practice-kind="animation"] .app-header { height: 48px; }
+  .sidebar { top: 48px; height: calc(100dvh - 48px); padding-top: 14px; }
+  .workspace, .main { padding: 18px; }
+  .page-heading { margin-bottom: 15px; }
+  .main > .eyebrow { margin-bottom: 7px; }
+  .page-title-row h1, .title-row h1 { font-size: 24px; }
+  .main > .intro { margin: 10px 0 14px; }
+  #demo { min-height: 0; padding: 16px; }
+  .instruction { margin: 12px; padding: 10px; }
+  .stage { height: clamp(240px, 48dvh, 360px); }
+  .practice-focus .workspace, .practice-focus .main { padding: 8px; }
+  .practice-focus #demo { padding: 12px; }
+  .practice-focus .demo-wrap { padding: 8px; }
+  .practice-focus .demo-toolbar { margin-bottom: 10px; }
+  .practice-focus .demo-title { font-size: 17px; }
+  .practice-focus .responsive-controls { padding: 10px 12px; }
+  .practice-focus .experience-head, .practice-focus .demo-top { min-height: 58px; padding-block: 8px; }
+  .practice-focus .responsive-breakpoints { margin-bottom: 8px; }
+  .practice-focus .term-button, .practice-focus .term { min-height: 35px; padding-block: 7px; }
+}
+@media (max-width: 1100px) and (min-width: 701px) {
+  .practice-focus .app-layout, .practice-focus .layout { grid-template-columns: 188px minmax(0, 1fr); }
+  .practice-focus .responsive-controls { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 14px; }
+  .practice-focus .responsive-controls .responsive-range-row { grid-row: 2; grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .app-header .brand { gap: 9px; }
+  .app-header .brand-logo { width: 33px; height: 33px; border-radius: 10px; }
+  .app-header .brand-name { font-size: 15px; }
+  .app-header .brand-sub { font-size: 9px; }
+  .app-header .count-badge { display: none; }
+  body[data-practice-kind="animation"] .app-header { height: 66px; padding-inline: 15px; }
+  body[data-practice-kind="animation"] .header-right { gap: 0; }
+  .practice-focus .app-layout, .practice-focus .layout { display: block; }
+  .practice-focus .sidebar { position: fixed; top: 0; height: 100dvh; padding-top: 8px; z-index: 40; }
+  .practice-focus .workspace, .practice-focus .main { padding: 8px; display: flex; flex-direction: column; gap: 8px; }
+  .practice-focus .focus-mobile-tools { display: flex !important; flex-shrink: 0; }
+  .focus-mobile-tools button { padding: 7px; min-height: 34px; font-size: 11px; white-space: nowrap; }
+  .practice-focus .content-grid { flex: 1; min-height: 0; height: auto; }
+  .practice-focus .experience-head, .practice-focus .demo-top { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; }
+  .focus-lesson-title { flex-basis: 0; }
+  .focus-lesson-title h1 { font-size: 19px; }
+  .focus-exit { margin-left: auto; }
+  .practice-focus .experience-head h2 { display: none; }
+  .practice-focus .experience-head .focus-help-button { margin-left: 0; }
+  .practice-focus .demo-wrap { padding: 8px; }
+  .practice-focus #demo { padding: 12px; }
+  .practice-focus .demo-top small, .practice-focus .demo-top .live-label { display: none; }
+  .practice-focus .demo-top .focus-help-button { margin-left: 0; }
+  .practice-focus .demo-bottom { flex-wrap: wrap; gap: 8px; }
+  .practice-focus .actions { width: 100%; }
+  .practice-focus .actions button { flex: 1; min-height: 36px; }
+  .practice-focus .stage { min-height: 160px; }
+  .practice-focus .control { min-width: 120px; }
+  .responsive-controls, .practice-focus .responsive-controls { grid-template-columns: 1fr; gap: 8px; }
+  .responsive-device-actions { justify-content: center; }
+  .practice-focus .responsive-controls .responsive-range-row { grid-row: auto; grid-column: auto; }
+  .practice-focus .responsive-breakpoints { gap: 4px; }
+  .practice-focus .responsive-breakpoints span { padding: 6px 3px; font-size: 9px; }
+}
+@media (max-height: 440px) {
+  .practice-focus .main, .practice-focus .workspace { overflow-y: auto; }
+  .practice-focus .demo-card { flex: none; min-height: 380px; }
+  .practice-focus .experience { min-height: 360px; }
+  .practice-focus [data-lesson="responsive"] .experience { min-height: 440px; }
+}

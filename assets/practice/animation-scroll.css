@@ -1,0 +1,15 @@
+/* Scroll distances follow the actual stage height, including fullscreen and resizing. */
+.scrollbox { --scroll-height: 320px; overflow-y: auto; scrollbar-gutter: stable; }
+.scrollbox .reading-body:not(.highlight-reading) { max-width: 720px; padding: clamp(24px, 4vw, 40px); font-size: clamp(14px, calc(var(--scroll-height) * .02), 24px); }
+.scrollbox .reading-body:not(.highlight-reading) h3 { font-size: 1.4em; line-height: 1.5; margin: 4px 0 24px; }
+.scrollbox .reading-body:not(.highlight-reading) h4 { font-size: 1.05em; line-height: 1.6; margin: 28px 0 12px; }
+.scrollbox .reading-body:not(.highlight-reading) p { font-size: inherit; line-height: 1.9; margin: 0 0 18px; }
+.scrollbox .highlight-reading { min-height: calc(var(--scroll-height) * 1.8); }
+.scrollbox .highlight-target { position: sticky; top: calc(var(--scroll-height) * .2); }
+.scrollbox .highlight-scroll-space { height: auto; min-height: calc(var(--scroll-height) * .85); padding-top: 65px; }
+.scrollbox .pin-wrap { height: calc(var(--scroll-height) * 3); }
+.scrollbox .horizontal-journey { height: calc(var(--scroll-height) * 3); }
+.scrollbox .horizontal-sticky { height: var(--scroll-height); }
+.scrollbox .reveal-content { min-height: calc(var(--scroll-height) * 3); display: flex; flex-direction: column; justify-content: space-between; padding-block: calc(var(--scroll-height) * .2) calc(var(--scroll-height) * .7); }
+.scrollbox .fade-card { width: 100%; margin: 0 auto; }
+.scrollbox .smooth-section { height: var(--scroll-height); }

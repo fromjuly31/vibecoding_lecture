@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="교사를 위한 바이브 코딩 UI·UX 용어 체험관. 25가지 화면 구성, 시각 효과, 상호작용을 직접 체험하고 구현 프롬프트를 복사하세요.">
+<title>바이브 코딩 · UI·UX 용어 체험관</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23ee6c36'/%3E%3Cpath d='M10 12h8v16h-8zm12 0h8v7h-8zm0 11h8v5h-8z' fill='white'/%3E%3C/svg%3E">
+<style>
+:root{--accent:#e96b35;--accent-dark:#b74718;--accent-soft:#fff0e7;--ink:#252b35;--muted:#69717e;--line:#e7e9ed;--canvas:#f5f6f8;--white:#fff;--radius:14px;--shadow:0 4px 20px #26314905;font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);font-size:14px;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas)}button,input,select,textarea{font:inherit}button{cursor:pointer}button,a,input,select,textarea,summary,[tabindex]{-webkit-tap-highlight-color:transparent}button{color:inherit}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #ee935d;outline-offset:3px}button,input,select,textarea{border:1px solid var(--line);border-radius:9px}button{background:white}input,select,textarea{padding:10px 12px;max-width:100%;min-width:0;color:var(--ink);background:white}input[type=range]{accent-color:var(--accent);padding:0;width:100%}input[type=color]{padding:3px;width:44px;height:36px;cursor:pointer}input[type=checkbox]{accent-color:var(--accent)}textarea{resize:vertical;width:100%}svg{flex-shrink:0;vertical-align:middle}h1,h2,h3,h4,p{margin:0}button svg{pointer-events:none}a{color:inherit}small{font-size:12px}.muted{color:var(--muted)}.small{font-size:12px}.eyebrow{font-size:11px;letter-spacing:1.4px;font-weight:750;color:var(--muted)}.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.stack{display:grid;gap:16px}.grow{flex:1;min-width:0}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.skip{position:fixed;top:-60px;left:12px;background:white;padding:12px;z-index:100}.skip:focus{top:10px}
+.app-header{height:76px;display:flex;justify-content:space-between;align-items:center;padding:0 30px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:12px}.brand-logo{background:var(--accent);width:39px;height:39px;display:grid;place-items:center;color:white;border-radius:12px}.brand-name{font-size:17px;letter-spacing:-.7px;font-weight:800}.brand-sub{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.4px}.header-right{display:flex;align-items:center;gap:20px;color:var(--muted);font-size:12px}.count-badge{padding:7px 11px;border-radius:7px;background:#f5f6f8;font-size:12px;color:#58606e}.mobile-menu,.close-nav{display:none}.app-layout{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:calc(100dvh - 76px)}.sidebar{background:white;border-right:1px solid var(--line);padding:26px 15px 20px;position:sticky;top:76px;height:calc(100dvh - 76px);overflow:auto;scrollbar-width:thin;scrollbar-color:#dedfe4 transparent}.sidebar-top{padding:0 12px 22px;display:flex;align-items:center;justify-content:space-between}.sidebar-top strong{font-size:13px}.nav-group{margin-bottom:13px}.category-button{border:0;background:none;width:100%;padding:12px 10px;display:flex;align-items:center;gap:9px;text-align:left;font-size:12px;font-weight:750}.category-button .chevron{margin-left:auto;transition:transform .2s}.category-button[aria-expanded=false] .chevron{transform:rotate(-90deg)}.category-count{font-size:10px;color:#9198a2;font-weight:500}.term-list{display:grid;gap:3px}.term-list[hidden]{display:none}.term-button{border:1px solid transparent;background:none;width:100%;padding:10px 11px;text-align:left;display:flex;align-items:center;gap:10px;border-radius:9px;min-height:42px;color:#616874;font-size:13px}.term-button:hover{background:#f7f8fa}.term-button[aria-current=page]{background:var(--accent-soft);color:var(--accent-dark);font-weight:750;border-color:#ffe0ca}.term-number{font-size:10px;color:#9a9faa;width:18px;font-variant-numeric:tabular-nums;font-weight:600}.term-button[aria-current=page] .term-number{color:var(--accent)}.term-button .active-dot{margin-left:auto;width:5px;height:5px;background:var(--accent);border-radius:50%}.sidebar-note{border-top:1px solid var(--line);padding:18px 12px 0;color:#858b94;font-size:11px;line-height:1.9}.workspace{padding:30px 30px 24px;min-width:0;max-width:1600px;width:100%;margin:auto}.page-heading{margin-bottom:25px}.breadcrumb{display:flex;gap:9px;align-items:center;font-size:12px;color:#7c828d;margin-bottom:15px}.page-title-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.page-title-row h1{font-size:28px;letter-spacing:-1.4px;line-height:1.5}.english-title{color:#8b919c;font-size:13px;margin-top:4px}.live-badge{display:flex;align-items:center;gap:7px;color:#648174;font-size:11px;white-space:nowrap}.live-badge:before{content:"";width:6px;height:6px;background:#6eab8b;border-radius:50%}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:22px;align-items:start}.experience{min-width:0}.panel{background:white;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.experience-head{padding:18px 21px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.experience-head h2{font-size:14px;display:flex;gap:9px;align-items:center}.btn{padding:9px 13px;display:inline-flex;gap:7px;align-items:center;justify-content:center;min-height:37px;font-size:12px;font-weight:600;transition:background .18s,box-shadow .18s}.btn:hover{background:#f8f9fb}.btn.primary{background:var(--accent);border-color:var(--accent);color:white}.btn.primary:hover{background:#d85d29}.btn.quiet{background:transparent;border-color:transparent;color:var(--muted)}.btn.quiet:hover{background:#f5f6f8}.btn.danger{color:#bd4343;background:#fff7f7;border-color:#f4dada}.icon-btn{display:inline-grid;place-items:center;width:35px;height:35px;padding:0;border-radius:9px}.icon-btn:hover{background:#f7f8fa}.instruction{margin:18px 20px;padding:13px 14px;display:flex;align-items:flex-start;gap:10px;border-radius:9px;background:#fff8f2;color:#865a36;line-height:1.7;font-size:12px}.instruction svg{color:#d18a43;margin-top:2px}.instruction b{display:block;font-size:12px;margin-bottom:1px}.demo-wrap{padding:0 20px 20px}.demo-browser{border:1px solid #e2e5ea;border-radius:11px;overflow:hidden;background:#f6f7f9}.browser-top{display:flex;align-items:center;gap:5px;padding:12px;background:#fff;border-bottom:1px solid var(--line)}.browser-dot{width:7px;height:7px;border-radius:50%;background:#e4e7ec}.browser-top .browser-address{margin:auto;font-size:10px;color:#9a9eaa;letter-spacing:.3px;padding-right:25px}.browser-top svg{color:#a2a7b0}#demo{padding:22px;min-height:440px;position:relative}.demo-footer{display:flex;gap:7px;justify-content:center;align-items:center;font-size:10px;color:#959ca7;margin-top:15px}.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:18px;align-items:center}.lesson-nav .btn{color:#66707f;background:transparent;border:0;padding:8px 0;font-size:12px}.lesson-position{font-size:11px;color:#8b919b}.detail-column{display:grid;gap:17px}.detail-card{padding:22px}.detail-section-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:750;margin-bottom:18px}.detail-section-title svg{color:#838b96}.term-korean{font-size:18px;font-weight:750;letter-spacing:-.5px}.term-english{font-size:11px;color:#969ca5;margin-top:6px}.concept-text{font-size:13px;line-height:1.95;color:#626b78;margin-top:16px;word-break:keep-all}.usecase{border-top:1px solid var(--line);margin-top:19px;padding-top:18px}.usecase h3{font-size:12px;margin-bottom:8px}.usecase p{font-size:12px;color:#78808d;line-height:1.9;word-break:keep-all}.prompt-card{background:#fffaf6;border-color:#f0e2d6}.prompt-card .detail-section-title svg{color:var(--accent)}.prompt-label{font-size:10px;color:#b3886d;margin-left:auto}.prompt-text{font-size:14px;line-height:1.95;word-break:keep-all;color:#735644;background:#fff;border:1px solid #f0e4da;border-radius:10px;padding:15px;white-space:pre-wrap}.prompt-guide{font-size:12px;line-height:1.75;color:var(--muted);margin:12px 0 0;word-break:keep-all}.copy-button{width:100%;margin-top:14px}.tech-card{padding:0 4px}.tech-title{font-size:11px;color:#8f97a3;margin:2px 0 10px}.tech-tags{display:flex;gap:6px;flex-wrap:wrap}.tech-tags span{font-size:10px;background:#eaecef;border-radius:5px;padding:5px 7px;color:#727b87}.global-toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#29323e;color:#fff;border-radius:10px;box-shadow:0 5px 20px #0002;padding:12px 20px;z-index:100;font-size:13px;max-width:90vw}.global-toast[hidden]{display:none}.nav-overlay{display:none}
+/* 체험 내부의 공통 구성 */
+.demo-title{font-size:18px;font-weight:750;letter-spacing:-.7px}.demo-sub{font-size:12px;color:var(--muted);line-height:1.7;margin-top:5px}.demo-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}.segmented{display:inline-flex;gap:3px;background:#eaecef;padding:4px;border-radius:9px;max-width:100%}.segmented button{background:none;border:0;border-radius:6px;padding:7px 10px;color:#737b88;font-size:11px;display:flex;align-items:center;justify-content:center;gap:5px;min-height:31px}.segmented button[aria-pressed=true],.segmented button[aria-selected=true]{background:white;box-shadow:0 1px 4px #0001;color:var(--accent-dark);font-weight:700}.mini-card{border:1px solid var(--line);border-radius:12px;background:white;padding:17px;min-width:0}.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.profile-card{display:flex;flex-direction:column;align-items:center;gap:9px;padding:20px 8px;min-width:0;background:white;border:1px solid var(--line);border-radius:11px;text-align:center}.profile-card.selected{border-color:var(--accent);background:#fff7f1;box-shadow:0 0 0 1px var(--accent)}.profile-card strong{font-size:13px}.profile-card small{color:#9399a3;font-size:10px}.avatar{width:41px;height:41px;border-radius:14px;display:inline-grid;place-items:center;background:#f8e9de;color:#ba7847;font-size:14px;font-weight:700;flex-shrink:0}.avatar.c1{background:#e6ecfa;color:#7086b1}.avatar.c2{background:#e7f0e9;color:#6a937e}.avatar.c3{background:#f0e7f5;color:#9c7ead}.avatar.c4{background:#f9eedc;color:#b49258}.avatar.c5{background:#e4f1f2;color:#6d999e}.chip{display:inline-flex;align-items:center;gap:5px;background:#edf5ef;color:#5e886d;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:600;white-space:nowrap}.chip.orange{background:#fff0e4;color:#b67440}.chip.blue{background:#eaf0fc;color:#6980b0}.chip.gray{background:#f0f1f3;color:#808996}.student-row{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);min-width:0}.student-row:last-child{border-bottom:0}.student-row strong{font-size:13px}.student-row .muted{font-size:11px;margin-top:4px}.result-note{border:1px solid #e4e8ed;border-radius:9px;padding:12px 14px;font-size:12px;line-height:1.8;background:white;color:#737c88;margin-top:16px}.result-note b{color:var(--accent-dark)}.empty-state{text-align:center;padding:42px 16px;color:#8d94a0;font-size:13px;line-height:1.9}.field{display:grid;gap:7px;min-width:0;font-size:12px;color:#656f7d}.field output{color:var(--accent-dark);font-weight:700}.control-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}.toggle{position:relative;width:40px;height:23px;display:inline-flex;flex-shrink:0}.toggle input{position:absolute;opacity:0;inset:0;margin:0;width:100%;height:100%;cursor:pointer}.toggle span{width:100%;height:100%;border-radius:20px;background:#d9dde3;pointer-events:none;transition:background .2s}.toggle span:after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;background:white;border-radius:50%;box-shadow:0 1px 4px #0002;transition:transform .2s}.toggle input:checked+span{background:var(--accent)}.toggle input:checked+span:after{transform:translateX(17px)}.toggle input:focus-visible+span{outline:3px solid #ee935d;outline-offset:3px}.kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.kpi{padding:16px 10px;border:1px solid var(--line);border-radius:10px;background:white}.kpi-label{font-size:10px;color:#89919d}.kpi-value{font-size:24px;font-weight:750;letter-spacing:-1px;margin:10px 0 5px}.kpi-value small{font-size:11px;font-weight:500;margin-left:2px}.kpi-foot{font-size:9px;color:#6c9b79}.chart-card{margin-top:14px;padding:18px 14px}.chart-card h4{font-size:12px;margin-bottom:15px}.bar-chart{width:100%;height:auto;max-height:230px;display:block}.selection-detail{margin-top:15px}.selection-detail h4{font-size:13px;margin-bottom:9px}.detail-lines{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;font-size:12px;line-height:1.6}.detail-lines dt{color:#8a939f}.detail-lines dd{margin:0}.grid-tile{background:white;border:1px solid var(--line);border-radius:9px;min-height:74px;display:grid;place-content:center;gap:5px;text-align:center;color:#8792a2;min-width:0}.grid-tile strong{color:#637088;font-size:17px;font-weight:500}.grid-tile small{font-size:9px}.mini-nav{display:flex;gap:7px;flex-wrap:wrap}.mini-nav button{border:0;padding:7px 10px;background:transparent;font-size:11px;color:#7c8692}.mini-nav button.active{color:var(--accent-dark);background:#fff0e7}.contained-screen{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;min-height:290px}.dock-scene{min-height:350px;position:relative;transform:translateZ(0);background:linear-gradient(145deg,#f9f1e9,#f0f1fb);padding:25px 20px 95px}.floating-dock{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;background:#ffffffb8;border:1px solid #fff;border-radius:18px;padding:9px 12px;box-shadow:0 8px 24px #45526413;backdrop-filter:blur(14px)}.dock-button{width:42px;height:42px;border:0;background:transparent;display:grid;place-items:center;border-radius:11px;position:relative;transition:transform .18s,background .18s;color:#7d8796}.dock-button.active{background:var(--accent);color:#fff}.dock-button:hover,.dock-button:focus-visible{transform:translateY(-5px) scale(1.12);background:#ffefe4;color:var(--accent-dark)}.dock-button .tooltip-text{bottom:calc(100% + 13px)}.tooltip-host{position:relative;display:inline-flex}.tooltip-text{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);padding:7px 9px;color:white;background:#303947;border-radius:6px;white-space:nowrap;font-size:10px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:5}.tooltip-text:after{content:"";position:absolute;top:100%;left:calc(50% - 4px);border:4px solid transparent;border-top-color:#303947}.tooltip-host:hover .tooltip-text,.tooltip-host:focus-within .tooltip-text,.dock-button:hover .tooltip-text,.dock-button:focus-visible .tooltip-text{opacity:1;visibility:visible}.tooltip-host.tooltip-dismissed .tooltip-text,.dock-button.tooltip-dismissed .tooltip-text{opacity:0;visibility:hidden}.mini-sidebar-layout{display:flex;min-height:335px;background:white;border:1px solid var(--line);border-radius:11px;overflow:hidden}.mini-sidebar{width:152px;flex-shrink:0;border-right:1px solid var(--line);padding:14px 9px;transition:width .25s;overflow:hidden;background:#fcfcfd}.mini-sidebar.collapsed{width:59px}.mini-sidebar button{width:100%;border:0;background:none;padding:11px 10px;display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:11px;text-align:left;margin-bottom:5px}.mini-sidebar button.active{background:var(--accent-soft);color:var(--accent-dark)}.mini-sidebar.collapsed .nav-label{display:none}.mini-sidebar-content{padding:22px 16px;flex:1;min-width:0}.scroll-demo{height:355px;overflow-y:auto;background:white;border:1px solid var(--line);border-radius:10px;scrollbar-width:thin}.sticky-demo-header{position:sticky;top:0;z-index:2;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);background:#fffdfbee}.sticky-demo-header strong{font-size:12px}.long-content{padding:20px}.document-section{padding:0 0 23px;margin-bottom:22px;border-bottom:1px solid var(--line)}.document-section h4{font-size:13px;margin-bottom:10px}.document-section p{font-size:12px;color:#848d99;line-height:2}.document-number{font-size:10px;color:var(--accent);margin-bottom:7px}.demo-dialog{border:1px solid var(--line);border-radius:16px;padding:25px;width:min(420px,calc(100vw - 32px));box-shadow:0 20px 100px #0003}.demo-dialog::backdrop{background:#26313b66;backdrop-filter:blur(3px)}.demo-dialog h3{font-size:19px}.demo-dialog .field{margin-top:18px}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:24px}.faq{border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:10px;overflow:hidden}.faq summary{cursor:pointer;padding:17px 15px;font-size:12px;font-weight:600;display:flex;list-style:none;gap:10px;align-items:center;justify-content:space-between}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";font-size:18px;color:#9ca2ab}.faq[open] summary:after{content:"−";color:var(--accent)}.faq[open] summary{color:var(--accent-dark)}.faq p{padding:0 15px 18px;font-size:12px;line-height:1.9;color:#7b8490}.tabs{display:flex;border-bottom:1px solid var(--line);gap:15px;margin-bottom:20px}.tabs button{border:0;border-radius:0;border-bottom:2px solid transparent;background:none;font-size:12px;padding:14px 3px;color:#88909c}.tabs button[aria-selected=true]{color:var(--accent-dark);border-bottom-color:var(--accent);font-weight:700}.tab-panel{min-height:260px}.score-row{display:grid;grid-template-columns:36px 1fr 38px;gap:12px;align-items:center;margin-top:20px;font-size:12px}.score-track{height:7px;border-radius:4px;background:#f1f2f5;overflow:hidden}.score-track span{height:100%;display:block;background:#efa981;border-radius:4px}.split-frame{display:grid;grid-template-columns:minmax(0,38fr) 12px minmax(0,62fr);height:330px;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:white}.split-list{overflow:auto;padding:10px;min-width:0}.split-list button{padding:12px 9px;width:100%;border:0;background:none;text-align:left;display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:11px;white-space:nowrap;overflow:hidden}.split-list button.active{background:var(--accent-soft);color:var(--accent-dark)}.split-list .avatar{width:28px;height:28px;border-radius:9px;font-size:11px}.split-handle{border:0;border-radius:0;background:#edf0f4;cursor:col-resize;touch-action:none;display:grid;place-items:center;color:#a7b0be;padding:0}.split-handle:hover,.split-handle:focus-visible{background:#ffe4d3;color:var(--accent)}.split-info{padding:23px 14px;overflow:auto;min-width:0}.split-info h4{font-size:16px;margin:13px 0 7px}.split-info p{font-size:11px;line-height:1.9;color:#8a94a1}.split-info .detail-lines{grid-template-columns:1fr;gap:5px;margin-top:20px;font-size:11px}.split-info .detail-lines dd{margin-bottom:6px}
+/* 시각 효과 */
+.comparison-labels{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:center;font-size:10px;color:#848c96;margin-bottom:8px}.glass-stage{background:linear-gradient(125deg,#f2b683,#df819f 47%,#9a9ce1);border-radius:12px;position:relative;overflow:hidden;min-height:270px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center;padding:30px 18px}.glass-stage:before,.glass-stage:after{content:"";position:absolute;width:135px;height:135px;border-radius:50%;background:#fbe6ac;top:-20px;right:15px}.glass-stage:after{background:#7685dc;bottom:-40px;left:40px;top:auto}.glass-card{position:relative;z-index:1;background:#ffffff38;backdrop-filter:blur(12px);border:1px solid #ffffff90;border-radius:13px;padding:23px 14px;color:#523e63;min-height:170px;display:flex;flex-direction:column;justify-content:center;gap:12px}.glass-card.before{background:#fff;backdrop-filter:none}.glass-card strong{font-size:17px;line-height:1.6}.glass-card small{font-size:10px;line-height:1.6}.glass-card .eyebrow{font-size:9px;color:#735a78;letter-spacing:1px}.neu-stage{background:#e8ecf0;border-radius:12px;padding:28px 20px 30px;text-align:center;min-height:330px}.neu-card{margin:22px auto 28px;padding:22px;max-width:260px;background:#e8ecf0;border-radius:16px;box-shadow:8px 8px 17px #c8cbd0,-8px -8px 17px #fff}.neu-controls{display:flex;justify-content:center;gap:28px}.neu-button{width:62px;height:62px;background:#e8ecf0;border:0;border-radius:18px;display:grid;place-items:center;color:#9aa5b2;box-shadow:6px 6px 12px #c8cbd0,-6px -6px 12px #fff}.neu-button[aria-pressed=true]{color:var(--accent);box-shadow:inset 5px 5px 10px #c8cbd0,inset -5px -5px 10px #fff}.neu-button.plain{box-shadow:none;border:1px solid #cad1da}.theme-scene{--surface:white;--surface2:#f8f9fb;--text:#303947;--secondary:#8a93a0;--edge:#e8ebf0;background:var(--surface);color:var(--text);padding:22px;border:1px solid var(--edge);border-radius:12px;transition:background .25s,color .25s;min-height:310px}.theme-scene[data-theme=dark]{--surface:#252e3e;--surface2:#303a4b;--text:#ecf0f8;--secondary:#abb5c7;--edge:#434d5e}.theme-scene .theme-secondary{color:var(--secondary)}.theme-scene .theme-tile{background:var(--surface2);border:1px solid var(--edge);border-radius:10px;padding:15px;margin-top:18px}.theme-scene .kpi-grid{gap:12px;margin-top:18px}.theme-scene .kpi{background:var(--surface2);border-color:var(--edge)}.theme-scene .kpi-label{color:var(--secondary)}.gradient-card{background:linear-gradient(135deg,#ee965a,#a786d2);border-radius:13px;min-height:235px;display:flex;flex-direction:column;justify-content:center;padding:30px;gap:14px}.gradient-card .readable{align-self:flex-start;background:#ffffffed;padding:18px;border-radius:12px;box-shadow:0 5px 25px #0001}.gradient-card h3{font-size:23px;line-height:1.5;margin-bottom:10px;letter-spacing:-.9px}.gradient-card p{font-size:12px;color:#7b8190}.color-field{display:flex;gap:9px;align-items:center;font-size:11px}.color-fields{display:flex;gap:17px;flex-wrap:wrap}.css-readout{font-family:Consolas,monospace;font-size:10px;word-break:break-all;color:#8c94a2;margin-top:14px;line-height:1.7}.hover-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}.hover-card{background:white;padding:23px 12px;text-align:center;border-radius:12px;border:1px solid var(--line);display:grid;justify-items:center;gap:12px;transition:transform .23s,box-shadow .23s,background .23s,color .23s;min-height:140px}.hover-card strong{font-size:12px}.hover-card span{font-size:10px;color:#87909c}.hover-card.lift:hover,.hover-card.lift:focus-visible,.hover-card.lift.simulate{transform:translateY(-7px);box-shadow:0 12px 22px #52637b22}.hover-card.scale:hover,.hover-card.scale:focus-visible,.hover-card.scale.simulate{transform:scale(1.055)}.hover-card.shadow:hover,.hover-card.shadow:focus-visible,.hover-card.shadow.simulate{box-shadow:0 9px 25px #59668130}.hover-card.color:hover,.hover-card.color:focus-visible,.hover-card.color.simulate{background:#fff0e5;color:var(--accent-dark);border-color:#edba96}.skeleton-block{background:linear-gradient(90deg,#eceef2 25%,#f8f9fa 50%,#eceef2 75%);background-size:200% 100%;animation:shimmer 1.3s infinite;border-radius:6px}.skeleton-avatar{width:41px;height:41px;border-radius:14px}.skeleton-line{height:11px;width:65%}.skeleton-line.short{width:43%;height:8px}.toast-scene{min-height:285px;padding:22px;position:relative;background:white;border:1px solid var(--line);border-radius:12px}.toast-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.demo-toast{position:absolute;right:15px;bottom:17px;left:15px;background:#edf6ef;color:#517b5d;border:1px solid #d9eadc;display:flex;gap:10px;align-items:center;padding:13px;border-radius:9px;font-size:11px;animation:slideIn .2s ease-out}.demo-toast.error{background:#fff0ef;border-color:#f3d7d3;color:#b3655f}.demo-toast.warning{background:#fff7e7;border-color:#f0e2c3;color:#9b7a35}.demo-toast .icon-btn{margin-left:auto;width:25px;height:25px;background:none;border:0;color:inherit}.tool-actions{display:flex;justify-content:center;gap:24px;margin:65px 0 42px}.tool-actions .icon-btn{width:49px;height:49px;color:#7c8799}.tool-actions .tooltip-text{font-size:11px}.drag-list{display:grid;gap:10px}.drag-item{background:white;padding:13px;border-radius:10px;border:1px solid var(--line);display:flex;gap:10px;align-items:center;transition:box-shadow .15s;min-width:0}.drag-item.dragging{opacity:.45}.drag-item.drag-over{border-color:var(--accent);box-shadow:0 -3px 0 var(--accent)}.drag-grip{touch-action:none;cursor:grab;border:0;padding:3px;background:none;color:#a4acb7}.drag-grip:active{cursor:grabbing}.drag-item .avatar{width:33px;height:33px;border-radius:10px;font-size:12px}.drag-item strong{font-size:12px}.drag-item small{display:block;font-size:10px;color:#8d95a1;margin-top:3px}.move-buttons{display:flex;gap:3px;margin-left:auto}.move-buttons button{width:26px;height:26px;font-size:11px;background:none;border:0;color:#a0a8b3}.inline-list{display:grid;gap:10px}.inline-row{border:1px solid var(--line);background:white;border-radius:11px;padding:13px;display:flex;gap:12px;align-items:flex-start}.inline-row .avatar{width:34px;height:34px;font-size:12px;border-radius:11px}.editable-text{display:block;cursor:text;border:1px solid transparent;padding:4px;margin:-3px -4px 6px;border-radius:4px;font-size:12px;word-break:break-word;min-height:23px}.editable-text:hover,.editable-text:focus-visible{background:#fff7ee;border-color:#f1dccb}.editable-text.memo{font-size:11px;color:#89929f}.inline-input{width:100%;padding:5px;font-size:12px;margin:0 0 6px}.context-card{position:relative}.context-card>.icon-btn{position:absolute;right:7px;top:7px;border:0;color:#9aa2ae;background:none}.context-menu{position:fixed;width:155px;padding:5px;border:1px solid var(--line);background:white;border-radius:10px;box-shadow:0 8px 30px #1a273425;z-index:60}.context-menu button{border:0;width:100%;padding:10px;background:none;text-align:left;font-size:12px;display:flex;align-items:center;gap:10px}.context-menu button:hover,.context-menu button:focus{background:#f7f8fa}.context-menu button:last-child{color:#be6864}.setting-row{display:flex;gap:14px;align-items:center;padding:21px 0;border-bottom:1px solid var(--line)}.setting-row:last-child{border:0}.setting-icon{width:39px;height:39px;display:grid;place-items:center;background:#f5f6f8;border-radius:11px;color:#8390a2}.setting-row h4{font-size:12px;margin-bottom:6px}.setting-row p{font-size:11px;color:#8c94a0;line-height:1.6}.setting-status{font-size:10px;font-weight:700;color:#939ba7;width:21px}.setting-status.on{color:var(--accent-dark)}.class-preview{margin-top:24px;text-align:center;padding:30px 20px}.class-preview .class-symbol{width:60px;height:60px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);border-radius:18px;margin:0 auto 17px}.class-preview h3{font-size:23px;letter-spacing:-.7px}.class-preview p{font-size:12px;margin-top:8px;color:#929aa5}.class-preview .chip{margin-top:19px}.responsive-holder{width:100%;overflow:hidden;position:relative;border:1px solid #e4e7ec;border-radius:10px;background:#fff;margin:auto;transition:width .25s}.responsive-holder iframe{display:block;border:0;transform-origin:top left;position:absolute;top:0;left:0;background:#fff}.device-measure{font-size:10px;color:#8a94a2;text-align:center;margin-top:13px}.device-measure strong{color:#687588;font-weight:500}.reset-flash{animation:resetPulse .45s}
+@keyframes shimmer{to{background-position:-200% 0}}@keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes resetPulse{50%{box-shadow:0 0 0 3px #ed996a55}}
+.responsive-controls{background:white;border:1px solid var(--line);border-radius:10px;padding:14px 15px;margin-bottom:16px;display:grid;gap:12px}.responsive-width-label{font-size:12px;font-weight:650;color:#606d7d}.responsive-width-value{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}.responsive-width-value input{width:78px;padding:7px 8px;text-align:right;font-variant-numeric:tabular-nums}.responsive-range-row{display:flex;align-items:center;gap:11px}.responsive-range-row input{flex:1;min-width:0;cursor:ew-resize}.responsive-range-row button{width:31px;height:31px;flex-shrink:0;font-size:18px;color:#7b8593}.responsive-limits{display:flex;justify-content:space-between;font-size:10px;color:#929ba8}.responsive-breakpoints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:12px}.responsive-breakpoints span{padding:7px 4px;border:1px solid var(--line);border-radius:7px;background:white;color:#8b94a1;text-align:center;font-size:10px;line-height:1.6}.responsive-breakpoints span.active{background:var(--accent-soft);border-color:#f0c8ad;color:var(--accent-dark)}.responsive-breakpoints b{display:block;font-size:11px}.responsive-holder.adjustable{transition:none}.dashboard-kpi{text-align:left;cursor:pointer;width:100%;transition:border-color .16s,background .16s}.dashboard-kpi:hover,.dashboard-kpi.active{border-color:#eeb893;background:#fff9f4}.dashboard-kpi .kpi-label{display:flex;align-items:center;justify-content:space-between;gap:3px}.dashboard-tabs{gap:0;margin:20px 0 17px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.dashboard-tabs button{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;padding:13px 3px}.dashboard-panel{min-width:0}.dashboard-panel .chart-card{margin-top:0}.dashboard-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.dashboard-panel-head h4{font-size:14px}.dashboard-panel-head p{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.6}.dashboard-table-wrap{max-height:318px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:white;scrollbar-width:thin}.dashboard-table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}.dashboard-table th{position:sticky;top:0;background:#f8f9fb;color:#818a97;font-size:10px;font-weight:500;padding:11px 13px;border-bottom:1px solid var(--line);z-index:1}.dashboard-table td{padding:11px 13px;border-bottom:1px solid #edf0f3}.dashboard-table tr:last-child td{border-bottom:0}.dashboard-table td:first-child{font-size:11px;color:#939ba7;width:44px;font-variant-numeric:tabular-nums}.dashboard-table .avatar{width:28px;height:28px;border-radius:9px;font-size:11px}.dashboard-table .row{gap:8px;white-space:nowrap}.dashboard-stats{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}.assignment-progress{width:100%;height:9px;accent-color:var(--accent);border:0;border-radius:6px;overflow:hidden;margin:4px 0 17px;background:#eceef2}.assignment-progress::-webkit-progress-bar{background:#eceef2;border-radius:6px}.assignment-progress::-webkit-progress-value{background:#eda575;border-radius:6px}.assignment-progress::-moz-progress-bar{background:#eda575;border-radius:6px}
+@media(max-width:700px){.responsive-controls{padding:12px}.responsive-width-label{font-size:11px}.responsive-width-value input{width:69px}.responsive-breakpoints span{font-size:9px}.dashboard-tabs button{font-size:11px;gap:4px}.dashboard-tabs button svg{width:13px}.dashboard-table td,.dashboard-table th{padding:10px 8px}.dashboard-panel-head h4{font-size:13px}.dashboard-table{font-size:11px}.dashboard-table .row{gap:6px}.dashboard-table .avatar{width:25px;height:25px;font-size:10px}}
+.dashboard-overview{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:10px}.overview-widget{background:white;border:1px solid var(--line);border-radius:11px;padding:12px;min-width:0}.overview-widget-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.overview-widget-head h4{font-size:12px;letter-spacing:-.2px;display:flex;align-items:center;gap:6px;white-space:nowrap}.overview-widget-head h4 svg{color:#8a95a5}.overview-link{border:0;background:none;display:inline-flex;align-items:center;gap:2px;padding:3px 0;font-size:10px;color:#929baa;white-space:nowrap;flex-shrink:0}.overview-link:hover{color:var(--accent-dark)}.overview-average{color:#8d97a5;font-size:10px;margin-bottom:6px}.overview-average b{color:#638776;font-weight:650;margin-left:5px}.overview-bars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;align-items:end}.overview-day{display:grid;grid-template-rows:14px 52px 14px;gap:4px;justify-items:center;text-align:center;font-size:9px;color:#9a866f}.overview-bar-track{height:52px;width:min(100%,27px);background:#f6f7f9;display:flex;align-items:flex-end;border-radius:5px;overflow:hidden}.overview-bar-track i{display:block;width:100%;border-radius:5px;background:#f1c7ad}.overview-day:last-child .overview-bar-track i{background:#e9945c}.overview-day small{font-size:9px;color:#949dac}.overview-task-name{font-size:10px;color:#8d97a5;margin-bottom:11px}.overview-task-body{display:flex;gap:14px;align-items:center;justify-content:center}.overview-donut{width:76px;height:76px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#eaa16e var(--completion),#edf0f4 0);position:relative}.overview-donut:before{content:"";position:absolute;inset:9px;border-radius:50%;background:white}.overview-donut strong{position:relative;font-size:19px;letter-spacing:-.6px}.overview-donut small{font-size:10px;font-weight:500;margin-left:1px}.overview-task-legend{display:grid;gap:12px;min-width:0;flex:1;max-width:135px}.overview-task-legend div{display:flex;align-items:center;gap:5px;font-size:10px;color:#8791a0}.overview-task-legend i{width:6px;height:6px;border-radius:50%;background:#eaa16e;flex-shrink:0}.overview-task-legend div:last-child i{background:#dce1e9}.overview-task-legend b{margin-left:auto;color:#485468;font-size:12px;font-weight:650;white-space:nowrap}.overview-task-footer{display:none}.overview-class-body{display:flex;gap:14px;align-items:center;min-height:40px}.overview-avatar-stack{display:flex;padding-left:0;flex-shrink:0}.overview-avatar-stack .avatar{width:29px;height:29px;border-radius:50%;border:2px solid white;font-size:10px}.overview-avatar-stack .avatar+.avatar{margin-left:-9px}.overview-group-value{font-size:17px;font-weight:700;letter-spacing:-.6px}.overview-group-caption{font-size:10px;color:#949caa;margin-top:4px}.overview-review{display:grid;gap:3px}.overview-review button{display:flex;align-items:center;gap:7px;width:100%;border:0;background:none;padding:5px 0;text-align:left;border-radius:4px}.overview-review button:hover{background:#fff8f3}.overview-review-label{font-size:10px;color:#6f7c8f;white-space:nowrap}.overview-review-label b{font-size:10px;color:var(--accent-dark);background:#fff1e7;padding:3px 5px;border-radius:4px;margin-left:4px;font-weight:600}.overview-review-label b.clear{background:#edf5ef;color:#6a8f75}.overview-review-names{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#929ba9;font-size:10px}.overview-review svg{color:#b0b7c1}.workspace[data-lesson=dashboard] .experience-head .btn{min-height:30px;padding:5px 8px}.workspace[data-lesson=dashboard] .instruction{margin:10px 14px;padding:9px 11px;font-size:11px}.workspace[data-lesson=dashboard] .instruction b{display:inline;margin-right:6px;font-size:11px}.workspace[data-lesson=dashboard] .browser-top{display:none}.workspace[data-lesson=dashboard] .demo-toolbar{margin-bottom:12px}.workspace[data-lesson=dashboard] .demo-title{font-size:16px}.workspace[data-lesson=dashboard] .demo-toolbar .demo-sub{display:none}.workspace[data-lesson=dashboard] .kpi{padding:11px 12px}.workspace[data-lesson=dashboard] .kpi-value{font-size:23px;margin:7px 0 4px}.workspace[data-lesson=dashboard] .dashboard-tabs{margin:10px 0 12px}.workspace[data-lesson=dashboard] .dashboard-tabs button{padding:9px 3px}.workspace[data-lesson=dashboard] .demo-footer{margin-top:10px}.workspace[data-lesson=dashboard] .lesson-nav{margin-top:10px}
+
+@media(max-width:700px){.dashboard-overview{grid-template-columns:1fr;gap:10px}.overview-widget{padding:14px}.overview-widget-head{margin-bottom:10px}.overview-task-body{justify-content:flex-start}.overview-task-legend{max-width:none}.overview-review-names{font-size:11px}.overview-class-body{min-height:40px}.workspace[data-lesson=dashboard] .kpi{padding:11px 8px}.workspace[data-lesson=dashboard] .instruction b{display:block}.workspace[data-lesson=dashboard] .demo-title{font-size:15px}}
+.responsive-breakpoints{margin:0 0 14px}.dashboard-table th{white-space:nowrap}
+.icon-btn.close-nav{display:none}
+@media(max-width:700px){.icon-btn.close-nav{display:grid}}
+@media(min-width:1700px){.workspace{padding:38px 45px}.content-grid{grid-template-columns:minmax(0,1fr) 330px;gap:28px}.sidebar{padding-top:34px}#demo{padding:30px;min-height:480px}.detail-card{padding:25px}.concept-text,.prompt-text{font-size:14px}.term-button{padding-top:12px;padding-bottom:12px}.app-layout{grid-template-columns:270px minmax(0,1fr)}}
+@media(max-width:1250px){.workspace{padding:26px 22px}.content-grid{grid-template-columns:minmax(0,1fr) 260px;gap:18px}.app-layout{grid-template-columns:228px minmax(0,1fr)}#demo{padding:17px}.detail-card{padding:18px}.demo-wrap{padding:0 15px 17px}.instruction{margin:16px 15px}.page-title-row h1{font-size:25px}.live-badge{display:none}}
+@media(max-width:1090px){.content-grid{grid-template-columns:minmax(0,1fr)}.detail-column{grid-template-columns:1fr 1fr;align-items:start}.tech-card{grid-column:1/-1}.app-layout{grid-template-columns:228px minmax(0,1fr)}#demo{min-height:410px}.workspace{margin-top:0}.header-right>span:first-child{display:none}.page-heading{margin-bottom:20px}}
+@media(max-width:700px){.app-header{height:66px;padding:0 17px}.brand{gap:9px}.brand-logo{width:33px;height:33px;border-radius:10px}.brand-name{font-size:15px}.brand-sub{font-size:9px}.header-right{gap:8px}.count-badge{font-size:10px;padding:6px 8px}.app-layout{display:block;min-height:calc(100dvh - 66px)}.mobile-menu{display:grid;place-items:center;width:32px;height:32px;border:0;background:transparent;padding:0;color:#757d8b}.sidebar{position:fixed;top:66px;left:0;width:min(285px,85vw);height:calc(100dvh - 66px);z-index:40;transform:translateX(-100%);transition:transform .2s;padding-top:22px}.sidebar.open{transform:translateX(0)}.close-nav{display:grid}.nav-overlay.open{display:block;position:fixed;inset:66px 0 0;background:#202b3d55;z-index:35;border:0;border-radius:0}.workspace{padding:22px 16px}.breadcrumb{font-size:10px;margin-bottom:10px}.page-title-row h1{font-size:25px}.english-title{font-size:12px}.detail-column{grid-template-columns:1fr}.detail-card{padding:21px}.experience-head{padding:14px 15px}.experience-head h2{font-size:13px}.instruction{font-size:11px;padding:11px}.instruction b{font-size:11px}.demo-wrap{padding:0 11px 15px}#demo{padding:14px;min-height:400px}.demo-toolbar{gap:11px}.demo-title{font-size:16px}.mini-grid{gap:8px}.profile-card{padding:18px 5px}.profile-card .avatar{width:35px;height:35px;border-radius:12px}.profile-card strong{font-size:12px}.kpi{padding:13px 8px}.kpi-value{font-size:23px}.kpi-label{font-size:9px}.kpi-foot{font-size:8px}.mini-sidebar{width:122px}.mini-sidebar-content{padding:20px 12px}.mini-sidebar button{padding:10px 7px;gap:7px}.control-row{gap:14px}.glass-stage{padding:25px 12px;gap:10px;min-height:245px}.glass-card{padding:18px 11px;min-height:165px}.glass-card strong{font-size:15px}.theme-scene{padding:16px}.lesson-nav .btn{max-width:44%;font-size:11px}.lesson-nav .btn span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lesson-position{font-size:10px}.detail-lines{font-size:11px}.split-list{padding:6px}.split-list button{padding:12px 5px;gap:6px}.split-info{padding:20px 11px}.toast-scene{padding:18px 14px}.tool-actions{gap:22px}.segmented button{padding:7px 9px}.class-preview{padding:26px 16px}.header-right .count-badge{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.custom-combo{position:relative;width:100%;min-width:0}
+.combo-trigger{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:44px;padding:11px 12px;text-align:left;background:var(--paper,#fff);color:var(--ink);border:1px solid var(--line);border-radius:9px;font:inherit;cursor:pointer;transition:border-color .16s,box-shadow .16s,background .16s}
+.combo-value{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.combo-trigger>svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;color:var(--muted);transition:transform .18s}
+.combo-trigger:hover{border-color:var(--accent);background:var(--paper,#fff)}
+.combo-trigger[aria-expanded=true]{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 13%,transparent)}
+.combo-trigger[aria-expanded=true]>svg{transform:rotate(180deg);color:var(--accent)}
+.combo-menu{position:fixed;z-index:200;overflow-y:auto;overscroll-behavior:contain;padding:6px;background:var(--paper,#fff);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 36px #121a3026,0 2px 8px #121a3009;color:var(--ink);font-family:inherit;font-size:14px;line-height:1.45;scrollbar-width:thin}
+.combo-menu[hidden]{display:none!important}
+.combo-option{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:43px;padding:10px 12px;border-radius:7px;cursor:pointer;user-select:none}
+.combo-option-text{display:grid;gap:3px}.combo-option small{font-size:11px;color:var(--muted)}
+.combo-option.is-active{background:var(--soft,var(--accent-soft,#fff2e9));color:var(--accent-ink,var(--accent-dark,var(--accent)))}
+.combo-option[aria-selected=true]{font-weight:700}.combo-check{display:flex;visibility:hidden;color:var(--accent);flex:none}
+.combo-option[aria-selected=true] .combo-check{visibility:visible}.combo-check svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.score-app .combo-trigger{min-height:44px;padding:11px 12px;font-size:17px;line-height:1.45;font-weight:500;border-radius:7px}
+.score-app .combo-trigger>svg{width:16px;height:16px}.score-app .combo-static{display:block;padding:11px 12px;border:1px solid var(--line);border-radius:7px;font-size:17px}
+@media print{.combo-menu{display:none!important}}
+
+.combo-comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.combo-example{min-width:0;padding:22px 20px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.combo-example-tag{display:inline-block;font-size:10px;font-weight:750;letter-spacing:.04em;color:var(--muted);margin-bottom:14px}
+.custom-example{border-color:#ecc5ae;background:#fffdfb}.custom-example .combo-example-tag{color:var(--accent-dark)}
+.combo-example h4{font-size:17px;line-height:1.5;letter-spacing:-.5px}.combo-example>p{font-size:11px;color:var(--muted);line-height:1.7;margin-top:7px;min-height:38px}
+.combo-example-fields{display:grid;gap:14px;margin:22px 0}.combo-example .field{display:grid;gap:8px;font-size:12px}
+.combo-example .native-combo{appearance:auto;border:1px solid ButtonShadow;border-radius:2px;background:Field;color:FieldText;font-family:system-ui,sans-serif;font-size:14px;min-height:43px;padding:8px;box-shadow:none;width:100%}
+.combo-example .combo-trigger{font-size:14px}.combo-example ul{list-style:none;padding:0;margin:0 0 12px;border-top:1px solid var(--line);padding-top:15px;font-size:11px;line-height:1.9;color:var(--muted)}
+.combo-example ul li::before{content:'·';margin-right:6px;color:var(--accent)}.combo-example>small{display:block;font-size:10px;line-height:1.7;color:var(--muted)}
+.combo-comparison-result{display:flex;align-items:center;gap:16px;margin-top:17px;padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:11px}
+.combo-comparison-result>span{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:var(--accent-soft);color:var(--accent);flex:none}
+.combo-comparison-result small{font-size:10px;color:var(--muted)}.combo-comparison-result h3{font-size:20px;margin-top:4px}.combo-comparison-result p{font-size:11px;color:var(--muted);line-height:1.7;margin-top:5px}
+@media(max-width:1000px){.combo-comparison{gap:12px}.combo-example{padding:18px 16px}}
+@media(max-width:600px){.combo-comparison{grid-template-columns:1fr}.combo-example>p{min-height:0}.combo-example-fields{grid-template-columns:1fr 1fr}.combo-example h4{font-size:18px}}
+
+.alert-comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.alert-example{min-width:0;padding:22px 20px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.alert-example.is-custom{border-color:#ecc5ae;background:#fffdfb}
+.alert-example-tag{display:block;font-size:10px;font-weight:750;color:var(--muted);margin-bottom:14px}
+.alert-example.is-custom .alert-example-tag{color:var(--accent-dark)}
+.alert-example h4{font-size:18px;letter-spacing:-.5px;line-height:1.5}
+.alert-example>p{font-size:11px;line-height:1.8;color:var(--muted);margin-top:6px}
+.alert-example-actions{display:grid;gap:9px;margin:22px 0}
+.alert-example-actions .btn{min-height:41px}
+.alert-example ul{list-style:none;margin:0 0 12px;padding:15px 0 0;border-top:1px solid var(--line);font-size:11px;line-height:1.9;color:var(--muted)}
+.alert-example li::before{content:'·';margin-right:6px;color:var(--accent)}
+.alert-example>small{display:block;font-size:10px;line-height:1.7;color:var(--muted)}
+.alert-result{display:flex;align-items:center;gap:12px;margin-top:17px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:10px;font-size:12px;line-height:1.8;color:var(--muted)}
+.alert-result>span{display:flex;color:var(--accent)}
+.alert-learning-note{font-size:11px;line-height:1.9;color:var(--muted);margin-top:15px;word-break:keep-all}
+.feedback-dialog{--feedback-accent:#287c58;--feedback-soft:#eaf6ee;width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 40px);overflow:auto;margin:auto;padding:32px;border:1px solid #e3e8e4;border-top:4px solid var(--feedback-accent);border-radius:20px;background:#fff;box-shadow:0 30px 100px #172c3b38;color:var(--ink)}
+.feedback-dialog[data-kind=error]{--feedback-accent:#b34835;--feedback-soft:#fff0eb;border-color:#edd8d2;border-top-color:var(--feedback-accent)}
+.feedback-dialog::backdrop{background:#202c3c66;backdrop-filter:blur(5px)}
+.feedback-dialog[open]::backdrop{animation:feedback-backdrop .24s ease-out}
+.feedback-close{position:absolute;top:15px;right:15px;border-color:transparent;color:var(--muted);background:transparent}
+.feedback-symbol{display:grid;place-items:center;width:62px;height:62px;background:var(--feedback-soft);color:var(--feedback-accent);border-radius:20px;margin-bottom:22px}
+.feedback-eyebrow{font-size:11px;font-weight:650;color:var(--muted);margin-bottom:8px}
+.feedback-dialog h2{font-size:25px;font-weight:800;line-height:1.4;letter-spacing:-1px}
+#feedback-description{font-size:14px;line-height:1.9;color:#606c79;margin-top:11px;word-break:keep-all}
+.feedback-actions{display:flex;justify-content:flex-end;margin-top:28px}
+.feedback-actions .btn{min-width:100px;min-height:42px;font-size:13px;background:var(--feedback-accent);border-color:var(--feedback-accent)}
+.feedback-actions .btn:hover{filter:brightness(.93);background:var(--feedback-accent)}
+@keyframes feedback-backdrop{from{background:#202c3c00;backdrop-filter:blur(0)}to{background:#202c3c66;backdrop-filter:blur(5px)}}
+@media(max-width:1000px){.alert-comparison{gap:12px}.alert-example{padding:18px 16px}}
+@media(max-width:600px){.alert-comparison{grid-template-columns:1fr}.alert-example-actions{grid-template-columns:1fr 1fr;gap:8px}.alert-example-actions .btn{padding:10px 6px;font-size:11px}.feedback-dialog{padding:28px 24px}}
+@media(prefers-reduced-motion:reduce){.feedback-dialog[open]::backdrop{animation:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">체험 영역으로 건너뛰기</a>
+<header class="app-header"><div class="brand"><button class="mobile-menu" id="open-nav" aria-label="용어 메뉴 열기" aria-controls="sidebar" aria-expanded="false"></button><div class="brand-logo" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="15" width="7" height="5" rx="1.5"/></svg></div><div><div class="brand-name">바이브 코딩 <span style="font-weight:400;color:#a5aab2">/</span> UI·UX 체험관</div><div class="brand-sub">용어를 이해하는 가장 쉬운 방법, 직접 해보기</div></div></div><div class="header-right"><span>교사를 위한 인터랙티브 가이드</span><span class="count-badge">3개 카테고리 · 25개 용어</span></div></header>
+<div class="app-layout"><aside class="sidebar" id="sidebar" aria-label="용어 탐색"><div class="sidebar-top"><strong>용어 둘러보기</strong><button class="icon-btn close-nav" id="close-nav" aria-label="용어 메뉴 닫기"></button></div><nav id="term-nav" aria-label="UI·UX 용어"></nav><div class="sidebar-note">익숙한 학급 관리 화면으로<br>UI·UX를 하나씩 경험해 보세요.</div></aside><button class="nav-overlay" id="nav-overlay" tabindex="-1" aria-label="용어 메뉴 닫기"></button>
+<main class="workspace" id="main" tabindex="-1"><div class="page-heading"><div class="page-title-row"><div><h1 id="lesson-title"></h1><p class="english-title" id="lesson-english"></p></div><span class="live-badge">직접 조작하는 인터랙티브 데모</span></div></div><div class="content-grid"><section class="experience" aria-labelledby="experience-title"><div class="panel"><div class="experience-head"><h2 id="experience-title"></h2><button class="btn quiet" id="reset-demo"></button></div><div class="instruction" id="instruction"></div><div class="demo-wrap"><div class="demo-browser"><div class="browser-top"><i class="browser-dot"></i><i class="browser-dot"></i><i class="browser-dot"></i><span class="browser-address">우리반 · 학급 관리</span><span id="browser-icon"></span></div><div id="demo"></div></div><div class="demo-footer" id="demo-footer"></div></div></div><div class="lesson-nav"><button class="btn" id="previous"></button><span class="lesson-position" id="lesson-position"></span><button class="btn" id="next"></button></div></section><aside class="detail-column" aria-label="용어 설명 및 프롬프트"><section class="panel detail-card"><h2 class="detail-section-title" id="concept-heading"></h2><h3 class="term-korean" id="detail-title"></h3><p class="term-english" id="detail-english"></p><p class="concept-text" id="concept-text"></p><div class="usecase"><h3>이럴 때 활용해요</h3><p id="usecase-text"></p></div></section><section class="panel detail-card prompt-card"><h2 class="detail-section-title" id="prompt-heading"></h2><p class="prompt-text" id="prompt-text"></p><p class="prompt-guide">무드와 동작을 설명하는 범용 요청문입니다.<br>적용 대상·색상·수치·구성은 원하는 프로젝트에 맞게 덧붙이세요.</p><button class="btn primary copy-button" id="copy-prompt"></button></section><section class="tech-card"><h2 class="tech-title">구현에 쓰이는 기술</h2><div class="tech-tags" id="tech-tags"></div></section></aside></div></main></div>
+<div class="global-toast" role="status" aria-live="polite" id="global-toast" hidden></div>
+<script>
+'use strict';
+const TERMS = [
+ {
+  "id": "responsive",
+  "category": 0,
+  "order": 1,
+  "ko": "반응형 디자인",
+  "en": "Responsive Design",
+  "concept": "화면 크기에 따라 레이아웃이 자동 변경되는 디자인",
+  "experience": "PC·태블릿·모바일을 번갈아 누르거나 너비를 조절해 보세요. 메뉴 위치, 카드 형태, 배너와 요약 정보가 함께 달라집니다.",
+  "tech": "CSS Media Query, CSS Grid, JavaScript",
+  "prompt": "반응형 디자인(Responsive Design)을 적용해 줘. 모바일 퍼스트 관점의 유동형 레이아웃과 콘텐츠 중심의 브레이크포인트를 사용해 화면 크기에 따라 배치와 정보 밀도가 자연스럽게 조정되도록 해 줘. 타이포그래피와 여백도 함께 대응하되, 핵심 정보의 시각적 위계와 읽는 순서는 일관되게 유지해 줘. 어떤 기기에서도 여유롭고 정돈된 인상으로 탐색할 수 있게 해 줘."
+ },
+ {
+  "id": "dock",
+  "category": 0,
+  "order": 2,
+  "ko": "플로팅 도크",
+  "en": "Floating Dock",
+  "concept": "화면 위에 떠 있는 형태의 기능 메뉴",
+  "experience": "아이콘에 마우스를 올리면 확대되고, 클릭하면 해당 기능이 실행됨",
+  "tech": "position: fixed, Flexbox, CSS Hover",
+  "prompt": "플로팅 도크(Floating Dock)를 적용해 줘. 주요 기능을 독립된 내비게이션 레이어로 묶고, 은은한 그림자와 표면 대비로 콘텐츠 위에 가볍게 떠 있는 깊이감을 표현해 줘. 아이콘과 레이블은 간결하게 정리하고 호버·포커스·선택 상태에는 절제된 마이크로인터랙션을 더해 줘. 콘텐츠와 조작 영역을 가리지 않으면서 주요 기능에 빠르게 접근하는 세련된 인상으로 구성해 줘."
+ },
+ {
+  "id": "sidebar",
+  "category": 0,
+  "order": 3,
+  "ko": "사이드바",
+  "en": "Sidebar",
+  "concept": "화면 좌우에 배치하는 메뉴 영역",
+  "experience": "접기 버튼을 누르면 메뉴가 축소되어 아이콘만 표시됨",
+  "tech": "Flexbox, CSS Transition, JavaScript",
+  "prompt": "사이드바(Sidebar) 내비게이션을 적용해 줘. 정보 구조에 따라 메뉴를 그룹화하고 타이포그래피, 들여쓰기, 여백으로 상위 항목과 하위 항목의 위계를 분명하게 표현해 줘. 현재 위치를 보여 주는 액티브 상태와 펼침·접힘 상태가 직관적으로 구분되게 해 줘. 화면의 여유 공간에 맞춰 탐색 영역의 밀도를 조절하면서, 콘텐츠에 집중하기 좋은 안정적이고 체계적인 무드를 만들어 줘."
+ },
+ {
+  "id": "dashboard",
+  "category": 0,
+  "order": 4,
+  "ko": "대시보드",
+  "en": "Dashboard",
+  "concept": "주요 정보와 통계를 한눈에 표시하는 화면",
+  "experience": "지표와 그래프로 우리반을 한눈에 보고, 필요한 구역을 눌러 상세 탭으로 이동해 보세요.",
+  "tech": "CSS Grid, JavaScript, SVG",
+  "prompt": "대시보드(Dashboard) 형식으로 정보를 구성해 줘. 핵심 현황을 빠르게 파악하는 글랜서빌리티(Glanceability)를 중심으로 중요한 정보와 보조 정보의 시각적 위계를 설계해 줘. 모듈형 그리드 안에서 지표와 시각화의 정렬, 타이포그래피, 색상 역할을 일관되게 유지하고 요약에서 상세 내용으로 자연스럽게 탐색하도록 해 줘. 정보 밀도는 높아도 복잡해 보이지 않는 차분하고 전문적인 인상으로 정리해 줘."
+ },
+ {
+  "id": "cards",
+  "category": 0,
+  "order": 5,
+  "ko": "카드 UI",
+  "en": "Card UI",
+  "concept": "정보를 개별 카드 형태로 구분하는 디자인",
+  "experience": "카드를 클릭하면 선택 상태가 강조되고 상세 정보가 표시됨",
+  "tech": "CSS Grid, border-radius, box-shadow",
+  "prompt": "카드 UI(Card UI)를 적용해 줘. 서로 관련된 정보를 독립적인 컨테이너로 묶어 빠르게 훑어볼 수 있도록 하고, 카드 내부의 제목·내용·행동 요소에 명확한 시각적 위계를 만들어 줘. 일관된 패딩, 정렬, 모서리 처리와 절제된 테두리 또는 그림자로 모듈 간 리듬을 맞춰 줘. 클릭 가능한 카드에는 상태 피드백을 제공해 정보가 정돈되어 보이면서도 상호작용이 직관적으로 느껴지게 해 줘."
+ },
+ {
+  "id": "grid",
+  "category": 0,
+  "order": 6,
+  "ko": "그리드 레이아웃",
+  "en": "Grid Layout",
+  "concept": "화면을 행과 열로 나누어 요소를 정렬하는 방식",
+  "experience": "2열·3열·4열 버튼을 클릭하면 카드 배치가 변경됨",
+  "tech": "CSS Grid, grid-template-columns",
+  "prompt": "그리드 레이아웃(Grid Layout)을 적용해 줘. 일관된 컬럼 체계와 거터, 정렬 기준을 사용해 콘텐츠 사이에 안정적인 시각적 리듬을 만들어 줘. 콘텐츠의 중요도와 성격에 따라 점유 영역을 조절하되 전체적인 균형과 읽는 흐름은 유지해 줘. 화면이 바뀌면 그리드가 자연스럽게 재배치되어 정보 밀도와 여백이 조화를 이루는 정돈된 편집 디자인의 무드를 표현해 줘."
+ },
+ {
+  "id": "sticky",
+  "category": 0,
+  "order": 7,
+  "ko": "스티키 헤더",
+  "en": "Sticky Header",
+  "concept": "스크롤하다가 지정 위치에 도달하면 해당 스크롤 영역의 경계 안에서 붙어 있는 헤더",
+  "experience": "내부 콘텐츠를 스크롤하면 본문은 이동하지만 헤더는 고정됨",
+  "tech": "position: sticky, overflow-y",
+  "prompt": "스티키 헤더(Sticky Header)를 적용해 줘. 스크롤 중에도 주요 탐색 경로와 현재 위치를 확인할 수 있는 지속적인 내비게이션으로 구성해 줘. 콘텐츠와 헤더는 표면 대비, 얇은 경계 또는 은은한 그림자로 레이어를 구분하고 고정 상태로 전환될 때 시각적인 단절을 줄여 줘. 본문을 가리거나 읽는 흐름을 방해하지 않는 간결하고 안정적인 인상을 유지해 줘."
+ },
+ {
+  "id": "modal",
+  "category": 0,
+  "order": 8,
+  "ko": "모달",
+  "en": "Modal",
+  "concept": "열려 있는 동안 배경 화면의 조작을 막고, 창 안의 작업에 집중하도록 하는 대화상자",
+  "experience": "학생 정보 수정 창을 열면 배경을 조작할 수 없고 Tab 포커스도 창 안에 머묾. 저장·취소·Esc로 닫기",
+  "tech": "HTML dialog, JavaScript",
+  "prompt": "모달(Modal) 인터페이스를 적용해 줘. HTML dialog의 showModal()로 대화상자를 열고, 열린 동안 배경의 클릭과 키보드 조작을 막아 줘. 제목과 설명을 명확히 연결하고, 주요 행동과 보조 행동의 시각적 위계를 정돈해 줘. 포커스를 창 안으로 옮기고 Tab 이동을 내부에 유지하며, 취소·닫기·Esc로 닫으면 열었던 버튼으로 포커스를 돌려줘. 배경 디밍과 부드러운 전환으로 현재 작업의 맥락을 유지해 줘."
+ },
+ {
+  "id": "accordion",
+  "category": 0,
+  "order": 9,
+  "ko": "아코디언",
+  "en": "Accordion",
+  "concept": "제목을 클릭하면 내용이 펼쳐지거나 접히는 UI",
+  "experience": "질문을 클릭하면 답변이 펼쳐지고 다시 클릭하면 접힘",
+  "tech": "HTML details/summary",
+  "prompt": "아코디언(Accordion) 인터페이스를 적용해 줘. 요약을 먼저 보여 주고 필요한 내용을 펼쳐 보는 점진적 공개(Progressive Disclosure) 방식으로 정보 밀도를 조절해 줘. 펼침과 접힘 상태를 아이콘, 레이블, 표면 변화로 명확하게 구분하고 내용이 나타날 때는 높이와 투명도가 자연스럽게 연결되도록 해 줘. 문서의 흐름을 유지하면서도 깔끔하고 차분하게 탐색할 수 있게 해 줘."
+ },
+ {
+  "id": "tabs",
+  "category": 0,
+  "order": 10,
+  "ko": "탭 내비게이션",
+  "en": "Tab Navigation",
+  "concept": "탭을 클릭하여 콘텐츠 영역을 전환하는 방식",
+  "experience": "탭을 클릭하면 페이지 이동 없이 해당 콘텐츠가 표시됨",
+  "tech": "JavaScript, CSS",
+  "prompt": "탭 내비게이션(Tab Navigation)을 적용해 줘. 같은 위계에 있는 콘텐츠를 전환하며 탐색할 수 있도록 탭 레이블을 명확하게 구분해 줘. 액티브 인디케이터와 타이포그래피 대비로 현재 선택을 보여 주고, 콘텐츠 영역의 정렬과 공간 관계를 유지해 전환 중에도 맥락이 이어지도록 해 줘. 호버와 키보드 포커스 상태를 일관되게 표현해 간결하고 안정적인 탐색 경험을 만들어 줘."
+ },
+ {
+  "id": "split",
+  "category": 0,
+  "order": 11,
+  "ko": "스플릿 뷰",
+  "en": "Split View",
+  "concept": "화면을 두 영역으로 분할하는 레이아웃",
+  "experience": "영역 사이 구분선을 드래그하면 양쪽 영역의 너비가 변경됨",
+  "tech": "CSS Grid, Pointer Events",
+  "prompt": "스플릿 뷰(Split View)를 적용해 줘. 관련된 정보를 나란히 살펴볼 수 있도록 패널을 분리하고, 목록과 상세 내용처럼 서로 연결된 정보의 관계를 명확하게 표현해 줘. 구분선과 크기 조절 핸들에는 조작 가능성을 알려 주는 어포던스(Affordance)를 제공해 줘. 패널 사이의 위계와 여백을 조율하고 좁은 화면에서는 탐색 맥락을 유지하는 배치로 전환해 집중하기 좋은 작업 환경을 만들어 줘."
+ },
+ {
+  "id": "glass",
+  "category": 1,
+  "order": 1,
+  "ko": "글래스모피즘",
+  "en": "Glassmorphism",
+  "concept": "반투명 유리처럼 배경이 비치는 디자인",
+  "experience": "투명도와 블러 강도를 슬라이더로 조절",
+  "tech": "backdrop-filter: blur(), rgba()",
+  "prompt": "글래스모피즘(Glassmorphism) 스타일을 적용해 줘. 반투명 표면, 배경 블러, 은은한 하이라이트와 경계선을 조합해 유리 레이어가 겹치는 듯한 깊이감을 표현해 줘. 배경의 색과 빛이 부드럽게 비치는 가볍고 현대적인 무드를 유지하되, 텍스트와 주요 조작 요소의 대비는 분명하게 확보해 줘. 투명도와 장식은 콘텐츠의 시각적 위계를 돋보이게 하는 방향으로 조율해 줘."
+ },
+ {
+  "id": "neumorphism",
+  "category": 1,
+  "order": 2,
+  "ko": "뉴모피즘",
+  "en": "Neumorphism",
+  "concept": "부드러운 그림자로 입체감을 표현하는 디자인",
+  "experience": "버튼을 클릭하면 돌출형에서 눌림형으로 변경",
+  "tech": "box-shadow, inset",
+  "prompt": "뉴모피즘(Neumorphism) 스타일을 적용해 줘. 배경과 비슷한 톤의 표면에 방향이 일관된 밝은 그림자와 어두운 그림자를 조합해 부드럽게 돌출되거나 눌린 듯한 소프트 UI를 표현해 줘. 촉각적이고 차분한 무드를 만들면서 버튼의 기본·눌림·선택 상태를 분명하게 구분해 줘. 입체감에만 의존하지 않도록 텍스트와 아이콘의 대비를 유지하고 조작 가능성을 명확하게 보여 줘."
+ },
+ {
+  "id": "dark",
+  "category": 1,
+  "order": 3,
+  "ko": "다크 모드",
+  "en": "Dark Mode",
+  "concept": "어두운 배경을 사용하는 화면 테마",
+  "experience": "토글 버튼으로 두 테마 전환",
+  "tech": "CSS Variables, data-theme",
+  "prompt": "다크 모드(Dark Mode)를 적용해 줘. 눈부심을 줄인 어두운 표면 위에 텍스트, 경계, 강조색의 역할을 구분하는 시맨틱 컬러 체계를 구성해 줘. 밝기 차이와 표면 톤으로 레이어의 깊이를 표현하고 핵심 콘텐츠가 선명하게 읽히는 차분하고 몰입감 있는 무드를 만들어 줘. 라이트 모드와 전환해도 정보의 의미, 상태 표현, 시각적 위계가 일관되게 이어지도록 해 줘."
+ },
+ {
+  "id": "gradient",
+  "category": 1,
+  "order": 4,
+  "ko": "그라데이션",
+  "en": "Gradient",
+  "concept": "여러 색상이 자연스럽게 변화하는 효과",
+  "experience": "두 가지 색상과 방향을 변경하면 배경이 실시간으로 변경됨",
+  "tech": "linear-gradient()",
+  "prompt": "그라데이션(Gradient)을 활용한 시각적 스타일을 적용해 줘. 조화로운 색상 관계와 부드러운 컬러 스톱으로 색이 자연스럽게 이어지도록 하고, 그라데이션의 방향과 분포로 깊이감과 시선의 흐름을 만들어 줘. 브랜드의 성격에 어울리는 분위기를 표현하면서 텍스트와 핵심 행동 요소는 선명하게 구분해 줘. 배경과 강조 영역에 일관된 색의 논리를 적용해 전체 화면이 하나의 무드로 연결되게 해 줘."
+ },
+ {
+  "id": "hover",
+  "category": 1,
+  "order": 5,
+  "ko": "호버 효과",
+  "en": "Hover Effect",
+  "concept": "마우스를 올렸을 때 나타나는 시각적 변화",
+  "experience": "마우스를 올리면 확대·이동·그림자·색상 변화가 나타남",
+  "tech": ":hover, transform, box-shadow",
+  "prompt": "호버 효과(Hover Effect)를 적용해 줘. 상호작용 가능한 요소에 표면 대비, 그림자, 위치 변화 같은 마이크로인터랙션을 더해 조작 가능성을 자연스럽게 알려 줘. 상태 전환에는 부드러운 이징(Easing)을 사용하고 포인터가 떠나면 안정적으로 원래 상태로 돌아오게 해 줘. 키보드 포커스에서도 같은 의미의 피드백을 제공해 절제되고 반응성이 좋은 인터페이스로 느껴지게 해 줘."
+ },
+ {
+  "id": "skeleton",
+  "category": 1,
+  "order": 6,
+  "ko": "스켈레톤 UI",
+  "en": "Skeleton UI",
+  "concept": "데이터를 불러오는 동안 보여 주는 임시 화면",
+  "experience": "불러오기 버튼 클릭 → 스켈레톤 표시 → 실제 카드 표시",
+  "tech": "CSS Animation, JavaScript",
+  "prompt": "스켈레톤 UI(Skeleton UI)를 적용해 줘. 실제 콘텐츠의 정보 구조와 배치를 닮은 플레이스홀더를 먼저 보여 주어 무엇이 나타날지 예측할 수 있게 해 줘. 부드러운 톤과 은은한 시머(Shimmer)로 로딩 상태를 전달하되 움직임이 주의를 과하게 끌지 않도록 해 줘. 콘텐츠가 준비되면 자연스럽게 교체하고 레이아웃 시프트를 줄여 대기 중에도 안정적이고 연속적인 경험을 만들어 줘."
+ },
+ {
+  "id": "toast",
+  "category": 1,
+  "order": 7,
+  "ko": "토스트 메시지",
+  "en": "Toast Message",
+  "concept": "작업 결과를 짧게 알려 주는 알림",
+  "experience": "각 버튼을 클릭하면 서로 다른 색상의 토스트 메시지가 나타났다가 사라짐",
+  "tech": "JavaScript, CSS Animation",
+  "prompt": "토스트 메시지(Toast)를 적용해 줘. 사용자의 행동 결과를 현재 작업을 끊지 않는 비모달 피드백으로 전달해 줘. 상태에 맞는 아이콘과 색상, 간결한 문구를 사용하되 핵심 콘텐츠보다 과하게 부각되지 않는 시각적 위계를 유지해 줘. 나타남과 사라짐은 부드럽게 연결하고, 메시지의 중요도와 읽을 분량에 맞춰 확인할 여유를 제공하는 차분하고 명료한 알림으로 구성해 줘."
+ },
+ {
+  "id": "tooltip",
+  "category": 1,
+  "order": 8,
+  "ko": "툴팁",
+  "en": "Tooltip",
+  "concept": "요소에 마우스를 올리거나 키보드 초점을 맞추면 나타나는 간단한 설명",
+  "experience": "호버 또는 Tab 포커스로 설명을 표시하고, Esc를 누르면 초점을 유지한 채 설명만 닫기",
+  "tech": "CSS, JavaScript, aria-describedby",
+  "prompt": "툴팁(Tooltip)을 적용해 줘. 아이콘이나 기능의 의미를 해당 요소 가까이에서 설명하는 맥락형 도움말로 구성해 줘. 본문보다 가벼운 시각적 위계와 명료한 타이포그래피를 사용하고, 포인터나 포커스의 흐름을 방해하지 않도록 위치를 조정해 줘. 호버뿐 아니라 키보드와 터치 환경에서도 필요한 설명에 접근할 수 있게 해 정보 탐색이 자연스럽고 부담 없이 이어지도록 해 줘. Esc를 누르면 포커스는 원래 요소에 둔 채 도움말만 닫고, 포인터가 다시 들어오거나 초점이 새로 맞춰지면 다시 표시해 줘."
+ },
+ {
+  "id": "drag",
+  "category": 2,
+  "order": 1,
+  "ko": "드래그 앤 드롭",
+  "en": "Drag & Drop",
+  "concept": "요소를 마우스로 끌어서 이동하는 기능",
+  "experience": "카드를 드래그하여 다른 위치에 놓으면 순서가 변경됨",
+  "tech": "HTML Drag and Drop API",
+  "prompt": "드래그 앤 드롭(Drag and Drop) 인터랙션을 적용해 줘. 대상을 직접 잡아 이동하는 직접 조작(Direct Manipulation)의 느낌을 살리고, 드래그 중인 요소의 프리뷰와 놓을 수 있는 영역을 명확하게 구분해 줘. 삽입 위치 표시와 주변 요소의 자연스러운 재배치로 행동 결과를 미리 예측할 수 있게 해 줘. 놓은 뒤에는 완료 상태를 분명히 보여 주고 키보드에서도 같은 작업을 수행할 수 있도록 구성해 줘."
+ },
+ {
+  "id": "inline",
+  "category": 2,
+  "order": 2,
+  "ko": "인라인 편집",
+  "en": "Inline Editing",
+  "concept": "별도 창 없이 현재 화면에서 바로 내용을 수정하는 방식",
+  "experience": "텍스트 더블클릭 → 입력창 전환 → Enter 저장 / ESC 취소",
+  "tech": "JavaScript, input",
+  "prompt": "인라인 편집(Inline Editing)을 적용해 줘. 별도 화면으로 이동하지 않고 콘텐츠가 놓인 자리에서 바로 수정하는 인플레이스 편집 경험을 만들어 줘. 읽기 상태와 편집 상태를 타이포그래피, 경계, 포커스 표현으로 구분하고 저장·취소·오류의 피드백을 해당 맥락 안에서 전달해 줘. 주변 레이아웃의 변화는 절제해 집중이 유지되는 간결하고 효율적인 작업 흐름으로 구성해 줘."
+ },
+ {
+  "id": "context",
+  "category": 2,
+  "order": 3,
+  "ko": "컨텍스트 메뉴",
+  "en": "Context Menu",
+  "concept": "마우스 우클릭 시 나타나는 추가 기능 메뉴",
+  "experience": "카드를 우클릭하면 수정·복사·삭제 메뉴가 표시되고 각 기능을 실행할 수 있음",
+  "tech": "contextmenu 이벤트, JavaScript",
+  "prompt": "컨텍스트 메뉴(Context Menu)를 적용해 줘. 선택한 대상과 현재 상황에 관련된 행동을 가까운 위치에서 제공하는 맥락 중심 인터페이스로 구성해 줘. 관련 행동은 의미별로 그룹화하고 구분선, 레이블, 아이콘을 일관되게 사용해 빠르게 탐색할 수 있게 해 줘. 일반 행동과 주의가 필요한 행동의 위계를 분명히 표현하고 키보드와 터치에서도 접근 가능한 절제된 메뉴로 만들어 줘."
+ },
+ {
+  "id": "toggle",
+  "category": 2,
+  "order": 4,
+  "ko": "토글 스위치",
+  "en": "Toggle Switch",
+  "concept": "기능을 켜고 끄는 조작 요소",
+  "experience": "클릭할 때마다 ON/OFF 상태가 바뀌고 상태에 따른 안내가 표시됨",
+  "tech": "Checkbox, CSS",
+  "prompt": "토글 스위치(Toggle Switch)를 적용해 줘. 켜짐과 꺼짐을 트랙과 썸(Thumb)의 위치, 색상 대비, 명확한 레이블로 구분하는 상태 중심 컨트롤로 구성해 줘. 전환에는 짧고 자연스럽게 느껴지는 마이크로인터랙션을 사용해 입력과 결과가 즉시 연결되도록 해 줘. 색상만으로 의미를 전달하지 않고 포커스와 비활성 상태도 일관되게 표현해 간결하고 확신을 주는 조작 경험을 만들어 줘."
+ },
+ {
+  "id": "dropdown",
+  "category": 2,
+  "order": 5,
+  "ko": "드롭다운",
+  "en": "Dropdown",
+  "concept": "펼쳐지는 목록에서 항목을 선택하는 기능",
+  "experience": "학년을 선택하면 해당 학년의 학급 목록이 변경됨",
+  "tech": "HTML select, JavaScript",
+  "prompt": "드롭다운(Dropdown)을 적용해 줘. 선택한 값을 간결하게 보여 주고 필요할 때 옵션을 펼치는 점진적 공개 방식으로 구성해 줘. 트리거와 메뉴의 공간적 연결을 유지하고 옵션의 레이블, 그룹, 선택 상태를 읽기 쉬운 위계로 정리해 줘. 화면 경계와 콘텐츠 길이에 맞춰 펼침 영역을 조정하고 키보드 포커스와 선택 피드백이 명확한 정돈된 인터페이스로 만들어 줘."
+ },
+ {
+  "id": "alert",
+  "category": 2,
+  "order": 6,
+  "ko": "커스텀 알림창",
+  "en": "Custom Alert Dialog",
+  "concept": "저장 완료나 오류처럼 작업 결과를 알리고 확인을 받는 대화상자. 이 실습의 커스텀 알림창도 확인 전까지 배경 조작을 막는 모달의 한 종류",
+  "experience": "양쪽에서 ‘저장 완료 보기’와 ‘오류 안내 보기’를 눌러 보세요. 같은 메시지의 표현을 비교하고, 커스텀 알림창에서는 Tab·Enter·Esc도 사용해 보세요.",
+  "tech": "Window.alert, HTML dialog, Focus Management, Web Animations",
+  "prompt": "저장 완료와 오류를 알려 주는 커스텀 알림창을 만들어 줘. 브라우저 기본 alert()와 앱 디자인에 맞춘 알림창을 나란히 비교하게 해 줘. 양쪽에서 같은 메시지를 사용하고, 커스텀 알림창은 성공·오류에 맞는 아이콘과 색상, 명확한 제목과 설명, 확인 버튼을 갖춰 줘. 배경은 어둡게 처리하고 창이 열리고 닫힐 때 짧고 부드러운 효과를 넣어 줘. HTML dialog의 showModal()을 사용해 배경 조작을 막고, 키보드 포커스를 창 안에 유지해 줘. 확인·닫기·Esc로 닫으면 열었던 버튼으로 포커스를 돌려주고, 동작 줄이기 설정과 모바일 화면도 지원해 줘."
+ }
+];
+const categories=[{name:'화면 구성 및 레이아웃',icon:'layout'},{name:'디자인 및 시각 효과',icon:'palette'},{name:'사용자 조작 및 상호작용',icon:'pointer'}];
+const paths={menu:'M4 6h16M4 12h16M4 18h16',close:'m6 6 12 12M18 6 6 18',chevron:'m8 10 4 4 4-4',left:'m14 6-6 6 6 6',right:'m10 6 6 6-6 6',reset:'M3 10a9 9 0 1 1 2 8M3 4v6h6',copy:'M9 9h11v11H9zM15 9V4H4v11h5',check:'m5 12 4 4 10-10',info:'M12 10v7M12 7v.1M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0',layout:'M3 4h18v16H3zM9 4v16M9 10h12',palette:'M21 12a9 9 0 1 0-9 9h2a2 2 0 0 0 0-4h-1a2 2 0 0 1 0-4h6a2 2 0 0 0 2-1M7 9h.01M10 6h.01M15 7h.01',pointer:'m5 3 14 9-7 1-3 7zM13 14l5 6',book:'M3 4h7l2 2 2-2h7v16h-7l-2 1-2-1H3zM12 6v15',spark:'m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z',code:'m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16',monitor:'M3 4h18v13H3zM8 21h8M12 17v4',tablet:'M5 3h14v18H5zM11 18h2',phone:'M7 2h10v20H7zM11 19h2',home:'m3 10 9-7 9 7M5 9v12h14V9M9 21v-8h6v8',users:'M16 21v-3a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v3M13 6a4 4 0 1 1-8 0 4 4 0 0 1 8 0M17 3a4 4 0 0 1 0 8M18 14a4 4 0 0 1 4 4v3',calendar:'M4 5h16v16H4zM8 2v6M16 2v6M4 10h16M8 14h2M14 14h2M8 18h2',file:'M5 3h9l5 5v13H5zM14 3v6h5M8 13h8M8 17h5',settings:'M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2',bell:'M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4',save:'M4 3h13l4 4v14H3V3zM7 3v6h10V3M7 21v-8h10v8',trash:'M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7',edit:'m15 4 5 5M4 20l5-1L21 7l-4-4L5 15z',more:'M5 12h.01M12 12h.01M19 12h.01',grip:'M9 5h.01M15 5h.01M9 12h.01M15 12h.01M9 19h.01M15 19h.01',up:'m6 14 6-6 6 6',down:'m6 10 6 6 6-6',moon:'M20 14a8.5 8.5 0 0 1-10-10 9 9 0 1 0 10 10',sun:'M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1 1M18 18l1 1M5 19l1-1M18 6l1-1',volume:'M11 4 5 9H2v6h3l6 5zM15 8a6 6 0 0 1 0 8M18 4a11 11 0 0 1 0 16',power:'M12 2v10M6 5a9 9 0 1 0 12 0',heart:'M20 5c-3-3-7-1-8 2-1-3-5-5-8-2-4 4 0 9 8 16 8-7 12-12 8-16',warning:'m12 3 10 18H2zM12 9v5M12 17v.1',grid:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',play:'m8 4 12 8-12 8z',lock:'M6 10h12v11H6zM8 10V6a4 4 0 0 1 8 0v4'};
+function icon(name,size=18){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name]||paths.grid}"/></svg>`}
+const $=(s,root=document)=>root.querySelector(s),$$=(s,root=document)=>Array.from(root.querySelectorAll(s));
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const names=['김하늘','이서준','박지우','최도윤','정서연','윤민준'];
+const studentData=()=>names.map((name,i)=>({id:i,name,memo:['책 읽기와 글쓰기를 좋아해요','친구를 돕는 따뜻한 마음','수학 문제 풀기를 즐겨요','체육 시간에 활발하게 참여','그림으로 생각을 표현해요','새로운 질문을 많이 해요'][i]}));
+const avatar=(name,i=0)=>`<span class="avatar c${i%6}" aria-hidden="true">${esc(name.slice(1,2))}</span>`;
+const profile=(student,extra='')=>`<button class="profile-card ${extra}" data-student="${student.id}" aria-pressed="${extra.includes('selected')}">${avatar(student.name,student.id)}<strong>${esc(student.name)}</strong><small>1학년 1반 · ${student.id+1}번</small><span class="chip">출석</span></button>`;
+const toolbar=(title,sub,controls='')=>`<div class="demo-toolbar"><div><h3 class="demo-title">${title}</h3><p class="demo-sub">${sub}</p></div>${controls}</div>`;
+const segmented=(items,value,attr='data-value')=>`<div class="segmented">${items.map(([v,label,ic])=>`<button ${attr}="${v}" aria-pressed="${String(v)===String(value)}">${ic?icon(ic,14):''}${label}</button>`).join('')}</div>`;
+const note=(text,id='result')=>`<div class="result-note" id="${id}" role="status">${text}</div>`;
+const studentsRows=(data=studentData())=>data.map(s=>`<div class="student-row">${avatar(s.name,s.id)}<div class="grow"><strong>${esc(s.name)}</strong><p class="muted">1학년 1반 · ${s.id+1}번</p></div><span class="chip">출석</span></div>`).join('');
+const usecases=['학급 홈페이지를 교실 PC와 학생의 스마트폰에서 모두 편하게 볼 수 있게 만들 때 사용해요.','학급 앱에서 홈·출결·과제처럼 자주 쓰는 기능을 어디서든 빠르게 열 때 사용해요.','학생 관리, 출결, 과제를 한 화면에서 오가며 작업하는 관리 도구에 적합해요.','반별 출석 현황과 과제 제출률을 빠르게 비교하고 학급 운영을 점검할 때 활용해요.','학생의 이름과 기본 정보를 한눈에 보고, 필요한 학생의 정보를 자세히 살펴볼 때 써요.','수업 자료나 학생 목록을 같은 크기의 칸으로 정돈해 보여 줄 때 사용해요.','긴 수업 계획이나 학급 안내를 읽는 동안에도 메뉴를 계속 보여 주고 싶을 때 써요.','학생 정보를 수정한 뒤 보던 명단으로 바로 돌아오도록 만들 때 적합해요.','학급 홈페이지의 자주 묻는 질문을 필요한 답변만 펼쳐 보도록 구성할 때 사용해요.','한 학생의 기본 정보, 출결, 성적을 같은 자리에서 나누어 보여 줄 때 사용해요.','명단을 보면서 학생 상세 정보를 확인하고, 필요한 쪽의 공간을 넓혀 쓸 때 좋아요.','학급 소개나 일정 카드에 배경의 색감을 살리면서 유리 같은 깊이를 주고 싶을 때 사용해요.','설정 버튼의 켜짐과 꺼짐을 눌리는 입체감으로 표현할 때 사용해요.','조명이 어두운 교실에서도 눈부심이 적은 화면을 선택할 수 있게 만들 때 활용해요.','학급 소개나 수업 안내 카드의 배경에 두 색상을 자연스럽게 연결할 때 써요.','클릭할 수 있는 수업 자료나 버튼을 마우스를 올렸을 때 더 잘 알아보게 할 때 사용해요.','학생 명단을 불러오는 동안 화면의 구성을 미리 보여 주고 기다림을 안내할 때 써요.','출결 저장 결과나 입력이 필요한 항목을 작업 흐름을 끊지 않고 알려 줄 때 활용해요.','작은 아이콘 버튼의 역할을 공간을 많이 차지하지 않고 설명할 때 사용해요.','발표 순서나 학생 명단을 직접 끌어 놓아 원하는 순서로 배치할 때 사용해요.','학생 이름이나 관찰 메모를 명단 안에서 빠르게 수정할 때 적합해요.','학생 카드에서 수정·복사·삭제 등 관련 작업을 바로 실행할 때 사용해요.','학급 앱의 알림, 자동 저장, 소리처럼 켜짐과 꺼짐을 정하는 설정에 사용해요.','선택한 학년에 속한 학급만 보여 주어 잘못된 조합을 선택하지 않도록 할 때 활용해요.'];
+usecases.push('출결 저장 완료나 연결 오류처럼 사용자가 확인해야 하는 결과를 알려 줄 때 활용해요. 입력·수정용 모달과 결과 확인용 알림 대화상자는 목적이 달라요. 이 실습에서는 둘 다 배경 조작을 막는 모달 방식으로 열립니다.');
+let current=0,states={},demoController=new AbortController(),disposers=[],toastTimer;
+const demos={};
+function on(target,event,fn){(typeof target==='string'?$(target,$('#demo')):target)?.addEventListener(event,fn,{signal:demoController.signal})}
+function many(selector,event,fn){$$(selector,$('#demo')).forEach(el=>on(el,event,fn))}
+function later(fn,ms){const t=setTimeout(fn,ms);disposers.push(()=>clearTimeout(t));return t}
+function notify(text){clearTimeout(toastTimer);const box=$('#global-toast');box.textContent=text;box.hidden=false;toastTimer=setTimeout(()=>box.hidden=true,2600)}
+function wireTooltips(){
+ const hosts=$$('.tooltip-host,.dock-button',$('#demo')).filter(host=>$('.tooltip-text',host));
+ if(!hosts.length)return;
+ for(const host of hosts){
+  on(host,'pointerenter',()=>host.classList.remove('tooltip-dismissed'));
+  on(host,'focusin',event=>{if(!host.contains(event.relatedTarget))host.classList.remove('tooltip-dismissed')});
+ }
+ on(document,'keydown',event=>{
+  if(event.key!=='Escape')return;
+  const visible=hosts.filter(host=>getComputedStyle($('.tooltip-text',host)).visibility==='visible');
+  if(!visible.length)return;
+  visible.forEach(host=>host.classList.add('tooltip-dismissed'));
+  event.preventDefault();
+ });
+}
+function mount(){demoController.abort();demoController=new AbortController();disposers.forEach(fn=>fn());disposers=[];const t=TERMS[current];states[t.id]??={};$('#demo').innerHTML='';demos[t.id](states[t.id]);wireTooltips();}
+function renderNav(){ $('#term-nav').innerHTML=categories.map((cat,c)=>`<section class="nav-group"><button class="category-button" aria-expanded="true" aria-controls="category-${c}" data-category="${c}">${icon(cat.icon,16)}<span>${cat.name}</span><span class="category-count">${TERMS.filter(t=>t.category===c).length}</span><span class="chevron">${icon('chevron',13)}</span></button><div class="term-list" id="category-${c}">${TERMS.filter(t=>t.category===c).map(t=>`<button class="term-button" data-term="${t.id}"><span class="term-number">${String(t.order).padStart(2,'0')}</span><span>${t.ko}</span></button>`).join('')}</div></section>`).join('')}
+function activate(index){current=Math.max(0,Math.min(TERMS.length-1,index));const t=TERMS[current];$('#main').dataset.lesson=t.id;$('#lesson-title').textContent=t.ko;$('#lesson-english').textContent=t.en;$('#detail-title').textContent=t.ko;$('#detail-english').textContent=t.en;$('#concept-text').textContent=t.concept+'입니다.';$('#usecase-text').textContent=usecases[current];$('#prompt-text').textContent=t.prompt;$('#instruction').innerHTML=`${icon('pointer',17)}<div><b>직접 해보세요</b>${esc(t.experience)}</div>`;$('#tech-tags').innerHTML=t.tech.split(', ').map(x=>`<span>${esc(x)}</span>`).join('');$('#previous').innerHTML=icon('left',14)+`<span>${current?TERMS[current-1].ko:'첫 번째 용어'}</span>`;$('#next').innerHTML=`<span>${current<TERMS.length-1?TERMS[current+1].ko:'마지막 용어'}</span>`+icon('right',14);$('#previous').disabled=!current;$('#next').disabled=current===TERMS.length-1;$('#lesson-position').textContent=`${String(current+1).padStart(2,'0')} / ${TERMS.length}`;$$('.term-button').forEach(b=>{const active=b.dataset.term===t.id;b.removeAttribute('aria-current');$('.active-dot',b)?.remove();if(active){b.setAttribute('aria-current','page');b.insertAdjacentHTML('beforeend','<i class="active-dot" aria-hidden="true"></i>')}});const cat=$(`[data-category="${t.category}"]`);cat.setAttribute('aria-expanded','true');$('#category-'+t.category).hidden=false;mount();}
+function setNav(open){const mobile=matchMedia('(max-width:700px)').matches;open=open&&mobile;$('#sidebar').classList.toggle('open',open);$('#nav-overlay').classList.toggle('open',open);$('#sidebar').inert=mobile&&!open;$('#main').inert=mobile&&open;$('#open-nav').setAttribute('aria-expanded',String(open));if(open)($('#term-nav [aria-current=page]')||$('#close-nav')).focus();}
+async function copyText(text){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true}}catch{}const active=document.activeElement,el=document.createElement('textarea');el.value=text;el.setAttribute('aria-label','복사할 내용');el.style.cssText='position:fixed;left:-9999px;top:0';document.body.append(el);el.select();let ok=false;try{ok=document.execCommand('copy')}catch{}el.remove();active?.focus({preventScroll:true});return ok}
+// 각 체험은 별도 상태와 이벤트 수명을 가집니다. 화면 전환 시 타이머와 관찰자를 정리합니다.
+/* RESPONSIVE_DEMO */
+demos.dock=s=>{
+ s.tab??='home';s.attended??=false;s.submitted??=false;s.alerts??=true;
+ const tabs=[['home','홈','home'],['attendance','출결','calendar'],['assignment','과제','file'],['settings','설정','settings']];
+ const body={home:`<h3 class="demo-title">반가워요, 선생님</h3><p class="demo-sub">하단 메뉴에서 오늘의 학급을 살펴보세요.</p><div class="mini-card" style="margin-top:24px"><span class="chip orange">오늘의 활동</span><h4 style="margin:14px 0 8px">우리반 함께 읽기</h4><p class="demo-sub">좋아하는 책을 친구에게 소개해요.</p></div>`,attendance:`<h3 class="demo-title">오늘의 출결</h3><p class="demo-sub">1학년 1반 · 28명</p><div class="mini-card" style="margin-top:20px"><p style="font-size:25px;font-weight:700;margin-bottom:18px">${s.attended?'28':'27'}<small class="muted"> / 28명 출석</small></p><button class="btn primary" id="dock-attendance">${s.attended?'출석 확인 취소':'남은 학생 출석 확인'}</button></div>`,assignment:`<h3 class="demo-title">과제 모아보기</h3><p class="demo-sub">이번 주 학급 과제</p><div class="mini-card" style="margin-top:20px"><h4>독서 감상문 쓰기</h4><p class="demo-sub" style="margin:10px 0 18px">${s.submitted?'확인을 마쳤어요. 수고하셨습니다.':'제출된 감상문을 확인해 주세요.'}</p><button class="btn primary" id="dock-assignment">${s.submitted?'확인 완료 취소':'과제 확인 완료'}</button></div>`,settings:`<h3 class="demo-title">학급 설정</h3><p class="demo-sub">우리반 소식을 받아 보세요.</p><div class="mini-card row between" style="margin-top:24px"><span style="font-size:12px">새 알림 받기</span><label class="toggle"><input type="checkbox" id="dock-alerts" aria-label="새 알림 받기" ${s.alerts?'checked':''}><span></span></label></div><p class="demo-sub" style="margin-top:14px">알림이 ${s.alerts?'켜져':'꺼져'} 있어요.</p>`};
+ $('#demo').innerHTML=`<div class="dock-scene">${body[s.tab]}<nav class="floating-dock" aria-label="체험용 하단 메뉴">${tabs.map(([id,label,ic])=>`<button class="dock-button ${s.tab===id?'active':''}" data-dock="${id}" aria-label="${label}" aria-pressed="${s.tab===id}">${icon(ic,21)}<span class="tooltip-text">${label}</span></button>`).join('')}</nav></div>`+note('메뉴가 화면 위에 떠 있어요. 아이콘을 누르면 <b>실제 콘텐츠와 기능</b>이 열려요.');
+ many('[data-dock]','click',e=>{s.tab=e.currentTarget.dataset.dock;mount()});on('#dock-attendance','click',()=>{s.attended=!s.attended;mount()});on('#dock-assignment','click',()=>{s.submitted=!s.submitted;mount()});on('#dock-alerts','change',e=>{s.alerts=e.target.checked;mount()});
+};
+demos.sidebar=s=>{
+ s.collapsed??=false;s.tab??=0;const links=[['home','학급 홈'],['users','학생 명단'],['calendar','출결 관리'],['file','수업 자료']];
+ const content=[`<span class="chip orange">1학년 1반</span><h3 class="demo-title" style="margin-top:18px">우리반의 하루</h3><p class="demo-sub">작은 배움이 모여<br>큰 성장이 되는 교실</p><div class="mini-card" style="margin-top:20px"><p class="small muted">오늘의 일정</p><h4 style="font-size:13px;margin:12px 0">함께 만드는 학급 약속</h4><span class="chip">1교시 · 창의적 체험</span></div>`,`<h3 class="demo-title">학생 명단</h3>${studentsRows(studentData().slice(0,3))}`,`<h3 class="demo-title">출결 관리</h3><p class="demo-sub">오늘 출석 현황</p><div class="mini-card" style="margin-top:20px"><h4 style="font-size:28px">27<small class="muted"> / 28명</small></h4><p class="demo-sub">출석 27명 · 결석 1명</p></div>`,`<h3 class="demo-title">수업 자료</h3>${['국어 · 이야기 속 인물','수학 · 덧셈과 뺄셈','통합 · 봄을 만나요'].map(x=>`<div class="student-row">${icon('file',16)}<strong style="font-size:11px">${x}</strong></div>`).join('')}`];
+ $('#demo').innerHTML=`<div class="mini-sidebar-layout"><nav class="mini-sidebar ${s.collapsed?'collapsed':''}" aria-label="체험용 사이드바"><button id="collapse-sidebar" aria-expanded="${!s.collapsed}" aria-label="사이드바 ${s.collapsed?'펼치기':'접기'}">${icon('layout',18)}<span class="nav-label">메뉴 접기 ${icon('left',12)}</span></button><div style="height:17px"></div>${links.map(([ic,title],i)=>`<button data-side="${i}" class="${s.tab===i?'active':''}" aria-label="${title}" aria-pressed="${s.tab===i}">${icon(ic,18)}<span class="nav-label">${title}</span></button>`).join('')}</nav><div class="mini-sidebar-content">${content[s.tab]}</div></div>`+note(`사이드바가 <b>${s.collapsed?'아이콘 메뉴로 축소':'전체 메뉴로 확장'}</b>되어 있어요.`);
+ on('#collapse-sidebar','click',()=>{s.collapsed=!s.collapsed;mount();$('#collapse-sidebar').focus()});many('[data-side]','click',e=>{s.tab=Number(e.currentTarget.dataset.side);mount()});
+};
+const classStats=[{count:28,attendance:96,submission:89,bars:[92,96,100,96,96]},{count:30,attendance:90,submission:83,bars:[87,93,90,97,90]},{count:26,attendance:100,submission:96,bars:[96,100,96,100,100]}];
+function dashboardStudents(classIndex){const d=classStats[classIndex],present=Math.round(d.count*d.attendance/100),submitted=Math.round(d.count*d.submission/100);const roster=['김하늘','이서준','박지우','최도윤','정서연','윤민준','강지호','신예린','한수빈','오지안','장현우','조은서','임시우','송다은','유건우','배지윤','백수현','문예준','남소율','차이안','권하준','서유나','안도현','전채원','양서우','홍민서','고준우','성지민','김태오','이하린'];return roster.slice(0,d.count).map((_,i)=>({id:i,name:roster[(i+classIndex*7)%roster.length],group:Math.floor(i/4)+1,present:i<present,submitted:i<submitted}));}
+function chart(values){return `<svg class="bar-chart" viewBox="0 0 420 190" role="img" aria-label="월요일부터 금요일 출석률: ${values.join(', ')}퍼센트"><g fill="none" stroke="#edf0f3">${[28,70,112,154].map(y=>`<path d="M35 ${y}H410"/>`).join('')}</g><g fill="#a1a8b3" font-family="sans-serif" font-size="9"><text x="3" y="31">100</text><text x="10" y="73">66</text><text x="10" y="115">33</text><text x="17" y="157">0</text></g>${values.map((v,i)=>`<rect x="${59+i*72}" y="${154-v*1.26}" width="34" height="${v*1.26}" rx="5" fill="${i===4?'#ed8a50':'#f3ccb2'}"/><text x="${76+i*72}" y="${147-v*1.26}" text-anchor="middle" fill="#947154" font-family="sans-serif" font-size="9">${v}%</text><text x="${76+i*72}" y="177" text-anchor="middle" fill="#929aa7" font-size="10">${['월','화','수','목','금'][i]}</text>`).join('')}</svg>`}
+demos.dashboard=s=>{
+ s.class??=0;s.tab??='summary';const d=classStats[s.class],roster=dashboardStudents(s.class),present=roster.filter(p=>p.present).length,submitted=roster.filter(p=>p.submitted).length;const tabs=[['summary','요약','grid'],['students','학생','users'],['attendance','출석','calendar'],['assignments','과제','file']];
+ const table=kind=>{const label=kind==='students'?'학생 명단':kind==='attendance'?'학생별 출석 현황':'학생별 과제 제출 현황';return `<div class="dashboard-table-wrap" tabindex="0" role="region" aria-label="${label}, 아래로 스크롤해 모든 학생 확인"><table class="dashboard-table"><caption class="sr-only">1학년 ${s.class+1}반 ${label}</caption><thead><tr><th scope="col">번호</th><th scope="col">학생 이름</th><th scope="col">${kind==='students'?'모둠':kind==='attendance'?'출결':'제출 상태'}</th></tr></thead><tbody>${roster.map(p=>`<tr data-dashboard-student="${p.id}"><td>${String(p.id+1).padStart(2,'0')}</td><td><span class="row">${avatar(p.name,p.id)}<span>${p.name}</span></span></td><td>${kind==='students'?`<span class="chip gray">${p.group}모둠</span>`:kind==='attendance'?`<span class="chip ${p.present?'':'orange'}">${p.present?'출석':'결석'}</span>`:`<span class="chip ${p.submitted?'':'orange'}">${p.submitted?'제출':'미제출'}</span>`}</td></tr>`).join('')}</tbody></table></div>`};
+ const chartPanel=`<div class="mini-card chart-card"><div class="row between"><h4>이번 주 출석률</h4><span class="small muted">1학년 ${s.class+1}반</span></div>${chart(d.bars)}</div>`;
+ const absent=roster.filter(p=>!p.present),unsubmitted=roster.filter(p=>!p.submitted),groups=[...new Set(roster.map(p=>p.group))];
+ const overviewLink=(tab,label)=>`<button class="overview-link" data-dashboard-go="${tab}" aria-label="${label}" aria-controls="dashboard-panel">보기${icon('right',12)}</button>`;
+ const groupSizes=groups.map(group=>roster.filter(p=>p.group===group).length),smallestGroup=Math.min(...groupSizes),largestGroup=Math.max(...groupSizes);
+ const groupCaption=smallestGroup===largestGroup?`모둠당 ${smallestGroup}명`:`모둠당 ${smallestGroup}~${largestGroup}명`;
+ const namePreview=(people,empty)=>people.length?people.slice(0,2).map(p=>p.name).join(' · ')+(people.length>2?' 외 '+(people.length-2)+'명':''):empty;
+ const summaryPanel=`<div class="dashboard-overview"><section class="overview-widget overview-attendance" aria-labelledby="overview-attendance-title"><div class="overview-widget-head"><h4 id="overview-attendance-title">주간 출석</h4>${overviewLink('attendance','출석 현황 상세 보기')}</div><p class="overview-average">이번 주 평균<b>${Math.round(d.bars.reduce((a,b)=>a+b,0)/d.bars.length)}%</b></p><div class="overview-bars" role="img" aria-label="월요일부터 금요일 출석률: ${d.bars.join(', ')}퍼센트">${d.bars.map((value,i)=>`<div class="overview-day"><span>${value}%</span><div class="overview-bar-track"><i style="height:${value}%"></i></div><small>${['월','화','수','목','금'][i]}</small></div>`).join('')}</div></section><section class="overview-widget overview-assignment" aria-labelledby="overview-assignment-title"><div class="overview-widget-head"><h4 id="overview-assignment-title">과제 진행률</h4>${overviewLink('assignments','과제 제출 현황 상세 보기')}</div><p class="overview-task-name">독서 감상문</p><div class="overview-task-body"><div class="overview-donut" id="overview-assignment-progress" style="--completion:${submitted/d.count*100}%" role="progressbar" aria-label="독서 감상문 제출" aria-valuemin="0" aria-valuemax="${d.count}" aria-valuenow="${submitted}" aria-valuetext="${d.submission}% 제출"><strong>${d.submission}<small>%</small></strong></div><div class="overview-task-legend"><div><i></i>제출<b id="overview-submitted-count">${submitted}명</b></div><div><i></i>미제출<b id="overview-unsubmitted-count">${unsubmitted.length}명</b></div></div></div><p class="overview-task-footer">전체 ${d.count}명 기준</p></section><section class="overview-widget overview-students" aria-labelledby="overview-students-title"><div class="overview-widget-head"><h4 id="overview-students-title">우리반 구성</h4>${overviewLink('students','학생 명단 상세 보기')}</div><div class="overview-class-body"><div class="overview-avatar-stack" aria-hidden="true">${roster.slice(0,3).map(p=>avatar(p.name,p.id)).join('')}</div><div><p class="overview-group-value" id="overview-group-count">${groups.length}개 모둠</p><p class="overview-group-caption">${groupCaption}</p></div></div></section><section class="overview-widget" aria-labelledby="overview-review-title"><div class="overview-widget-head"><h4 id="overview-review-title">확인할 사항</h4>${icon('info',13)}</div><div class="overview-review"><button data-dashboard-go="attendance" aria-label="결석 ${absent.length}명, ${esc(absent.map(p=>p.name).join(', ')||'모두 출석')}. 출석 상세 보기"><span class="overview-review-label">결석<b id="overview-absent-count" class="${absent.length?'':'clear'}">${absent.length}명</b></span><span class="overview-review-names" id="overview-absent-students" title="${esc(absent.map(p=>p.name).join(', ')||'모두 출석')}">${esc(namePreview(absent,'모두 출석'))}</span>${icon('right',12)}</button><button data-dashboard-go="assignments" aria-label="과제 미제출 ${unsubmitted.length}명, ${esc(unsubmitted.map(p=>p.name).join(', ')||'모두 제출')}. 과제 상세 보기"><span class="overview-review-label">미제출<b class="${unsubmitted.length?'':'clear'}">${unsubmitted.length}명</b></span><span class="overview-review-names" id="overview-pending-students" title="${esc(unsubmitted.map(p=>p.name).join(', ')||'모두 제출')}">${esc(namePreview(unsubmitted,'모두 제출'))}</span>${icon('right',12)}</button></div></section></div>`;
+ const panels={summary:summaryPanel,students:`<div class="dashboard-panel-head"><div><h4>우리반 학생 명단</h4><p>1학년 ${s.class+1}반 · ${d.count}명의 친구들</p></div><span class="chip gray">${Math.ceil(d.count/4)}개 모둠</span></div>${table('students')}`,attendance:`<div class="dashboard-panel-head"><div><h4>오늘의 출석 현황</h4><p>1학년 ${s.class+1}반 · 학생별 출결 확인</p></div><span class="chip">출석률 ${d.attendance}%</span></div><div class="dashboard-stats"><span class="chip">출석 ${present}명</span><span class="chip orange">결석 ${d.count-present}명</span></div>${table('attendance')}<div style="margin-top:16px">${chartPanel}</div>`,assignments:`<div class="dashboard-panel-head"><div><h4>독서 감상문 제출 현황</h4><p>1학년 ${s.class+1}반 · 이번 주 학급 과제</p></div><span class="chip orange">${d.submission}%</span></div><div class="dashboard-stats"><span class="chip">제출 ${submitted}명</span><span class="chip orange">미제출 ${d.count-submitted}명</span><span class="chip gray">전체 ${d.count}명</span></div><progress class="assignment-progress" value="${submitted}" max="${d.count}" aria-label="독서 감상문 제출 ${d.count}명 중 ${submitted}명">${d.submission}%</progress>${table('assignments')}`};
+ $('#demo').innerHTML=toolbar('우리반 한눈에 보기','요약부터 학생별 현황까지 탭으로 살펴보세요.',`<label class="sr-only" for="dashboard-class">통계를 볼 학급</label><select id="dashboard-class" style="font-size:11px">${classStats.map((_,i)=>`<option value="${i}" ${s.class===i?'selected':''}>1학년 ${i+1}반</option>`).join('')}</select>`)+`<div class="kpi-grid">${[['students','전체 학생',d.count,'명','학생 명단 보기'],['attendance','오늘 출석률',d.attendance,'%','출석 '+present+'명 · 결석 '+(d.count-present)+'명'],['assignments','과제 제출률',d.submission,'%','제출 '+submitted+'명 · 미제출 '+(d.count-submitted)+'명']].map(([target,label,value,unit,foot])=>`<button class="kpi dashboard-kpi ${s.tab===target?'active':''}" data-dashboard-go="${target}" aria-controls="dashboard-panel" aria-label="${label} ${value}${unit}, ${tabs.find(t=>t[0]===target)[1]} 탭 보기"><span class="kpi-label">${label}${icon('right',11)}</span><p class="kpi-value">${value}<small>${unit}</small></p><p class="kpi-foot">${foot}</p></button>`).join('')}</div><div class="tabs dashboard-tabs" role="tablist" aria-label="대시보드 정보 선택">${tabs.map(([id,label,ic])=>`<button id="dashboard-tab-${id}" role="tab" data-dashboard-tab="${id}" aria-controls="dashboard-panel" aria-selected="${s.tab===id}" tabindex="${s.tab===id?0:-1}">${icon(ic,15)}${label}</button>`).join('')}</div><div class="dashboard-panel" id="dashboard-panel" role="tabpanel" aria-labelledby="dashboard-tab-${s.tab}" tabindex="0">${panels[s.tab]}</div>`;
+ const choose=id=>{s.tab=id;mount();$('#dashboard-tab-'+id).focus({preventScroll:true})};many('[data-dashboard-tab]','click',e=>choose(e.currentTarget.dataset.dashboardTab));many('[data-dashboard-go]','click',e=>choose(e.currentTarget.dataset.dashboardGo));many('[data-dashboard-tab]','keydown',e=>{const i=tabs.findIndex(t=>t[0]===s.tab);let next;if(e.key==='ArrowRight')next=(i+1)%tabs.length;if(e.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;if(e.key==='Home')next=0;if(e.key==='End')next=tabs.length-1;if(next!==undefined){e.preventDefault();choose(tabs[next][0])}});on('#dashboard-class','change',e=>{s.class=Number(e.target.value);mount();$('#dashboard-class').focus({preventScroll:true})});
+};
+demos.cards=s=>{
+ s.selected??=0;const student=studentData()[s.selected];$('#demo').innerHTML=toolbar('우리반 친구들','학생 카드를 눌러 자세히 살펴보세요.',`<span class="chip gray">6명의 학생</span>`)+`<div class="mini-grid">${studentData().map(x=>profile(x,x.id===s.selected?'selected':'')).join('')}</div><div class="mini-card selection-detail" role="status"><h4>${esc(student.name)} 학생의 정보</h4><dl class="detail-lines"><dt>학급</dt><dd>1학년 1반 · ${student.id+1}번</dd><dt>관찰 메모</dt><dd>${esc(student.memo)}</dd></dl></div>`;many('[data-student]','click',e=>{s.selected=Number(e.currentTarget.dataset.student);mount()});
+};
+demos.grid=s=>{
+ s.columns??=3;$('#demo').innerHTML=toolbar('수업 자료실','같은 자료, 다른 배열',segmented([[2,'2열'],[3,'3열'],[4,'4열']],s.columns,'data-columns'))+`<div class="mini-grid" id="grid-preview" style="grid-template-columns:repeat(${s.columns},minmax(0,1fr))">${Array.from({length:12},(_,i)=>`<div class="grid-tile"><strong>${String(i+1).padStart(2,'0')}</strong><small>${['국어','수학','통합'][i%3]} 자료</small></div>`).join('')}</div>`+note(`12개 카드가 <b>${s.columns}열 · ${12/s.columns}행</b>으로 정렬되어 있어요.`);many('[data-columns]','click',e=>{s.columns=Number(e.currentTarget.dataset.columns);mount()});
+};
+demos.sticky=s=>{
+ s.sticky??=true;s.scroll??=0;$('#demo').innerHTML=toolbar('우리반 생활 안내','안쪽 화면을 아래로 스크롤해 보세요.',`<label class="row small"><span>상단 고정</span><span class="toggle"><input type="checkbox" id="sticky-toggle" ${s.sticky?'checked':''}><span></span></span></label>`)+`<div class="scroll-demo" id="scroll-demo" tabindex="0" role="region" aria-label="스크롤 가능한 학급 생활 안내"><header class="sticky-demo-header" style="position:${s.sticky?'sticky':'relative'}"><strong>우리반 생활 안내</strong><span class="chip orange">${s.sticky?'상단 고정 중':'고정 해제'}</span></header><div class="long-content">${['서로를 존중하는 우리반','매일의 준비물','함께 지키는 수업 약속','점심시간과 쉬는 시간','안전한 학교생활','하루를 돌아보는 시간'].map((title,i)=>`<section class="document-section"><p class="document-number">안내 ${String(i+1).padStart(2,'0')}</p><h4>${title}</h4><p>${['친구의 이야기를 끝까지 듣고, 서로 다른 생각을 소중히 여겨요. 도움이 필요할 때는 선생님과 친구들에게 이야기해요.','필통과 알림장, 오늘의 시간표에 맞는 책을 준비해요. 수업을 시작하기 전에 책상 위를 정리해요.','궁금한 점은 손을 들고 물어봐요. 모둠 활동에서는 역할을 나누고 함께 해결해요.','이동할 때는 천천히 걷고, 친구와 사이좋게 놀아요. 손을 깨끗이 씻고 식사해요.','복도와 계단에서는 앞을 보고 걸어요. 위험한 상황을 발견하면 선생님께 알려 주세요.','오늘 배운 것과 고마웠던 일을 하나씩 떠올려 봐요. 내일을 위해 책상과 주변을 정리해요.'][i]}</p></section>`).join('')}</div></div>`+note('상단 고정을 끄고 켜며 스크롤할 때의 차이를 비교해 보세요.');$('#scroll-demo').scrollTop=s.scroll;on('#scroll-demo','scroll',e=>s.scroll=e.target.scrollTop);on('#sticky-toggle','change',e=>{s.sticky=e.target.checked;mount()});
+};
+function editDialog(title,name,memo){return `<dialog class="demo-dialog" id="edit-dialog" aria-labelledby="dialog-title"><form id="edit-form"><div class="row between"><h3 id="dialog-title">${title}</h3><button class="icon-btn" type="button" id="dialog-close" aria-label="수정 취소하고 닫기">${icon('close',16)}</button></div><p class="demo-sub">변경한 내용은 이 체험 안에서만 적용돼요.</p><label class="field">학생 이름<input id="edit-name" name="name" required maxlength="20" value="${esc(name)}" autocomplete="off"></label><label class="field">관찰 메모<textarea id="edit-memo" name="memo" rows="3" maxlength="120">${esc(memo)}</textarea></label><div class="dialog-actions"><button type="button" class="btn" id="dialog-cancel">취소</button><button type="submit" class="btn primary">저장하기</button></div></form></dialog>`}
+function wireDialog(save,focusTarget=()=>'#open-modal'){
+ const dialog=$('#edit-dialog');
+ on('#dialog-close','click',()=>dialog.close());
+ on('#dialog-cancel','click',()=>dialog.close());
+ on(dialog,'close',()=>$(focusTarget())?.focus({preventScroll:true}));
+ on('#edit-form','submit',e=>{
+  e.preventDefault();const name=$('#edit-name').value.trim();
+  if(!name){$('#edit-name').setCustomValidity('이름을 입력해 주세요.');$('#edit-name').reportValidity();return}
+  const target=focusTarget();save(name,$('#edit-memo').value.trim());dialog.close();mount();
+  $(target)?.focus({preventScroll:true});notify('학생 정보를 저장했어요.');
+ });
+ on('#edit-name','input',e=>e.target.setCustomValidity(''));
+ disposers.push(()=>{if(dialog.open)dialog.close()});return dialog;
+}
+demos.modal=s=>{
+ s.student??={...studentData()[0]};const p=s.student;$('#demo').innerHTML=toolbar('학생 정보','정보를 수정해도 명단 화면을 떠나지 않아요.')+`<div class="mini-card" style="padding:25px"><div class="row">${avatar(p.name,0)}<div><h3 style="font-size:18px">${esc(p.name)}</h3><p class="demo-sub">1학년 1반 · 1번</p></div></div><dl class="detail-lines" style="margin:25px 0"><dt>출결</dt><dd><span class="chip">출석</span></dd><dt>관찰 메모</dt><dd id="saved-memo">${esc(p.memo)||'등록된 메모가 없어요.'}</dd></dl><button class="btn primary" id="open-modal">${icon('edit',14)}학생 정보 수정</button></div>`+note('저장하면 정보가 반영돼요. <b>취소 또는 ESC</b>로 닫으면 변경되지 않아요.')+editDialog('학생 정보 수정',p.name,p.memo);const dialog=wireDialog((name,memo)=>s.student={...p,name,memo});on('#open-modal','click',()=>{$('#edit-name').value=s.student.name;$('#edit-name').setCustomValidity('');$('#edit-memo').value=s.student.memo;dialog.showModal()});
+};
+demos.alert=s=>{
+ const messages={success:{title:'저장 완료',body:'1학년 1반의 출결을 저장했어요.',icon:'check'},error:{title:'저장 오류',body:'연결이 끊겨 출결을 저장하지 못했어요. 연결 상태를 확인한 뒤 다시 시도해 주세요.',icon:'warning'}};
+ const controls=type=>`<div class="alert-example-actions"><button class="btn primary" data-alert-type="${type}" data-alert-kind="success">${icon('check',15)}저장 완료 보기</button><button class="btn" data-alert-type="${type}" data-alert-kind="error">${icon('warning',15)}오류 안내 보기</button></div>`;
+ $('#demo').innerHTML=toolbar('같은 알림, 다른 경험','저장 완료와 오류 안내를 두 가지 알림창으로 비교해 보세요.')+`
+ <div class="alert-comparison">
+  <section class="alert-example"><span class="alert-example-tag">브라우저 기본</span><h4>기본 알림창</h4><p>브라우저가 제공하는 알림 대화상자</p>${controls('native')}<ul><li>텍스트 메시지와 기본 확인 버튼</li><li>브라우저·운영체제가 정하는 모양</li></ul><small>실제 브라우저 알림창이 열립니다.</small></section>
+  <section class="alert-example is-custom"><span class="alert-example-tag">앱에 맞춘 디자인</span><h4>커스텀 알림창</h4><p>앱의 색상과 분위기에 맞춘 대화상자</p>${controls('custom')}<ul><li>성공·오류별 아이콘과 색상</li><li>배경 흐림과 부드러운 전환 효과</li></ul><small>확인·닫기·Esc로 닫아 보세요.</small></section>
+ </div>
+ <div class="alert-result" role="status" aria-live="polite"><span aria-hidden="true">${icon('info',18)}</span><p id="alert-result-text"></p></div>
+ <p class="alert-learning-note">‘모달’ 실습은 정보를 입력·수정하는 별도 창, 이 실습은 결과를 알려 주는 <b>알림 대화상자</b>예요. 창을 닫아야 배경을 조작할 수 있다는 점은 같아요. 잠깐 나타났다 사라지는 안내는 ‘토스트 메시지’에서 체험해 보세요.</p>
+ <dialog class="feedback-dialog" id="feedback-dialog" role="alertdialog" aria-modal="true" aria-labelledby="feedback-title" aria-describedby="feedback-description">
+  <button class="icon-btn feedback-close" id="feedback-close" aria-label="알림 닫기">${icon('close',16)}</button>
+  <div class="feedback-symbol" id="feedback-symbol" aria-hidden="true"></div><p class="feedback-eyebrow">우리반 · 출결 관리</p>
+  <h2 id="feedback-title"></h2><p id="feedback-description"></p>
+  <div class="feedback-actions"><button class="btn primary" id="feedback-confirm" autofocus>확인</button></div>
+ </dialog>`;
+ const dialog=$('#feedback-dialog'),result=$('#alert-result-text');
+ result.textContent=s.last||'양쪽에서 같은 상황을 열고 메시지와 조작감을 비교해 보세요.';
+ let trigger,kind,animation,closing=false,disposed=false;
+ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const dismiss=()=>{
+  if(!dialog.open||closing)return;
+  closing=true;animation?.cancel();
+  if(reduced()){dialog.close();return;}
+  animation=dialog.animate([{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(6px) scale(.98)'}],{duration:140,easing:'ease-in',fill:'forwards'});
+  animation.finished.then(()=>{if(!disposed)dialog.close();}).catch(()=>{});
+ };
+ many('[data-alert-type]','click',event=>{
+  const button=event.currentTarget,message=messages[button.dataset.alertKind];
+  if(button.dataset.alertType==='native'){
+   window.alert(message.title+'\n\n'+message.body);
+   s.last='기본 알림 · '+message.title+' 안내를 확인했어요.';result.textContent=s.last;return;
+  }
+  trigger=button;kind=button.dataset.alertKind;closing=false;animation?.cancel();dialog.dataset.kind=kind;
+  $('#feedback-title').textContent=message.title;$('#feedback-description').textContent=message.body;$('#feedback-symbol').innerHTML=icon(message.icon,30);
+  dialog.showModal();$('#feedback-confirm').focus({preventScroll:true});
+  if(!reduced())animation=dialog.animate([{opacity:0,transform:'translateY(14px) scale(.96)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:240,easing:'cubic-bezier(.2,.8,.2,1)'});
+ });
+ on('#feedback-confirm','click',dismiss);on('#feedback-close','click',dismiss);
+ on(dialog,'cancel',event=>{event.preventDefault();dismiss();});
+ on(dialog,'keydown',event=>{if(event.key!=='Tab')return;const first=$('#feedback-close'),last=$('#feedback-confirm');if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}});
+ on(dialog,'close',()=>{animation?.cancel();closing=false;s.last='커스텀 알림 · '+messages[kind].title+' 안내를 닫았어요.';result.textContent=s.last;if(trigger?.isConnected)trigger.focus({preventScroll:true});});
+ disposers.push(()=>{disposed=true;animation?.cancel();if(dialog.open)dialog.close();});
+};
+demos.accordion=s=>{
+ s.open??=[0];const faq=[['알림장은 어디서 확인하나요?','학급 홈에서 ‘우리반 알림장’을 선택하면 오늘의 준비물과 안내를 확인할 수 있어요.'],['과제는 어떻게 제출하나요?','과제 메뉴에서 해당 과제를 선택하고 내용을 작성해 제출해 주세요. 제출 후에는 완료 표시를 확인할 수 있어요.'],['결석할 때는 어떻게 알려야 하나요?','담임 선생님에게 사유와 날짜를 알려 주세요. 자세한 절차는 학교의 안내를 따라 주세요.'],['학급 자료는 어디서 볼 수 있나요?','수업 자료실에서 과목별 학습 자료를 확인할 수 있어요. 필요한 자료를 선택해 함께 학습해 보세요.']];$('#demo').innerHTML=toolbar('궁금한 점이 있나요?','자주 묻는 질문을 모았어요.')+faq.map(([q,a],i)=>`<details class="faq" data-faq="${i}" ${s.open.includes(i)?'open':''}><summary>${q}</summary><p>${a}</p></details>`).join('')+note('질문을 클릭해 답변을 펼치거나 접어 보세요. 여러 답변을 함께 열 수 있어요.');many('[data-faq]','toggle',e=>{const i=Number(e.target.dataset.faq);s.open=e.target.open?[...new Set([...s.open,i])]:s.open.filter(x=>x!==i)});
+};
+demos.tabs=s=>{
+ s.tab??=0;const labels=['학생 정보','출결','성적'];const content=[`<div class="row" style="margin:8px 0 22px">${avatar('김하늘')}<div><h4 style="font-size:18px">김하늘</h4><p class="demo-sub">1학년 1반 · 1번</p></div></div><dl class="detail-lines"><dt>관심 분야</dt><dd>독서, 글쓰기</dd><dt>관찰 메모</dt><dd>책 읽기와 글쓰기를 좋아해요.</dd><dt>모둠</dt><dd>함께 자라는 1모둠</dd></dl>`,`<h4 style="font-size:14px;margin-bottom:20px">이번 주 출결 기록</h4>${['월요일','화요일','수요일','목요일','금요일'].map(x=>`<div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><span class="small muted">${x}</span><span class="chip">출석</span></div>`).join('')}`,`<h4 style="font-size:14px;margin-bottom:20px">단원 학습 확인</h4>${[['국어',92],['수학',88],['통합',96]].map(([label,value])=>`<div class="score-row"><span>${label}</span><div class="score-track"><span style="width:${value}%"></span></div><strong>${value}점</strong></div>`).join('')}<p class="demo-sub" style="margin-top:30px">체험을 위한 가상의 학습 결과예요.</p>`];$('#demo').innerHTML=toolbar('김하늘 학생','정보를 한 자리에서 나누어 살펴보세요.')+`<div class="mini-card"><div class="tabs" role="tablist" aria-label="학생 정보 구분">${labels.map((x,i)=>`<button role="tab" id="tab-${i}" aria-controls="tab-panel" aria-selected="${s.tab===i}" tabindex="${s.tab===i?0:-1}" data-tab="${i}">${x}</button>`).join('')}</div><div class="tab-panel" id="tab-panel" role="tabpanel" aria-labelledby="tab-${s.tab}" tabindex="0">${content[s.tab]}</div></div>`;
+ const choose=i=>{s.tab=i;mount();$('#tab-'+i).focus()};many('[data-tab]','click',e=>choose(Number(e.currentTarget.dataset.tab)));many('[data-tab]','keydown',e=>{let next;if(e.key==='ArrowRight')next=(s.tab+1)%3;if(e.key==='ArrowLeft')next=(s.tab+2)%3;if(e.key==='Home')next=0;if(e.key==='End')next=2;if(next!==undefined){e.preventDefault();choose(next)}});
+};
+demos.split=s=>{
+ s.ratio??=38;s.selected??=0;const p=studentData()[s.selected];$('#demo').innerHTML=toolbar('학생 명단과 상세 정보','가운데 구분선을 좌우로 움직여 보세요.')+`<div class="split-frame" id="split-frame" style="grid-template-columns:minmax(0,${s.ratio}fr) 12px minmax(0,${100-s.ratio}fr)"><div class="split-list">${studentData().map(x=>`<button class="${s.selected===x.id?'active':''}" data-split-student="${x.id}" aria-pressed="${s.selected===x.id}">${avatar(x.name,x.id)}<span>${x.name}</span></button>`).join('')}</div><div class="split-handle" id="split-handle" role="separator" aria-orientation="vertical" aria-label="명단과 상세 정보의 너비 조절, 좌우 방향키 사용" aria-valuemin="25" aria-valuemax="70" aria-valuenow="${s.ratio}" tabindex="0">⋮</div><div class="split-info">${avatar(p.name,p.id)}<h4>${p.name}</h4><p>1학년 1반 · ${p.id+1}번</p><dl class="detail-lines"><dt>관찰 메모</dt><dd>${p.memo}</dd><dt>오늘의 출결</dt><dd><span class="chip">출석</span></dd></dl></div></div>`+note(`명단 <b id="split-ratio">${s.ratio}%</b> · 구분선에 초점을 맞추고 방향키로도 조절할 수 있어요.`);
+ const handle=$('#split-handle'),frame=$('#split-frame');const update=n=>{s.ratio=Math.max(25,Math.min(70,Math.round(n)));frame.style.gridTemplateColumns=`minmax(0,${s.ratio}fr) 12px minmax(0,${100-s.ratio}fr)`;handle.setAttribute('aria-valuenow',s.ratio);$('#split-ratio').textContent=s.ratio+'%'};let dragging=false;on(handle,'pointerdown',e=>{e.preventDefault();dragging=true;handle.setPointerCapture(e.pointerId)});on(handle,'pointermove',e=>{if(dragging){const b=frame.getBoundingClientRect();update((e.clientX-b.left)/b.width*100)}});on(handle,'pointerup',()=>dragging=false);on(handle,'pointercancel',()=>dragging=false);on(handle,'keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();update(e.key==='Home'?25:e.key==='End'?70:s.ratio+(e.key==='ArrowLeft'?-2:2))}});many('[data-split-student]','click',e=>{s.selected=Number(e.currentTarget.dataset.splitStudent);mount()});
+};
+
+demos.glass=s=>{
+ s.transparency??=72;s.blur??=12;$('#demo').innerHTML=toolbar('빛이 비치는 알림 카드','불투명 카드와 유리 효과를 비교해 보세요.')+`<div class="control-row"><label class="field">투명도 <output id="transparency-value">${s.transparency}%</output><input id="glass-transparency" type="range" min="0" max="95" value="${s.transparency}"></label><label class="field">배경 흐림 <output id="blur-value">${s.blur}px</output><input id="glass-blur" type="range" min="0" max="30" value="${s.blur}"></label></div><div class="comparison-labels"><span>적용 전 · 불투명 카드</span><span>적용 후 · 유리 효과</span></div><div class="glass-stage"><div class="glass-card before"><span class="eyebrow">우리반 소식</span><strong>함께하는<br>독서 시간</strong><small>오늘 3교시 · 학급 도서관</small></div><div class="glass-card" id="glass-card"><span class="eyebrow">우리반 소식</span><strong>함께하는<br>독서 시간</strong><small>오늘 3교시 · 학급 도서관</small></div></div>`+note('투명도를 높이면 뒤의 색이 비치고, 배경 흐림을 높이면 경계가 부드러워져요.');const update=()=>{const card=$('#glass-card');card.style.background=`rgba(255,255,255,${1-s.transparency/100})`;card.style.backdropFilter=`blur(${s.blur}px)`;$('#transparency-value').textContent=s.transparency+'%';$('#blur-value').textContent=s.blur+'px'};update();on('#glass-transparency','input',e=>{s.transparency=+e.target.value;update()});on('#glass-blur','input',e=>{s.blur=+e.target.value;update()});
+};
+demos.neumorphism=s=>{
+ s.on??=false;$('#demo').innerHTML=toolbar('손끝으로 느끼는 버튼','그림자의 방향이 입체감을 만들어요.')+`<div class="neu-stage"><div class="neu-card"><div class="row between"><span class="small muted">수업 집중 모드</span>${icon('sun',20)}</div><h3 style="font-size:24px;margin:14px 0 5px">${s.on?'집중 모드 켜짐':'잠시, 쉬어 가요'}</h3><p class="demo-sub">${s.on?'지금은 수업에 집중할 시간이에요.':'준비되면 집중 모드를 켜 보세요.'}</p></div><div class="neu-controls"><div class="stack" style="gap:12px;justify-items:center"><span class="neu-button plain" aria-hidden="true">${icon('power',24)}</span><small class="muted">그림자 없음</small></div><div class="stack" style="gap:12px;justify-items:center"><button class="neu-button" id="neu-power" aria-label="수업 집중 모드" aria-pressed="${s.on}">${icon('power',24)}</button><small class="muted">${s.on?'눌림형 · 켜짐':'돌출형 · 꺼짐'}</small></div></div></div>`+note('오른쪽 버튼을 클릭하면 그림자가 <b>바깥쪽 ↔ 안쪽</b>으로 바뀌어요.');on('#neu-power','click',()=>{s.on=!s.on;mount();$('#neu-power').focus()});
+};
+demos.dark=s=>{
+ s.dark??=false;$('#demo').innerHTML=toolbar('같은 화면, 다른 분위기','스위치로 라이트·다크 테마를 바꿔 보세요.',`<label class="row small">${icon(s.dark?'moon':'sun',16)}<span>다크 모드</span><span class="toggle"><input type="checkbox" id="dark-toggle" ${s.dark?'checked':''}><span></span></span></label>`)+`<div class="theme-scene" id="theme-scene" data-theme="${s.dark?'dark':'light'}"><div class="row between"><h3 style="font-size:17px">우리반 대시보드</h3><span class="theme-secondary">${icon(s.dark?'moon':'sun',20)}</span></div><p class="theme-secondary" style="font-size:11px;margin-top:8px">1학년 1반 · 함께 성장하는 교실</p><div class="kpi-grid"><div class="kpi"><p class="kpi-label">우리반 학생</p><p class="kpi-value">28<small>명</small></p></div><div class="kpi"><p class="kpi-label">오늘 출석률</p><p class="kpi-value">96<small>%</small></p></div><div class="kpi"><p class="kpi-label">새 알림</p><p class="kpi-value">3<small>개</small></p></div></div><div class="theme-tile"><span class="chip orange">오늘의 수업</span><h4 style="font-size:15px;margin:12px 0 7px">이야기 속 주인공을 만나요</h4><p class="theme-secondary" style="font-size:11px">국어 · 2교시</p></div></div>`+note(`현재 <b>${s.dark?'다크':'라이트'} 테마</b>예요. 이 체험 화면에만 적용돼요.`);on('#dark-toggle','change',e=>{s.dark=e.target.checked;mount();$('#dark-toggle').focus()});
+};
+demos.gradient=s=>{
+ s.color1??='#ee965a';s.color2??='#a786d2';s.angle??=135;s.enabled??=true;
+ $('#demo').innerHTML=toolbar('우리반의 색을 골라요','색상과 방향을 바꾸어 분위기를 비교해 보세요.',`<label class="row small"><span>효과 적용</span><span class="toggle"><input type="checkbox" id="gradient-enabled" ${s.enabled?'checked':''}><span></span></span></label>`)+`<div class="control-row" style="grid-template-columns:1fr auto"><div class="color-fields"><label class="field">첫 번째 색<span class="color-field"><input id="gradient-color1" type="color" value="${s.color1}"><span id="color1-value">${s.color1}</span></span></label><label class="field">두 번째 색<span class="color-field"><input id="gradient-color2" type="color" value="${s.color2}"><span id="color2-value">${s.color2}</span></span></label></div><label class="field">방향<select id="gradient-angle" style="font-size:11px;padding:9px 7px">${[[90,'오른쪽 →'],[180,'아래쪽 ↓'],[135,'대각선 ↘'],[45,'대각선 ↗']].map(([v,l])=>`<option value="${v}" ${s.angle===v?'selected':''}>${l}</option>`).join('')}</select></label></div><div class="gradient-card" id="gradient-card"><div class="readable"><span class="eyebrow">우리반 이야기</span><h3 style="margin-top:14px">다른 색이 만나<br>새로운 우리가 돼요.</h3><p>함께 배우는 1학년 1반</p></div></div><p class="css-readout" id="gradient-css"></p>`+note('효과 적용을 끄면 단색 배경과 비교할 수 있어요.');
+ const update=()=>{$('#gradient-card').style.background=s.enabled?`linear-gradient(${s.angle}deg,${s.color1},${s.color2})`:s.color1;$('#gradient-css').textContent=s.enabled?`linear-gradient(${s.angle}deg, ${s.color1}, ${s.color2})`:`background: ${s.color1} · 단색 비교`;$('#color1-value').textContent=s.color1;$('#color2-value').textContent=s.color2};update();on('#gradient-color1','input',e=>{s.color1=e.target.value;update()});on('#gradient-color2','input',e=>{s.color2=e.target.value;update()});on('#gradient-angle','change',e=>{s.angle=+e.target.value;update()});on('#gradient-enabled','change',e=>{s.enabled=e.target.checked;update()});
+};
+demos.hover=s=>{
+ s.enabled??=true;s.active??=[];const effects=[['lift','위로 살짝 이동','file','수업 자료'],['scale','조금 더 크게','book','독서 기록'],['shadow','그림자 더하기','calendar','오늘의 일정'],['color','색상 바꾸기','users','우리반 친구']];
+ $('#demo').innerHTML=toolbar('클릭을 부르는 작은 변화','마우스를 올리거나 카드를 눌러 보세요.',`<label class="row small"><span>효과 사용</span><span class="toggle"><input type="checkbox" id="hover-enabled" ${s.enabled?'checked':''}><span></span></span></label>`)+`<div class="hover-grid">${effects.map(([cls,label,ic,title],i)=>`<button class="hover-card ${s.enabled?cls:''} ${s.active.includes(i)?'simulate':''}" data-hover="${i}" aria-pressed="${s.active.includes(i)}">${icon(ic,25)}<strong>${title}</strong><span>${label}</span></button>`).join('')}</div>`+note('모바일에서는 <b>탭</b>해서 효과를 켜고 끌 수 있어요. 효과 사용을 끄면 적용 전과 비교할 수 있어요.');on('#hover-enabled','change',e=>{s.enabled=e.target.checked;mount()});many('[data-hover]','click',e=>{const el=e.currentTarget,i=+el.dataset.hover;s.active=s.active.includes(i)?s.active.filter(x=>x!==i):[...s.active,i];el.classList.toggle('simulate',s.active.includes(i));el.setAttribute('aria-pressed',String(s.active.includes(i)))});
+};
+demos.skeleton=s=>{
+ s.phase??='idle';$('#demo').innerHTML=toolbar('우리반 학생 명단','불러오는 동안에도 화면 구성을 알 수 있어요.',`<button class="btn primary" id="load-students" ${s.phase==='loading'?'disabled':''}>${icon('reset',13)}${s.phase==='loading'?'불러오는 중…':s.phase==='loaded'?'다시 불러오기':'명단 불러오기'}</button>`)+`<div id="loading-region" aria-busy="${s.phase==='loading'}">${s.phase==='idle'?'<div class="mini-card empty-state">'+icon('users',34)+'<p style="margin-top:17px">우리반 친구들을 만나 볼까요?</p><p class="small">명단 불러오기 버튼을 눌러 주세요.</p></div>':s.phase==='loading'?`<div class="mini-grid" aria-hidden="true">${Array.from({length:6},()=>'<div class="profile-card"><div class="skeleton-block skeleton-avatar"></div><div class="skeleton-block skeleton-line"></div><div class="skeleton-block skeleton-line short"></div><div class="skeleton-block skeleton-line short"></div></div>').join('')}</div>`:`<div class="mini-grid">${studentData().map(p=>`<article class="profile-card">${avatar(p.name,p.id)}<strong>${p.name}</strong><small>1학년 1반 · ${p.id+1}번</small><span class="chip">출석</span></article>`).join('')}</div>`}</div>`+note(s.phase==='loading'?'학생 정보를 불러오고 있어요. 잠시 후 실제 카드가 나타나요.':s.phase==='loaded'?'<b>불러오기 완료!</b> 스켈레톤이 학생 카드로 바뀌었어요.':'외부 연결 없이 체험용 명단을 불러와요.');on('#load-students','click',()=>{s.phase='loading';mount()});if(s.phase==='loading')later(()=>{s.phase='loaded';mount()},1500);
+};
+demos.toast=s=>{
+ s.kind??=null;s.expires??=0;if(s.expires<=Date.now())s.kind=null;const messages={success:['check','출결 정보를 저장했어요.'],error:['close','삭제하지 못했어요. 다시 시도해 주세요.'],warning:['warning','아직 확인하지 않은 출결이 있어요.']};
+ $('#demo').innerHTML=toolbar('작업 결과를 알려요','세 가지 알림을 차례로 띄워 보세요.')+`<div class="toast-scene"><div class="row">${icon('calendar',22)}<div><h4 style="font-size:15px">오늘의 출결 관리</h4><p class="demo-sub">상황에 맞게 결과를 짧게 알려 주세요.</p></div></div><div class="toast-actions"><button class="btn" data-toast="success" style="color:#668b70">${icon('check',14)}성공</button><button class="btn" data-toast="error" style="color:#b96864">${icon('close',14)}오류</button><button class="btn" data-toast="warning" style="color:#a28644">${icon('warning',14)}경고</button></div><div id="demo-toast-region" role="status" aria-live="polite">${s.kind?`<div class="demo-toast ${s.kind}">${icon(messages[s.kind][0],18)}<span>${messages[s.kind][1]}</span><button class="icon-btn" id="dismiss-toast" aria-label="알림 닫기">${icon('close',13)}</button></div>`:''}</div></div>`+note('토스트는 체험 화면의 오른쪽 아래에 표시되고 <b>3초 뒤 자동으로 사라져요.</b>');many('[data-toast]','click',e=>{s.kind=e.currentTarget.dataset.toast;s.expires=Date.now()+3000;mount()});on('#dismiss-toast','click',()=>{s.kind=null;s.expires=0;mount()});if(s.kind)later(()=>{s.kind=null;mount()},Math.max(1,s.expires-Date.now()));
+};
+demos.tooltip=s=>{
+ s.result??='마우스를 올리거나 Tab 키로 도움말을 보고, Esc로 닫아 보세요.';s.saved??=false;s.deleted??=false;s.settings??=false;
+ $('#demo').innerHTML=toolbar('작은 아이콘의 친절한 설명','호버·Tab으로 표시하고 Esc로 닫아 보세요.')+`<div class="mini-card" style="min-height:285px"><div class="row between"><h4 style="font-size:13px">오늘의 학급 메모</h4><span class="chip gray">${s.deleted?'삭제됨':s.saved?'저장됨':'작성 중'}</span></div><div class="tool-actions">${[['save','저장','메모를 저장합니다'],['trash','삭제','체험용 메모를 삭제합니다'],['settings','설정','메모 설정을 열고 닫습니다']].map(([ic,label,tip])=>`<span class="tooltip-host"><button class="icon-btn" data-tip-action="${ic}" aria-label="${label}" aria-describedby="tip-${ic}">${icon(ic,22)}</button><span class="tooltip-text" id="tip-${ic}" role="tooltip">${tip}</span></span>`).join('')}</div><p class="demo-sub" style="text-align:center">${s.deleted?'메모를 삭제했어요. 초기화하면 복원돼요.':'오늘은 친구의 이야기를 끝까지 들어 보아요.'}</p>${s.settings?'<div class="result-note">메모는 이 체험 안에서만 보관돼요.</div>':''}</div>`+note(s.result);
+ many('[data-tip-action]','click',e=>{const a=e.currentTarget.dataset.tipAction;if(a==='save'){s.saved=!s.deleted;s.result=s.deleted?'저장할 메모가 없어요. 초기화해서 다시 시작해 보세요.':'메모를 저장했어요.'}if(a==='trash'){s.deleted=true;s.saved=false;s.result='메모를 삭제했어요.'}if(a==='settings'){s.settings=!s.settings;s.result=s.settings?'메모 설정을 열었어요.':'메모 설정을 닫았어요.'}mount();$(`[data-tip-action="${a}"]`).focus()});
+};
+
+demos.drag=s=>{
+ s.order??=[0,1,2,3,4,5];s.message??='손잡이를 끌어 위치를 바꿔 보세요. 이동 버튼이나 방향키도 사용할 수 있어요.';const all=studentData();
+ $('#demo').innerHTML=toolbar('우리반 발표 순서','친구들의 발표 순서를 직접 정해 보세요.',`<span class="chip gray">6명</span>`)+`<div class="drag-list" id="drag-list">${s.order.map((id,i)=>`<div class="drag-item" draggable="true" data-drag-id="${id}"><button class="drag-grip" data-grip="${id}" aria-label="${all[id].name} 순서 이동, 위아래 방향키로 조절">${icon('grip',18)}</button><span class="small muted">${i+1}</span>${avatar(all[id].name,id)}<div class="grow"><strong>${all[id].name}</strong><small>${['내가 좋아하는 책','우리 동네 이야기','나의 소중한 물건','함께한 즐거운 순간','계절의 색깔','내가 꿈꾸는 미래'][id]}</small></div><div class="move-buttons"><button data-move="${id}" data-step="-1" aria-label="${all[id].name} 위로 이동" ${i===0?'disabled':''}>${icon('up',14)}</button><button data-move="${id}" data-step="1" aria-label="${all[id].name} 아래로 이동" ${i===5?'disabled':''}>${icon('down',14)}</button></div></div>`).join('')}</div>`+note(esc(s.message));
+ let dragged=null,target=null;const reorder=(from,to)=>{const a=s.order.indexOf(from),b=s.order.indexOf(to);if(a<0||b<0||a===b)return;s.order.splice(a,1);s.order.splice(b,0,from);s.message=`${all[from].name} 학생이 ${b+1}번째로 이동했어요.`;mount()};
+ const clear=()=>{$$('.drag-item',$('#demo')).forEach(x=>x.classList.remove('dragging','drag-over'));dragged=null;target=null};
+ on('#drag-list','dragstart',e=>{const row=e.target.closest('[data-drag-id]');if(!row)return;dragged=+row.dataset.dragId;row.classList.add('dragging');e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',String(dragged))});
+ on('#drag-list','dragover',e=>{if(dragged===null)return;e.preventDefault();e.dataTransfer.dropEffect='move';const row=e.target.closest('[data-drag-id]');$$('.drag-over',$('#demo')).forEach(x=>x.classList.remove('drag-over'));if(row){target=+row.dataset.dragId;row.classList.add('drag-over')}});
+ on('#drag-list','drop',e=>{e.preventDefault();const row=e.target.closest('[data-drag-id]');if(row&&dragged!==null)reorder(dragged,+row.dataset.dragId);clear()});on('#drag-list','dragend',clear);
+ many('[data-grip]','pointerdown',e=>{e.preventDefault();dragged=+e.currentTarget.dataset.grip;target=dragged;e.currentTarget.setPointerCapture(e.pointerId);e.currentTarget.closest('.drag-item').classList.add('dragging')});
+ many('[data-grip]','pointermove',e=>{if(dragged===null||!e.currentTarget.hasPointerCapture(e.pointerId))return;const row=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-drag-id]');if(row&&$('#drag-list').contains(row)){target=+row.dataset.dragId;$$('.drag-over',$('#demo')).forEach(x=>x.classList.remove('drag-over'));row.classList.add('drag-over')}});
+ many('[data-grip]','pointerup',e=>{if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);if(dragged!==null&&target!==null)reorder(dragged,target);clear()});many('[data-grip]','pointercancel',clear);
+ many('[data-move]','click',e=>{const id=+e.currentTarget.dataset.move,i=s.order.indexOf(id),j=i+(+e.currentTarget.dataset.step);if(j>=0&&j<s.order.length){reorder(id,s.order[j]);$(`[data-grip="${id}"]`).focus()}});
+ many('[data-grip]','keydown',e=>{if(!['ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();const id=+e.currentTarget.dataset.grip,i=s.order.indexOf(id),j=i+(e.key==='ArrowUp'?-1:1);if(j>=0&&j<s.order.length){reorder(id,s.order[j]);$(`[data-grip="${id}"]`).focus()}});
+};
+demos.inline=s=>{
+ s.students??=studentData();s.edit??=null;s.message??='이름이나 메모를 더블클릭해 보세요. 모바일에서는 텍스트를 탭하면 편집할 수 있어요.';
+ const editable=(p,field)=>s.edit?.id===p.id&&s.edit?.field===field?`<form id="inline-form"><label class="sr-only" for="inline-input">${field==='name'?'학생 이름':'관찰 메모'}</label><input class="inline-input" id="inline-input" value="${esc(p[field])}" maxlength="${field==='name'?20:120}" ${field==='name'?'required':''} autocomplete="off"><div class="row" style="gap:5px;margin-bottom:9px"><button type="submit" class="btn primary" style="padding:4px 9px;min-height:28px;font-size:10px">저장</button><button type="button" class="btn" id="inline-cancel" style="padding:4px 9px;min-height:28px;font-size:10px">취소</button></div></form>`:`<span class="editable-text ${field==='memo'?'memo':''}" role="button" tabindex="0" data-edit-id="${p.id}" data-edit-field="${field}" aria-label="${esc(p.name)} ${field==='name'?'이름':'메모'} 편집">${esc(p[field])||'메모를 입력해 주세요.'}</span>`;
+ $('#demo').innerHTML=toolbar('우리반 관찰 기록','별도 창 없이 이름과 메모를 수정해요.')+`<div class="inline-list">${s.students.map(p=>`<div class="inline-row">${avatar(p.name,p.id)}<div class="grow">${editable(p,'name')}${editable(p,'memo')}</div><button class="icon-btn" data-pencil="${p.id}" aria-label="${esc(p.name)} 이름 수정" style="width:28px;height:28px;border:0">${icon('edit',14)}</button></div>`).join('')}</div>`+note(esc(s.message));
+ const start=(id,field)=>{s.edit={id,field};mount();$('#inline-input').focus();$('#inline-input').select()};many('[data-edit-id]','dblclick',e=>start(+e.currentTarget.dataset.editId,e.currentTarget.dataset.editField));many('[data-edit-id]','pointerup',e=>{if(e.pointerType==='touch')start(+e.currentTarget.dataset.editId,e.currentTarget.dataset.editField)});many('[data-edit-id]','keydown',e=>{if(['Enter','F2',' '].includes(e.key)){e.preventDefault();start(+e.currentTarget.dataset.editId,e.currentTarget.dataset.editField)}});many('[data-pencil]','click',e=>start(+e.currentTarget.dataset.pencil,'name'));
+ const cancel=()=>{const edit=s.edit;s.edit=null;s.message='수정을 취소했어요. 원래 내용이 유지돼요.';mount();$(`[data-edit-id="${edit.id}"][data-edit-field="${edit.field}"]`)?.focus()};on('#inline-cancel','click',cancel);on('#inline-input','keydown',e=>{if(e.key==='Escape'){e.preventDefault();cancel()}});on('#inline-input','input',e=>e.target.setCustomValidity(''));on('#inline-form','submit',e=>{e.preventDefault();const value=$('#inline-input').value.trim(),edit=s.edit;if(edit.field==='name'&&!value){$('#inline-input').setCustomValidity('이름을 입력해 주세요.');$('#inline-input').reportValidity();return}s.students.find(p=>p.id===edit.id)[edit.field]=value;s.edit=null;s.message='변경한 내용을 저장했어요.';mount();$(`[data-edit-id="${edit.id}"][data-edit-field="${edit.field}"]`)?.focus()});
+};
+demos.context=s=>{
+ s.students??=studentData();s.nextId??=6;s.message??='학생 카드를 우클릭하거나 카드 오른쪽의 더 보기 버튼을 눌러 보세요.';
+ $('#demo').innerHTML=toolbar('학생 카드 관리','선택한 카드에 필요한 작업을 바로 실행해요.',`<span class="chip gray">${s.students.length}명</span>`)+`<div class="mini-grid">${s.students.map(p=>`<article class="profile-card context-card" data-context-id="${p.id}" tabindex="0" aria-label="${esc(p.name)} 학생 카드, 메뉴 키로 작업 열기">${avatar(p.name,p.id)}<strong>${esc(p.name)}</strong><small>1학년 1반</small><span class="chip">출석</span><button class="icon-btn" data-context-open="${p.id}" aria-label="${esc(p.name)} 작업 메뉴" aria-haspopup="menu">${icon('more',17)}</button></article>`).join('')}</div>${s.students.length?'':'<div class="empty-state">학생 카드가 없어요. 초기화하면 다시 나타나요.</div>'}`+note(esc(s.message))+editDialog('학생 정보 수정','','')+`<div class="context-menu" id="context-menu" role="menu" aria-label="학생 카드 작업" hidden><button role="menuitem" data-context-action="edit">${icon('edit',15)}수정</button><button role="menuitem" data-context-action="copy">${icon('copy',15)}복사</button><button role="menuitem" data-context-action="delete">${icon('trash',15)}삭제</button></div>`;
+ let activeId=null,returnFocus=null;const menu=$('#context-menu');const close=restore=>{menu.hidden=true;if(restore)returnFocus?.focus()};const show=(id,x,y,trigger)=>{activeId=id;returnFocus=trigger;menu.hidden=false;menu.style.left=Math.max(8,Math.min(x,innerWidth-163))+'px';menu.style.top=Math.max(8,Math.min(y,innerHeight-menu.offsetHeight-8))+'px';$('button',menu).focus()};
+ many('[data-context-id]','contextmenu',e=>{e.preventDefault();show(+e.currentTarget.dataset.contextId,e.clientX,e.clientY,e.currentTarget)});many('[data-context-open]','click',e=>{const r=e.currentTarget.getBoundingClientRect();show(+e.currentTarget.dataset.contextOpen,r.right-155,r.bottom+6,e.currentTarget)});many('[data-context-id]','keydown',e=>{if(e.key==='ContextMenu'||(e.shiftKey&&e.key==='F10')){e.preventDefault();const r=e.currentTarget.getBoundingClientRect();show(+e.currentTarget.dataset.contextId,r.left+15,r.top+30,e.currentTarget)}});
+ const dialog=wireDialog((name,memo)=>{const p=s.students.find(x=>x.id===activeId);if(p){p.name=name;p.memo=memo}},()=>`[data-context-open="${activeId}"]`);
+ many('[data-context-action]','click',e=>{const p=s.students.find(x=>x.id===activeId);if(!p)return;const action=e.currentTarget.dataset.contextAction;close(false);if(action==='edit'){$('#edit-name').value=p.name;$('#edit-name').setCustomValidity('');$('#edit-memo').value=p.memo;dialog.showModal()}else if(action==='copy'){s.students.push({...p,id:s.nextId++,name:p.name+' (복사)'});s.message=p.name+' 학생 카드를 복사했어요.';mount()}else if(action==='delete'){s.students=s.students.filter(x=>x.id!==activeId);s.message=p.name+' 학생 카드를 삭제했어요. 초기화하면 복원돼요.';mount()}});
+ on(document,'pointerdown',e=>{if(!menu.hidden&&!menu.contains(e.target))close(false)});on(document,'keydown',e=>{if(menu.hidden)return;if(e.key==='Escape'){e.preventDefault();close(true)}if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=$$('button',menu),i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:items.length-1))%items.length].focus()}if(e.key==='Tab')close(false)});on(window,'resize',()=>close(false));
+};
+demos.toggle=s=>{
+ s.values??=[true,false,true];const items=[['bell','알림 받기','새 공지와 학급 소식을 알려 드려요.','알림을 보내지 않아요.'],['save','자동 저장','작성하는 내용을 자동으로 저장해요.','저장 버튼을 눌러 직접 저장해 주세요.'],['volume','소리 사용','알림이 오면 소리로 알려 드려요.','알림을 소리 없이 표시해요.']];
+ $('#demo').innerHTML=toolbar('나에게 맞는 학급 앱','스위치로 각 설정을 켜고 꺼 보세요.')+`<div class="mini-card" style="padding:5px 18px">${items.map(([ic,title,onText,offText],i)=>`<div class="setting-row"><span class="setting-icon">${icon(ic,19)}</span><div class="grow"><h4 id="setting-title-${i}">${title}</h4><p id="setting-desc-${i}">${s.values[i]?onText:offText}</p></div><span class="setting-status ${s.values[i]?'on':''}" id="setting-status-${i}">${s.values[i]?'ON':'OFF'}</span><label class="toggle"><input type="checkbox" data-toggle="${i}" ${s.values[i]?'checked':''} aria-labelledby="setting-title-${i}" aria-describedby="setting-desc-${i}"><span></span></label></div>`).join('')}</div>`+note('스위치마다 <b>서로 독립적인 설정</b>을 바꿔요. 이 체험에서는 설정 상태와 안내가 변경돼요.');many('[data-toggle]','change',e=>{const i=+e.target.dataset.toggle;s.values[i]=e.target.checked;$('#setting-desc-'+i).textContent=items[i][s.values[i]?2:3];const status=$('#setting-status-'+i);status.textContent=s.values[i]?'ON':'OFF';status.classList.toggle('on',s.values[i])});
+};
+// Shared by the slides and the standalone practice document.
+// Shared by the slides and the standalone practice document.
+const ComboUI=(()=>{
+ const instances=new Set();let dismissedAt=-Infinity;
+ const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const chevron='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5"/></svg>';
+ const check='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg>';
+ function render(id,label,value){return '<div class="custom-combo"><button type="button" class="combo-trigger" id="'+escape(id)+'" role="combobox" aria-label="'+escape(label)+'" aria-haspopup="listbox" aria-expanded="false" aria-controls="'+escape(id)+'-options"><span class="combo-value">'+escape(value)+'</span>'+chevron+'</button></div>';}
+ function mount(trigger,items,value,onChange,settings={}){
+  const controller=new AbortController(),signal=controller.signal;
+  let options=items,selected=value,active=0,buffer='',typedAt=0,destroyed=false;
+  const menu=document.createElement('div');menu.id=trigger.id+'-options';menu.className='combo-menu';menu.role='listbox';menu.setAttribute('aria-label',trigger.getAttribute('aria-label'));menu.hidden=true;document.body.append(menu);
+  const listen=(node,type,fn,extra={})=>node.addEventListener(type,fn,{signal,...extra});
+  const index=()=>Math.max(0,options.findIndex(option=>String(option.value)===String(selected)));
+  function renderOptions(){
+   menu.innerHTML=options.map((option,i)=>'<div class="combo-option" role="option" id="'+menu.id+'-'+i+'" data-option="'+i+'" aria-selected="'+(i===index())+'"><span class="combo-option-text"><span>'+escape(option.label)+'</span>'+(option.detail?'<small>'+escape(option.detail)+'</small>':'')+'</span><span class="combo-check">'+check+'</span></div>').join('');
+   trigger.querySelector('.combo-value').textContent=options[index()]?.label||'';
+  }
+  function place(){
+   if(menu.hidden)return;const r=trigger.getBoundingClientRect(),margin=12,width=Math.min(Math.max(r.width,184),innerWidth-margin*2),desired=Math.min(270,menu.scrollHeight);
+   const below=innerHeight-r.bottom-margin-7,above=r.top-margin-7,up=below<desired&&above>below,space=Math.max(60,up?above:below);
+   menu.style.width=width+'px';menu.style.maxHeight=Math.min(270,space)+'px';
+   menu.style.left=Math.max(margin,Math.min(r.left,innerWidth-width-margin))+'px';
+   menu.style.top=Math.max(margin,up?r.top-menu.offsetHeight-7:r.bottom+7)+'px';menu.dataset.side=up?'up':'down';
+  }
+  function mark(scroll=true){
+   [...menu.children].forEach((el,i)=>el.classList.toggle('is-active',i===active));
+   if(!menu.hidden){trigger.setAttribute('aria-activedescendant',menu.id+'-'+active);if(scroll)menu.children[active]?.scrollIntoView({block:'nearest'});}
+  }
+  function close(focus=false){menu.hidden=true;trigger.setAttribute('aria-expanded','false');trigger.removeAttribute('aria-activedescendant');if(focus&&trigger.isConnected)trigger.focus({preventScroll:true});}
+  function open(){
+   if(!options.length)return;settings.beforeOpen?.();for(const instance of instances)if(instance!==api)instance.close();
+   active=index();renderOptions();menu.hidden=false;trigger.setAttribute('aria-expanded','true');place();mark();
+   if(!matchMedia('(prefers-reduced-motion: reduce)').matches)menu.animate([{opacity:0,transform:'translateY('+(menu.dataset.side==='up'?4:-4)+'px)'},{opacity:1,transform:'none'}],{duration:160,easing:'ease-out'});
+  }
+  function choose(i){const option=options[i];if(!option)return;selected=option.value;renderOptions();close(true);onChange(selected);}
+  listen(trigger,'click',event=>{event.stopPropagation();menu.hidden?open():close();});
+  listen(trigger,'keydown',event=>{
+   const key=event.key;
+   if(['ArrowLeft','ArrowRight'].includes(key)){event.stopPropagation();return;}
+   if(key==='Tab'){close();return;}
+   if(key==='Escape'){if(!menu.hidden){event.preventDefault();event.stopPropagation();close(true);}return;}
+   if(['ArrowDown','ArrowUp','Home','End','Enter',' '].includes(key)){
+    event.preventDefault();event.stopPropagation();
+    if(menu.hidden){open();if(key==='Home')active=0;if(key==='End')active=options.length-1;mark();return;}
+    if(key==='Enter'||key===' '){choose(active);return;}
+    active=key==='Home'?0:key==='End'?options.length-1:Math.max(0,Math.min(options.length-1,active+(key==='ArrowDown'?1:-1)));mark();return;
+   }
+   if(key.length===1&&!event.ctrlKey&&!event.metaKey&&!event.altKey){
+    event.stopPropagation();const now=performance.now();buffer=now-typedAt>700?key:buffer+key;typedAt=now;
+    const match=options.findIndex(option=>option.label.toLocaleLowerCase().startsWith(buffer.toLocaleLowerCase()));
+    if(match>=0){if(menu.hidden)open();active=match;mark();}
+   }
+  });
+  listen(menu,'pointerdown',event=>event.preventDefault());
+  listen(menu,'pointermove',event=>{const option=event.target.closest('[data-option]');if(option){active=Number(option.dataset.option);mark(false);}});
+  listen(menu,'click',event=>{const option=event.target.closest('[data-option]');if(option){event.stopPropagation();choose(Number(option.dataset.option));}});
+  listen(document,'pointerdown',event=>{if(!trigger.contains(event.target)&&!menu.contains(event.target)){if(!menu.hidden)dismissedAt=performance.now();close();}},{capture:true});
+  listen(document,'focusin',event=>{if(!trigger.contains(event.target)&&!menu.contains(event.target))close();});
+  listen(window,'resize',place);
+  listen(document,'scroll',event=>{if(!menu.hidden&&event.target!==menu&&!menu.contains(event.target))close();},{capture:true,passive:true});
+  const api={close,open,get isOpen(){return !menu.hidden;},setOptions(next,nextValue){options=next;selected=nextValue;active=index();renderOptions();if(!menu.hidden){place();mark();}},destroy(){if(destroyed)return;destroyed=true;controller.abort();menu.remove();instances.delete(api);}};
+  instances.add(api);settings.signal?.addEventListener('abort',()=>api.destroy(),{once:true});renderOptions();return api;
+ }
+ return{render,mount,dismissedRecently:()=>performance.now()-dismissedAt<400,anyOpen:()=>[...instances].some(instance=>instance.isOpen),closeAll:()=>{for(const instance of instances)instance.close();}};
+})();
+
+
+const dropdownTerm=TERMS.find(term=>term.id==='dropdown');
+Object.assign(dropdownTerm,{
+ ko:'커스텀 콤보박스',en:'Custom Combobox',
+ concept:'같은 선택 기능을 브라우저·운영체제가 제공하는 기본 UI와 앱에 맞춘 커스텀 UI로 비교하는 선택 컨트롤',
+ experience:'양쪽 목록을 열고 학년·학급을 골라 보세요. 오른쪽에서는 ↑↓로 이동, Enter로 선택, Esc로 닫기도 해보세요.',
+ tech:'HTML select, ARIA Combobox, Keyboard Interaction',
+ prompt:'학년과 학급을 선택하는 콤보박스를 만들어 줘. 브라우저 기본 select와 앱의 색상·글꼴·여백에 맞춘 커스텀 콤보박스를 나란히 비교할 수 있게 해 줘. 두 방식은 같은 선택 값을 공유하고, 학년이 바뀌면 해당 학년의 학급 목록으로 갱신해 줘. 커스텀 목록에는 선택 표시와 부드러운 열림 효과를 적용하고, 화면 밖으로 잘리지 않게 위치를 조정해 줘. 방향키 탐색, Enter 선택, Esc 닫기, Tab 이동과 스크린리더 지원도 구현해 줘.'
+});
+usecases[TERMS.findIndex(term=>term.id==='dropdown')]='학생·학급 선택처럼 자주 쓰는 입력 요소에서 기본 조작과 앱에 어울리는 디자인을 비교할 때 활용해요. 기본형은 브라우저가 조작을 제공하고, 커스텀형은 모양과 함께 키보드·포커스 동작도 갖춰야 해요.';
+demos.dropdown=s=>{
+ s.grade??=1;s.room??=1;const counts={1:3,2:4,3:2};
+ const grades=[1,2,3].map(n=>({value:n,label:n+'학년',detail:counts[n]+'개 학급'}));
+ const rooms=()=>Array.from({length:counts[s.grade]},(_,i)=>({value:i+1,label:(i+1)+'반',detail:s.grade+'학년'}));
+ const nativeOptions=(items,value)=>items.map(item=>'<option value="'+item.value+'"'+(item.value===value?' selected':'')+'>'+esc(item.label)+'</option>').join('');
+ $('#demo').innerHTML=toolbar('같은 선택, 다른 표현','양쪽이 같은 값을 공유합니다. 모양과 조작감을 비교해 보세요.')+
+ `<div class="combo-comparison">
+  <section class="combo-example native-example"><span class="combo-example-tag">기본 컨트롤</span><h4>브라우저 기본 콤보박스</h4><p>브라우저·운영체제가 제공하는 선택 목록</p>
+   <div class="combo-example-fields"><label class="field">학년<select class="native-combo" id="select-grade">${nativeOptions(grades,s.grade)}</select></label><label class="field">학급<select class="native-combo" id="select-room">${nativeOptions(rooms(),s.room)}</select></label></div>
+   <ul><li>기본 목록 모양과 선택 표시</li><li>브라우저가 제공하는 키보드 조작</li></ul><small>기본 모양은 브라우저·운영체제에 따라 달라요.</small>
+  </section>
+  <section class="combo-example custom-example"><span class="combo-example-tag">커스텀 컨트롤</span><h4>앱에 어울리는 콤보박스</h4><p>색상, 여백, 선택 표시까지 일관되게</p>
+   <div class="combo-example-fields"><div class="field"><span>학년</span>${ComboUI.render('custom-grade','커스텀 학년',s.grade+'학년')}</div><div class="field"><span>학급</span>${ComboUI.render('custom-room','커스텀 학급',s.room+'반')}</div></div>
+   <ul><li>앱 색상과 선택 체크 표시</li><li>방향키·Enter·Esc로도 조작</li></ul><small>직접 만든 목록에서도 같은 선택 작업을 해보세요.</small>
+  </section>
+ </div><div class="combo-comparison-result" role="status"><span>${icon('users',23)}</span><div><small>현재 선택</small><h3 id="combo-class-result"></h3><p id="combo-class-note"></p></div></div>`;
+ let gradeCombo,roomCombo;
+ const sync=()=>{
+  $('#select-grade').value=String(s.grade);$('#select-room').innerHTML=nativeOptions(rooms(),s.room);
+  gradeCombo?.setOptions(grades,s.grade);roomCombo?.setOptions(rooms(),s.room);
+  $('#combo-class-result').textContent=s.grade+'학년 '+s.room+'반';$('#combo-class-note').textContent=s.grade+'학년에는 '+counts[s.grade]+'개 학급이 있어요. 학년을 바꾸면 학급은 1반으로 돌아가요.';
+ };
+ const grade=value=>{s.grade=Number(value);s.room=1;sync();};const room=value=>{s.room=Number(value);sync();};
+ gradeCombo=ComboUI.mount($('#custom-grade'),grades,s.grade,grade,{signal:demoController.signal});
+ roomCombo=ComboUI.mount($('#custom-room'),rooms(),s.room,room,{signal:demoController.signal});
+ on('#select-grade','change',event=>grade(event.target.value));on('#select-room','change',event=>room(event.target.value));sync();
+};
+
+$('#open-nav').innerHTML=icon('menu',20);$('#close-nav').innerHTML=icon('close',16);$('#experience-title').innerHTML=icon('play',15)+'체험 플레이그라운드';$('#reset-demo').innerHTML=icon('reset',14)+'초기화';$('#browser-icon').innerHTML=icon('lock',11);$('#demo-footer').innerHTML=icon('info',11)+'체험용 가상 데이터입니다. 자유롭게 조작해 보세요.';$('#concept-heading').innerHTML=icon('book',16)+'이 용어, 어떤 뜻인가요?';$('#prompt-heading').innerHTML=icon('spark',16)+'AI에게 이렇게 요청해요';$('#copy-prompt').innerHTML=icon('copy',15)+'프롬프트 복사';
+renderNav();
+$('#term-nav').addEventListener('click',e=>{const c=e.target.closest('[data-category]');if(c){const expanded=c.getAttribute('aria-expanded')==='true';c.setAttribute('aria-expanded',String(!expanded));$('#category-'+c.dataset.category).hidden=expanded}const b=e.target.closest('[data-term]');if(b){activate(TERMS.findIndex(t=>t.id===b.dataset.term));if(matchMedia('(max-width:700px)').matches){setNav(false);$('#main').focus({preventScroll:true});window.scrollTo({top:0,behavior:'smooth'})}}});
+$('#reset-demo').addEventListener('click',()=>{delete states[TERMS[current].id];mount();$('#demo').classList.remove('reset-flash');void $('#demo').offsetWidth;$('#demo').classList.add('reset-flash');notify('현재 체험을 처음 상태로 되돌렸어요.')});
+$('#previous').addEventListener('click',()=>activate(current-1));$('#next').addEventListener('click',()=>activate(current+1));
+$('#copy-prompt').addEventListener('click',async()=>{const text=TERMS[current].prompt;const ok=await copyText(text);if(ok)notify('프롬프트를 복사했어요. AI 대화창에 붙여 넣어 보세요.');else{const range=document.createRange();range.selectNodeContents($('#prompt-text'));const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range);notify('복사가 제한되어 내용을 선택했어요. 길게 누르거나 Ctrl+C로 복사해 주세요.')}});
+$('#open-nav').addEventListener('click',()=>setNav(true));$('#close-nav').addEventListener('click',()=>{setNav(false);$('#open-nav').focus()});$('#nav-overlay').addEventListener('click',()=>{setNav(false);$('#open-nav').focus()});document.addEventListener('keydown',e=>{if(!$('#sidebar').classList.contains('open'))return;if(e.key==='Escape'){setNav(false);$('#open-nav').focus()}if(e.key==='Tab'){const buttons=$$('button',$('#sidebar')).filter(el=>el.getClientRects().length);const first=buttons[0],last=buttons[buttons.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+matchMedia('(max-width:700px)').addEventListener('change',()=>setNav(false));setNav(false);
+activate(0);
+</script>
+</body>
+</html>

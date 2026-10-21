@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>애니메이션·인터랙션 · 22가지 실습</title>
+<style>
+:root{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif;color:#202938;background:#f5f6f8;font-synthesis:none;--orange:#c34d10;--soft:#fff1e7;--line:#e3e6eb;--muted:#6b7280;--navy:#172033;--duration:.6s;--amount:18px}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer;color:inherit;border:1px solid var(--line);border-radius:9px;padding:10px 14px;background:white;font-weight:650;font-size:13px;min-height:40px}button:hover{border-color:var(--orange);background:var(--soft)}button:focus-visible,input:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid #f97316;outline-offset:3px}button:disabled{opacity:.45;cursor:default}[hidden]{display:none!important}button.primary{background:var(--navy);color:white;border-color:var(--navy)}p{line-height:1.75}button,input{touch-action:manipulation}input[type=range]{accent-color:var(--orange);max-width:100%}h1,h2,h3,p{margin-top:0}.app-header{height:70px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 28px;background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.app-brand{display:flex;align-items:center;gap:11px}.brand-symbol{width:34px;height:34px;border-radius:10px;background:var(--soft);display:grid;place-items:center;color:var(--orange);font-size:21px}.app-brand strong{display:block;font-size:14px}.app-brand small{display:block;font-size:10px;color:var(--muted);margin-top:3px;letter-spacing:.08em}.motion-label{display:flex;gap:7px;align-items:center;color:var(--muted);font-size:12px}.motion-label input{accent-color:var(--orange);width:16px;height:16px}.layout{display:grid;grid-template-columns:240px minmax(0,1fr)}.sidebar{height:calc(100dvh - 70px);position:sticky;top:70px;background:white;border-right:1px solid var(--line);overflow:auto;padding:23px 13px;scrollbar-width:thin}.sidebar-heading{display:flex;justify-content:space-between;align-items:center;padding:0 10px 15px;font-size:12px;font-weight:750}.sidebar-heading span{font-size:10px;color:var(--orange);background:var(--soft);padding:4px 7px;border-radius:5px}.group-title{font-size:10px;color:var(--muted);margin:18px 10px 8px;font-weight:700}.term{width:100%;text-align:left;display:flex;gap:10px;align-items:center;padding:9px 10px;border:1px solid transparent;background:transparent;font-size:12px;line-height:1.5;margin:1px 0;min-height:40px}.term .num{font-size:10px;color:#8a919c;font-variant-numeric:tabular-nums;width:22px;flex-shrink:0}.term[aria-current=true]{background:var(--soft);border-color:#f9731638;color:var(--orange)}.term[aria-current=true] .num{color:var(--orange)}.sidebar-tip{font-size:11px;color:var(--muted);line-height:1.8;padding:18px 10px;border-top:1px solid var(--line);margin:20px 0 0}.main{min-width:0;width:100%;max-width:1260px;margin:0 auto;padding:32px 42px 28px}.eyebrow{color:var(--orange);font-size:11px;letter-spacing:.025em;font-weight:750;margin-bottom:12px}.title-row{display:flex;gap:16px;justify-content:space-between;align-items:flex-start}.title-row h1{font-size:clamp(24px,3vw,36px);letter-spacing:-.05em;margin-bottom:7px;line-height:1.3}.english{font-size:12px;color:var(--muted);margin:0}.index{color:#d9dde3;font-size:46px;font-weight:800;line-height:1;letter-spacing:-.06em}.intro{font-size:14px;margin:18px 0 22px;color:#566171}.demo-card{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden}.demo-top{padding:13px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}.live-label{font-size:10px;font-weight:750;letter-spacing:.08em;display:flex;align-items:center;gap:7px}.live-label:before{content:"";width:6px;height:6px;border-radius:50%;background:#dc6426}.demo-top small{font-size:11px;color:var(--muted)}.stage{height:320px;position:relative;overflow:hidden;background:#f8f9fb;isolation:isolate}.stage.center{display:flex;align-items:center;justify-content:center;padding:24px}.stage svg{display:block;max-width:100%;height:auto}.demo-bottom{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:13px 18px;border-top:1px solid var(--line);min-height:65px}.status{font-size:12px;color:#626b7a;line-height:1.6}.actions{display:flex;gap:7px;flex-shrink:0;flex-wrap:wrap}.actions button{font-size:12px;padding:8px 12px}.controls{display:flex;flex-wrap:wrap;gap:14px 30px;background:#fafbfc;padding:15px 18px;border-top:1px solid var(--line)}.control{flex:1;min-width:170px;display:grid;grid-template-columns:1fr auto;gap:8px;font-size:11px;font-weight:650}.control output{color:var(--orange);font-variant-numeric:tabular-nums}.control input{grid-column:1/-1;width:100%;margin:2px 0}.help-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;margin-top:22px}.help-card{border:1px solid var(--line);background:white;border-radius:13px;padding:21px;min-width:0}.help-card h2{font-size:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}.help-card p{font-size:12px;color:#5d6573;margin-bottom:0;word-break:keep-all;overflow-wrap:anywhere}.help-card p+p{margin-top:12px}.help-card .use{color:var(--orange)}.prompt{background:#fffaf6;border-color:#f1ded1}.prompt h2{color:var(--orange)}.copy{padding:6px 9px;font-size:11px;min-height:30px;background:white;white-space:nowrap}.prompt-text{font-size:14px;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere;user-select:text}.formula{font-size:12px;line-height:1.75;color:#8a7568;margin-top:13px;padding-top:12px;border-top:1px solid #f1ded1}.paging{display:flex;justify-content:space-between;gap:10px;margin-top:22px}.paging button{font-size:12px}.footer-tip{font-size:11px;color:var(--muted);margin:20px 0 0;line-height:1.7}.mobile-nav,.nav-close{display:none}.scrim{display:none}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--navy);color:white;padding:11px 18px;border-radius:9px;font-size:12px;z-index:50;max-width:90vw;text-align:center}.scrollbox{height:100%;overflow:auto;position:relative;overscroll-behavior:contain;scrollbar-width:thin;outline-offset:-4px!important}.scrollbox .content{max-width:650px;margin:auto;padding:28px}.mini-card{background:white;border:1px solid var(--line);border-radius:13px;padding:23px;box-shadow:0 5px 20px #17203305}.mini-card h3{font-size:19px;margin-bottom:10px;letter-spacing:-.03em}.mini-card p{font-size:13px;color:var(--muted);margin:0}.tag{display:inline-block;background:var(--soft);color:var(--orange);padding:4px 7px;border-radius:5px;font-size:10px;font-weight:700;margin-bottom:14px}.demo-title{font-size:24px;font-weight:750;letter-spacing:-.04em;line-height:1.4}.demo-sub{font-size:12px;color:var(--muted);line-height:1.7;margin-top:10px}.scene{width:100%;height:100%;object-fit:cover}.scene svg{width:100%;height:100%;object-fit:cover}.parallax-scene{height:100%;position:sticky;top:0;overflow:hidden;background:#fff1df}.layer{position:absolute;inset:0;will-change:transform}.layer svg{width:100%;height:100%}.parallax-label{position:absolute;top:25px;left:28px;z-index:4;max-width:240px}.parallax-label small{font-size:11px;color:#805443}.parallax-spacer{height:720px;background:linear-gradient(#c65b3f,#813d37);color:white;padding:70px 30px}.parallax-spacer p{max-width:350px;font-size:16px}.fade-card{opacity:0;transform:translateY(var(--amount));transition:opacity var(--duration),transform var(--duration);margin:0 auto 80px;max-width:450px}.fade-card.revealed{opacity:1;transform:none}.reveal-content{padding:65px 24px 200px}.pin-wrap{height:1120px;padding:0 18px}.pinned{position:sticky;top:24px;height:265px;display:flex;align-items:center;justify-content:center;gap:30px;background:#fff4e9;border:1px solid #efdbc8;border-radius:14px;padding:28px}.pin-number{font-size:96px;font-weight:800;line-height:1;color:#de783e}.pin-copy{max-width:300px}.horizontal-sticky{position:sticky;top:0;height:320px;overflow:hidden;display:flex;align-items:center}.horizontal-track{display:flex;width:100%;will-change:transform}.horizontal-card{flex:0 0 100%;height:260px;padding:25px 36px;display:flex;flex-direction:column;justify-content:center;color:white}.horizontal-card:nth-child(1){background:#b65a38}.horizontal-card:nth-child(2){background:#2e6862}.horizontal-card:nth-child(3){background:#465a90}.horizontal-card small{font-size:11px;opacity:.75;margin-bottom:15px}.horizontal-card p{margin:10px 0 0;font-size:13px}.snap-box{scroll-snap-type:y mandatory}.snap-panel{height:100%;min-height:320px;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#fff1e7}.snap-panel:nth-child(2){background:#e4f0e9}.snap-panel:nth-child(3){background:#e9ebf9}.snap-panel strong{font-size:34px}.snap-panel small{color:#667085;font-size:12px}.reading-bar{position:sticky;top:0;height:6px;background:#e9e6e1;z-index:3}.reading-bar span{display:block;height:100%;width:0;background:#d85e27}.reading-body{max-width:560px;margin:auto;padding:32px}.reading-body p{font-size:14px;line-height:2.1;margin-bottom:35px}.highlight-target{font-size:25px;font-weight:750;line-height:1.9}.highlight-target mark{background:linear-gradient(#ffd77b,#ffd77b) no-repeat 0 85% / 0% 46%;color:inherit;transition:background-size var(--duration);box-decoration-break:clone;-webkit-box-decoration-break:clone}.highlight-target.marked mark{background-size:100% 46%}.art-thumb{width:100%;height:120px;margin-bottom:18px;overflow:hidden;border-radius:8px}.art-thumb svg{width:100%;height:100%}.zoom-frame{width:430px;max-width:100%;height:245px;overflow:hidden;position:relative;border-radius:14px;box-shadow:0 5px 20px #17203315}.zoom-frame .scene{transition:transform var(--duration)}.zoom-frame.is-on .scene{transform:scale(var(--zoom,1.18))}.image-caption{position:absolute;left:18px;bottom:17px;background:#fffdf4eb;color:#593d31;border-radius:7px;padding:9px 13px;font-size:11px;z-index:1}.pointer-zone{width:100%;height:100%;position:relative;touch-action:none;overflow:hidden;display:grid;place-items:center;text-align:center;padding:25px;background:radial-gradient(ellipse at 20% 15%,#fce9d7,transparent 70%)}.follower{position:absolute;left:0;top:0;pointer-events:none;width:56px;height:56px;border-radius:50%;border:1.5px solid #d65b23;background:#f9731626;transform:translate(30px,30px);transition:transform var(--duration) ease-out;z-index:2}.pointer-text{pointer-events:none}.magnet{background:var(--navy);color:white;border:0;padding:20px 28px;border-radius:999px;transition:transform var(--duration) ease-out;z-index:2}.magnet:hover{background:#243149;color:white}.ripple-button{position:relative;overflow:hidden;background:var(--navy);color:white;padding:22px 48px;border-radius:13px;border:0;font-size:16px}.ripple-button:hover{background:#273650;color:white}.ripple-dot{position:absolute;pointer-events:none;border-radius:50%;background:#ffbe85aa;transform:scale(0);animation:ripple var(--duration) ease-out forwards}@keyframes ripple{to{transform:scale(1);opacity:0}}.underline-nav{display:flex;gap:28px;flex-wrap:wrap;justify-content:center}.underline-link{position:relative;padding:12px 2px;border:0;border-radius:0;background:transparent;font-size:16px}.underline-link:hover{background:transparent}.underline-link:after{content:"";position:absolute;bottom:3px;left:0;width:100%;height:3px;border-radius:2px;background:#db6327;transform:scaleX(0);transform-origin:left;transition:transform var(--duration)}.underline-link.is-on:after,.underline-link:focus-visible:after{transform:scaleX(1)}.compare-wrap{width:min(470px,100%)}.compare{height:220px;position:relative;overflow:hidden;border-radius:12px;touch-action:none;cursor:ew-resize}.compare .scene{position:absolute;inset:0}.compare .after{clip-path:inset(0 50% 0 0)}.compare-label{position:absolute;top:14px;background:#ffffffd9;padding:5px 8px;border-radius:5px;font-size:10px;pointer-events:none}.compare-label.left{left:14px}.compare-label.right{right:14px}.compare-line{position:absolute;left:50%;top:0;bottom:0;width:3px;background:white;pointer-events:none}.compare-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:33px;height:33px;border-radius:50%;background:white;color:#75503e;display:grid;place-items:center;font-size:16px;box-shadow:0 2px 10px #0002}.compare-range{width:100%;margin:17px 0 0}.exit-zone{height:100%;width:100%;display:grid;place-items:center;padding:25px;background:linear-gradient(120deg,#f2eee6,#f8f4ee);position:relative;text-align:center}.exit-boundary{position:absolute;top:0;left:0;right:0;text-align:center;border-top:3px dashed #d9976f;font-size:10px;color:#987254;padding-top:7px}.local-popup{position:absolute;inset:0;background:#17203380;z-index:5;display:grid;place-items:center;padding:20px}.popup-card{background:white;max-width:330px;border-radius:16px;padding:25px;box-shadow:0 20px 60px #0003}.popup-card h3{font-size:20px;margin-bottom:8px}.popup-card p{font-size:12px;color:var(--muted);margin:0 0 18px}.preloader{position:absolute;inset:0;background:#172033;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;color:white;z-index:3}.spinner{width:42px;height:42px;border:3px solid #ffffff26;border-top-color:#ff9b5d;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.load-progress{width:180px;height:3px;border-radius:3px;background:#ffffff26;overflow:hidden}.load-progress span{display:block;height:100%;width:0;background:#ff9b5d;transition:width .08s}.loading-caption{font-size:12px}.lazy-list{max-width:460px;margin:auto;padding:24px}.lazy-card{margin-bottom:28px;background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden}.lazy-photo{height:180px;background:repeating-linear-gradient(110deg,#e9ecf0 0,#e9ecf0 35px,#f0f2f5 35px,#f0f2f5 70px);position:relative;display:grid;place-items:center;font-size:11px;color:var(--muted)}.lazy-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.lazy-photo img:not([src]){display:none}.lazy-card p{font-size:11px;padding:12px 16px;margin:0}.type-area{width:100%;max-width:530px}.type-line{font-size:clamp(22px,4vw,35px);line-height:1.6;font-weight:750;color:#bb4f20;min-height:114px;overflow-wrap:anywhere}.type-cursor{display:inline-block;width:2px;height:1em;background:currentColor;vertical-align:-.1em;animation:blink 1s steps(1) infinite;margin-left:3px}@keyframes blink{50%{opacity:0}}.type-area small{font-size:11px;color:var(--muted)}.transition-page{height:100%;width:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:25px;background:#e9efe9;text-align:center}.transition-page.alt{background:#f9e5d9}.transition-page small{font-size:11px;color:#6c766d}.curtain{position:absolute;inset:0;background:#172033;z-index:3;transform:translateX(-101%);display:grid;place-items:center;color:#ff9b5d;font-size:32px}.curtain.running{animation:curtain var(--duration) ease-in-out forwards}@keyframes curtain{0%{transform:translateX(-101%)}45%,55%{transform:translateX(0)}100%{transform:translateX(101%)}}.smooth-nav{position:sticky;top:0;padding:10px 14px;display:flex;gap:7px;background:#ffffffed;border-bottom:1px solid var(--line);z-index:2}.smooth-nav button{font-size:11px;padding:6px 11px;min-height:32px}.smooth-section{height:290px;padding:38px 28px;scroll-margin-top:60px}.smooth-section:nth-of-type(2){background:#e6eee9}.smooth-section:nth-of-type(3){background:#f9eadd}.marquee-wrap{width:100%;overflow:hidden;transform:rotate(-3deg);background:var(--navy);padding:22px 0;border-block:4px solid #ef9e64}.marquee-track{display:flex;width:max-content;animation:marquee var(--duration) linear infinite}.marquee-copy{display:flex;align-items:center;gap:30px;white-space:nowrap;padding-right:30px;color:white;font-size:clamp(23px,3vw,36px);font-weight:750;letter-spacing:-.04em}.marquee-copy span{color:#ffab72}.marquee-copy i{font-style:normal;color:#ee9b63}@keyframes marquee{to{transform:translateX(-50%)}}.gradient-art{width:100%;height:100%;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:30px;text-align:center;background:linear-gradient(120deg,#fbc79f,#f1adc3,#c9bcf0,#a7d5d3,#fbc79f);background-size:300% 300%;animation:gradient var(--duration) ease infinite}.gradient-art .demo-title{font-size:32px;color:#3b304c}.gradient-art p{font-size:12px;color:#554260;margin-top:15px}@keyframes gradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.float-scene{width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(ellipse at center,#fff0dd,transparent 65%);position:relative;overflow:hidden}.floating-object{animation:float var(--duration) ease-in-out infinite;display:grid;place-items:center;width:112px;height:112px;border-radius:28px;background:linear-gradient(145deg,#ffb270,#eb753e);color:white;font-size:52px;box-shadow:0 20px 40px #de7a3a30;transform:rotate(-8deg);z-index:1}.float-bubble{position:absolute;width:28px;height:28px;border-radius:50%;background:#d4dfce;left:25%;top:30%;animation:float var(--duration) ease-in-out infinite;animation-delay:-1s}.float-bubble.second{width:17px;height:17px;left:auto;right:27%;top:65%;background:#d8cee8;animation-delay:-2s}.float-shadow{position:absolute;top:76%;width:100px;height:10px;background:#8e593b20;border-radius:50%;filter:blur(4px)}@keyframes float{0%,100%{translate:0 0}50%{translate:0 calc(-1 * var(--amount))}}.paused .stage *,.inactive .stage *{animation-play-state:paused!important}.reduce .stage *{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reduce .fade-card{opacity:1;transform:none}.reduce .highlight-target mark{background-size:100% 46%}.reduce .layer{transform:none!important}.reduce .floating-object{translate:0 0!important}.reduce .type-cursor{display:none}
+@media(hover:hover){.zoom-frame:hover .scene{transform:scale(var(--zoom,1.18))}.underline-link:hover:after{transform:scaleX(1)}}
+@media(min-width:1500px){.main{padding-top:42px}.stage{height:360px}.horizontal-sticky{height:360px}.snap-panel{min-height:360px}.help-grid{margin-top:25px}}
+@media(max-width:1100px){.layout{grid-template-columns:215px minmax(0,1fr)}.main{padding:27px 25px}.help-grid{grid-template-columns:1fr}.help-card{padding:18px}.app-header{padding:0 22px}.demo-bottom{align-items:flex-start;flex-direction:column;gap:10px}.actions{width:100%}.sidebar{padding-inline:10px}.term{font-size:11px}}
+@media(max-width:700px){.app-header{height:61px;padding:0 15px;gap:10px}.app-brand strong{font-size:12px}.app-brand small{font-size:9px}.brand-symbol{display:none}.motion-label{font-size:10px;gap:4px}.motion-label input{width:14px;height:14px}.layout{display:block}.main{padding:20px 16px}.sidebar{position:fixed;left:0;top:61px;bottom:0;width:min(290px,86vw);height:auto;z-index:35;transform:translateX(-102%);transition:transform .2s}.nav-open .sidebar{transform:none}.scrim{position:fixed;inset:61px 0 0;background:#17203380;z-index:30;border:0;border-radius:0}.nav-open .scrim{display:block}.mobile-nav{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;min-height:32px;font-size:11px;margin-bottom:18px}.nav-close{display:block;font-size:17px;padding:2px 8px;min-height:30px}.index{font-size:37px}.title-row{gap:8px}.intro{font-size:12px;margin:14px 0 18px}.eyebrow{font-size:10px;margin-bottom:10px}.stage{height:300px}.horizontal-sticky{height:300px}.snap-panel{min-height:300px}.demo-top{padding:12px}.demo-top small{font-size:10px}.demo-bottom{padding:12px}.controls{padding:14px 12px;gap:18px}.control{min-width:150px}.help-grid{margin-top:16px;gap:12px}.help-card p{word-break:normal}.help-card{padding:17px}.paging button{font-size:11px;padding:9px 10px}.term{font-size:12px}.pin-number{font-size:67px}.pinned{gap:18px;padding:20px;height:250px;top:20px}.demo-title{font-size:22px}.pin-wrap{padding:0 12px}.pointer-zone{padding:22px}.compare{height:190px}.underline-nav{gap:17px}.underline-link{font-size:14px}.stage.center{padding:20px}.app-brand small{letter-spacing:.03em}.formula{line-height:1.7}.horizontal-card{padding:25px}.marquee-copy{font-size:28px}.title-row h1{font-size:26px}.type-line{min-height:110px;font-size:25px}.scrollbox .content{padding:22px 18px}}
+</style>
+</head>
+<body>
+<header class="app-header"><div class="brand"><button class="mobile-menu" id="open-nav" aria-label="용어 메뉴 열기" aria-expanded="false" aria-controls="term-list">☰<span id="mobile-count" hidden></span></button><div class="brand-logo" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4Z" fill="currentColor" stroke="none"/></svg></div><div><div class="brand-name">바이브 코딩 <span style="font-weight:400;color:#a5aab2">/</span> 애니메이션 체험관</div><div class="brand-sub">용어를 이해하는 가장 쉬운 방법, 직접 해보기</div></div></div><div class="header-right"><span>교사를 위한 인터랙티브 가이드</span><span class="count-badge">3개 카테고리 · 22개 용어</span></div></header>
+<div class="layout"><button class="scrim" aria-label="목록 닫기" hidden></button><aside class="sidebar" aria-label="22가지 애니메이션·인터랙션"><div class="sidebar-top sidebar-heading"><strong>용어 둘러보기</strong><button class="nav-close" aria-label="용어 메뉴 닫기">×</button></div><nav id="term-list" aria-label="애니메이션 용어"></nav><p class="sidebar-tip"><strong>시각적 무드 · 움직임의 원리 · 상호작용</strong>을 말로 설명해 보세요.<br>세부 설정은 원하는 프로젝트에 맞춰 정하면 됩니다.</p></aside>
+<main class="main"><div class="eyebrow" id="category" hidden></div><div class="page-heading"><div class="title-row"><div><h1 id="title"></h1><p class="english" id="english"></p></div><span id="index" hidden></span></div></div><p class="intro" id="intro"></p>
+<section class="demo-card" aria-label="직접 체험하기"><div class="demo-top"><span class="live-label">LIVE DEMO</span><small id="gesture"></small></div><div class="stage" id="stage"></div><div class="demo-bottom"><span class="status" id="status" role="status"></span><div class="actions"><button class="primary" id="try-action">체험하기</button><button id="pause" aria-pressed="false" hidden>일시정지</button><button id="replay">↻ 처음부터</button></div></div><div class="controls" id="controls"></div></section>
+<div class="help-grid"><section class="help-card"><h2>어떻게 쓰면 좋을까요?</h2><p id="explain"></p><p class="use" id="use"></p></section><section class="help-card prompt"><h2>AI에게 이렇게 요청해요 <button class="copy" id="copy-prompt">프롬프트 복사</button></h2><div class="prompt-text" id="prompt-text" tabindex="0"></div><div class="formula">연출 이름 + 시각적 무드 + 상호작용 방식<br>적용 대상·색상·수치·구성은 원하는 프로젝트에 맞게 덧붙이세요.</div></section></div>
+<nav class="paging" aria-label="이전 다음 연출"><button id="prev">← 이전 연출</button><button id="next">다음 연출 →</button></nav><p class="footer-tip">이 화면의 모든 예제는 인터넷 없이 작동합니다. 스크롤은 데모 안에서, 호버는 마우스 또는 체험 버튼으로 실행해 보세요.</p>
+</main></div><div class="toast" role="status" id="toast" hidden></div>
+<script>
+'use strict';
+const GROUPS=['스크롤할 때','마우스를 올리거나 누를 때','불러올 때 · 넘어갈 때 · 계속'];
+// 각 항목: ID, 한글 이름, 영문 이름, 요약, 작동 원리, 활용 예, 프롬프트, 시간 기본값, 강도 설정, 분류 번호.
+const TERMS=[
+ [
+  "parallax",
+  "패럴랙스 스크롤",
+  "Parallax Scrolling",
+  "배경과 앞쪽 요소가 서로 다른 속도로 움직여 깊이감을 만듭니다.",
+  "뒤쪽 층은 천천히, 앞쪽 층은 빠르게 움직입니다. 데모 안을 아래로 스크롤하며 산과 언덕의 속도를 비교해 보세요.",
+  "활용: 수업 소개 페이지, 이야기의 시작 화면",
+  "패럴랙스 스크롤(Parallax Scrolling)을 적용해 줘. 전경과 배경 레이어가 서로 다른 상대 속도로 움직이는 스크롤 연동 모션으로 공간의 깊이감과 장면의 입체감을 표현해 줘. 움직임은 스크롤의 흐름과 자연스럽게 연결하고 레이어 사이의 거리감이 느껴지는 몰입형 무드로 연출해 줘. 본문과 주요 조작 요소는 안정적으로 읽히도록 유지해 줘.",
+  null,
+  [
+   "앞쪽 층 이동 비율",
+   10,
+   50,
+   5,
+   35,
+   "%"
+  ],
+  0
+ ],
+ [
+  "fade",
+  "스크롤 페이드인",
+  "Fade-in on Scroll",
+  "화면에 들어온 카드가 서서히 나타납니다.",
+  "카드가 보이는 영역에 들어오면 투명도를 높이면서 아래에서 위로 움직입니다. 한 번 나타난 내용은 계속 읽을 수 있습니다.",
+  "활용: 학습 단계, 활동 소개 카드",
+  "스크롤 페이드인(Fade-in on Scroll)을 적용해 줘. 콘텐츠가 뷰포트에 들어올 때 투명도와 위치가 함께 변하는 리빌(Reveal) 모션으로 자연스럽게 등장하도록 해 줘. 부드럽게 감속하는 이즈아웃(Ease-out)과 정보 위계에 따른 등장 흐름을 사용해 시선이 내용으로 이어지게 해 줘. 이미 나타난 콘텐츠는 편하게 읽을 수 있도록 유지하고 전체적으로 차분하고 정제된 무드를 만들어 줘.",
+  0.6,
+  [
+   "올라오는 거리",
+   8,
+   48,
+   2,
+   18,
+   "px"
+  ],
+  0
+ ],
+ [
+  "pin",
+  "고정(핀)",
+  "Pinning",
+  "한 장면을 잠시 고정하고, 스크롤에 따라 내용만 바꿉니다.",
+  "왼쪽 단계 번호와 오른쪽 설명이 바뀌는 동안 카드 위치는 유지됩니다. 고정 구간을 지나면 다음 콘텐츠로 이어질 수 있습니다.",
+  "활용: 탐구 과정, 실험의 세 단계 소개",
+  "고정 연출(Pinning)을 활용한 스크롤 스토리텔링을 적용해 줘. 핵심 장면을 화면에 머무르게 하고 스크롤 진행에 따라 그 안의 정보와 시각 요소가 이어지도록 구성해 줘. 장면 사이의 전환은 내용의 위계와 서사를 따라 자연스럽게 연결하고 진행 상태가 직관적으로 느껴지게 해 줘. 고정 구간이 끝나면 일반적인 문서 흐름으로 부드럽게 복귀하는 집중감 있는 연출로 만들어 줘.",
+  null,
+  null,
+  0
+ ],
+ [
+  "horizontal",
+  "가로 스크롤 섹션",
+  "Horizontal Scroll Section",
+  "세로로 내리면 카드들이 옆으로 이동합니다.",
+  "세로 스크롤 진행률을 가로 이동 거리에 연결합니다. 카드의 순서와 흐름을 한 장면 안에서 보여 줍니다.",
+  "활용: 학기 활동 타임라인, 프로젝트 단계",
+  "가로 스크롤 섹션(Horizontal Scroll Section)을 적용해 줘. 세로 스크롤의 진행을 가로 방향의 콘텐츠 이동으로 연결해 장면을 연속적으로 탐색하는 경험을 만들어 줘. 이동 방향과 이어지는 콘텐츠가 자연스럽게 예상되도록 시각적 단서를 제공하고, 진입과 이탈은 주변 문서 흐름과 매끄럽게 연결해 줘. 넓게 펼쳐진 내용을 차례로 발견하는 에디토리얼 무드를 표현해 줘.",
+  null,
+  null,
+  0
+ ],
+ [
+  "snap",
+  "스크롤 스냅",
+  "Scroll Snap",
+  "스크롤이 끝나면 한 화면씩 정확히 맞춰 멈춥니다.",
+  "브라우저의 스크롤 스냅이 다음 섹션의 시작점에 맞춰 줍니다. 손가락으로 조금씩 밀거나 다음 카드 버튼을 눌러 보세요.",
+  "활용: 한 장씩 읽는 학습 카드, 짧은 작품 소개",
+  "스크롤 스냅(Scroll Snap)을 적용해 줘. 스크롤이 의미 있는 콘텐츠 경계에 자연스럽게 정렬되어 장면마다 안정적인 구도를 이루게 해 줘. 사용자의 관성과 탐색 의도를 존중하면서 정착 지점이 명확하게 느껴지는 리듬감 있는 전환을 구성해 줘. 콘텐츠가 화면보다 길어도 끝까지 읽을 수 있도록 하고, 탐색을 가두지 않는 정돈된 흐름으로 연출해 줘.",
+  null,
+  null,
+  0
+ ],
+ [
+  "progress",
+  "스크롤 진행 막대",
+  "Scroll Progress Bar",
+  "읽은 만큼 상단의 선이 채워집니다.",
+  "현재 스크롤 위치를 전체 읽을 수 있는 거리로 나누어 진행률을 계산합니다. 마지막 문단에 도착하면 100%가 됩니다.",
+  "활용: 긴 안내문, 온라인 읽기 자료",
+  "스크롤 진행 막대(Scroll Progress Bar)를 적용해 줘. 문서의 읽기 진행도를 스크롤 위치에 비례하는 시각적 피드백으로 표현해 줘. 채워지는 변화는 연속적으로 연결하고, 현재 위치를 가볍게 인지할 수 있는 절제된 강조색과 명확한 대비를 사용해 줘. 콘텐츠보다 낮은 시각적 위계를 유지하면서 긴 내용을 따라가는 방향감과 성취감을 전달해 줘.",
+  null,
+  null,
+  0
+ ],
+ [
+  "highlight",
+  "형광펜 긋기",
+  "Highlight Animation",
+  "중요한 문장 뒤로 형광펜이 그어집니다.",
+  "처음에는 밑칠이 없는 문장입니다. ‘형광펜 긋기’를 누르거나 데모 안을 스크롤하면 배경색만 왼쪽에서 오른쪽으로 채워집니다. ‘처음부터’로 다시 비교할 수 있습니다.",
+  "활용: 핵심 개념, 학습 목표, 중요한 안내",
+  "형광펜 긋기(Highlight Animation) 연출을 적용해 줘. 핵심 문구의 뒤로 강조 면이 읽는 방향을 따라 드러나는 마스크 리빌(Mask Reveal)로 시선을 자연스럽게 유도해 줘. 텍스트 자체는 고정하고 배경의 강조만 움직여 문장의 가독성과 배치를 유지해 줘. 종이에 밑칠하듯 부드럽고 절제된 제스처로 중요한 메시지가 또렷하게 기억되는 무드를 만들어 줘.",
+  0.8,
+  null,
+  0
+ ],
+ [
+  "zoom",
+  "호버로 사진 확대",
+  "Image Zoom on Hover",
+  "틀은 그대로 두고 안쪽 이미지만 확대합니다.",
+  "바깥 틀의 크기를 고정하고 넘치는 이미지를 잘라냅니다. 제목이나 다른 카드가 밀리지 않아 안정적으로 보입니다.",
+  "활용: 활동 사진 갤러리, 작품 카드",
+  "호버 이미지 확대(Image Zoom on Hover)를 적용해 줘. 이미지의 프레임과 주변 레이아웃은 유지하고 내부 이미지가 부드럽게 확대되는 클리핑 기반 인터랙션으로 구성해 줘. 주요 피사체의 초점을 살리고 캡션과 조작 요소는 안정적으로 읽히게 해 줘. 진입과 복귀의 흐름을 매끄럽게 연결해 이미지에 조용히 시선이 모이는 세련된 갤러리 무드를 만들어 줘.",
+  0.5,
+  [
+   "확대된 크기",
+   105,
+   140,
+   5,
+   115,
+   "%"
+  ],
+  1
+ ],
+ [
+  "follower",
+  "커서 따라오기",
+  "Cursor Follower",
+  "작은 원이 포인터를 부드럽게 따라옵니다.",
+  "원에 약간의 지연을 주어 움직임을 부드럽게 만듭니다. 체험 영역 안에서만 동작하며 클릭을 가로막지 않습니다.",
+  "활용: 작품 감상 화면의 가벼운 장식",
+  "커서 따라오기(Cursor Follower) 연출을 적용해 줘. 장식 요소가 포인터의 위치를 부드럽게 보간하며 따라오도록 해 유연한 추종감과 잔상을 표현해 줘. 인터랙션 대상에 접근하면 맥락에 맞는 시각적 반응을 제공하되 기본 커서의 역할과 클릭 영역을 방해하지 않게 해 줘. 콘텐츠보다 낮은 위계로 존재감을 조율해 섬세하고 실험적인 무드를 만들어 줘.",
+  0.2,
+  null,
+  1
+ ],
+ [
+  "magnetic",
+  "자석 버튼",
+  "Magnetic Button",
+  "버튼이 가까이 온 포인터 쪽으로 끌려옵니다.",
+  "포인터와 버튼 중심 사이의 거리를 계산해 조금 움직입니다. 데모에서는 이동량을 제한해 클릭하기 어렵지 않게 했습니다.",
+  "활용: 체험 시작 버튼, 특별한 참여 버튼",
+  "자석 버튼(Magnetic Button) 효과를 적용해 줘. 포인터와 요소 사이의 거리에 반응해 표면이 자연스럽게 끌리는 듯한 거리 기반 인터랙션을 만들어 줘. 접근할 때는 부드러운 인력을, 벗어날 때는 탄성 있는 복귀 모션을 표현해 촉각적이고 반응성 높은 인상을 줘. 이동은 조작 안정성을 해치지 않도록 절제하고 클릭 가능한 영역과 포커스 상태를 명확하게 유지해 줘.",
+  0.2,
+  [
+   "최대 이동 거리",
+   8,
+   40,
+   2,
+   24,
+   "px"
+  ],
+  1
+ ],
+ [
+  "ripple",
+  "물결(리플)",
+  "Ripple Effect",
+  "누른 자리에서 동그란 물결이 퍼집니다.",
+  "클릭 위치를 시작점으로 원을 키우며 투명하게 만듭니다. 버튼의 여러 위치를 눌러 물결의 중심이 바뀌는지 확인해 보세요.",
+  "활용: 제출 버튼, 선택 버튼의 즉각적인 반응",
+  "물결 효과(Ripple Effect)를 적용해 줘. 사용자가 누른 지점을 중심으로 파동이 방사형으로 확산되고 투명해지는 입력 피드백을 만들어 줘. 물결은 해당 컴포넌트의 형태 안에서 자연스럽게 퍼지도록 클리핑하고, 표면의 색과 어울리는 은은한 대비를 사용해 줘. 반복 입력에도 흐름이 매끄럽게 이어져 직접 만지는 듯한 즉각적이고 정돈된 조작감을 전달해 줘.",
+  0.7,
+  null,
+  1
+ ],
+ [
+  "underline",
+  "밑줄 늘어나기",
+  "Underline Animation",
+  "메뉴 아래의 선이 왼쪽에서부터 길어집니다.",
+  "밑줄의 가로 크기를 0에서 100%로 바꿉니다. 위치를 이동시키지 않고 현재 가리키는 메뉴를 가볍게 강조합니다.",
+  "활용: 사이트 메뉴, 더 알아보기 링크",
+  "밑줄 애니메이션(Underline Animation)을 적용해 줘. 호버나 키보드 포커스에 반응해 텍스트 아래의 선이 방향성을 갖고 드러나는 리빌 모션으로 구성해 줘. 선의 변형 기준점과 이징을 일관되게 사용해 진입과 복귀가 연결된 제스처처럼 느껴지게 해 줘. 텍스트 배치를 움직이지 않으면서 조작 가능성을 드러내는 간결하고 에디토리얼한 무드를 표현해 줘.",
+  0.35,
+  null,
+  1
+ ],
+ [
+  "compare",
+  "전후 비교 슬라이더",
+  "Before/After Slider",
+  "사용자가 경계를 움직이며 두 장면을 비교하는 인터랙션입니다.",
+  "같은 크기의 두 이미지를 겹치고 한쪽의 보이는 영역만 바꿉니다. 경계나 아래 슬라이더를 움직여 전후를 비교해 보세요.",
+  "활용: 작품 수정 전후, 실험 결과 비교",
+  "전후 비교 슬라이더(Before/After Slider)를 적용해 줘. 동일한 기준으로 정렬된 시각 자료 위에서 경계선을 이동해 보이는 영역을 바꾸는 마스킹 인터랙션으로 구성해 줘. 드래그 핸들과 방향 단서는 명확하게 보여 주고, 조작하는 동안 비교 대상의 위치와 크기는 안정적으로 유지해 줘. 포인터와 키보드 모두에서 변화의 차이를 직접 탐색하는 직관적이고 몰입감 있는 경험을 만들어 줘.",
+  null,
+  null,
+  1
+ ],
+ [
+  "exit",
+  "떠날 때 팝업",
+  "Exit-intent Popup",
+  "포인터 움직임으로 이탈 의도를 추정해 안내를 한 번 보여 주는 인터랙션입니다.",
+  "포인터가 위쪽 경계를 벗어나는 동작으로 이탈 의도를 추정하며 실제 페이지 이탈을 확정해서 감지하는 기능은 아닙니다. 데모의 위쪽 점선을 넘거나 체험 버튼을 누르면 안내가 열립니다. 페이지 이동을 막지 않고, 닫은 뒤에는 처음부터 버튼을 누르기 전까지 다시 뜨지 않습니다.",
+  "활용: 저장 안내처럼 꼭 필요한 짧은 알림",
+  "떠날 때 팝업(Exit-intent Popup)을 적용해 줘. 사용자의 이탈 의도가 감지되는 맥락에서 보조 안내가 부드럽게 나타나는 절제된 리텐션 인터랙션으로 구성해 줘. 진입 모션과 배경의 시각적 강조는 주의를 환기하는 수준으로 조율하고, 안내의 목적과 닫기 동작을 명확하게 보여 줘. 반복 노출을 억제하고 원래 이동하려던 흐름을 방해하지 않는 차분한 제안의 무드로 만들어 줘.",
+  null,
+  null,
+  1
+ ],
+ [
+  "preloader",
+  "로딩 화면",
+  "Preloader",
+  "준비하는 동안 덮개를 보여 준 뒤 콘텐츠를 엽니다.",
+  "이 예제는 정해진 준비 시간을 재현합니다. 실제 서비스에서는 고정 시간이 아니라 필요한 데이터가 준비되었을 때 덮개를 걷어야 합니다.",
+  "활용: 처음 여는 자료, 용량이 큰 콘텐츠",
+  "로딩 화면(Preloader)을 적용해 줘. 콘텐츠를 준비하는 상태를 브랜드의 시각 언어와 연결된 모션으로 표현해 기다림에도 일관된 경험이 이어지도록 해 줘. 진행 상태를 읽기 쉽게 전달하고 반복 움직임에는 안정적인 리듬을 사용해 줘. 실제 준비가 끝나면 로딩 레이어와 본문이 자연스럽게 교대하도록 전환해 시작부터 완성도 있고 매끄러운 인상을 만들어 줘.",
+  2,
+  null,
+  2
+ ],
+ [
+  "lazy",
+  "지연 로딩",
+  "Lazy Loading",
+  "필요한 시점에 자료를 불러와 초기 로딩 부담을 줄이는 성능 기법입니다.",
+  "화면 밖의 이미지는 대기하고, 스크롤로 보이기 시작하면 ‘불러오는 중’을 거쳐 표시됩니다. 사진을 움직이는 효과가 아니라 불러오는 시점을 늦추는 기법입니다. 차이를 볼 수 있도록 체험용 대기 시간을 넣었으며, 내장 그림을 사용해 실제 인터넷 요청은 하지 않습니다.",
+  "활용: 사진이 많은 활동 기록, 작품 모음",
+  "지연 로딩(Lazy Loading)을 적용해 줘. 콘텐츠가 필요한 시점에 가까워지면 불러오는 온디맨드 로딩으로 초기 화면의 반응성과 탐색 흐름을 개선해 줘. 콘텐츠가 들어갈 공간과 시각적 맥락은 미리 유지하고 준비된 요소는 부드러운 리빌로 연결해 레이아웃이 갑자기 밀리지 않게 해 줘. 로딩 과정이 눈에 거슬리지 않는 가볍고 끊김 없는 경험을 만들어 줘.",
+  null,
+  null,
+  2
+ ],
+ [
+  "type",
+  "타이핑 효과",
+  "Typewriter Effect",
+  "문장을 한 글자씩 쓰고, 지운 뒤 다음 문장으로 넘어갑니다.",
+  "문자 단위로 늘리고 줄이며 짧은 문구를 번갈아 보여 줍니다. 읽는 사람을 위해 정지 버튼과 전체 문장의 대체 설명을 제공합니다.",
+  "활용: 첫 화면의 짧은 메시지",
+  "타이핑 효과(Typewriter Effect)를 적용해 줘. 글자가 순차적으로 나타나는 문자 기반 리빌로 메시지가 작성되는 듯한 리듬과 집중감을 표현해 줘. 문장의 의미 단위에 맞춘 호흡과 커서 표현을 사용하고, 내용을 교체하는 경우에는 지우기와 다음 문구의 등장을 자연스럽게 연결해 줘. 읽기 흐름이 우선인 차분한 연출로 구성하고 모션을 줄이는 환경에서도 전체 메시지에 접근할 수 있게 해 줘.",
+  0.12,
+  null,
+  2
+ ],
+ [
+  "transition",
+  "페이지 전환",
+  "Page Transition",
+  "막이 화면을 덮었다 걷히며 다음 장면으로 바뀝니다.",
+  "막이 중간을 덮는 시점에 내용을 교체합니다. 체험 버튼을 누르면 수업 준비와 활동 시작 화면이 번갈아 나타납니다.",
+  "활용: 단계별 활동, 이야기 장면 전환",
+  "페이지 전환(Page Transition)을 적용해 줘. 전환 레이어가 장면을 덮고 다시 열리는 커튼 리빌(Curtain Reveal)로 이전 화면과 다음 화면 사이의 시각적 연속성을 만들어 줘. 콘텐츠 교체와 레이어의 이동을 자연스럽게 맞추고 방향성과 이징을 일관되게 유지해 줘. 이동 결과를 기다리는 부담은 줄이면서 장면이 정돈되게 이어지는 차분하고 완성도 높은 무드를 표현해 줘.",
+  1,
+  null,
+  2
+ ],
+ [
+  "smooth",
+  "부드러운 스크롤",
+  "Smooth Scroll",
+  "누른 목차의 위치까지 부드럽게 이동합니다.",
+  "목차 버튼과 본문의 위치를 연결합니다. 고정 메뉴의 높이만큼 여백을 남겨 도착한 제목이 가려지지 않게 합니다.",
+  "활용: 강의 목차, 긴 페이지의 섹션 이동",
+  "부드러운 스크롤(Smooth Scroll)을 적용해 줘. 목차나 앵커를 선택했을 때 목표 영역까지 자연스럽게 이동하며 현재 위치와 도착 지점의 공간적 관계를 보여 줘. 부드러운 가속과 감속으로 이동을 연결하고 고정 헤더와 콘텐츠의 읽기 위치를 고려해 정렬해 줘. 사용자의 직접 스크롤과 중단 의도를 존중하면서 문서를 안정적으로 탐색하는 연속적인 흐름을 만들어 줘.",
+  null,
+  null,
+  2
+ ],
+ [
+  "marquee",
+  "흐르는 띠(마키)",
+  "Marquee",
+  "문구가 끊기지 않는 띠처럼 계속 흐릅니다.",
+  "같은 내용 두 묶음을 이어 붙여 한 묶음만큼 이동한 뒤 반복합니다. 두 번째 묶음은 보조 기술에 중복으로 읽히지 않게 합니다.",
+  "활용: 짧은 수업 키워드, 행사 소개의 장식",
+  "흐르는 띠(Marquee) 연출을 적용해 줘. 콘텐츠가 일정한 방향으로 이어지는 심리스 루프(Seamless Loop)로 시작과 끝의 경계가 느껴지지 않게 해 줘. 일정한 이동 리듬과 요소 사이의 시각적 간격을 유지해 자연스러운 흐름을 만들고 본문보다 낮은 위계의 보조 연출로 사용해 줘. 내용을 살펴볼 때는 멈출 수 있도록 해 활기와 가독성이 조화를 이루는 무드를 표현해 줘.",
+  14,
+  null,
+  2
+ ],
+ [
+  "gradient",
+  "움직이는 그라데이션",
+  "Animated Gradient",
+  "배경의 색이 천천히 섞이며 분위기가 달라집니다.",
+  "큰 그라데이션 배경의 위치를 움직입니다. 위의 글자가 계속 읽히도록 색의 밝기와 대비를 일정하게 유지합니다.",
+  "활용: 첫 화면, 쉬는 시간 안내 배경",
+  "움직이는 그라데이션(Animated Gradient)을 적용해 줘. 조화로운 색상 영역이 서로 섞이고 위치가 변화하는 플루이드 그라데이션으로 유기적인 깊이감과 빛의 흐름을 표현해 줘. 전환의 경계가 드러나지 않는 부드러운 루프를 사용하고 텍스트와 주요 조작 요소의 대비는 안정적으로 유지해 줘. 브랜드의 성격에 어울리는 은은한 앰비언트 모션으로 화면 전체의 분위기를 만들어 줘.",
+  8,
+  null,
+  2
+ ],
+ [
+  "floating",
+  "둥실 떠다니기",
+  "Floating Animation",
+  "장식이 위아래로 천천히 떠다닙니다.",
+  "한 번의 왕복 주기와 이동 거리를 정해 반복합니다. 텍스트와 버튼 대신 작은 장식에 사용하면 읽는 흐름을 덜 방해합니다.",
+  "활용: 시작 화면의 아이콘, 완료 화면의 장식",
+  "둥실 떠다니기(Floating Animation)를 적용해 줘. 장식 요소가 공중에 가볍게 떠 있는 듯한 주기적인 이동과 부드러운 이즈인아웃(Ease-in-out)으로 여유로운 리듬을 만들어 줘. 함께 움직이는 요소에는 위상 차이를 주어 기계적인 동시 반복보다 자연스러운 공간감을 표현해 줘. 본문과 주요 조작 영역은 안정적으로 유지하면서 화면에 은은한 생동감과 깊이감을 더해 줘.",
+  3,
+  [
+   "떠다니는 거리",
+   6,
+   40,
+   2,
+   18,
+   "px"
+  ],
+  2
+ ]
+].map((r,i)=>({id:r[0],name:r[1],en:r[2],intro:r[3],explain:r[4],use:r[5],prompt:r[6],duration:r[7],amount:r[8],group:r[9]}));
+const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let current=0,controller,cleanups=[],timers=[],settings={},paused=false,inactive=false,attempt=()=>{},toastTimer;
+const mq=matchMedia('(prefers-reduced-motion: reduce)');let reduced=mq.matches;document.body.classList.toggle('reduce',reduced);
+function values(){const t=TERMS[current];return settings[t.id]||(settings[t.id]={d:t.duration,a:t.amount?.[4]});}
+function on(el,event,fn,opts={}){el.addEventListener(event,fn,{...opts,signal:controller.signal});}
+function later(fn,ms){const id=setTimeout(fn,ms);timers.push(id);return id;}
+function status(text){$('#status').textContent=text;}
+function active(){return !paused&&!inactive&&!document.hidden;}
+function cleanup(){controller?.abort();cleanups.forEach(fn=>fn());cleanups=[];timers.forEach(clearTimeout);timers=[];controller=new AbortController();}
+function scene(label='배움의 풍경',variant=0){const warm=variant%2===0;return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="'+esc(label)+'" preserveAspectRatio="xMidYMid slice"><rect width="600" height="340" fill="'+(warm?'#f8d6b3':'#d4e6e5')+'"/><circle cx="440" cy="90" r="46" fill="'+(warm?'#fff1ce':'#f4f8ed')+'"/><path d="M0 240L130 83 275 263 395 130 600 280V340H0Z" fill="'+(warm?'#cd9e86':'#8aafa5')+'"/><path d="M0 275Q140 175 305 275T600 245V340H0Z" fill="'+(warm?'#ad6c52':'#487c72')+'"/><path d="M0 310Q180 255 350 310T600 290V340H0Z" fill="'+(warm?'#774b3d':'#2b5a54')+'"/><rect x="95" y="230" width="62" height="52" rx="3" fill="#fff2d8"/><path d="M82 234L126 199 170 234Z" fill="'+(warm?'#754d46':'#38655f')+'"/><rect x="120" y="252" width="13" height="30" fill="#b88564"/><path d="M127 282Q145 313 180 340" stroke="#f6d5ad" fill="none" stroke-width="14"/></svg>';}
+function scrollBox(html,cls=''){
+ const stage=$('#stage');stage.className='stage';stage.innerHTML='<div class="scrollbox '+cls+'" tabindex="0" role="region" aria-label="'+esc(TERMS[current].name)+' 체험 스크롤 영역">'+html+'</div>';
+ const box=stage.firstElementChild;
+ const resize=()=>{if(!box.clientHeight)return;box.style.setProperty('--scroll-height',box.clientHeight+'px');box.dispatchEvent(new Event('scroll'));};
+ const observer=new ResizeObserver(resize);observer.observe(box);cleanups.push(()=>observer.disconnect());
+ resize();return box;
+}
+function center(html){$('#stage').className='stage center';$('#stage').innerHTML=html;}
+function progress(box){return box.scrollTop/Math.max(1,box.scrollHeight-box.clientHeight);}
+function scrollNext(box){box.scrollBy({top:Math.max(180,box.clientHeight*.8),behavior:reduced?'instant':'smooth'});}
+function observe(box,selector,fn){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)fn(entry.target,observer);}),{root:box,threshold:.2});box.querySelectorAll(selector).forEach(el=>observer.observe(el));cleanups.push(()=>observer.disconnect());}
+function action(label,fn){$('#try-action').hidden=false;$('#try-action').textContent=label;attempt=fn;}
+function renderControls(){const t=TERMS[current],v=values();let html='';if(t.duration!==null){let min=.1,max=2,step=.05,label='움직이는 시간',unit='초';if(t.id==='type'){min=.05;max=.3;step=.01;label='한 글자 간격';}if(['marquee','gradient','floating'].includes(t.id)){min=2;max=t.id==='marquee'?30:16;step=1;label='한 번의 주기';}if(t.id==='preloader'){min=.5;max=5;step=.5;label='데모 준비 시간';}html+='<label class="control">'+label+'<output id="duration-value">'+v.d+unit+'</output><input id="duration" type="range" min="'+min+'" max="'+max+'" step="'+step+'" value="'+v.d+'" aria-label="'+label+'" aria-valuetext="'+v.d+'초"></label>';}
+if(t.amount){const a=t.amount;html+='<label class="control">'+a[0]+'<output id="amount-value">'+v.a+a[5]+'</output><input id="amount" type="range" min="'+a[1]+'" max="'+a[2]+'" step="'+a[3]+'" value="'+v.a+'" aria-label="'+a[0]+'" aria-valuetext="'+v.a+a[5]+'"></label>';}$('#controls').innerHTML=html;$('#controls').hidden=!html;}
+function updateSettings(){const v=values(),t=TERMS[current];$('#stage').style.setProperty('--duration',(v.d??.4)+'s');$('#stage').style.setProperty('--amount',(v.a??18)+'px');$('#stage').style.setProperty('--zoom',(v.a??115)/100);$('#prompt-text').textContent=t.prompt;if($('#duration-value')){$('#duration-value').textContent=v.d+'초';$('#duration').setAttribute('aria-valuetext',v.d+'초');}if($('#amount-value')){$('#amount-value').textContent=v.a+t.amount[5];$('#amount').setAttribute('aria-valuetext',v.a+t.amount[5]);}}
+function nav(open){document.body.classList.toggle('nav-open',open);$('.scrim').hidden=!open;$('#open-nav').setAttribute('aria-expanded',String(open));$('.sidebar').inert=!open&&matchMedia('(max-width:700px)').matches;if(open){$('.term[aria-current=true]').focus();}else $('#open-nav').focus({preventScroll:true});}
+function activate(index,resetScroll=true){current=Math.max(0,Math.min(TERMS.length-1,index));const t=TERMS[current];const group=$('[data-category="'+t.group+'"]');group.setAttribute('aria-expanded','true');$('#animation-category-'+t.group).hidden=false;$$('.term').forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));$('#category').textContent=String(t.group+1).padStart(2,'0')+' / '+GROUPS[t.group];$('#title').textContent=t.name;$('#english').textContent=t.en;$('#intro').textContent=t.intro;$('#index').textContent=String(current+1).padStart(2,'0');$('#mobile-count').textContent=String(current+1).padStart(2,'0')+' / '+TERMS.length;$('#explain').textContent=t.explain;$('#use').textContent=t.use;$('#prev').disabled=current===0;$('#next').disabled=current===TERMS.length-1;const selected=$$('.term')[current],side=$('.sidebar'),sr=side.getBoundingClientRect(),tr=selected.getBoundingClientRect();if(tr.top<sr.top||tr.bottom>sr.bottom)side.scrollTop+=tr.top-sr.top-30;renderControls();mount();if(resetScroll)window.scrollTo({top:0,behavior:'instant'});}
+function mount(){cleanup();paused=false;document.body.classList.remove('paused');$('#pause').setAttribute('aria-pressed','false');$('#pause').textContent='일시정지';$('#pause').hidden=!['type','marquee','gradient','floating'].includes(TERMS[current].id);$('#pause').disabled=reduced;$('#try-action').disabled=false;$('#try-action').hidden=true;attempt=()=>{};$('#stage').innerHTML='';$('#stage').className='stage';$('#stage').removeAttribute('aria-busy');$('#gesture').textContent=TERMS[current].group===0?'데모 안에서 스크롤해 보세요':'버튼으로 직접 체험해 보세요';updateSettings();demos[TERMS[current].id]();}
+const demos={
+parallax(){const box=scrollBox('<div class="parallax-scene"><div class="layer far"><svg viewBox="0 0 700 400" preserveAspectRatio="none" aria-hidden="true"><circle cx="520" cy="80" r="50" fill="#f7b76c"/><path d="M-60 320L150 90 330 290 470 140 760 320V500H-60Z" fill="#d8b4a1"/></svg></div><div class="layer middle"><svg viewBox="0 0 700 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-50 310Q100 170 320 330T760 280V600H-50Z" fill="#c98062"/></svg></div><div class="layer near"><svg viewBox="0 0 700 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-50 370Q200 240 430 370T760 330V600H-50Z" fill="#934f40"/></svg></div><div class="parallax-label"><span class="tag">서로 다른 세 가지 속도</span><div class="demo-title">겹겹이 쌓인<br>배움의 풍경</div><small>안쪽을 스크롤 ↓</small></div></div><div class="parallax-spacer"><p>뒤쪽 산은 천천히,<br>앞쪽 언덕은 조금 더 빠르게.</p></div>');const move=()=>{const y=Math.min(box.scrollTop,400)*values().a/100;box.querySelector('.far').style.transform='translateY('+(-y/4)+'px)';box.querySelector('.middle').style.transform='translateY('+(-y/2)+'px)';box.querySelector('.near').style.transform='translateY('+(-y)+'px)';status(reduced?'움직임 줄이기: 배경을 고정했습니다.':'앞쪽 '+Math.round(y)+'px · 뒤쪽 '+Math.round(y/4)+'px 이동');};on(box,'scroll',move,{passive:true});move();action('아래로 스크롤',()=>scrollNext(box));},
+fade(){const box=scrollBox('<div class="reveal-content">'+['질문에서 시작해요','직접 만들어 봐요','함께 돌아봐요'].map((s,i)=>'<article class="mini-card fade-card"><span class="tag">STEP 0'+(i+1)+'</span><h3>'+s+'</h3><p>화면에 들어온 카드가 한 번씩 나타납니다.</p></article>').join('')+'</div>');let count=0;status('스크롤하며 다음 카드를 만나 보세요.');observe(box,'.fade-card',(el,obs)=>{el.classList.add('revealed');obs.unobserve(el);status(++count+' / 3개 카드가 나타났습니다.');});action('다음 카드 보기',()=>scrollNext(box));},
+pin(){const steps=[['질문하기','어떤 점이 궁금한가요?'],['실험하기','직접 관찰하고 기록해요.'],['나누기','발견한 것을 함께 이야기해요.']];const box=scrollBox('<div class="pin-wrap"><div class="pinned"><span class="pin-number">01</span><div class="pin-copy"><span class="tag">스크롤로 단계 전환</span><div class="demo-title" id="pin-title"></div><div class="demo-sub" id="pin-sub"></div></div></div></div>');const move=()=>{let n=Math.min(2,Math.floor(progress(box)*3));$('.pin-number').textContent='0'+(n+1);$('#pin-title').textContent=steps[n][0];$('#pin-sub').textContent=steps[n][1];status((n+1)+' / 3단계 · 카드 위치는 그대로 유지됩니다.');};on(box,'scroll',move,{passive:true});move();action('다음 단계',()=>box.scrollTo({top:Math.min(box.scrollHeight-box.clientHeight,box.scrollTop+(box.scrollHeight-box.clientHeight)/3+2),behavior:reduced?'instant':'smooth'}));},
+horizontal(){const box=scrollBox('<div class="horizontal-journey"><div class="horizontal-sticky"><div class="horizontal-track">'+[['준비하기','아이디어를 모아요.'],['만들기','작은 화면부터 완성해요.'],['공유하기','서로의 작품을 만나 봐요.']].map((s,i)=>'<article class="horizontal-card"><small>OUR PROJECT · 0'+(i+1)+'</small><div class="demo-title">'+s[0]+'</div><p>'+s[1]+'</p></article>').join('')+'</div></div></div>');const move=()=>{const p=progress(box);$('.horizontal-track').style.transform='translateX('+(-200*p)+'%)';status('세로 스크롤 '+Math.round(p*100)+'% → 가로 이동');};on(box,'scroll',move,{passive:true});move();action('옆 카드로 이동',()=>box.scrollTo({top:Math.min(box.scrollHeight-box.clientHeight,box.scrollTop+(box.scrollHeight-box.clientHeight)/2),behavior:reduced?'instant':'smooth'}));},
+snap(){const box=scrollBox(['발견','도전','성장'].map((s,i)=>'<article class="snap-panel"><span class="tag">CARD 0'+(i+1)+'</span><strong>'+s+'</strong><small>한 장씩 딱 맞춰 멈춥니다.</small></article>').join(''),'snap-box');on(box,'scroll',()=>status(Math.min(3,Math.round(box.scrollTop/box.clientHeight)+1)+' / 3번째 카드'),{passive:true});status('스크롤하거나 다음 카드 버튼을 눌러 보세요.');action('다음 카드',()=>box.scrollBy({top:box.clientHeight,behavior:reduced?'instant':'smooth'}));},
+progress(){
+ const sections=[
+  ['01 · 교실의 작은 불편에서 출발하기','처음부터 멋진 작품을 만들 필요는 없습니다. 오늘 수업에서 반복했던 일이나, 조금 더 편리했으면 하는 순간을 하나 떠올려 보세요. 학생의 질문을 모으는 화면, 모둠을 나누는 버튼, 배움을 기록하는 카드도 좋은 출발점입니다.','누가 언제 사용할지 적어 보면 필요한 기능이 또렷해집니다. 예를 들어 “교사가 수업 시작 전에 활동을 골라 학생에게 보여 주는 화면”이라고 쓰면, 활동 목록과 선택 버튼부터 만들 수 있습니다.'],
+  ['02 · 한 가지 흐름을 끝까지 만들기','처음에는 기능을 많이 넣기보다 하나의 행동을 끝까지 연결해 봅니다. 활동을 고르고, 선택한 내용을 확인하고, 다시 고를 수 있으면 작은 흐름 하나가 완성됩니다. 버튼을 눌렀을 때 무엇이 달라져야 하는지도 함께 적습니다.','이름만 붙어 있는 버튼과 실제로 반응하는 버튼은 다릅니다. 선택한 항목의 표시가 바뀌는지, 다음 화면에 같은 내용이 나타나는지 직접 눌러 확인하세요. 잘못 골랐을 때 돌아갈 길도 있어야 합니다.'],
+  ['03 · 화면 크기를 바꾸며 살펴보기','넓은 모니터에서 보기 좋던 화면도 노트북이나 휴대전화에서는 달라질 수 있습니다. 창의 너비와 높이를 각각 바꾸어 보세요. 제목이 잘리는지, 버튼이 화면 밖으로 밀려나는지, 중요한 내용에 도달할 수 있는지 살펴봅니다.','화면이 좁아지면 카드의 열 수뿐 아니라 배치도 바꿀 수 있습니다. 왼쪽 메뉴를 접거나 카드를 목록으로 바꾸는 식입니다. 이때 글자를 무조건 작게 만들기보다 읽고 누를 공간을 확보하는 것이 좋습니다.'],
+  ['04 · 마우스 없이도 사용해 보기','탭 키로 이동하며 현재 선택된 위치가 눈에 보이는지 확인해 보세요. 버튼과 입력 칸을 자연스러운 순서로 만날 수 있어야 합니다. 열린 창을 닫은 뒤에는 사용하던 위치로 돌아오는지도 확인합니다.','스크롤 영역을 선택한 다음 방향키나 Page Down 키를 눌러 보는 것도 방법입니다. 화면 안쪽에 스크롤이 있다면 페이지 전체와 실습 영역 중 어디가 움직이는지 쉽게 구별할 수 있어야 합니다.'],
+  ['05 · 상태가 바뀌는 순간을 보여 주기','버튼을 누른 뒤 결과가 바로 나오지 않으면 기다리는 중인지 알기 어렵습니다. 자료를 불러오는 동안에는 진행 상태를 보여 주고, 끝나면 완료된 내용을 보여 주세요. 실패했을 때 다시 시도할 방법도 함께 생각합니다.','이 실습의 위쪽 막대는 읽고 있는 위치를 보여 줍니다. 아래로 이동하면 채워지고, 위로 돌아가면 줄어듭니다. 막대의 변화와 아래쪽 백분율을 함께 관찰해 보세요. 진행률은 실제 이해도를 측정하는 값은 아닙니다.'],
+  ['06 · 예시와 설명을 함께 검토하기','화면이 작동하더라도 숫자와 설명이 맞는지는 따로 확인해야 합니다. 학생 수의 합계, 그래프의 비율, 버튼 이름과 실제 동작을 나란히 살펴보세요. 설명한 기능을 직접 실행해 보는 것이 가장 확실한 확인 방법입니다.','빈 목록이나 긴 제목처럼 평소와 다른 내용도 넣어 봅니다. 예시 데이터는 실제 개인정보 대신 가상의 내용을 사용하세요. 수정한 뒤에는 영향을 받은 화면을 다시 열고, 처음부터 같은 행동을 반복해 봅니다.'],
+  ['07 · 작은 완성을 나누고 다시 다듬기','완성한 화면을 동료에게 보여 주고 설명 없이 한 번 사용해 달라고 해 보세요. 어디서 멈추는지, 어떤 버튼을 먼저 누르는지 관찰하면 다음에 고칠 부분을 찾기 쉽습니다. 의견은 한 번에 모두 적용하기보다 중요한 것부터 확인합니다.','끝까지 읽었습니다. 위쪽 진행 막대와 아래쪽 백분율이 100%가 되었는지 확인하세요. 위로 조금 돌아가면 진행률도 줄어듭니다. “처음부터”를 누르면 시작 위치에서 같은 변화를 다시 체험할 수 있습니다.']
+ ];
+ const box=scrollBox('<div class="reading-bar" role="progressbar" aria-label="읽기 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><article class="reading-body"><span class="tag">읽기 자료 · 안쪽을 스크롤해 보세요 ↓</span><h3>작은 시도에서 시작되는 배움</h3>'+sections.map(([title,...paragraphs])=>'<section><h4>'+title+'</h4>'+paragraphs.map(text=>'<p>'+text+'</p>').join('')+'</section>').join('')+'</article>');
+ const move=()=>{const p=Math.round(progress(box)*100);$('.reading-bar span').style.width=p+'%';$('.reading-bar').setAttribute('aria-valuenow',p);status('읽기 진행률 '+p+'%');};
+ on(box,'scroll',move,{passive:true});move();action('더 읽기',()=>scrollNext(box));
+},
+highlight(){
+ const box=scrollBox('<div class="reading-body highlight-reading"><span class="tag">BEFORE → AFTER</span><p class="highlight-hint">아직 밑칠이 없는 문장입니다.<br>아래의 <b>형광펜 긋기</b>를 눌러 보세요.</p><p class="highlight-target"><mark>작은 시도가</mark><br><mark>새로운 수업을 만듭니다.</mark></p><p>글자는 그대로, 배경만 왼쪽에서 오른쪽으로.</p><div class="highlight-scroll-space">스크롤해서도 강조를 시작할 수 있어요 ↓</div></div>');
+ let painted=false;
+ const paint=()=>{
+  if(painted)return;painted=true;const target=box.querySelector('.highlight-target');
+  target.classList.add('marked');$('#try-action').disabled=true;
+  status(reduced?'움직임 줄이기: 강조를 즉시 적용했습니다.':'형광펜이 왼쪽에서 오른쪽으로 그어지는 중…');
+  later(()=>{status('강조 완료 · 처음부터를 누르면 밑칠 없는 상태로 돌아갑니다.');},reduced?0:values().d*1700);
+ };
+ status('준비 · 밑칠 없는 문장과 강조한 문장을 비교해 보세요.');
+ on(box,'scroll',()=>{if(box.scrollTop>40)paint()});
+ action('형광펜 긋기',paint);
+},
+zoom(){center('<div class="zoom-frame" tabindex="0" aria-label="호버하면 확대되는 풍경 그림"><div class="scene">'+scene()+'</div><span class="image-caption">프레임은 고정 · 안쪽 이미지만 확대</span></div>');const el=$('.zoom-frame');on(el,'focus',()=>el.classList.add('is-on'));on(el,'blur',()=>el.classList.remove('is-on'));status('그림 가장자리와 바깥 틀을 비교해 보세요.');action('확대 / 원래 크기',()=>{el.classList.toggle('is-on');status(el.classList.contains('is-on')?values().a+'% 크기로 확대':'100% 원래 크기');});},
+follower(){ $('#stage').innerHTML='<div class="pointer-zone"><div class="pointer-text"><div class="demo-title">포인터를 움직여 보세요.</div><div class="demo-sub">마우스 이동 · 손가락으로 드래그<br>또는 아래 버튼으로 경로 재생</div></div><div class="follower" aria-hidden="true"></div></div>';const zone=$('.pointer-zone'),dot=$('.follower');const move=(x,y)=>{dot.hidden=false;dot.style.transform='translate('+Math.max(0,Math.min(zone.clientWidth-56,x-28))+'px,'+Math.max(0,Math.min(zone.clientHeight-56,y-28))+'px)';};on(zone,'pointermove',e=>{const r=zone.getBoundingClientRect();move(e.clientX-r.left,e.clientY-r.top);});on(zone,'pointerleave',()=>{dot.hidden=true;});on(zone,'pointerdown',e=>{zone.setPointerCapture(e.pointerId);const r=zone.getBoundingClientRect();move(e.clientX-r.left,e.clientY-r.top);});status('원은 클릭을 가로막지 않고 뒤따라옵니다.');action('경로 따라가기',()=>{const path=[[.2,.3],[.7,.3],[.75,.7],[.3,.65],[.5,.5]];path.forEach(([x,y],i)=>later(()=>{if(!inactive)move(zone.clientWidth*x,zone.clientHeight*y);},reduced?0:i*500));status('다섯 지점을 '+values().d+'초의 지연으로 따라갑니다.');});},
+magnetic(){$('#stage').innerHTML='<div class="pointer-zone"><button class="magnet">함께 만들어 볼까요? ↗</button></div>';const zone=$('.pointer-zone'),btn=$('.magnet');const move=(x,y)=>{btn.style.transform='translate('+x+'px,'+y+'px)';};on(zone,'pointermove',e=>{if(e.pointerType==='touch')return;const r=zone.getBoundingClientRect(),a=values().a;move(Math.max(-a,Math.min(a,(e.clientX-r.left-r.width/2)*.16)),Math.max(-a,Math.min(a,(e.clientY-r.top-r.height/2)*.2)));});on(zone,'pointerleave',()=>move(0,0));on(btn,'click',()=>status('클릭 완료! 이동해도 버튼은 작동합니다.'));status('버튼 가까이에서 포인터를 움직여 보세요.');let onState=false;action('끌어당기기 / 돌아오기',()=>{onState=!onState;move(onState?values().a:0,onState?-values().a/2:0);status(onState?'포인터 쪽으로 최대 '+values().a+'px 이동':'버튼이 제자리로 돌아왔습니다.');});},
+ripple(){center('<button class="ripple-button">여기를 눌러 보세요</button>');const btn=$('.ripple-button');let count=0;const run=e=>{const r=btn.getBoundingClientRect(),size=Math.hypot(r.width,r.height)*2,x=e?.detail?e.clientX-r.left:r.width/2,y=e?.detail?e.clientY-r.top:r.height/2;const dot=document.createElement('span');dot.className='ripple-dot';dot.setAttribute('aria-hidden','true');dot.style.cssText='width:'+size+'px;height:'+size+'px;left:'+(x-size/2)+'px;top:'+(y-size/2)+'px;';btn.append(dot);later(()=>dot.remove(),reduced?100:values().d*1000+50);status(++count+'번 클릭 · 누른 자리에서 물결이 퍼집니다.');};on(btn,'click',run);status('버튼의 왼쪽, 가운데, 오른쪽을 각각 눌러 보세요.');action('가운데에서 물결',()=>run());},
+underline(){center('<nav class="underline-nav" aria-label="밑줄 효과 예시">'+['수업 소개','활동 기록','작품 모음'].map(s=>'<button class="underline-link">'+s+'</button>').join('')+'</nav>');$$('.underline-link').forEach(b=>on(b,'click',()=>{b.classList.toggle('is-on');status(b.textContent+' 메뉴의 밑줄을 전환했습니다.');}));let n=0;status('메뉴에 마우스를 올리거나 탭 키로 이동해 보세요.');action('다음 메뉴 강조',()=>{$$('.underline-link').forEach((b,i)=>b.classList.toggle('is-on',i===n));status(['수업 소개','활동 기록','작품 모음'][n]+' · '+values().d+'초 동안 밑줄');n=(n+1)%3;});},
+compare(){center('<div class="compare-wrap"><div class="compare"><div class="scene">'+scene('따뜻한 색감으로 바꾸기 전',0)+'</div><div class="scene after">'+scene('차분한 색감으로 바꾼 후',1)+'</div><span class="compare-label left">AFTER · 차분하게</span><span class="compare-label right">BEFORE · 따뜻하게</span><div class="compare-line"><span class="compare-handle">↔</span></div></div><label><span class="sr-only" hidden>비교 비율</span><input class="compare-range" aria-label="수정 후 이미지가 보이는 비율" type="range" min="0" max="100" value="50"></label></div>');const area=$('.compare'),range=$('.compare-range');const move=v=>{range.value=v;$('.after').style.clipPath='inset(0 '+(100-v)+'% 0 0)';$('.compare-line').style.left=v+'%';range.setAttribute('aria-valuetext','수정 후 '+v+'퍼센트');status('수정 후 '+v+'% · 수정 전 '+(100-v)+'%');};on(range,'input',()=>move(Number(range.value)));const pointer=e=>{const r=area.getBoundingClientRect();move(Math.round(Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))*100));};on(area,'pointerdown',e=>{area.setPointerCapture(e.pointerId);pointer(e);});on(area,'pointermove',e=>{if(area.hasPointerCapture(e.pointerId))pointer(e);});move(50);action('경계 가운데로',()=>move(50));},
+exit(){$('#stage').innerHTML='<div class="exit-zone"><div class="exit-boundary">이 점선을 넘어 위로 나가 보세요 ↑</div><div><span class="tag">이 데모 안에서만 작동</span><div class="demo-title">잠깐, 저장하셨나요?</div><div class="demo-sub">필요한 순간에 한 번만 안내합니다.</div></div><div class="local-popup" hidden><section class="popup-card" role="dialog" aria-labelledby="exit-title"><h3 id="exit-title">작업을 남겨 두세요.</h3><p>이것은 체험용 알림입니다.<br>실제 이동이나 종료를 막지 않아요.</p><button class="primary" id="close-popup">닫고 계속 둘러보기</button></section></div></div>';let shown=false,previous;const show=()=>{if(shown){status('이미 한 번 안내했습니다. 처음부터 버튼으로 재설정하세요.');return;}shown=true;previous=document.activeElement;$('.local-popup').hidden=false;$('#close-popup').focus({preventScroll:true});status('팝업 열림 · 닫기 버튼 또는 Escape 키');};const close=()=>{$('.local-popup').hidden=true;previous?.focus({preventScroll:true});status('닫았습니다. 이 체험에서는 다시 뜨지 않습니다.');};on($('.exit-zone'),'pointerleave',e=>{if(e.pointerType==='mouse'&&e.clientY<=$('.exit-zone').getBoundingClientRect().top+3)show();});on($('#close-popup'),'click',close);on(document,'keydown',e=>{if(e.key==='Escape'&&!$('.local-popup').hidden){e.stopPropagation();close();}});status('마우스가 없다면 아래 체험 버튼을 눌러 보세요.');action('떠나는 동작 체험',show);},
+preloader(){center('<div class="mini-card"><span class="tag">READY TO LEARN</span><h3>오늘의 활동이 준비됐어요.</h3><p>로딩이 끝나면 이 콘텐츠가 나타납니다.</p></div><div class="preloader"><div class="spinner" aria-hidden="true"></div><div class="loading-caption" role="status">활동 자료를 준비하고 있어요.</div><div class="load-progress"><span></span></div></div>');let elapsed=0,last=performance.now();$('#stage').setAttribute('aria-busy','true');const tick=()=>{const now=performance.now();if(active())elapsed+=now-last;last=now;const p=reduced?1:Math.min(1,elapsed/(values().d*1000));$('.load-progress span').style.width=p*100+'%';if(p===1){$('.preloader').hidden=true;$('#stage').setAttribute('aria-busy','false');status('준비 완료 · 덮개를 걷고 콘텐츠를 보여 줍니다.');}else{status('데모 준비 중 · '+Math.round(p*100)+'%');later(tick,60);}};tick();action('다시 불러오기',mount);},
+lazy(){
+ const box=scrollBox('<div class="lazy-intro"><span class="tag">필요할 때만 불러오기</span><h3>화면 밖의 사진은<br>아직 불러오지 않았어요.</h3><div class="lazy-flow"><span>대기</span><b>→</b><span>불러오는 중</span><b>→</b><span>표시 완료</span></div><p>아래로 스크롤하거나 <b>다음 사진 보기</b>를 누르세요.<br>체험을 위해 0.9초의 대기 시간을 넣었습니다.</p><span class="lazy-down" aria-hidden="true">↓</span></div><div class="lazy-list">'+Array.from({length:4},(_,i)=>'<article class="lazy-card" data-load="waiting"><div class="lazy-photo"><div class="lazy-placeholder"><b>0'+(i+1)+'</b><span>대기 · 아직 불러오지 않았어요</span><i class="lazy-loading-bar" aria-hidden="true"></i></div><img data-image="'+i+'" alt="배움의 풍경 '+(i+1)+'" width="600" height="340"></div><p>풍경 0'+(i+1)+' · <span class="load-state">대기 중</span></p></article>').join('')+'</div>','lazy-scroll');
+ let count=0,requested=0;
+ const update=()=>status('전체 4개 · 불러오기 시작 '+requested+'개 · 표시 완료 '+count+'개 · 대기 '+(4-requested)+'개');
+ update();
+ observe(box,'.lazy-card',(el,obs)=>{
+  obs.unobserve(el);requested++;el.dataset.load='loading';el.setAttribute('aria-busy','true');
+  el.querySelector('.load-state').textContent='불러오는 중…';el.querySelector('.lazy-placeholder span').textContent='화면에 들어와 불러오는 중…';update();
+  const img=el.querySelector('img');
+  on(img,'load',()=>{el.dataset.load='loaded';el.setAttribute('aria-busy','false');el.querySelector('.load-state').textContent='표시 완료';count++;update();if(count===4)$('#try-action').textContent='첫 사진으로';});
+  on(img,'error',()=>{el.dataset.load='error';el.setAttribute('aria-busy','false');el.querySelector('.load-state').textContent='불러오지 못했어요. 처음부터 다시 시도해 주세요.';});
+  later(()=>{img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(scene('배움의 풍경',Number(img.dataset.image)));},900);
+ });
+ action('다음 사진 보기',()=>{
+  const next=box.querySelector('[data-load="waiting"]')||box.querySelector('.lazy-card');
+  box.scrollTo({top:next.offsetTop-16,behavior:reduced?'instant':'smooth'});
+ });
+},
+type(){center('<div class="type-area"><span class="tag">한 글자씩, 하나의 생각</span><div class="type-line" aria-label="상상을 수업으로. 아이디어를 화면으로."><span id="typed" aria-hidden="true"></span><span class="type-cursor" aria-hidden="true"></span></div><small>짧은 메시지 두 개가 번갈아 나타납니다.</small></div>');$('#try-action').hidden=true;const texts=['상상을 수업으로.','아이디어를 화면으로.'];let line=0,n=0,erase=false,hold=0;if(reduced){$('#typed').textContent=texts.join(' ');status('움직임 줄이기: 전체 문장을 바로 표시합니다.');return;}const tick=()=>{if(active()){if(hold>0)hold--;else{n+=erase?-1:1;$('#typed').textContent=Array.from(texts[line]).slice(0,n).join('');if(n===Array.from(texts[line]).length){erase=true;hold=Math.round(1/values().d);}else if(n===0){erase=false;line=(line+1)%texts.length;hold=3;}}}later(tick,values().d*1000);};tick();status('한 글자마다 '+values().d+'초 · 쓰기 → 멈춤 → 지우기');},
+transition(){let page=0,busy=false;$('#stage').innerHTML='<div class="transition-page"><span class="tag">STEP 01</span><div class="demo-title">수업을 준비해요.</div><small>버튼을 눌러 다음 장면으로 이동해 보세요.</small></div><div class="curtain" aria-hidden="true">↗</div>';const change=()=>{page=1-page;$('.transition-page').classList.toggle('alt',!!page);$('.transition-page .tag').textContent=page?'STEP 02':'STEP 01';$('.transition-page .demo-title').textContent=page?'이제 함께 만들어 봐요.':'수업을 준비해요.';};status('장면 전환 준비 · 현재 1번 화면');action('다음 장면으로',()=>{if(busy)return;if(reduced){change();status('움직임 줄이기: '+(page+1)+'번 화면으로 바로 전환');return;}busy=true;$('#try-action').disabled=true;$('.curtain').classList.add('running');later(change,values().d*500);later(()=>{$('.curtain').classList.remove('running');busy=false;$('#try-action').disabled=false;status((page+1)+'번 화면 · '+values().d+'초 전환 완료');},values().d*1000);});},
+smooth(){const box=scrollBox('<nav class="smooth-nav" aria-label="데모 목차">'+['시작','활동','마무리'].map((s,i)=>'<button data-section="'+i+'">'+s+'</button>').join('')+'</nav>'+['시작해 볼까요?','함께 만들어 봐요.','오늘의 배움을 나눠요.'].map((s,i)=>'<section class="smooth-section" id="section-'+i+'"><span class="tag">SECTION 0'+(i+1)+'</span><div class="demo-title">'+s+'</div><p class="demo-sub">위쪽 목차로 원하는 위치에 이동할 수 있어요.</p></section>').join(''));let next=1;const go=i=>{const el=$('#section-'+i);box.scrollTo({top:el.offsetTop-$('.smooth-nav').offsetHeight,behavior:reduced?'instant':'smooth'});status(['시작','활동','마무리'][i]+' 위치로 '+(reduced?'즉시':'부드럽게')+' 이동');next=(i+1)%3;};$$('[data-section]').forEach(b=>on(b,'click',()=>go(Number(b.dataset.section))));status('목차를 누르면 그 위치까지 미끄러지듯 이동해요.');action('다음 목차로',()=>go(next));},
+marquee(){center('<div class="marquee-wrap"><div class="marquee-track"><div class="marquee-copy">상상을 <span>수업으로</span> <i>✦</i> 아이디어를 <span>화면으로</span> <i>✦</i></div><div class="marquee-copy" aria-hidden="true">상상을 <span>수업으로</span> <i>✦</i> 아이디어를 <span>화면으로</span> <i>✦</i></div></div></div>');status(reduced?'움직임 줄이기: 문구를 정지했습니다.':values().d+'초 주기로 끊김 없이 반복합니다.');},
+gradient(){$('#stage').innerHTML='<div class="gradient-art"><span class="tag">조용히 변하는 배경</span><div class="demo-title">새로운 수업의 색</div><p>텍스트는 그 자리에, 색은 천천히 흐릅니다.</p></div>';status(reduced?'움직임 줄이기: 배경을 고정했습니다.':values().d+'초 주기로 배경색이 부드럽게 섞입니다.');},
+floating(){$('#stage').innerHTML='<div class="float-scene"><div class="float-bubble" aria-hidden="true"></div><div class="float-bubble second" aria-hidden="true"></div><div class="floating-object" role="img" aria-label="둥실 떠다니는 별 장식">✦</div><div class="float-shadow" aria-hidden="true"></div></div>';status(reduced?'움직임 줄이기: 장식을 고정했습니다.':values().d+'초마다 '+values().a+'px 위아래로 움직입니다.');}
+};
+const navIcons=['<path d="M8 5h8M8 19h8M12 5v14m-3-3 3 3 3-3"/>','<path d="m5 3 14 9-7 1-3 7Z"/>','<rect x="4" y="5" width="16" height="14" rx="2"/><path d="m10 9 5 3-5 3Z"/>'];
+const navIcon=path=>'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+path+'</svg>';
+$('#term-list').innerHTML=GROUPS.map((g,n)=>{
+ let order=0;
+ return '<section class="nav-group"><button class="category-button" aria-expanded="true" aria-controls="animation-category-'+n+'" data-category="'+n+'">'+navIcon(navIcons[n])+'<span>'+g+'</span><span class="category-count">'+TERMS.filter(t=>t.group===n).length+'</span><span class="chevron">'+navIcon('<path d="m7 10 5 5 5-5"/>')+'</span></button><div class="term-list" id="animation-category-'+n+'">'+TERMS.map((t,i)=>t.group===n?'<button class="term term-button" data-term="'+i+'" aria-current="false"><span class="num term-number">'+String(++order).padStart(2,'0')+'</span><span>'+t.name+'</span><i class="active-dot" aria-hidden="true"></i></button>':'').join('')+'</div></section>';
+}).join('');
+$('#term-list').addEventListener('click',e=>{
+ const category=e.target.closest('[data-category]');if(category){const open=category.getAttribute('aria-expanded')==='true';category.setAttribute('aria-expanded',String(!open));$('#animation-category-'+category.dataset.category).hidden=open;return;}
+ const b=e.target.closest('[data-term]');if(!b)return;activate(Number(b.dataset.term));if(document.body.classList.contains('nav-open'))nav(false);
+});
+$('#prev').addEventListener('click',()=>activate(current-1));$('#next').addEventListener('click',()=>activate(current+1));$('#try-action').addEventListener('click',()=>attempt());$('#replay').addEventListener('click',mount);
+$('#pause').addEventListener('click',()=>{paused=!paused;document.body.classList.toggle('paused',paused);$('#pause').setAttribute('aria-pressed',String(paused));$('#pause').textContent=paused?'계속 재생':'일시정지';status(paused?'잠시 멈췄습니다. 계속 재생을 눌러 이어 보세요.':'움직임을 다시 재생합니다.');});
+$('#controls').addEventListener('input',e=>{if(e.target.id==='duration')values().d=Number(e.target.value);if(e.target.id==='amount')values().a=Number(e.target.value);updateSettings();});
+$('#controls').addEventListener('change',()=>mount());
+function setReduced(value){reduced=value;document.body.classList.toggle('reduce',value);mount();}
+mq.addEventListener('change',e=>setReduced(e.matches));
+$('#open-nav').addEventListener('click',()=>nav(true));$('.nav-close').addEventListener('click',()=>nav(false));$('.scrim').addEventListener('click',()=>nav(false));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('nav-open'))nav(false);});
+function toast(s){$('#toast').textContent=s;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,2200);}
+$('#copy-prompt').addEventListener('click',async()=>{const text=$('#prompt-text').textContent;try{if(navigator.clipboard?.writeText){try{await navigator.clipboard.writeText(text);toast('프롬프트를 복사했습니다.');return;}catch{}}const box=document.createElement('textarea');box.value=text;box.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.append(box);box.select();const ok=document.execCommand('copy');box.remove();$('#copy-prompt').focus({preventScroll:true});if(!ok)throw Error();toast('프롬프트를 복사했습니다.');}catch{const range=document.createRange();range.selectNodeContents($('#prompt-text'));const selection=getSelection();selection.removeAllRanges();selection.addRange(range);toast('선택한 문장을 길게 누르거나 Ctrl+C로 복사해 주세요.');}});
+window.addEventListener('message',e=>{if(e.source!==parent||e.data?.type!=='bibeom-practice-visibility')return;inactive=!e.data.active;document.body.classList.toggle('inactive',inactive);});
+const mobileQuery=matchMedia('(max-width:700px)');const syncSidebar=()=>{$('.sidebar').inert=mobileQuery.matches&&!document.body.classList.contains('nav-open');if(!mobileQuery.matches){document.body.classList.remove('nav-open');$('.scrim').hidden=true;$('#open-nav').setAttribute('aria-expanded','false');}};mobileQuery.addEventListener('change',syncSidebar);syncSidebar();
+activate(0,false);
+</script>
+</body></html>

@@ -1,0 +1,81 @@
+/* Give the activity itself the remaining height, rather than stretching an empty frame. */
+.practice-focus #demo > :is(.dock-scene, .mini-sidebar-layout, .mini-grid, .split-frame, .scroll-demo, .glass-stage, .neu-stage, .theme-scene, .gradient-card, .hover-grid, .toast-scene, .drag-list, .inline-list, .combo-comparison, .alert-comparison) { flex: 1 0 auto; }
+.practice-focus #demo > :is(.scroll-demo, .split-frame) { flex: 1 1 220px; height: auto; min-height: 220px; max-height: none; }
+.practice-focus #demo > .mini-card:not(.selection-detail) { flex: 1 0 auto; }
+.practice-focus .profile-card { justify-content: center; }
+.practice-focus :is(.drag-list, .inline-list) { display: flex; flex-direction: column; }
+.practice-focus :is(.drag-item, .inline-row) { flex: 1; }
+.practice-focus .neu-stage { display: flex; flex-direction: column; justify-content: center; }
+.practice-focus .theme-scene { display: flex; flex-direction: column; }
+.practice-focus .theme-scene .theme-tile { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.practice-focus [data-lesson="toggle"] #demo > .mini-card { display: flex; flex-direction: column; }
+.practice-focus [data-lesson="toggle"] .setting-row { flex: 1; }
+.practice-focus [data-lesson="tabs"] #demo > .mini-card { display: flex; flex-direction: column; }
+.practice-focus [data-lesson="tabs"] .tab-panel { flex: 1; }
+.practice-focus #loading-region { flex: 1; display: flex; flex-direction: column; }
+.practice-focus #loading-region > .mini-grid { flex: 1; }
+.practice-focus #loading-region > .empty-state { flex: 1; display: grid; place-content: center; }
+.practice-focus .faq { flex: 1 0 auto; }
+.practice-focus .faq summary { padding-block: clamp(18px, 3.5dvh, 38px); }
+.practice-focus .faq:not([open]) summary { height: 100%; }
+.practice-focus .hover-card { align-content: center; }
+.practice-focus :is([data-lesson="modal"], [data-lesson="tooltip"]) #demo > .mini-card { display: flex; flex-direction: column; justify-content: center; }
+.practice-focus #demo > :is(.combo-comparison, .alert-comparison) > section { display: flex; flex-direction: column; justify-content: center; }
+
+/* Dashboard summary widgets and long tables share the available vertical space. */
+.practice-focus .dashboard-panel { flex: 1; display: flex; flex-direction: column; min-height: min-content; }
+.practice-focus .dashboard-panel > * { flex-shrink: 0; }
+.practice-focus .dashboard-overview { flex: 1; grid-template-rows: minmax(190px, 1.3fr) minmax(130px, .8fr); }
+.practice-focus .overview-widget { display: flex; flex-direction: column; padding: clamp(12px, 2cqw, 22px); }
+.practice-focus .overview-bars { flex: 1; min-height: 90px; }
+.practice-focus .overview-day { height: 100%; grid-template-rows: 14px minmax(52px, 1fr) 14px; }
+.practice-focus .overview-bar-track { height: 100%; width: min(100%, 40px); }
+.practice-focus :is(.overview-task-body, .overview-class-body) { flex: 1; }
+.practice-focus .overview-donut { width: clamp(76px, 13cqw, 140px); height: auto; aspect-ratio: 1; }
+.practice-focus .overview-donut strong { font-size: clamp(19px, 3cqw, 29px); }
+.practice-focus .overview-review { flex: 1; align-content: center; gap: 10px; }
+.practice-focus .dashboard-table-wrap { flex: 1 1 220px; max-height: none; min-height: 180px; }
+@media (max-height: 760px) and (min-width: 701px) {
+  .practice-focus .dashboard-overview { grid-template-rows: minmax(155px, 1.3fr) minmax(95px, .8fr); }
+  .practice-focus .overview-widget { padding: 12px; }
+  .practice-focus .overview-bars { min-height: 70px; }
+  .practice-focus .overview-day { grid-template-rows: 14px minmax(40px, 1fr) 14px; }
+  .practice-focus .overview-donut { width: 76px; }
+  .practice-focus .overview-task-name { margin-bottom: 6px; }
+}
+
+/* Queries follow the exercise width after allocating the contents and help columns. */
+@container practice-sheet (max-width: 950px) {
+  .practice-focus .responsive-controls { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; }
+  .practice-focus .responsive-controls .responsive-range-row { grid-row: 2; grid-column: 1 / -1; }
+}
+@container practice-sheet (max-width: 620px) {
+  .practice-focus .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .practice-focus :is(.combo-comparison, .alert-comparison) { grid-template-columns: 1fr; }
+  .practice-focus :is(.combo-example-fields, .alert-example-actions) { grid-template-columns: 1fr 1fr; }
+  .practice-focus .overview-task-body { flex-wrap: wrap; gap: 10px; }
+  .practice-focus .overview-task-legend { min-width: 95px; }
+  .practice-focus .demo-toolbar { gap: 8px; }
+}
+@container practice-sheet (max-width: 480px) {
+  .practice-focus .responsive-controls { grid-template-columns: 1fr; }
+  .practice-focus .responsive-controls .responsive-range-row { grid-row: auto; grid-column: auto; }
+  .practice-focus .responsive-device-actions { justify-content: center; }
+  .practice-focus .dashboard-overview { grid-template-columns: 1fr; grid-template-rows: minmax(190px, 1fr) minmax(160px, 1fr) auto auto; }
+  .practice-focus .overview-class-body { min-height: 65px; }
+  .practice-focus .overview-task-body { flex-wrap: nowrap; }
+  .practice-focus .kpi-foot { line-height: 1.5; }
+}
+@container animation-sheet (max-width: 700px) {
+  .practice-focus .demo-bottom { flex-direction: column; align-items: stretch; }
+  .practice-focus .actions button { flex: 1; }
+  .practice-focus .controls { gap: 10px 14px; }
+  .practice-focus .control { min-width: 120px; }
+  .practice-focus .pinned { gap: 16px; padding: 20px; }
+  .practice-focus .pin-number { font-size: 64px; }
+}
+.practice-focus .zoom-frame { width: min(100%, 760px); height: min(100%, 520px); }
+.practice-focus .compare-wrap { width: min(100%, 760px); height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.practice-focus .compare { flex: 1; max-height: 520px; min-height: 190px; }
+.practice-focus .horizontal-sticky { height: 100%; }
+.practice-focus .horizontal-card { height: auto; min-height: 260px; padding-block: clamp(30px, 12dvh, 110px); }
