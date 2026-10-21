@@ -5,8 +5,9 @@
 .scrollbox .reading-body:not(.highlight-reading) h4 { font-size: 1.05em; line-height: 1.6; margin: 28px 0 12px; }
 .scrollbox .reading-body:not(.highlight-reading) p { font-size: inherit; line-height: 1.9; margin: 0 0 18px; }
 .scrollbox .highlight-reading { min-height: calc(var(--scroll-height) * 1.8); }
-.scrollbox .highlight-target { position: sticky; top: calc(var(--scroll-height) * .2); }
-.scrollbox .highlight-scroll-space { height: auto; min-height: calc(var(--scroll-height) * .85); padding-top: 65px; }
+/* Keep the highlighted sentence and its captions together while scrolling. */
+.scrollbox .highlight-copy { position: sticky; top: calc(var(--scroll-height) * .2); }
+.scrollbox .highlight-scroll-space { height: auto; min-height: calc(var(--scroll-height) * .85); }
 .scrollbox .pin-wrap { height: calc(var(--scroll-height) * 3); }
 .scrollbox .horizontal-journey { height: calc(var(--scroll-height) * 3); }
 .scrollbox .horizontal-sticky { height: var(--scroll-height); }

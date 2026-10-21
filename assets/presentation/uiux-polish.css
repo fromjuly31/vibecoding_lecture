@@ -88,7 +88,7 @@
 .reading #slideFrame .slide .ui-avatar{display:none}
 .reading #slideFrame .slide .ui-specimen-question{font-size:13px}
 .reading #slideFrame .slide .ux-journey-intro{grid-template-columns:1fr;gap:20px}
-.reading #slideFrame .slide .ux-journey-intro .uiux-name .small-text{font-size:12px;line-height:1.5;max-width:none;width:110px;flex:none;word-break:normal;overflow-wrap:normal}
+.reading #slideFrame .slide .ux-journey-intro .uiux-name .small-text{font-size:12px;line-height:1.5;max-width:none;width:110px;flex:none;word-break:keep-all;overflow-wrap:anywhere}
 .reading #slideFrame .slide .ux-definition{font-size:22px}
 .reading #slideFrame .slide .ux-friction{align-items:stretch;flex-direction:column;gap:13px;padding:16px}
 .reading #slideFrame .slide .ux-friction>strong{padding:0;border:0}

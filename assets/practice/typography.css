@@ -1,12 +1,15 @@
 /* Both practice pages use the UI/UX page's type and navigation scale. */
 :root { font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; font-size: 14px; color: #252b35; --accent: #e96b35; --accent-dark: #b74718; --accent-soft: #fff0e7; }
+body { word-break: keep-all; overflow-wrap: anywhere; }
 .app-layout, .layout { grid-template-columns: 252px minmax(0, 1fr); }
 .sidebar { top: 76px; height: calc(100dvh - 76px); padding: 26px 15px 20px; scrollbar-color: #dedfe4 transparent; }
 .sidebar-top { padding: 0 12px 22px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 400; }
 .sidebar-top strong { font-size: 13px; font-weight: 700; }
-.category-button { border: 0; background: none; width: 100%; min-height: 0; margin: 0; padding: 12px 10px; display: flex; align-items: center; gap: 9px; text-align: left; font-size: 12px; font-weight: 750; line-height: normal; color: #252b35; }
+.category-button { border: 0; background: none; width: 100%; min-height: 0; margin: 0; padding: 12px 10px; display: flex; align-items: center; gap: 9px; text-align: left; font-size: 12px; font-weight: 750; line-height: 1.5; color: #252b35; }
 .category-button:hover { background: #f7f8fa; }
 .category-button > svg { flex-shrink: 0; }
+.category-button > span:first-of-type, .term-button > span:nth-of-type(2) { min-width: 0; }
+.category-count, .category-button .chevron { flex-shrink: 0; }
 .category-button .chevron { margin-left: auto; transition: transform .2s; }
 .category-button[aria-expanded="false"] .chevron { transform: rotate(-90deg); }
 .category-count { font-size: 10px; color: #9198a2; font-weight: 500; }
@@ -14,7 +17,7 @@
 .nav-group { margin-bottom: 13px; }
 .term-list { display: grid; gap: 3px; }
 .term-list[hidden] { display: none; }
-.term-button, .term { border: 1px solid transparent; background: none; width: 100%; padding: 10px 11px; margin: 0; text-align: left; display: flex; align-items: center; gap: 10px; border-radius: 9px; min-height: 42px; color: #616874; font-size: 13px; font-weight: 400; line-height: normal; }
+.term-button, .term { border: 1px solid transparent; background: none; width: 100%; padding: 10px 11px; margin: 0; text-align: left; display: flex; align-items: center; gap: 10px; border-radius: 9px; min-height: 42px; color: #616874; font-size: 13px; font-weight: 400; line-height: 1.5; }
 .term-button:hover, .term:hover { background: #f7f8fa; border-color: transparent; }
 .term-button[aria-current="page"], .term[aria-current="true"] { background: var(--accent-soft); color: var(--accent-dark); font-weight: 750; border-color: #ffe0ca; }
 .term-number, .term .num { font-size: 10px; color: #9a9faa; width: 18px; flex-shrink: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
