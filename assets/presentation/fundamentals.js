@@ -23,6 +23,48 @@ function deckChanged(selectedId){
  current=Math.max(0,data.slides.findIndex(s=>s.id===selectedId));states={};printReady=false;saveNow();renderAll();
  $('#slideAnnouncement').textContent=(current+1)+' / '+data.slides.length+' · '+slideTitle(currentSlide());
 }
+function remapSlideLayout(id,paths){
+ const saved=data.layouts[id];if(!saved)return;
+ data.layouts[id]=Object.fromEntries(Object.entries(saved).map(([key,value])=>{
+  for(const [from,to]of Object.entries(paths))if(key.startsWith('text:'+from+':'))return ['text:'+to+key.slice(('text:'+from).length),value];
+  return [key,value];
+ }));
+}
+function snapshotDatabaseIntro(slide){
+ if(slide.profile)return;
+ const source=data.slides.find(s=>s.id===slide.sourceId)||data.trash.find(e=>e.slide.id===slide.sourceId)?.slide;
+ if(!source)throw Error('DB 소개의 원본 내용을 찾을 수 없습니다.');
+ slide.profile={title:source.title,...Object.fromEntries(['short','analogy','description','note'].map(key=>[key,source.items[0][key]]))};
+ remapSlideLayout(slide.id,{title:'profile.title','items.0.short':'profile.short','items.0.analogy':'profile.analogy','items.0.description':'profile.description','items.0.note':'profile.note'});
+}
+function duplicateSlide(id=currentSlide().id){
+ const index=data.slides.findIndex(s=>s.id===id);if(index<0)return;
+ const source=data.slides[index],all=[...data.slides,...data.trash.map(entry=>entry.slide)],duplicate=copy(source);
+ duplicate.id=Math.max(Date.now(),...all.map(s=>s.id))+1;
+ duplicate.copyOf=source.copyOf||source.id;
+ duplicate.copyNumber=Math.max(0,...all.filter(s=>s.copyOf===duplicate.copyOf).map(s=>s.copyNumber))+1;
+ if(data.layouts[source.id])data.layouts[duplicate.id]=copy(data.layouts[source.id]);
+ if(!source.copyOf&&['cover','section'].includes(source.type)){
+  const path=source.type==='cover'?'meta.title':'meta.parts.'+source.part;
+  duplicate.title=get(data,path);remapSlideLayout(duplicate.id,{[path]:'title'});
+ }
+ if(duplicate.type==='databaseIntro')snapshotDatabaseIntro(duplicate);
+ data.slides.splice(index+1,0,duplicate);deckChanged(duplicate.id);
+ navigateSlideList(current);
+ notify('슬라이드 사본을 원본 바로 뒤에 만들었습니다.');
+ return duplicate.id;
+}
+function emptyTrash(){
+ const count=data.trash.length;if(!count)return false;
+ if(!confirm('휴지통의 슬라이드 '+count+'장을 영구 삭제할까요? 비운 뒤에는 복구할 수 없습니다.'))return false;
+ const deleted=new Set(data.trash.map(entry=>entry.slide.id)),selectedId=currentSlide().id;
+ // Intro slides must retain their visible text when a referenced detail slide is purged.
+ for(const slide of data.slides)if(slide.type==='databaseIntro'&&deleted.has(slide.sourceId))snapshotDatabaseIntro(slide);
+ for(const id of deleted)delete data.layouts[id];
+ data.trash=[];deckChanged(selectedId);
+ $('#slideTrash summary').focus({preventScroll:true});
+ notify('휴지통의 슬라이드 '+count+'장을 비웠습니다.');return true;
+}
 function moveSlide(id,index){
  const from=data.slides.findIndex(s=>s.id===id),selectedId=currentSlide().id;
  if(from<0||!Number.isInteger(index))return;
@@ -46,8 +88,8 @@ function restoreSlide(id){
  notify('슬라이드를 '+(index+1)+'번 위치에 복구했습니다.');
 }
 function renderSlideManager(){
- $('#moveSlideUp').disabled=current===0;$('#moveSlideDown').disabled=current===data.slides.length-1;$('#deleteSlide').disabled=data.slides.length<=1;
  $('#trashCount').textContent=data.trash.length;
+ $('#emptyTrash').disabled=data.trash.length===0;
  $('#trashList').innerHTML=data.trash.length?data.trash.slice().reverse().map(({slide})=>'<div class="trash-item"><span>'+escapeHTML(slideTitle(slide))+'</span><button type="button" data-restore-slide="'+slide.id+'" aria-label="'+escapeHTML(slideTitle(slide))+' 복구">복구</button></div>').join(''):'<p class="trash-empty">삭제한 슬라이드가 없습니다.</p>';
 }
 let slideDrag=null,suppressNavClickUntil=0;
@@ -89,9 +131,12 @@ function navigateSlideList(index){
  else if(row.bottom>bottom)sidebar.scrollTop+=row.bottom-bottom;
 }
 function setupSlideManager(){
- $('#moveSlideUp').onclick=()=>moveSlide(currentSlide().id,current-1);
- $('#moveSlideDown').onclick=()=>moveSlide(currentSlide().id,current+1);
- $('#deleteSlide').onclick=()=>{deleteSlide();$('#deleteSlide').focus({preventScroll:true});};
+ $('#emptyTrash').onclick=event=>{event.preventDefault();event.stopPropagation();emptyTrash();};
+ $('#slideNav').addEventListener('click',event=>{
+  const duplicate=event.target.closest('[data-duplicate-slide]'),remove=event.target.closest('[data-delete-slide]');
+  if(duplicate){event.stopPropagation();duplicateSlide(Number(duplicate.dataset.duplicateSlide));}
+  if(remove){event.stopPropagation();deleteSlide(Number(remove.dataset.deleteSlide));navigateSlideList(current);}
+ });
  $('#trashList').addEventListener('click',event=>{const el=event.target.closest('[data-restore-slide]');if(el){restoreSlide(Number(el.dataset.restoreSlide));$('#slideNav [aria-current=true]')?.focus({preventScroll:true});}});
  $('#slideNav').addEventListener('keydown',event=>{
   const item=event.target.closest('[data-slide-nav]');
