@@ -692,8 +692,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 body.slide-reordering{user-select:none;cursor:grabbing}.slide-trash{border:1px solid var(--line);border-radius:10px;padding:10px;margin-top:12px}.slide-trash summary{cursor:pointer;font-size:12px;font-weight:650}.trash-list{display:grid;gap:8px;margin-top:12px}.trash-item{font-size:11px;line-height:1.5;display:flex;align-items:center;gap:6px;border-top:1px solid var(--line);padding-top:8px}.trash-item span{flex:1;overflow-wrap:anywhere}.trash-item button{font-size:11px;padding:6px;flex:none}.trash-empty{font-size:11px;color:var(--muted);line-height:1.7}
 .slide-manager .trash-list{max-height:220px;overflow:auto}.slide-manager .slide-trash{margin-top:9px;padding:8px}
 .slide-trash summary{display:flex;align-items:center;gap:7px;list-style:none;min-height:32px}.slide-trash summary::-webkit-details-marker{display:none}.slide-trash summary:before{content:'›';font-size:18px;color:var(--muted);transition:transform .15s}.slide-trash[open] summary:before{transform:rotate(90deg)}.slide-trash summary>span{flex:1}.slide-manager .empty-trash{width:32px;padding:6px;flex:none;color:#bc4141}.slide-manager .empty-trash:disabled{color:var(--muted);opacity:.4}.slide-manager-actions .icon{width:14px;height:14px}.slide-manager-actions [data-icon]{display:inline-flex}
-.nav-row-actions{display:flex;gap:2px;flex:none;max-width:0;overflow:hidden;visibility:hidden;opacity:0}.nav-row:hover .nav-row-actions,.nav-row:focus-within .nav-row-actions{max-width:62px;visibility:visible;opacity:1}.nav-row-actions button{width:28px;min-height:30px;padding:5px;flex:none;border:0;background:transparent;color:var(--muted);border-radius:6px}.nav-row-actions button:hover{background:var(--hover);color:var(--accent-ink)}.nav-row-actions [data-delete-slide]:hover{color:#bc4141}.nav-row-actions .icon{width:16px;height:16px}.nav-row.is-dragging .nav-row-actions{visibility:hidden;pointer-events:none}
-@media(hover:none){.nav-row .nav-row-actions{max-width:62px;visibility:visible;opacity:1}}
+.slide-context-menu{position:fixed;z-index:100;width:154px;max-width:calc(100vw - 16px);padding:5px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 28px #0002}.slide-context-menu[hidden]{display:none}.slide-context-menu button{width:100%;min-height:38px;justify-content:flex-start;border:0;border-radius:6px;padding:9px 12px;font-size:12px;background:transparent}.slide-context-menu button:hover:not(:disabled),.slide-context-menu button:focus-visible{background:var(--hover);color:var(--accent-ink)}.slide-context-menu [data-slide-menu-action="delete"]{color:#bc4141}.slide-context-menu [data-slide-menu-action="delete"]:hover:not(:disabled),.slide-context-menu [data-slide-menu-action="delete"]:focus-visible{color:#bc4141}.slide-context-menu .icon{width:16px;height:16px}
 @media(max-width:860px){
  .reading #slideFrame .slide .fund-benefits,.reading #slideFrame .slide .button-anatomy,.reading #slideFrame .slide .web-language{grid-template-columns:minmax(0,1fr);gap:24px;min-height:0}
  .reading #slideFrame .slide .fund-benefit h2,.reading #slideFrame .slide .language-copy h2{font-size:24px}.reading #slideFrame .slide .fund-benefit p,.reading #slideFrame .slide .anatomy-part p{font-size:19px}.reading #slideFrame .slide .fund-note{font-size:14px}.reading #slideFrame .slide .fund-benefit .fund-example{font-size:17px;margin-top:14px}
@@ -1064,6 +1063,7 @@ body.practice-focus .practice-frame { height: 100%; }
 </section>
 <footer class="app-footer" id="appFooter" data-design="rule" aria-label="강의 제작자">원주여고 김범준(비범쌤)</footer>
 <div class="panel-scrim" data-command="close-panels"></div>
+<div id="slideContextMenu" class="slide-context-menu" role="menu" aria-label="슬라이드 작업" hidden><button type="button" role="menuitem" tabindex="-1" data-slide-menu-action="copy"><span data-icon="copy"></span>복사</button><button type="button" role="menuitem" tabindex="-1" data-slide-menu-action="delete" title="휴지통으로 이동"><span data-icon="trash"></span>삭제</button></div>
 <div class="presentation-controls" aria-label="발표 조작 · 오른쪽 화살표, 클릭, 스페이스로 순차 진행"><button id="presentHome" title="처음으로 (Home)">처음으로</button><div class="chapter-picker"><button id="chapterToggle" aria-expanded="false" aria-controls="chapterMenu">챕터 바로가기</button><nav id="chapterMenu" class="chapter-menu" aria-label="챕터 시작으로 이동" hidden=""></nav></div><button id="presentPrev" aria-label="이전 슬라이드" data-icon="left"></button><span class="count" id="presentCount"></span><button id="presentNext" aria-label="다음 슬라이드" data-icon="right"></button><button id="fullscreenBtn" aria-label="전체화면 전환" title="전체화면" data-icon="expand"></button><button data-command="read-mode" class="read-toggle" aria-label="읽기 보기 전환" data-icon="layout"></button><button data-command="theme" aria-label="테마 변경" data-icon="moon"></button><button data-command="practice">실습</button><button data-command="print" class="hide-phone">PDF 출력</button><button id="exitBtn">발표 종료</button></div>
 <div id="slideAnnouncement" class="sr-only" role="status" aria-live="polite"></div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -2413,15 +2413,57 @@ function navigateSlideList(index){
  if(row.top<top)sidebar.scrollTop-=top-row.top;
  else if(row.bottom>bottom)sidebar.scrollTop+=row.bottom-bottom;
 }
+function closeSlideContextMenu(restoreFocus=false){
+ const menu=$('#slideContextMenu');if(menu.hidden)return;
+ const item=$('#slideNav [data-slide-id="'+menu.dataset.slideId+'"] .nav-item');
+ menu.hidden=true;delete menu.dataset.slideId;item?.setAttribute('aria-expanded','false');
+ if(restoreFocus)item?.focus({preventScroll:true});
+}
+function openSlideContextMenu(row,x,y){
+ if(slideDrag)return;
+ closeSlideContextMenu();
+ const menu=$('#slideContextMenu'),id=Number(row.dataset.slideId),slide=data.slides.find(s=>s.id===id);if(!slide)return;
+ const item=row.querySelector('.nav-item'),rect=item.getBoundingClientRect();
+ menu.dataset.slideId=id;menu.setAttribute('aria-label',slideTitle(slide)+' 슬라이드 작업');
+ menu.querySelector('[data-slide-menu-action="copy"]').dataset.duplicateSlide=id;
+ const remove=menu.querySelector('[data-slide-menu-action="delete"]');remove.dataset.deleteSlide=id;remove.disabled=data.slides.length<=1;
+ menu.hidden=false;item.setAttribute('aria-expanded','true');
+ const bounds=menu.getBoundingClientRect();
+ menu.style.left=Math.max(8,Math.min(x??rect.left,window.innerWidth-bounds.width-8))+'px';
+ menu.style.top=Math.max(8,Math.min(y??rect.bottom,window.innerHeight-bounds.height-8))+'px';
+ menu.querySelector('button').focus({preventScroll:true});
+}
 function setupSlideManager(){
  $('#emptyTrash').onclick=event=>{event.preventDefault();event.stopPropagation();emptyTrash();};
- $('#slideNav').addEventListener('click',event=>{
-  const duplicate=event.target.closest('[data-duplicate-slide]'),remove=event.target.closest('[data-delete-slide]');
-  if(duplicate){event.stopPropagation();duplicateSlide(Number(duplicate.dataset.duplicateSlide));}
-  if(remove){event.stopPropagation();deleteSlide(Number(remove.dataset.deleteSlide));navigateSlideList(current);}
+ const menu=$('#slideContextMenu');
+ $('#slideNav').addEventListener('contextmenu',event=>{
+  const row=event.target.closest('.nav-row');if(!row)return;
+  event.preventDefault();openSlideContextMenu(row,event.clientX||undefined,event.clientY||undefined);
  });
+ menu.addEventListener('click',event=>{
+  const button=event.target.closest('[data-slide-menu-action]');if(!button||button.disabled||menu.hidden)return;
+  event.stopPropagation();const id=Number(menu.dataset.slideId);closeSlideContextMenu();
+  if(button.dataset.slideMenuAction==='copy')duplicateSlide(id);
+  else{deleteSlide(id);navigateSlideList(current);}
+ });
+ menu.addEventListener('keydown',event=>{
+  event.stopPropagation();
+  if(event.key==='Escape'||event.key==='Tab'){if(event.key==='Escape')event.preventDefault();closeSlideContextMenu(true);return;}
+  if(!['ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
+  event.preventDefault();const buttons=[...menu.querySelectorAll('button:not(:disabled)')],index=buttons.indexOf(document.activeElement);
+  buttons[event.key==='Home'?0:event.key==='End'?buttons.length-1:(index+(event.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length].focus({preventScroll:true});
+ });
+ document.addEventListener('pointerdown',event=>{if(!menu.contains(event.target))closeSlideContextMenu();});
+ document.addEventListener('focusin',event=>{if(!menu.contains(event.target))closeSlideContextMenu();});
+ document.addEventListener('contextmenu',event=>{if(!event.target.closest('#slideNav .nav-row'))closeSlideContextMenu();});
+ document.addEventListener('scroll',()=>closeSlideContextMenu(),true);
+ window.addEventListener('resize',()=>closeSlideContextMenu());
+ window.addEventListener('blur',()=>closeSlideContextMenu());
  $('#trashList').addEventListener('click',event=>{const el=event.target.closest('[data-restore-slide]');if(el){restoreSlide(Number(el.dataset.restoreSlide));$('#slideNav [aria-current=true]')?.focus({preventScroll:true});}});
  $('#slideNav').addEventListener('keydown',event=>{
+  if(event.key==='ContextMenu'||(event.shiftKey&&event.key==='F10')){
+   const row=event.target.closest('.nav-row');if(row){event.preventDefault();event.stopPropagation();openSlideContextMenu(row);}return;
+  }
   const item=event.target.closest('[data-slide-nav]');
   if(item&&['ArrowUp','ArrowDown'].includes(event.key)&&!event.ctrlKey&&!event.metaKey&&!event.altKey){
    event.preventDefault();event.stopPropagation();
@@ -2676,10 +2718,11 @@ const renderers={vibeBenefits:renderVibeBenefits,webLanguage:renderWebLanguage,b
 function renderSlide(i,printing=false){if(data.slides[i].type==='apiShowcase')return renderApiShowcaseSlide(i,printing);const d=data.slides[i],opener=['cover','contents','section'].includes(d.type),sideTitle=usesSideTitle(d),total=data.slides.length;return '<article class="slide '+(opener?d.type+'-slide':'')+(sideTitle?' side-title-slide':'')+(d.part===1&&['ai','comparison','prompt'].includes(d.type)?' part-two-content':'')+(d.type==='ai'?' brand-slide brand-'+aiBrandKey(d):'')+'" data-slide="'+i+'" data-type="'+d.type+'" aria-label="슬라이드 '+(i+1)+' · '+escapeHTML(slideTitle(d))+'">'+(opener?'':'<header class="slide-head"><div class="eyebrow"><span class="part-chip">'+partLabel(d)+'</span>'+txt('meta.parts.'+d.part,'span','',printing)+'</div>'+(sideTitle?'':S(i,'title','h1','',printing)+S(i,'subtitle','p','subtitle',printing))+'</header>')+'<div class="slide-content"><div class="content-inner">'+renderers[d.type](i,printing)+'</div></div><footer class="slide-foot"><span class="foot-brand">'+txt('meta.title','span','',printing)+'</span><span class="foot-page"><b>'+String(i+1).padStart(2,'0')+'</b> / '+total+'</span></footer><div class="slide-progress" style="width:'+((i+1)/total*100)+'%"></div></article>';}
 
 function renderNav(){
+ closeSlideContextMenu();
  let html='',previous=-1;
  data.slides.forEach((d,i)=>{
   if(d.type!=='cover'&&d.part!==previous){html+='<div class="group-label"><b>'+partLabel(d)+'</b><span>'+escapeHTML(data.meta.parts[d.part])+'</span></div>';previous=d.part;}
-  html+='<div class="nav-row" data-slide-id="'+d.id+'"><button type="button" class="nav-handle" aria-label="'+escapeHTML(slideTitle(d))+' 순서 변경" title="드래그 또는 ↑ ↓ 키로 순서 변경">⠿</button><button type="button" class="nav-item '+(d.type==='section'?'section-nav':d.type==='cover'?'cover-nav':'')+'" data-slide-nav="'+i+'" aria-current="'+(i===current)+'"><span class="number">'+String(i+1).padStart(2,'0')+'</span><span class="nav-title">'+(d.type==='section'?'<span class="nav-main-badge">Main</span> ':'')+escapeHTML(slideTitle(d))+'</span></button><div class="nav-row-actions"><button type="button" data-duplicate-slide="'+d.id+'" aria-label="'+escapeHTML(slideTitle(d))+' 복제" title="슬라이드 복제">'+icon('copy')+'</button><button type="button" data-delete-slide="'+d.id+'" aria-label="'+escapeHTML(slideTitle(d))+' 삭제" title="휴지통으로 이동"'+(data.slides.length<=1?' disabled':'')+'>'+icon('trash')+'</button></div></div>';
+  html+='<div class="nav-row" data-slide-id="'+d.id+'"><button type="button" class="nav-handle" aria-label="'+escapeHTML(slideTitle(d))+' 순서 변경" title="드래그 또는 ↑ ↓ 키로 순서 변경">⠿</button><button type="button" class="nav-item '+(d.type==='section'?'section-nav':d.type==='cover'?'cover-nav':'')+'" data-slide-nav="'+i+'" aria-current="'+(i===current)+'" aria-haspopup="menu" aria-controls="slideContextMenu" aria-expanded="false" title="우클릭하여 복사 또는 삭제"><span class="number">'+String(i+1).padStart(2,'0')+'</span><span class="nav-title">'+(d.type==='section'?'<span class="nav-main-badge">Main</span> ':'')+escapeHTML(slideTitle(d))+'</span></button></div>';
  });$('#slideNav').innerHTML=html;renderSlideManager();
 }
 /* APP_FOOTER_JS_START */
